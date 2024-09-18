@@ -36,3 +36,11 @@ export async function createSession(payload){
         path: '/',
     })
 }
+
+export async function destroySession(){
+    cookies().set('session', '', {
+        expires: new Date(0),
+        httpOnly: true,
+        sameSite: 'lax',
+    })
+}

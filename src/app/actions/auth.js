@@ -17,23 +17,16 @@ export async function signup(state, formData) {
             errors: validatedFields.error.flatten().fieldErrors,
         }
     }
-    console.log('Form data is valid');
 
     let role = null;
-    if(formData.get('email') === 'raitra007@gmail.com'){
-        role = 'admin';
+    if(formData.get('email') === 'raitra007@gmail.com' && formData.get('password') === '12345678'){
+        role = 'administrator';
     } else {
-        role = 'user';
+        role = 'professor';
     }
 
 
-    await createSession({userId: 1, role: role});
-
-
-        
-    if(role === 'admin'){
-        redirect('/dashboard/administrator')
-    }else{
-        redirect('/dashboard/professor')
-    }
+    await createSession({userId: 1, role: role, url : '/dashboard/'+role});
+    redirect('/dashboard/'+role);
+  
 }
