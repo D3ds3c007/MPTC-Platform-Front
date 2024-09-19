@@ -1,0 +1,32 @@
+.button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .primary {
+    background-color: var(--primary-bg);
+    color: var(--primary-color);
+    border-radius : var(--button-radius);
+    width: var(--button-width);
+    height: var(--button-height);
+  }
+  
+  .danger {
+    background-color: var(--danger-bg);
+    color: var(--danger-color);
+    border-radius : var(--button-radius);
+    width: var(--button-width);
+    height: var(--button-height);
+  }
+  
+  .warning {
+    background-color: var(--warning-bg);
+    color: var(--warning-color);
+    border-radius : var(--button-radius);
+    width: var(--button-width);
+    height: var(--button-height);
+  }
+  
