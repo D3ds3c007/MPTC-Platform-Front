@@ -6,6 +6,8 @@
   --danger-color : #F5F5F5;
   --warning-bg : #FEB500;
   --warning-color : #F5F5F5;
+  --secondary-bg : #7D06EA;
+  --secondary-color : #F5F5F5;  
   --button-width : 150px;
   --button-height : 40px;
 }
@@ -13,6 +15,6 @@
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 2em;
   background-color: #F5F5F5;
 }

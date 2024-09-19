@@ -1,0 +1,61 @@
+.card {
+    width: auto;  /* Allows the card to grow based on its content */
+    height: auto; /* Makes the height flexible */
+    max-width: 100%; /* Ensures the card doesn't exceed the container width */
+    max-height: 100%; /* Prevents the card from exceeding the container height */
+    background-color: #fff;
+    border-radius: 18px;
+    padding: 2rem; /* Use relative units for padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+}
+
+.title {
+    font-size: 1.125rem; /* Relative font size (18px equivalent) */
+    font-weight: 600;
+    margin-bottom: 0.625rem; /* 10px equivalent in rem */
+    color: #7D06EA;
+}
+
+
+/* Primary card variation */
+.card-primary {
+    background-color: var(--primary-bg);
+    color: var(--primary-color);
+}
+
+/* Danger card variation */
+.card-danger {
+    background-color: var(--danger-bg);
+    color: var(--danger-color);
+}
+
+/* Warning card variation */
+.card-warning {
+    background-color: var(--warning-bg);
+    color: var(--warning-color);
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.5rem; /* Smaller padding for mobile screens */
+    }
+    
+    .title {
+        font-size: 1rem; /* Smaller font size for mobile screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 1rem; /* Further reduced padding for smaller devices */
+    }
+    
+    .title {
+        font-size: 0.875rem; /* Further reduced font size */
+    }
+}

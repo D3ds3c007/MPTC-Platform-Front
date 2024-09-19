@@ -1,32 +1,42 @@
 .button {
-    padding: 10px 20px;
-    border-radius: 5px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .primary {
+    font-size: 1rem; /* Relative font size (16px equivalent) */
+    padding: 0.75rem 1.5rem; /* Use padding to make the button responsive */
+    border-radius: var(--button-radius);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    transform: translateY(-3px); /* Add a subtle hover effect */
+}
+
+.primary {
     background-color: var(--primary-bg);
     color: var(--primary-color);
-    border-radius : var(--button-radius);
-    width: var(--button-width);
-    height: var(--button-height);
-  }
-  
-  .danger {
+}
+
+.danger {
     background-color: var(--danger-bg);
     color: var(--danger-color);
-    border-radius : var(--button-radius);
-    width: var(--button-width);
-    height: var(--button-height);
-  }
-  
-  .warning {
+}
+
+.warning {
     background-color: var(--warning-bg);
     color: var(--warning-color);
-    border-radius : var(--button-radius);
-    width: var(--button-width);
-    height: var(--button-height);
-  }
-  
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .button {
+        font-size: 0.875rem; /* Slightly smaller font size on tablets */
+        padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        font-size: 0.75rem; /* Further reduced font size on mobile */
+        padding: 0.5rem 0.75rem; /* Compact padding for smaller mobile screens */
+    }
+}
