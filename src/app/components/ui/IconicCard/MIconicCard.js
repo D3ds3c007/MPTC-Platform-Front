@@ -5,6 +5,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons
 export function MIconicCard({
     data = '2024',
     icon = 'bi bi-arrow-up-right-circle-fill',
+    bootstrapClass = 'col-md-3',
     label = 'This is a card',
     bgColor = '#CFD4FA',
     color = '--primary-color'
@@ -13,7 +14,7 @@ export function MIconicCard({
         <>
         <Container>
             <div className="row">
-                <div className="col-md-3">
+                <div className={bootstrapClass}>
                     <div className={styles.iconiccard}>
                         <div className={styles.icon}>
                             <i class="bi bi-arrow-up-right-circle-fill" style={{

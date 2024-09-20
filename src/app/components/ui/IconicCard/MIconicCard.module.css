@@ -1,5 +1,6 @@
 .iconiccard{
-    background-color: aquamarine;
+    background-color: var(--default-bg);
+    color : var(--primary-bg);
     display: flex;
     flex-direction: row;
     align-items: center;

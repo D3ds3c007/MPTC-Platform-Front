@@ -12,6 +12,8 @@
   --secondary-color : #F5F5F5;  
   --button-width : 150px;
   --button-height : 40px;
+
+  --default-bg : #CFD4FA;
 }
 
 body {

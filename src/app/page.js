@@ -41,13 +41,20 @@ export default function Page() {
                 <MButton variant="danger">Danger</MButton>
                 <MButton variant="warning">Warning</MButton>
               </div>
+              
+                  <div style={{
+                    display: 'flex',
+                  }}>
+                      <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-12"/>
+                      <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-12"/>
+                  </div>
+          
 
               <p>Some text here</p>
             </MCard>
 
 
           </div>
-          <MIconicCard data="2026" label="This is a test" />
 
         </div>
 
