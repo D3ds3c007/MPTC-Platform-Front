@@ -8,7 +8,7 @@ export function MIconicCard({
     icon = 'bi bi-arrow-up-right-circle-fill',
     bootstrapClass = 'col-md-3',
     label = 'This is a card',
-    variant = 'primary'
+    variant = 'default'
 }){
     return (
         <>

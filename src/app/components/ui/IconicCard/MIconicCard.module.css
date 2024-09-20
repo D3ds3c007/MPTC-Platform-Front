@@ -7,6 +7,7 @@
     border-radius: 10px;
     gap: 5px;
     margin-top: 10px;
+    margin-right: 10px;
 
 }
 
@@ -32,4 +33,24 @@
 .success{
     background-color: var(--success-bg);
     color: var(--primary-bg);
+}
+
+.secondary{
+    background-color: var(--secondary-bg);
+    color: var(--secondary-color);
+}
+
+.danger{
+    background-color: var(--danger-bg);
+    color: var(--danger-color);
+}
+
+.default{
+    background-color: var( --default-bg);
+    color: var(--dark-blue);
+}
+
+.pink{
+    background-color: var( --pink-bg);
+    color: var(--pink-color);
 }

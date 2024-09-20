@@ -26,6 +26,11 @@
     color: var(--warning-color);
 }
 
+.success{
+     background-color: var(--success-bg);
+    color: var(--success-color);
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
     .button {
