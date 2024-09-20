@@ -1,5 +1,4 @@
 import styles from './MCard.module.css';
-import { Container } from 'react-bootstrap';
 
 
 export function MCard({children, width = '100%', height = 'auto', bgColor = 'white', padding = '20px', title = ''}, display = 'flex', flexDirection = 'column') {

@@ -9,7 +9,7 @@ export default function Page() {
       <div className={styles.container}>
         <h1>List of components</h1>
       </div>
-      
+
       <Container>
         <div className="row">
           <div className="col-md-6">

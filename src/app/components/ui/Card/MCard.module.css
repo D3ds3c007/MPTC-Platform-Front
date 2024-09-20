@@ -12,6 +12,7 @@
     justify-content: space-between;
     transition: all 0.3s ease-in-out;
     box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+    margin: 2%;
 }
 
 .title {
