@@ -1,21 +1,19 @@
 import styles from './MIconicCard.module.css';
 import { Container } from "react-bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons
+import clsx from 'clsx';
 
 export function MIconicCard({
     data = '2024',
     icon = 'bi bi-arrow-up-right-circle-fill',
     bootstrapClass = 'col-md-3',
     label = 'This is a card',
-    bgColor = '#CFD4FA',
-    color = '--primary-color'
+    variant = 'primary'
 }){
     return (
         <>
-        <Container>
-            <div className="row">
                 <div className={bootstrapClass}>
-                    <div className={styles.iconiccard}>
+                    <div className={`${clsx(styles[variant])}  ${styles.iconiccard}`}>
                         <div className={styles.icon}>
                             <i class="bi bi-arrow-up-right-circle-fill" style={{
                                 fontSize: '40px',
@@ -30,8 +28,6 @@ export function MIconicCard({
                         </div>
                     </div>
                 </div>
-            </div>
-        </Container>
         </>
     )
 }

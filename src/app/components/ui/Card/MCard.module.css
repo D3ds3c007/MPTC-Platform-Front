@@ -8,6 +8,7 @@
     border:0px;
     padding: 2rem; /* Use relative units for padding */
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     transition: all 0.3s ease-in-out;

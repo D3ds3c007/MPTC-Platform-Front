@@ -10,10 +10,13 @@
   --warning-color : #F5F5F5;
   --secondary-bg : #7D06EA;
   --secondary-color : #F5F5F5;  
+  --success-bg : #01F073;
+  --success-color : #F5F5F5;
   --button-width : 150px;
   --button-height : 40px;
 
   --default-bg : #CFD4FA;
+  --dark-blue : #15004F;
 }
 
 body {

@@ -1,6 +1,4 @@
 .iconiccard{
-    background-color: var(--default-bg);
-    color : var(--primary-bg);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8,9 +6,30 @@
     padding: 20px;
     border-radius: 10px;
     gap: 5px;
+    margin-top: 10px;
 
 }
 
 .data{
     margin: 0;
+}
+
+.primary{
+    background-color: var(--primary-bg);
+    color: var(--primary-color);
+}
+
+.dark-blue{
+    background-color: var(--dark-blue);
+    color: #ffffff;
+}
+
+.warning{
+    background-color: var(--warning-bg);
+    color: var(--dark-blue);
+}
+
+.success{
+    background-color: var(--success-bg);
+    color: var(--primary-bg);
 }

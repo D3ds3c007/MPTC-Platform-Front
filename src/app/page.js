@@ -34,23 +34,14 @@ export default function Page() {
               <p>This is a card</p>
               <div style={{
                 display: 'flex',
-                gap: '1.2em',
-                padding: '5px'
+                flexDirection: 'row',
+                flexWrap: 'wrap',
               }}>
-                <MButton variant="primary" bootstrapClass="btn-block">Primary</MButton>
-                <MButton variant="danger">Danger</MButton>
-                <MButton variant="warning">Warning</MButton>
-              </div>
-              
-                  <div style={{
-                    display: 'flex',
-                  }}>
-                      <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-12"/>
-                      <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-12"/>
-                  </div>
-          
+                  <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="warning"/>
+                  <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="success"/>
+                  <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="success"/>
 
-              <p>Some text here</p>
+              </div>
             </MCard>
 
 
