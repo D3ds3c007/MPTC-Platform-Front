@@ -1,8 +1,8 @@
 import styles from './MButton.module.css';
 import clsx from 'clsx';
-export function MButton({children, onClick, variant = 'primary'}) {
+export function MButton({children, onClick, variant = 'primary', bootstrapClass = ''}) {
     return (
-        <button className={clsx(styles.button, styles[variant])} onClick={onClick}>
+        <button className={`${clsx(styles[variant])}  ${styles.button} btn-sm`} onClick={onClick}>
             {children}
         </button>
     );

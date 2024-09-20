@@ -5,6 +5,7 @@
     max-height: 100%; /* Prevents the card from exceeding the container height */
     background-color: #fff;
     border-radius: 18px;
+    border:0px;
     padding: 2rem; /* Use relative units for padding */
     display: flex;
     flex-direction: column;
@@ -23,20 +24,20 @@
 
 /* Primary card variation */
 .card-primary {
-    background-color: var(--primary-bg);
-    color: var(--primary-color);
+    background-color: var(--primary-mbg);
+    color: var(--primary-mcolor);
 }
 
 /* Danger card variation */
 .card-danger {
-    background-color: var(--danger-bg);
-    color: var(--danger-color);
+    background-color: var(--danger-mbg);
+    color: var(--danger-mcolor);
 }
 
 /* Warning card variation */
 .card-warning {
-    background-color: var(--warning-bg);
-    color: var(--warning-color);
+    background-color: var(--warning-mbg);
+    color: var(--warning-mcolor);
 }
 
 /* Media Query for smaller screens */
