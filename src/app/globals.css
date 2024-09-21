@@ -1,4 +1,16 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import url('https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css');
+
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
 
 :root{
   --button-radius : 10px;
@@ -20,14 +32,46 @@
 
   --pink-bg : #FF005E;
   --pink-color : #F5F5F5;
+
+  /* sidebar */
+  --body-color: #E4E9F7;
+  --sidebar-color: #FFF;
+  --sidebar-primary-color: #00119d;
+  --sidebar-primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --text-color: #707070;
+
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+
+
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  transition: var(--tran-05);
   margin: 0;
   padding: 2em;
   background-color: #F5F5F5;
 }
+
+body.dark{
+  --body-color: #18191a;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+}
+
+::selection{
+  background-color: var(--sidebar-primary-color);
+  color: #fff;
+}
+
 
 p{
   margin-top: 0;

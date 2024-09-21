@@ -7,6 +7,10 @@ export async function middleware(req){
     const cookie = cookies().get('session')?.value;
     const url = req.nextUrl.clone();
 
+    //ignore request if url is /
+    if(url.pathname === '/'){
+        return NextResponse.next(url);
+    }
 
     if(url.pathname.startsWith('/authentication') && cookie){
         try {
