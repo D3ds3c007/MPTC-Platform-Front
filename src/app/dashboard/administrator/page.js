@@ -15,7 +15,7 @@ export default function AdminPage()
               gap: '1.2em',
               padding: '5px'
             }}>
-              <MButton variant="primary" bootstrapClass="btn-block">Primary</MButton>
+              <MButton variant="primary" bootstrapclassName="btn-block">Primary</MButton>
               <MButton variant="danger">Danger</MButton>
               <MButton variant="warning">Warning</MButton>
               <MButton variant="success">Success</MButton>
@@ -34,7 +34,7 @@ export default function AdminPage()
               gap: '1.2em',
               padding: '5px'
             }}>
-              <MButton variant="primary" bootstrapClass="btn-block">Primary</MButton>
+              <MButton variant="primary" bootstrapclassName="btn-block">Primary</MButton>
               <MButton variant="danger">Danger</MButton>
               <MButton variant="warning">Warning</MButton>
               <MButton variant="success">Success</MButton>

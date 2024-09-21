@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Link } from 'next/link';
 
 
-export function MSideBar({children}) {
+export function MSideBar({children, currentTitle, onMenuChange}) {
 
     const path = usePathname();
     
@@ -45,15 +45,15 @@ export function MSideBar({children}) {
               {isAdministrator && (
                 <>
                   <li className={styles["nav-link"]}>
-                    <a href="#">
+                    <a href="/dashboard/administrator/" onClick={() => onMenuChange('Administrator Dashboard')}>
                       <i className={`bx bx-home-alt ${styles.icon}`}></i>
                       <span className={`${styles.text} ${styles['nav-text']}`}>Dashboard</span>
                     </a>
                   </li>
 
                   <li className={styles["nav-link"]}>
-                    <a href="#">
-                      <i className={`bx bx-bar-chart-alt-2 ${styles.icon}`}></i>
+                    <a href="/dashboard/administrator/revenue">
+                      <i className={`bx bx-bar-chart-alt-2 ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
                       <span className={`${styles.text} ${styles["nav-text"]}`}>Revenue</span>
                     </a>
                   </li>
@@ -70,27 +70,6 @@ export function MSideBar({children}) {
                   </li>
                 </>
               )}
-
-              {/* <li className={styles["nav-link"]}>
-                <a href="#">
-                  <i className={`bx bx-pie-chart-alt ${styles.icon}`}></i>
-                  <span className={`${styles.text} ${styles["nav-text"]}`}>Analytics</span>
-                </a>
-              </li>
-
-              <li className={styles["nav-link"]}>
-                <a href="#">
-                  <i className={`bx bx-heart ${styles.icon}`}></i>
-                  <span className={`${styles.text} ${styles["nav-text"]}`}>Likes</span>
-                </a>
-              </li>
-
-              <li className={styles["nav-link"]}>
-                <a href="#">
-                  <i className={`bx bx-wallet ${styles.icon}`}></i>
-                  <span className={`${styles.text} ${styles["nav-text"]}`}>Wallets</span>
-                </a>
-              </li> */}
             </ul>
           </div>
 
@@ -120,12 +99,12 @@ export function MSideBar({children}) {
       
 
       <section className={styles.home}>
-        <Container className={styles.text}>
+        <Container className={styles.text} fluid>
             <div className={styles["navbar"]}>
 
                 <div className={styles["navbar-left-content"]}>
                     <p>Welcome back, Dedsec</p>
-                    <h2>Dashboard</h2>
+                    <h2>{currentTitle}</h2>
                 </div>
 
                 <div className={styles["navbar-right-content"]}>

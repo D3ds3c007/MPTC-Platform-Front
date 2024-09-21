@@ -11,7 +11,7 @@ export function MIconCard({icon, title, data, children, width = '100%', height =
                 flexDirection: 'row',
                 alignItems: 'center',
             }}>
-                <i class="bi bi-arrow-up-right-circle-fill"></i>
+                <i className="bi bi-arrow-up-right-circle-fill"></i>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',

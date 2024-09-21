@@ -39,7 +39,7 @@
   --sidebar-primary-color: #00119d;
   --sidebar-primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
-  --text-color: #707070;
+  --text-color: #000000;
 
   /* ====== Transition ====== */
   --tran-03: all 0.2s ease;

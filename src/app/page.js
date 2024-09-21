@@ -18,7 +18,7 @@ export default function Page() {
                   gap: '1.2em',
                   padding: '5px'
                 }}>
-                  <MButton variant="primary" bootstrapClass="btn-block">Primary</MButton>
+                  <MButton variant="primary" bootstrapclassName="btn-block">Primary</MButton>
                   <MButton variant="danger">Danger</MButton>
                   <MButton variant="warning">Warning</MButton>
                   <MButton variant="success">Success</MButton>
@@ -37,7 +37,7 @@ export default function Page() {
                   gap: '1.2em',
                   padding: '5px'
                 }}>
-                  <MButton variant="primary" bootstrapClass="btn-block">Primary</MButton>
+                  <MButton variant="primary" bootstrapclassName="btn-block">Primary</MButton>
                   <MButton variant="danger">Danger</MButton>
                   <MButton variant="warning">Warning</MButton>
                   <MButton variant="success">Success</MButton>
@@ -55,12 +55,12 @@ export default function Page() {
                   flexDirection: 'row',
                   flexWrap: 'wrap',
                 }}>
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="primary"/>
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="warning"/>
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="success"/>
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="secondary"/>
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6"/>
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="pink"/>
+                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-6" variant="primary"/>
+                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-6" variant="warning"/>
+                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-6" variant="success"/>
+                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-6" variant="secondary"/>
+                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-6"/>
+                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-6" variant="pink"/>
                 </div>
               </MCard>
             </div>
