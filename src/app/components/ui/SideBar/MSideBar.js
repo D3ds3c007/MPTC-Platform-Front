@@ -3,10 +3,16 @@ import styles from './MSideBar.module.css';
 import Image from 'next/image';
 import logo from './logo.png';
 import { Container } from "react-bootstrap";
-import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { Link } from 'next/link';
 
 
 export function MSideBar({children}) {
+
+    const path = usePathname();
+    
+    const isAdministrator = path.startsWith('/dashboard/administrator');
+    const isProfessor = path.startsWith('/dashboard/professor');
     
 
   return (
@@ -36,28 +42,36 @@ export function MSideBar({children}) {
             </li>
 
             <ul className={styles["menu-links"]}>
-              <li className={styles["nav-link"]}>
-                <a href="#">
-                  <i className={`bx bx-home-alt ${styles.icon}`}></i>
-                  <span className={`${styles.text} ${styles['nav-text']}`}>Dashboard</span>
-                </a>
-              </li>
+              {isAdministrator && (
+                <>
+                  <li className={styles["nav-link"]}>
+                    <a href="#">
+                      <i className={`bx bx-home-alt ${styles.icon}`}></i>
+                      <span className={`${styles.text} ${styles['nav-text']}`}>Dashboard</span>
+                    </a>
+                  </li>
 
-              <li className={styles["nav-link"]}>
-                <a href="#">
-                  <i className={`bx bx-bar-chart-alt-2 ${styles.icon}`}></i>
-                  <span className={`${styles.text} ${styles["nav-text"]}`}>Revenue</span>
-                </a>
-              </li>
+                  <li className={styles["nav-link"]}>
+                    <a href="#">
+                      <i className={`bx bx-bar-chart-alt-2 ${styles.icon}`}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Revenue</span>
+                    </a>
+                  </li>
+                </>
+              )}
 
-              <li className={styles["nav-link"]}>
-                <a href="#">
-                  <i className={`bx bx-bell ${styles.icon}`}></i>
-                  <span className={`${styles.text} ${styles["nav-text"]}`}>Notifications</span>
-                </a>
-              </li>
+              {isProfessor && (
+                <>
+                  <li className={styles["nav-link"]}>
+                    <a href="#">
+                      <i className={`bx bx-bell ${styles.icon}`}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Notifications</span>
+                    </a>
+                  </li>
+                </>
+              )}
 
-              <li className={styles["nav-link"]}>
+              {/* <li className={styles["nav-link"]}>
                 <a href="#">
                   <i className={`bx bx-pie-chart-alt ${styles.icon}`}></i>
                   <span className={`${styles.text} ${styles["nav-text"]}`}>Analytics</span>
@@ -76,7 +90,7 @@ export function MSideBar({children}) {
                   <i className={`bx bx-wallet ${styles.icon}`}></i>
                   <span className={`${styles.text} ${styles["nav-text"]}`}>Wallets</span>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 

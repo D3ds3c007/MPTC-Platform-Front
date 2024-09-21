@@ -1,7 +1,6 @@
 import { MButton } from "@/app/components/ui/Button/MButton";
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
-import { Container } from "react-bootstrap";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
 export default function Page() {
   return (
@@ -62,18 +61,9 @@ export default function Page() {
                     <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="secondary"/>
                     <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6"/>
                     <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-6" variant="pink"/>
-
-
-
-
                 </div>
               </MCard>
-
-
             </div>
-
-            
-
           </div>
       </MSideBar>
       
