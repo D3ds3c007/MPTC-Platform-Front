@@ -7,8 +7,6 @@ export default function Page() {
   return (
     <>
       <MSideBar>
-        <Container>
-        <h1>List of components</h1>
 
           <div className="row">
             <div className="col-md-5">
@@ -77,9 +75,6 @@ export default function Page() {
             
 
           </div>
-
-
-        </Container>
       </MSideBar>
       
 

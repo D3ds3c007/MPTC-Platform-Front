@@ -1,20 +1,24 @@
+'use client';
 import styles from './MSideBar.module.css';
-import { SideBarJs } from '@/app/lib/utils';
 import Image from 'next/image';
 import logo from './logo.png';
+import { Container } from "react-bootstrap";
+import { useEffect } from 'react';
+
 
 export function MSideBar({children}) {
-  SideBarJs();
+    
 
   return (
+    
     <>
-      <nav className={`${styles.sidebar}`}>
+
+      <nav className={`${styles.sidebar} `}>
         <header>
           <div className={styles["image-text"]}>
             <span className={styles.image}>
             <Image src={logo} alt="Logo" width={40} height={40} />
             </span>
-
             <div className={styles["logo-text"]}>
               <span className={styles.name}>Codinglab</span>
               <span className={styles.profession}>Web developer</span>
@@ -99,11 +103,35 @@ export function MSideBar({children}) {
         </div>
       </nav>
 
+      
+
       <section className={styles.home}>
-        <div className={styles.text}>Dashboard Sidebar
+        <Container className={styles.text}>
+            <div className={styles["navbar"]}>
+
+                <div className={styles["navbar-left-content"]}>
+                    <p>Welcome back, Dedsec</p>
+                    <h2>Dashboard</h2>
+                </div>
+
+                <div className={styles["navbar-right-content"]}>
+                    
+                        <span className={styles["user-name"]}>Dedsec</span>
+                        <div className={styles["user-icon"]}>
+                            <i className={`bx bx-user ${styles.icon}`}></i>
+                        </div>
+                    
+                </div>
+            </div>
+            
+            
             {children}
-        </div>
+
+        </Container>
       </section>
+
+      
+      
     </>
   );
 }
