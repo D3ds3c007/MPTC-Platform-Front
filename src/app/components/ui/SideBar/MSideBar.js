@@ -117,7 +117,7 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                 </div>
             </div>
             
-            
+     
             {children}
 
         </Container>

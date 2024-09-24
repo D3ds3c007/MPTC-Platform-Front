@@ -32,6 +32,7 @@
 
   --pink-bg : #FF005E;
   --pink-color : #F5F5F5;
+  --bg-gray : #f5f5f5;
 
   /* sidebar */
   --body-color: #E4E9F7;
@@ -54,7 +55,7 @@ body {
   min-height: 100vh;
   transition: var(--tran-05);
   margin: 0;
-  padding: 2em;
+  padding: 0;
   background-color: #F5F5F5;
 }
 

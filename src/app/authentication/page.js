@@ -1,9 +1,8 @@
-import { SigninForm } from '@/app/components/ui/signin-form';
+import { SignInForm } from '@/app/components/ui/pages/SignIn/SignInForm';
 export default function AuthPage(){
     return(
         <div>
-            <h1>Sign In</h1>
-            <SigninForm />  
+            <SignInForm />  
         </div>
     )
 }
