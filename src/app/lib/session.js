@@ -16,8 +16,12 @@ export async function encrypt(payload){
 
 export async function decrypt(session)
 {
+
     try{
+
         const {payload} = await jwtVerify(session, encodedKey, {algorithms: ['HS256']})
+        console.log('Decrypted session:', payload)
+
         return payload
     } catch(e){
         console.error('Error decrypting session:', e)
@@ -25,15 +29,25 @@ export async function decrypt(session)
     }
 }
 
-export async function createSession(payload){
-    const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)
-    const session = await encrypt({...payload, expiresAt})
+export async function createSession(session){
+    //set the session cookie to expire in 1 hour
+    const expiresAt = new Date()
+    expiresAt.setHours(expiresAt.getHours() + 1)
 
     cookies().set('session', session, {
         expires: expiresAt,
         httpOnly: true,
         sameSite: 'lax',
         path: '/',
+    })
+
+    //decrypt the session and log the decrypted session
+    const decryptedSession = await decrypt(session)
+    //set the redirect URL to localstorage
+    cookies().set('redirect', decryptedSession.url, {
+        expires: expiresAt,
+        httpOnly: false,
+        sameSite: 'lax',
     })
 }
 

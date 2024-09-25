@@ -2,38 +2,26 @@
 import {signup} from '@/app/actions/auth'
 import { MButton } from '../../Button/MButton'
 import {useFormState, useFormStatus} from 'react-dom'
-import logo from '@/app/components/ui/SideBar/logo.png'
-import Image from 'next/image';
 import styles from './SignIn.module.css'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 //import bootstrap css
 
 
 export function SignInForm(){
     const [state, action] = useFormState(signup, undefined)
-    return(
-        // <form action={action}>
-        //     <div>
-        //         <label>Email</label>
-        //         <input type="email" name="email" placeholder='Email' />
-        //     </div>
-        //     {/* {state?.errors.email && <p>{state.errors.email}</p>} */}
+    const router = useRouter();
 
-        //     <div>
-        //         <label>Password</label>
-        //         <input type="password" name="password" placeholder='Password' />
-        //     </div>
-        //     {/* {state?.errors.password && (
-        //         <div>
-        //             <p>Password must : </p>
-        //             <ul>
-        //                 {state.errors.password.map((error) => (
-        //                     <li key={error} >{error}</li>
-        //                 ))}
-        //             </ul>
-        //         </div>
-        //     )} */}
-        //     <SubmitButton />
-        // </form>
+    useEffect(() => {
+        if(state?.redirect){
+            console.log('Redirecting to:', state.redirect)
+            router.push(state.redirect)
+        }
+    })
+    
+    
+    return(
+
         <>
             {/* <html className={styles.html}> */}
                 <div className={styles.body}>
@@ -42,7 +30,12 @@ export function SignInForm(){
                         <div id={styles.formContent}>
                             <h2 className={`${styles.active} ${styles.title}`} >Sign In</h2>
 
-                            {/* Icon */}
+                            {state?.errors && <p style={{
+                                color:"red",
+                                margin: "10px",
+                                }}>{state.errors}</p>}
+
+                                {/* Icon */}
                             {/* <div className={styles.fadeInFirst}>
                                 <img src="http://danielzawadzki.com/codepen/01/icon.svg" id={styles.icon} alt="User Icon" />
                             </div> */}
@@ -53,6 +46,9 @@ export function SignInForm(){
                                 <input type="text" id="password" className={`${styles.fadeInThird} ${styles.input} `} name="password" placeholder="password" />
                                 <SubmitButton />
                             </form>
+
+                            
+
 
                             {/* Remind Password */}
                             <div id={styles.formFooter}>
@@ -72,7 +68,7 @@ function SubmitButton(){
     const { pending } = useFormStatus()
 
     return(
-        <MButton disabled={pending} type="submit" >
+        <MButton disabled={pending} type="submit">
             {pending ? 'Loading...' : 'Sign In'}
         </MButton>
     )

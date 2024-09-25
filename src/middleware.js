@@ -34,10 +34,7 @@ export async function middleware(req){
             if(url.pathname.startsWith('/dashboard/professor') && session.role !== 'professor'){
                 return NextResponse.redirect(new URL('/authentication', req.nextUrl))
             }
-            if(url.pathname.startsWith('/dashboard/marketing') && session.role !== 'marketer'){
-                return NextResponse.redirect(new URL('/authentication', req.nextUrl))
-            }
-            
+          
         } catch (error) {
             return NextResponse.redirect(new URL('/authentication', req.nextUrl))
         }
