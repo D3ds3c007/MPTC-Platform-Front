@@ -2,13 +2,13 @@
 import {signup} from '@/app/actions/auth'
 import { MButton } from '../../Button/MButton'
 import {useFormState, useFormStatus} from 'react-dom'
-import styles from './SignIn.module.css'
+import styles from './Reset.module.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 //import bootstrap css
 
 
-export function SignInForm(){
+export function ResetForm(){
     const [state, action] = useFormState(signup, undefined)
     const router = useRouter();
 
@@ -28,7 +28,7 @@ export function SignInForm(){
                     <div className={styles.wrapper}>
                     <div className={styles.fadeInDown}>
                         <div id={styles.formContent}>
-                            <h2 className={`${styles.active} ${styles.title}`} >Sign In</h2>
+                            <h2 className={`${styles.active} ${styles.title}`} >Forgot Password ?</h2>
 
                             {state?.errors && <p style={{
                                 color:"red",
@@ -42,8 +42,7 @@ export function SignInForm(){
 
                             {/* Login Form */}
                             <form action={action}>
-                                <input type="text" id="login" className={`${styles.fadeInSecond} ${styles.input}`} name="email" placeholder="login" />
-                                <input type="text" id="password" className={`${styles.fadeInThird} ${styles.input} `} name="password" placeholder="password" />
+                                <input type="text" id="login" className={`${styles.fadeInSecond} ${styles.input}`} name="email" placeholder="Email address" />
                                 <SubmitButton />
                             </form>
 
@@ -52,7 +51,7 @@ export function SignInForm(){
 
                             {/* Remind Password */}
                             <div id={styles.formFooter}>
-                                <a className={styles.underlineHover} href="/authentication/reset">Forgot Password?</a>
+                                <a className={styles.underlineHover} href="/authentication">Sign In</a>
                             </div>
                         </div>
                     </div>
@@ -69,7 +68,7 @@ function SubmitButton(){
 
     return(
         <MButton disabled={pending} type="submit">
-            {pending ? 'Loading...' : 'Sign In'}
+            {pending ? 'Loading...' : 'Reset Password'}
         </MButton>
     )
 }
