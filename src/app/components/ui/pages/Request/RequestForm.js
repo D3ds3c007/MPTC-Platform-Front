@@ -1,23 +1,17 @@
 'use client'
-import {signup} from '@/app/actions/auth'
+import {request} from '@/app/actions/request'
 import { MButton } from '../../Button/MButton'
 import {useFormState, useFormStatus} from 'react-dom'
-import styles from './Reset.module.css'
+import styles from './Request.module.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 //import bootstrap css
 
 
-export function ResetForm(){
-    const [state, action] = useFormState(signup, undefined)
-    const router = useRouter();
+export function RequestForm(){
+    const [state, action] = useFormState(request, undefined)
 
-    useEffect(() => {
-        if(state?.redirect){
-            console.log('Redirecting to:', state.redirect)
-            router.push(state.redirect)
-        }
-    })
+    
     
     
     return(
@@ -41,17 +35,24 @@ export function ResetForm(){
                             </div> */}
 
                             {/* Login Form */}
+                            {state?.response && <p style={{
+                                color:"green",
+                                margin: "10px",
+                                }}>{state.response}</p>}
+                            
                             <form action={action}>
-                                <input type="text" id="login" className={`${styles.fadeInSecond} ${styles.input}`} name="email" placeholder="Email address" />
+                                <input type="text" id="login" className={`${styles.fadeInSecond} ${styles.input}`} 
+                                style={{
+                                    marginBottom : "15px",
+                        
+                                }} 
+                                name="email" placeholder="Email address" />
+                                
                                 <SubmitButton />
                             </form>
-
-                            
-
-
                             {/* Remind Password */}
                             <div id={styles.formFooter}>
-                                <a className={styles.underlineHover} href="/authentication">Sign In</a>
+                                <a className={styles.underlineHover} href="/accounts/authentication">Sign In</a>
                             </div>
                         </div>
                     </div>

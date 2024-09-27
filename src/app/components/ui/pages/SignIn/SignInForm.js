@@ -52,7 +52,7 @@ export function SignInForm(){
 
                             {/* Remind Password */}
                             <div id={styles.formFooter}>
-                                <a className={styles.underlineHover} href="/authentication/reset">Forgot Password?</a>
+                                <a className={styles.underlineHover} href="/accounts/request-reset-password">Forgot Password?</a>
                             </div>
                         </div>
                     </div>
