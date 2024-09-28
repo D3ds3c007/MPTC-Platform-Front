@@ -23,7 +23,7 @@ export async function middleware(req){
         }
     }
     if(!cookie && url.pathname.startsWith('/dashboard')){
-        return NextResponse.redirect(new URL('/authentication', req.nextUrl))
+        return NextResponse.redirect(new URL('/accounts/authentication', req.nextUrl))
     }else{
         try {
             const session = await decrypt(cookie);

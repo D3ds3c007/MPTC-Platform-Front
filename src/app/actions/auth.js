@@ -22,7 +22,7 @@ export async function signup(state, formData) {
 
     try {
         // Send the request and wait for the response
-        const response = await axios.post('/authentication/', {
+        const response = await axios.post('/account/authentication/', {
           email: formData.get('email'),
           password: formData.get('password')
         });

@@ -1,5 +1,5 @@
 'use client'
-import {request} from '@/app/actions/request'
+import {reset} from '@/app/actions/reset'
 import { MButton } from '../../Button/MButton'
 import {useFormState, useFormStatus} from 'react-dom'
 import styles from './ResetForm.module.css'
@@ -12,15 +12,13 @@ import { set } from 'zod'
 
 
 export function ResetForm(){
-    const [state, action] = useFormState(request, undefined);
+    const [state, action] = useFormState(reset, undefined);
     const[isValidToken, setIsValidToken] = useState(null);
+    const[userIdFromQuery, setUserIdFromQuery] = useState(null);
+    const[tokenFromQuery, setTokenFromQuery] = useState(null);
     const router = useRouter();
 
-    //check if url contains userId and token
-    const url = window.location.href
-    const urlParams = new URLSearchParams(url)
-    const userId = urlParams.get('userId')
-    const token = urlParams.get('token')
+
 
     useEffect(() => {
         const validateToken = async () => {
@@ -35,6 +33,9 @@ export function ResetForm(){
                 router.push('/accounts/request-reset-password');
                 return;
             }
+
+            setUserIdFromQuery(userId);
+            setTokenFromQuery(token);
 
             try{
                 const response = await axios.get('/account/verify-reset-token', {
@@ -74,7 +75,7 @@ export function ResetForm(){
     
     
     return(
-
+      
         <>
             {/* <html className={styles.html}> */}
                 <div className={styles.body}>
@@ -109,20 +110,23 @@ export function ResetForm(){
                                             marginBottom : "15px",
                                             marginTop: "15px"
                                         }} 
-                                        name="newpass" placeholder="New password" />
+                                        name="password" placeholder="New password" />
 
                                         <input type="password" id="login" className={`${styles.fadeInSecond} ${styles.input}`} 
                                                                         style={{
                                                                             marginBottom : "15px",
                                                                             marginTop: "15px"
                                                                         }} 
-                                                                        name="confirmPass" placeholder="Confirm your password" />
+                                                                        name="confirmPassword" placeholder="Confirm your password" />
                                         <div style={{
                                             display: "flex",
                                             justifyContent: "center",
                                             gap: "15px",
                                             marginTop: "15px"
                                         }}>
+
+                                        <input type="hidden" name="userId" value={userIdFromQuery} />
+                                        <input type="hidden" name="token" value={tokenFromQuery} />
                                             <SubmitButton />
                                             <a href='\accounts\authentication'><CancelButton /></a>
                                         </div>

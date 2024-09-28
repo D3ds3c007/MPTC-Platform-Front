@@ -9,6 +9,7 @@ export async function request(state, formData) {
     //validate the form data
     const validatedFields = SignupFormSchema.safeParse({
         email: formData.get('email'),
+      
     });
 
    
@@ -16,6 +17,8 @@ export async function request(state, formData) {
         // Send the request and wait for the response
         const response = await axios.post('/account/request-password-reset', {
           email: formData.get('email'),
+          Password : "",
+          ConfirmPassword : ""
         });
       
         return {
