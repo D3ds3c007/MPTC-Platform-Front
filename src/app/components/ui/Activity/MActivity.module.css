@@ -1,0 +1,64 @@
+.activity-box{
+    display: flex;
+    border-radius: 50px;
+    padding: 15px;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+}
+
+/* MActivity.module.css */
+
+.activity-box {
+    /* Your existing styles */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Add transition for smooth effect */
+    opacity: 0; /* Start as hidden */
+    transform: translateY(20px); /* Start slightly below */
+}
+
+.show {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+
+.user-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: var(--dark-blue);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--tran-03);
+    flex-direction: row;
+}
+
+.clock-in{
+    background-color: var(--success-bg);
+    color: var(--success-color);
+}
+
+.clock-out{
+    background-color: var(--danger-bg);
+    color: var(--danger-color);
+}
+
+/* Add this CSS to your MActivity.module.css or a relevant CSS file */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-down {
+    animation: fadeInDown 0.5s forwards; /* Adjust the duration as needed */
+}

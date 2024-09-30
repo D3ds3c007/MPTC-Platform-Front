@@ -4,7 +4,6 @@ import Image from 'next/image';
 import logo from './logo.png';
 import { Container } from "react-bootstrap";
 import { usePathname } from 'next/navigation';
-import { Link } from 'next/link';
 
 
 export function MSideBar({children, currentTitle, onMenuChange}) {
@@ -53,8 +52,22 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
 
                   <li className={styles["nav-link"]}>
                     <a href="/dashboard/administrator/revenue">
-                      <i className={`bx bx-bar-chart-alt-2 ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
-                      <span className={`${styles.text} ${styles["nav-text"]}`}>Revenue</span>
+                      <i className={`bx bx-user ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Employees</span>
+                    </a>
+                  </li>
+
+                  <li className={styles["nav-link"]}>
+                    <a href="/dashboard/administrator/revenue">
+                      <i className={`bx bx-list-ul ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Activity Logs</span>
+                    </a>
+                  </li>
+
+                  <li className={styles["nav-link"]}>
+                    <a href="/dashboard/administrator/revenue">
+                      <i className={`bx bx-trophy ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Ranking</span>
                     </a>
                   </li>
                 </>

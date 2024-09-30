@@ -1,0 +1,22 @@
+.image {
+    width: 100%; /* Ensure it scales to the width of its container */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 760px; /* Optional: Limit the maximum width */
+    max-height: 400px; /* Add the maximum height to limit vertical size */
+    object-fit: cover; /* Ensure the image scales well within the max height */
+}
+
+/* Adjust the image size for smaller screens */
+@media (max-width: 768px) {
+    .image {
+        max-width: 100%;
+        max-height: 300px; /* Adjust the max height for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .image {
+        max-width: 90%;
+        max-height: 200px; /* Further adjust the max height */
+    }
+}
