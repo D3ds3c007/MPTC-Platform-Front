@@ -1,0 +1,126 @@
+.employeeDetailsContainer {
+    background-color: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 30px;
+    border-radius: 12px 12px 0 0;
+    margin: 0;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.headerInfo h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.headerInfo p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: white;
+    font-weight:lighter;
+}
+
+.basicDetails {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.basicDetails h3 {
+    color: var(--purple);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.detailsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    font-size: 16px;
+}
+
+.imagesContainer {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+}
+
+.employeeImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.schedule {
+    padding: 20px;
+}
+
+
+
+.scheduleGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* This ensures day names and two time columns */
+    gap: 15px;
+    font-size: 16px;
+}
+
+.scheduleItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scheduleItem strong {
+    width: 80px;
+}
+
+.timeGreen {
+    color: var(--success-bg);
+    font-weight: bold;
+    background-color: rgba(0, 255, 0, 0.1);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.timeRed {
+    color: red;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.dayOff {
+    color: grey;
+    font-weight: bold;
+    background-color: rgba(128, 128, 128, 0.1);
+    padding: 5px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+.title{
+    color : var(--secondary-bg);
+    font-weight: bold;
+    margin-bottom: 25px;
+}

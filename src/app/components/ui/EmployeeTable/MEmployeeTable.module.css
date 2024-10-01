@@ -8,7 +8,7 @@
 }
 
 .title {
-    color: #9C27B0; /* Purple color for "Employees" text */
+    color: var(--secondary-bg); /* Purple color for "Employees" text */
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 20px;
