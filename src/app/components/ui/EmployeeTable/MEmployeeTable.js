@@ -2,18 +2,20 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 import styles from './MEmployeeTable.module.css';
+import Image from 'next/image';
+import picture1 from './picture1.png';
 
 // Sample employee data
 const employees = [
     {
-        picture: '/path/to/picture1.png', // Placeholder for employee's profile picture
+        picture: picture1, // Placeholder for employee's profile picture
         name: "John Doe",
         matriculeID: "A-1012",
         role: "Professor",
         venue: "Andranobeva"
     },
     {
-        picture: '/path/to/picture2.png', // Placeholder for employee's profile picture
+        picture: picture1, // Placeholder for employee's profile picture
         name: "John Doe",
         matriculeID: "A-1012",
         role: "Professor",
@@ -26,7 +28,7 @@ const employees = [
 const columns = [
     {
         name: "Picture",
-        selector: (row) => <img src={row.picture} alt="Profile" className={styles.profilePicture} />,
+        selector: (row) => <Image src={row.picture} alt="Profile" className={styles.profilePicture} />,
         sortable: false,
         width: '100px',
     },
@@ -39,13 +41,11 @@ const columns = [
             </>
         ),
         sortable: true,
-        width: '200px',
     },
     {
         name: "ID",
         selector: (row) => row.matriculeID,
         sortable: true,
-        width: '150px',
     },
     // {
     //     name: "Venue",
@@ -83,7 +83,6 @@ export  function MEmployeeTable() {
                 noHeader
                 highlightOnHover
                 striped
-                pagination
                 customStyles={customStyles} // Apply custom styles for header and table
             />
         </div>
@@ -111,7 +110,6 @@ const customStyles = {
     cells: {
         style: {
             fontSize: '14px',
-            padding: '10px 15px',
         },
     },
 };

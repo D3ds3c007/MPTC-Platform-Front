@@ -8,7 +8,7 @@ export default function RevenuPage(){
         }}>Employees</h1>
 
         <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-5">
                 <MEmployeeTable/> 
             </div>
 
