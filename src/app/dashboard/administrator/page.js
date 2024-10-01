@@ -4,6 +4,7 @@ import { MCard } from "@/app/components/ui/Card/MCard";
 import { MActivity } from "@/app/components/ui/Activity/MActivity";
 import { MVideoFeed } from "@/app/components/ui/VideoFeed/MVideoFeed";
 import { useState, useEffect } from "react";
+import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 
 export default function AdminPage() {
     const [activities, setActivities] = useState([]);
@@ -68,6 +69,19 @@ export default function AdminPage() {
                         ))}
                     </MCard>
                 </div>
+
+                    <div style={{
+                        display:"flex",
+                        flexDirection:"column",
+                        wrap:"no-wrap"
+                    }} className="col-md-6">
+                        <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-4" variant="primary"/>
+                        <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-4" variant="warning"/>
+                        <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-4" variant="danger"/>
+                    </div>
+
+
+
             </div>
         </>
     );

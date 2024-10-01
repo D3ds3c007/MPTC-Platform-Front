@@ -22,7 +22,6 @@ export default function Page() {
                   <MButton variant="danger">Danger</MButton>
                   <MButton variant="warning">Warning</MButton>
                   <MButton variant="success">Success</MButton>
-
                 </div>
 
                 <p>Some text here</p>

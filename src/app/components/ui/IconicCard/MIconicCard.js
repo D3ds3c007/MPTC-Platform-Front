@@ -12,7 +12,7 @@ export function MIconicCard({
 }){
     return (
         <>
-                <div className={bootstrapClass}>
+                {/* <div className={bootstrapClass}> */}
                     <div className={`${clsx(styles[variant])}  ${styles.iconiccard}`}>
                         <div className={styles.icon}>
                             <i className="bi bi-arrow-up-right-circle-fill" style={{
@@ -27,7 +27,7 @@ export function MIconicCard({
                             }}>{label}</p>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
         </>
     )
 }
