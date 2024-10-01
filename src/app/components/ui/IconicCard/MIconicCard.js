@@ -6,16 +6,16 @@ import clsx from 'clsx';
 export function MIconicCard({
     data = '2024',
     icon = 'bi bi-arrow-up-right-circle-fill',
-    bootstrapClass = 'col-md-3',
+    bootstrapClass = 'col-md-6',
     label = 'This is a card',
     variant = 'default'
 }){
     return (
         <>
-                {/* <div className={bootstrapClass}> */}
+                <div className={bootstrapClass}>
                     <div className={`${clsx(styles[variant])}  ${styles.iconiccard}`}>
                         <div className={styles.icon}>
-                            <i className="bi bi-arrow-up-right-circle-fill" style={{
+                            <i className={icon} style={{
                                 fontSize: '40px',
                                 marginRight: '10px'
                             }}></i>
@@ -27,7 +27,7 @@ export function MIconicCard({
                             }}>{label}</p>
                         </div>
                     </div>
-                {/* </div> */}
+                </div>
         </>
     )
 }

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from './MCard.module.css';
 
-export function MCard({ children, width = '100%', height = 'auto', bgColor = 'white', padding = '20px', title = '', toggle = false, isIn = false, description = '' }) {
+export function MCard({ children, width = '100%', height = 'auto', bgColor = 'white', padding = '20px', title = '', toggle = false, isIn = false, description = '', alignment = '' }) {
     const [isToggled, setIsToggled] = useState(false);
     const [isClockIn, setIsClockIn] = useState({isIn});
 
@@ -32,7 +32,7 @@ export function MCard({ children, width = '100%', height = 'auto', bgColor = 'wh
                     )}
                 </div>
             )}
-            <p>{description}</p>
+            {description != '' && <p>{description}</p>}
 
           {/* Create div for children prop and make it flexible and responsive */}
             <div style={{
@@ -40,7 +40,9 @@ export function MCard({ children, width = '100%', height = 'auto', bgColor = 'wh
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 gap: '1.2em',
-                padding: '5px'
+                padding: '5px',
+                justifyContent : 'center',
+                
             }}>
                 {children}
             </div>
