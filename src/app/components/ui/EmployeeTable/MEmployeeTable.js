@@ -17,7 +17,7 @@ const employees = [
     {
         picture: picture1, // Placeholder for employee's profile picture
         name: "John Doe",
-        matriculeID: "A-1012",
+        matriculeID: "B-3789",
         role: "Professor",
         venue: "Andranomena"
     },
@@ -25,7 +25,7 @@ const employees = [
 ];
 
 // Column definition for DataTable
-const columns = [
+const columns = (onRowClick) =>  [
     {
         name: "Picture",
         selector: (row) => <Image src={row.picture} alt="Profile" className={styles.profilePicture} />,
@@ -55,13 +55,17 @@ const columns = [
     // },
 ];
 
-export  function MEmployeeTable() {
+export  function MEmployeeTable({ onEmployeeSelect }) {
     const [filterText, setFilterText] = useState("");
     
     // Filter employees based on search input
     const filteredEmployees = employees.filter((employee) =>
         employee.name.toLowerCase().includes(filterText.toLowerCase())
     );
+
+    const handleRowClick = (row) => {
+        onEmployeeSelect(row.matriculeID);
+    };
 
     return (
         <div className={`col-5 ${styles.tableContainer}`}>
@@ -78,12 +82,13 @@ export  function MEmployeeTable() {
             </div>
 
             <DataTable
-                columns={columns}
+                columns={columns(handleRowClick)}
                 data={filteredEmployees}
                 noHeader
                 highlightOnHover
                 striped
                 customStyles={customStyles} // Apply custom styles for header and table
+                onRowClicked={handleRowClick}
             />
         </div>
     );
