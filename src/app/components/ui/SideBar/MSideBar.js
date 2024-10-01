@@ -117,16 +117,14 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
 
                 <div className={styles["navbar-left-content"]}>
                     <p>Welcome back, Dedsec</p>
-                    <h2>{currentTitle}</h2>
+                    {/* <h2>{currentTitle}</h2> */}
                 </div>
 
                 <div className={styles["navbar-right-content"]}>
-                    
                         <span className={styles["user-name"]}>Dedsec</span>
                         <div className={styles["user-icon"]}>
                             <i className={`bx bx-user ${styles.icon}`}></i>
                         </div>
-                    
                 </div>
             </div>
             
