@@ -1,5 +1,4 @@
 'use client';
-import { MButton } from "@/app/components/ui/Button/MButton";
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MActivity } from "@/app/components/ui/Activity/MActivity";
 import { MVideoFeed } from "@/app/components/ui/VideoFeed/MVideoFeed";
@@ -58,7 +57,12 @@ export default function AdminPage() {
     }, []);
 
     return (
-        <>        
+        <>   
+        <h1 style={{
+            color : "var(--dark-blue)",
+            fontWeight: "600"
+        }}>Administrator Dashboard</h1>    
+         
         <div className="row" style={{gap:0,
             margin:0,
         }}>
