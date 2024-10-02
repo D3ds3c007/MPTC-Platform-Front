@@ -1,0 +1,23 @@
+/* components/Popup.module.css */
+.overlay {
+    position: fixed; /* Fixed position to cover the whole screen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure it appears on top */
+  }
+  
+
+  .popup.fadeIn {
+    transform: scale(1); /* Scale up */
+  }
+  
+  .popup.fadeOut {
+    transform: scale(0.8); /* Scale down when closing */
+    opacity: 0; /* Hide when closing */
+  }
+  

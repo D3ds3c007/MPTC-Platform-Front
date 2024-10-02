@@ -1,17 +1,23 @@
 .container {
   display: flex;
   max-width: 900px;
+  height: auto;
   margin: 20px auto;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow-y: auto;
   background-color: white;
+
+  
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   flex-basis: 25%;
   background: var(--dark-blue);
   padding: 30px 20px;
+  position: relative;
 }
 
 .sidebar ul {
