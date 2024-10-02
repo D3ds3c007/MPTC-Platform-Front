@@ -3,7 +3,7 @@ import { MButton } from "@/app/components/ui/Button/MButton";
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
-import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepFrom"
+import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepForm"
 export default function Page() {
   return (
     <>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 export  function MSchedule() {
   const [schedule, setSchedule] = useState({
-    Sunday: { open: false, from: '', to: '' },
     Monday: { open: true, from: '09:00', to: '17:00' },
     Tuesday: { open: true, from: '09:00', to: '17:00' },
     Wednesday: { open: true, from: '09:00', to: '17:00' },
@@ -31,7 +30,7 @@ export  function MSchedule() {
         {Object.keys(schedule).map((day) => (
           <div className="schedule-row" key={day}>
             <label>{day}</label>
-            <div className="toggle-switch">
+            <div className="toggle">
               <input
                 type="checkbox"
                 id={`toggle-${day}`}
@@ -99,48 +98,44 @@ export  function MSchedule() {
           color: #333;
         }
 
-        .toggle-switch {
+        .toggle {
           position: relative;
-          width: 40px;
-          height: 20px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
         }
 
-        .toggle-switch input {
-          opacity: 0;
-          width: 0;
-          height: 0;
+        .toggle input {
+          display: none;
         }
 
         .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #ccc;
-          transition: 0.4s;
+          width: 34px;
+          height: 20px;
+          background: #ccc;
           border-radius: 34px;
-        }
-
-        .toggle-switch input:checked + .slider {
-          background-color: #007bff;
+          position: relative;
+          transition: background 0.2s;
         }
 
         .slider:before {
+          content: "";
           position: absolute;
-          content: '';
-          height: 16px;
           width: 16px;
+          height: 16px;
           left: 2px;
           bottom: 2px;
-          background-color: white;
-          transition: 0.4s;
+          background: white;
           border-radius: 50%;
+          transition: transform 0.2s;
         }
 
-        .toggle-switch input:checked + .slider:before {
-          transform: translateX(20px);
+        input:checked + .slider {
+          background: #0070f3;
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(14px);
         }
 
         input[type='time'] {
