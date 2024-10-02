@@ -90,6 +90,7 @@ export  function MEmployeeTable({ onEmployeeSelect }) {
                 customStyles={customStyles} // Apply custom styles for header and table
                 onRowClicked={handleRowClick}
             />
+
         </div>
     );
 }
