@@ -194,7 +194,7 @@ export default function Page() {
               
             </div>
           </div>
-      </MSideBar>
+          </MSideBar>
       
 
       

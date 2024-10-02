@@ -48,7 +48,7 @@ export  function MEmployeeDetails() {
                 borderRadius: '10px',
             }}>
                 <h3 className={styles.title}>Basic Details</h3>
-                <table style={{ width: '100%', marginBottom: '1rem' }}>
+                <table style={{ width: '100%', marginBottom: '1rem' }} className='table'>
                     <tbody>
                         <tr>
                             <td><strong>Gender</strong></td>
@@ -72,7 +72,7 @@ export  function MEmployeeDetails() {
                 </table>
                 <div className={styles.imagesContainer}>
                     {employee.images.map((img, index) => (
-                        <Image key={index} src={picture1} alt={`Employee Image ${index + 1}`} className={styles.employeeImage} width={400} height={400} />
+                        <Image key={index} src={picture1} alt={`Employee Image ${index + 1}`} className={styles.employeeImage} width={200} height={200} />
                     ))}
                 </div>
             </div>
@@ -83,7 +83,9 @@ export  function MEmployeeDetails() {
                 <div className={styles.scheduleGrid}>
                     {Object.entries(employee.schedule).map(([day, times], index) => (
                         <div key={index} className={styles.scheduleItem}>
-                            <strong>{day}</strong>
+                            <strong style={{
+                                fontSize:"12px"
+                            }}>{day}</strong>
                             {times.start ? (
                                 <>
                                     <span className={styles.timeGreen}>{times.start}</span>

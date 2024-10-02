@@ -9,7 +9,7 @@ import picture1 from './picture1.png';
 const employees = [
     {
         picture: picture1, // Placeholder for employee's profile picture
-        name: "John Doe",
+        name: "Johnas",
         matriculeID: "A-1012",
         role: "Professor",
         venue: "Andranobeva"

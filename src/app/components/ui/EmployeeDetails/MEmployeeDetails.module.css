@@ -1,7 +1,7 @@
 .employeeDetailsContainer {
     background-color: white;
     border-radius: 12px;
-    padding: 10px;
+    padding: 0px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
 }
@@ -13,7 +13,7 @@
     color: white;
     padding: 30px;
     border-radius: 12px 12px 0 0;
-    margin: 0;
+    /* margin: 20px; */
 }
 
 .profilePicture {
@@ -59,12 +59,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 100px;
+    gap: 50px;
 }
 
 .employeeImage {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -95,18 +95,22 @@
 
 .timeGreen {
     color: var(--success-bg);
-    font-weight: bold;
     background-color: rgba(0, 255, 0, 0.1);
     padding: 5px;
     border-radius: 4px;
+    font-size: 12px;
+    width: 50%;
+
 }
 
 .timeRed {
     color: red;
-    font-weight: bold;
     background-color: rgba(255, 0, 0, 0.1);
     padding: 5px;
     border-radius: 4px;
+    font-size: 12px;
+    width: 50%;
+
 }
 
 .dayOff {
@@ -123,4 +127,8 @@
     color : var(--secondary-bg);
     font-weight: bold;
     margin-bottom: 25px;
+}
+
+.table td{
+    font-size: 4px;
 }
