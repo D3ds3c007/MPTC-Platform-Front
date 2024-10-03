@@ -1,31 +1,41 @@
+
+
+/* Container adjustments */
 .container {
   display: flex;
   max-width: 900px;
-  height: auto;
+  height: 600px;
   margin: 20px auto;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
   background-color: white;
-
-  
+  overflow: hidden; /* Keeps the overflow behavior neat */
 }
 
-.sidebar {
+.sidebar-popup {
   display: flex;
   flex-direction: column;
   flex-basis: 25%;
   background: var(--dark-blue);
   padding: 30px 20px;
   position: relative;
+  height: 100%; /* Ensure the sidebar fills the full height of the container */
 }
 
-.sidebar ul {
+.step-content {
+  flex-basis: 75%;
+  padding: 30px;
+  overflow-y: auto; /* Allow vertical scrolling when content overflows */
+  max-height: 674px; /* Match the container's height */
+}
+
+/* Keep your original styles */
+.sidebar-popup ul {
   list-style-type: none;
   padding: 0;
 }
 
-.sidebar ul li {
+.sidebar-popup ul li {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -45,7 +55,7 @@
 
 .step-title {
   font-size: 16px;
-  color:white;
+  color: white;
 }
 
 .active {
@@ -54,11 +64,6 @@
 
 .complete {
   color: #0070f3;
-}
-
-.step-content {
-  flex-basis: 75%;
-  padding: 30px;
 }
 
 .step-body {
@@ -175,4 +180,3 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(14px);
 }
-
