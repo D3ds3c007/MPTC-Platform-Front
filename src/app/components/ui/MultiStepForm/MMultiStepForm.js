@@ -27,7 +27,7 @@ export function MMultiStepForm() {
   return (
     <div className={styles['container']}>
       {/* Progress Sidebar */}
-      <div className={styles['sidebar']}>
+      <div className={styles['sidebar-popup']}>
         <ul>
           {steps.map((step, index) => (
             <li key={index} className={currentStep === index ? styles.active : currentStep > index ? styles.complete : ''}>
