@@ -65,7 +65,7 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                   </li>
 
                   <li className={styles["nav-link"]}>
-                    <a href="/dashboard/administrator/revenue">
+                    <a href="/dashboard/administrator/leaderboard">
                       <i className={`bx bx-trophy ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
                       <span className={`${styles.text} ${styles["nav-text"]}`}>Ranking</span>
                     </a>
