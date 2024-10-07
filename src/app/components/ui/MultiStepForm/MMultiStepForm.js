@@ -5,12 +5,13 @@
   import styles from './MMultiStepForm.module.css';
   import { MButton } from '../Button/MButton';
   import axios  from '@/app/lib/axiosInstance';
+  import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAndDropUpload';
 
   const steps = ["Staff Information", "Upload Picture", "Set Schedule"];
   const CACHE_EXPIRY_TIME = 1000 * 60 * 5; // 5 minutes
 
   export function MMultiStepForm() {
-    const [currentStep, setCurrentStep] = useState(0);
+    const [currentStep, setCurrentStep] = useState(1);
     const [data, setData] = useState(null);
     const methods = useForm();  // Initialize the form methods
     const { handleSubmit, formState: { errors } } = methods;
@@ -204,14 +205,15 @@
             {currentStep === 1 && (
               <div className={styles['step-body']}>
                 <h2>Upload Picture</h2>
-                <div className={styles['upload-area']}>
+                {/* <div className={styles['upload-area']}>
                   <input type="file" {...methods.register("picture", { required: "Picture is required" })} />
                   {errors.picture && <span className={styles['error']}>{errors.picture.message}</span>}
                   <div className={styles['drag-drop-area']}>
                     <FiUpload />
                     <p>Drag & drop a file or click to select</p>
                   </div>
-                </div>
+                </div> */}
+                <MDragAndDropUpload />
               </div>
             )}
 
