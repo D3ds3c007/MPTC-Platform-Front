@@ -7,6 +7,7 @@ import { MButton } from '../Button/MButton';
 import axios  from '@/app/lib/axiosInstance';
 
 const steps = ["Staff Information", "Upload Picture", "Set Schedule"];
+const CACHE_EXPIRY_TIME = 1000 * 60 * 5; // 5 minutes
 
 export function MMultiStepForm() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -16,15 +17,21 @@ export function MMultiStepForm() {
   
   useEffect(() => {
     // Check if data is available in localStorage
-    const cachedVenues = localStorage.getItem("FormData");
-    if (cachedVenues) {
-      setData(JSON.parse(cachedVenues));  // Load from cache if available
+    const cachedData = localStorage.getItem("FormData");
+    const cachedTimestamp = localStorage.getItem("CacheTimestamp");
+
+    //check if cached data is expired
+    const isExpired = cachedTimestamp && (Date.now() - cachedTimestamp > CACHE_EXPIRY_TIME);
+
+    if (cachedData && !isExpired) {
+      setData(JSON.parse(cachedData));  // Load from cache if available
     } else {
       // Fetch data if not cached
       axios.get('/data/form-data')
         .then(response => {
           setData(response.data);
           localStorage.setItem("FormData", JSON.stringify(response.data));  // Cache the data
+          localStorage.setItem("CacheTimestamp", Date.now());
           console.log(response.data);
         })
         .catch(error => {
