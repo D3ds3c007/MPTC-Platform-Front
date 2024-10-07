@@ -5,6 +5,7 @@ import {MAddButton} from "@/app/components/ui/AddButton/MAddButton";
 import { useState, useEffect } from "react";
 import { MPopup } from "@/app/components/ui/Popup/MPopup";
 import { MMultiStepForm } from "@/app/components/ui/MultiStepForm/MMultiStepForm";
+import axios from "@/app/lib/axiosInstance";
 
 
 export default function RevenuPage(){
@@ -19,6 +20,7 @@ const handleAddButtonClick = () => {
 const handleClosePopup = () => {
     setIsPopupVisible(false);
 }
+
 
  useEffect(() => {
         console.log(selectedMatriculeId);
