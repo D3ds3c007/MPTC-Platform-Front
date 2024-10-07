@@ -10,17 +10,27 @@ const steps = ["Staff Information", "Upload Picture", "Set Schedule"];
 
 export function MMultiStepForm() {
   const [currentStep, setCurrentStep] = useState(0);
-  const[venueList, setVenueList] = useState(null);
+  const[data, setData] = useState(null);
   const { register, handleSubmit, formState: { errors } } = useForm();
 
+  
   useEffect(() => {
-    axios.get('/data/venues')
-      .then(response => {
-        setVenueList(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching venues:', error);
-      });
+    // Check if data is available in localStorage
+    const cachedVenues = localStorage.getItem("FormData");
+    if (cachedVenues) {
+      setData(JSON.parse(cachedVenues));  // Load from cache if available
+    } else {
+      // Fetch data if not cached
+      axios.get('/data/form-data')
+        .then(response => {
+          setData(response.data);
+          localStorage.setItem("FormData", JSON.stringify(response.data));  // Cache the data
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching venues:', error);
+        });
+    }
   }, []);
 
 
@@ -130,9 +140,10 @@ export function MMultiStepForm() {
                     <label>Role</label>
                     <select {...register("role", { required: "Role is required" })}>
                       <option value="">Select Role</option>
-                      <option value="Admin">Admin</option>
-                      <option value="Employee">Employee</option>
-                      <option value="Manager">Manager</option>
+                      {data?.privileges && data.privileges.map((privilege, index) => (
+                        <option key={index} value={privilege.idPrivilege}>{privilege.name}</option>
+                      ))}
+                     
                     </select>
                     {errors.role && <span className={styles['error']}>{errors.role.message}</span>}
                   </div>
@@ -141,8 +152,8 @@ export function MMultiStepForm() {
                     <label>Venue</label>
                     <select {...register("venue", { required: "Venue is required" })}>
                       <option value="">Select Venue</option>
-                      {venueList && venueList.map((venue, index) => (
-                        <option key={index} value={venue.id}>{venue.name}</option>
+                      {data?.venues && data.venues.map((venue, index) => (
+                        <option key={index} value={venue.idVenue}>{venue.name}</option>
                       ))}
                     </select>
                     {errors.venue && <span className={styles['error']}>{errors.venue.message}</span>}
@@ -161,7 +172,11 @@ export function MMultiStepForm() {
 
                   <div className={styles['form-group']}>
                     <label>Nationality</label>
-                    <input type="text" placeholder="Enter Nationality" {...register("nationality", { required: "Nationality is required" })} />
+                    <select {...register("Nationality", { required: "Nationality is required" })}>
+                      {data?.nationalities && data.nationalities.map((nationality, index) => (
+                          <option key={index} value={nationality.idNationality}>{nationality.name}</option>
+                        ))}
+                    </select>
                     {errors.nationality && <span className={styles['error']}>{errors.nationality.message}</span>}
                   </div>
 
