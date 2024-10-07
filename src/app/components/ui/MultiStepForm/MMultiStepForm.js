@@ -1,15 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiUpload } from 'react-icons/fi';
 import { MSchedule } from '@/app/components/ui/Schedule/MSchedule';
 import styles from './MMultiStepForm.module.css';
 import { MButton } from '../Button/MButton';
+import axios  from '@/app/lib/axiosInstance';
 
 const steps = ["Staff Information", "Upload Picture", "Set Schedule"];
 
 export function MMultiStepForm() {
   const [currentStep, setCurrentStep] = useState(0);
+  const[venueList, setVenueList] = useState(null);
   const { register, handleSubmit, formState: { errors } } = useForm();
+
+  useEffect(() => {
+    axios.get('/data/venues')
+      .then(response => {
+        setVenueList(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching venues:', error);
+      });
+  }, []);
+
 
   const onSubmit = (data) => {
     if (currentStep === steps.length - 1) {
@@ -128,9 +141,9 @@ export function MMultiStepForm() {
                     <label>Venue</label>
                     <select {...register("venue", { required: "Venue is required" })}>
                       <option value="">Select Venue</option>
-                      <option value="Venue 1">Venue 1</option>
-                      <option value="Venue 2">Venue 2</option>
-                      <option value="Venue 3">Venue 3</option>
+                      {venueList && venueList.map((venue, index) => (
+                        <option key={index} value={venue.id}>{venue.name}</option>
+                      ))}
                     </select>
                     {errors.venue && <span className={styles['error']}>{errors.venue.message}</span>}
                   </div>
