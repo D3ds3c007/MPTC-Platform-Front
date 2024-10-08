@@ -12,6 +12,7 @@
   overflow: hidden; /* Keeps the overflow behavior neat */
 }
 
+
 .sidebar-popup {
   display: flex;
   flex-direction: column;

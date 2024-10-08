@@ -11,7 +11,7 @@
   const CACHE_EXPIRY_TIME = 1000 * 60 * 5; // 5 minutes
 
   export function MMultiStepForm() {
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState(0);
     const [data, setData] = useState(null);
     const methods = useForm();  // Initialize the form methods
     const { handleSubmit, formState: { errors } } = methods;
@@ -47,6 +47,13 @@
       if (currentStep === steps.length - 1) {
         // Final form submission
         console.log("Form Submitted", data);
+        axios.post('/data/upload-employee', data)
+          .then(response => {
+            console.log('Employee data uploaded:', response.data);
+          })
+          .catch(error => {
+            console.error('Error uploading employee data:', error);
+          });
       } else {
         setCurrentStep((prev) => prev + 1);
       }
