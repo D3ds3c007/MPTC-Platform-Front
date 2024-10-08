@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form';
 export function MSchedule() {
   const { register, setValue } = useFormContext(); // Import setValue from React Hook Form
   const [schedule, setSchedule] = useState({
+    Sunday: { open: false, from: '', to: '' },  
     Monday: { open: true, from: '09:00', to: '17:00' },
     Tuesday: { open: true, from: '09:00', to: '17:00' },
     Wednesday: { open: true, from: '09:00', to: '17:00' },

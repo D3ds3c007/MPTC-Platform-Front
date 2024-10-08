@@ -146,6 +146,12 @@
                       <input type="text" placeholder="Enter ID Card Number" {...methods.register("idCard", { required: "ID card number is required" })} />
                       {errors.idCard && <span className={styles['error']}>{errors.idCard.message}</span>}
                     </div>
+
+                    <div className={styles['form-group']}>
+                      <label>Home Address</label>
+                      <input type="text" placeholder="Enter Home Address" {...methods.register("homeAddress", { required: "Home Address is required" })} />
+                      {errors.homeAddress && <span className={styles['error']}>{errors.homeAddress.message}</span>}
+                    </div>
                   </div>{styles['error']}
                 </div>
 
