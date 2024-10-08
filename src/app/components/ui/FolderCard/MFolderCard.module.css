@@ -39,7 +39,7 @@
 }
 
 .level{
-  background-color: #6868f1;
+  background-color: #F5F5F5;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -58,4 +58,28 @@
 /* Optional: Add hover effect for better UX */
 .corner-icon:hover i {
   transform: scale(1.1); /* Slightly scale the icon on hover */
+}
+
+.three-dot-button {
+  background-color: var(--primary-bg); /* Dark blue background */
+  width: 35px;
+  height: 20px;
+  border-radius: 20px; /* Rounded rectangle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots {
+  display: flex;
+  justify-content: space-between;
+  width: 20px;
+}
+
+.dots span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: var(--primary-color); /* Light blue dot color */
+  border-radius: 50%;
 }

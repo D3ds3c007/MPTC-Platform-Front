@@ -14,7 +14,12 @@ export function MFolderCard({level="A1", title="Exam Term 1", session="OCT 2024"
                 <br></br>
                 <h5>{title}</h5>
                 <p>Session : {session}</p>
-                <div className={styles["three-dot"]}>
+                <div className={styles["three-dot-button"]}>
+                    <div className={styles["dots"]}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </div>
