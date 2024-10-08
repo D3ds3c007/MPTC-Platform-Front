@@ -1,40 +1,29 @@
 import React from 'react';
-import './MFolderCard.css'; // Import the CSS for styling
+import styles from'./MFolderCard.module.css'; // Import the CSS for styling
 import Image from 'next/image';
 import logo from './logo.png';
 
-export function MFolderCard() {
+export function MFolderCard({level="A1", title="Exam Term 1", session="OCT 2024"}) {
   return (
-    <div className="folder-card">
-      <div className="folder-header">
-        <Image
-          className="profile-pic"
-          width={40} height={40}
-          src={logo}
-          alt="Profile"
-        />
-      </div>
-      <div className="folder-body">
-        <h2>Jane Doe</h2>
-        <p>Marketing Director at Microsoft</p>
-        <div className="source">
-          <button className="linkedin-btn">LinkedIn</button>
-          <button className="email-btn">Email</button>
+    <div className={styles["box"]}>
+        <div className={styles["folder"]}>
+            <div className={styles["folder-content"]}>
+                <div className={styles["level"]}>
+                    <h6>{level}</h6>
+                </div>
+                <br></br>
+                <h5>{title}</h5>
+                <p>Session : {session}</p>
+                <div className={styles["three-dot"]}>
+                </div>
+            </div>
         </div>
-        <div className="status">
-          <span>Hot Client:</span>
-          <div className="heat-indicator">
-            <span className="dot active"></span>
-            <span className="dot active"></span>
-            <span className="dot active"></span>
-            <span className="dot active"></span>
-            <span className="dot"></span>
-          </div>
+        <div className={styles["corner-icon"]}>
+          {/* <i className={`bx bx-arrow-back ${styles.icon}`}></i> */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#01F073" class="bi bi-arrow-up-right-circle-fill" viewBox="0 0 16 16">
+            <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z"/>
+          </svg>
         </div>
-      </div>
-      <div className="expand-icon">
-        <span>&#x2197;</span>
-      </div>
     </div>
   );
 };

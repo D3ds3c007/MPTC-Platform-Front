@@ -1,0 +1,61 @@
+
+.box {
+  position: relative;
+  width: 250px;
+  height: 180px;
+}
+
+.folder {
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0;
+  position: relative;
+  border-radius: 30px;
+  clip-path: path("M197.54,59.68v81.74a20.47,20.47,0,0,1-20.46,20.47h-159A18.09,18.09,0,0,1,0,143.8V18.09A18.09,18.09,0,0,1,18.09,0H137.61a18.09,18.09,0,0,1,17.17,12.39v6.82a18.33,18.33,0,0,0,.17,2.58,19.45,19.45,0,0,0,.75,3.5,20.46,20.46,0,0,0,15.24,13.92,19.38,19.38,0,0,0,3.44.44l.86,0h6.14A20.47,20.47,0,0,1,197.54,59.68Z");
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.folder-content p {
+  /* text-align: center; */
+  margin-top: -10px;
+  font-size: 14px;
+}
+
+/* Icon in the top-right missing corner */
+.corner-icon {
+  position: absolute;
+  top: 0px;
+  right: 56px;
+  background-color: var(--primary-color);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level{
+  background-color: #6868f1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.corner-icon i {
+  font-size: 18px; /* Size of the icon */
+  color: #333; /* Icon color */
+  transition: transform 0.2s; /* Optional: add a transition effect */
+}
+
+/* Optional: Add hover effect for better UX */
+.corner-icon:hover i {
+  transform: scale(1.1); /* Slightly scale the icon on hover */
+}
