@@ -245,11 +245,12 @@ body.dark .switch::before{
 }
 
 .home{
+    
     position: absolute;
     top: 0;
     top: 0;
     left: 250px;
-    height: auto;
+    height:fit-content;
     width: calc(100% - 250px);
     background-color: var(--body-color);
     transition: var(--tran-05);
