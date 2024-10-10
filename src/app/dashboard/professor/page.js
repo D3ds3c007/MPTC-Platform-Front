@@ -18,10 +18,10 @@ export default function ProfessorParge()
               padding: '5px'
             }}>
                 <MFolderCard />
-                <MFolderCard />
-                <MFolderCard />
-                <MFolderCard />
-                <MFolderCard />
+                <MFolderCard variant="secondary"/>
+                <MFolderCard variant="grey"/>
+                <MFolderCard variant="dark"/>
+                <MFolderCard variant="purple"/>
             </div>
 
           </MCard>

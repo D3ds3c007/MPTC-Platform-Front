@@ -3,10 +3,10 @@ import styles from'./MFolderCard.module.css'; // Import the CSS for styling
 import Image from 'next/image';
 import logo from './logo.png';
 
-export function MFolderCard({level="A1", title="Exam Term 1", session="OCT 2024"}) {
+export function MFolderCard({level="A1", variant = 'primary', title="Exam Term 1", session="OCT 2024"}) {
   return (
     <div className={styles["box"]}>
-        <div className={styles["folder"]}>
+        <div className={`${styles["folder"]} ${styles[variant]}`}>
             <div className={styles["folder-content"]}>
                 <div className={styles["level"]}>
                     <h6>{level}</h6>
@@ -14,8 +14,8 @@ export function MFolderCard({level="A1", title="Exam Term 1", session="OCT 2024"
                 <br></br>
                 <h5>{title}</h5>
                 <p>Session : {session}</p>
-                <div className={styles["three-dot-button"]}>
-                    <div className={styles["dots"]}>
+                <div className={`${styles["three-dot-button"]} ${styles[variant]}`}>
+                    <div className={`${styles["dots"]} ${styles[variant]}`}>
                         <span></span>
                         <span></span>
                         <span></span>

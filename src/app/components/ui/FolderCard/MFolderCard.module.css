@@ -8,7 +8,6 @@
 .folder {
   width: 100%;
   height: 100%;
-  background-color: #e0e0e0;
   position: relative;
   border-radius: 30px;
   clip-path: path("M197.54,59.68v81.74a20.47,20.47,0,0,1-20.46,20.47h-159A18.09,18.09,0,0,1,0,143.8V18.09A18.09,18.09,0,0,1,18.09,0H137.61a18.09,18.09,0,0,1,17.17,12.39v6.82a18.33,18.33,0,0,0,.17,2.58,19.45,19.45,0,0,0,.75,3.5,20.46,20.46,0,0,0,15.24,13.92,19.38,19.38,0,0,0,3.44.44l.86,0h6.14A20.47,20.47,0,0,1,197.54,59.68Z");
@@ -40,6 +39,7 @@
 
 .level{
   background-color: #F5F5F5;
+  color: var(--dark-blue);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -49,19 +49,7 @@
   justify-content: center;
 }
 
-.corner-icon i {
-  font-size: 18px; /* Size of the icon */
-  color: #333; /* Icon color */
-  transition: transform 0.2s; /* Optional: add a transition effect */
-}
-
-/* Optional: Add hover effect for better UX */
-.corner-icon:hover i {
-  transform: scale(1.1); /* Slightly scale the icon on hover */
-}
-
 .three-dot-button {
-  background-color: var(--primary-bg); /* Dark blue background */
   width: 35px;
   height: 20px;
   border-radius: 20px; /* Rounded rectangle */
@@ -80,6 +68,72 @@
   display: block;
   width: 4px;
   height: 4px;
-  background-color: var(--primary-color); /* Light blue dot color */
   border-radius: 50%;
+}
+
+/* variant folder style */
+
+.folder.primary {
+  background-color: var(--default-bg);
+  color: var(--dark-blue);
+}
+
+.dots.primary span {
+  background-color: var(--primary-color); /* Light blue dot color */
+}
+
+.three-dot-button.primary {
+  background-color: var(--primary-bg); /* Dark blue background */
+}
+
+.folder.secondary {
+  background-color: var(--primary-bg);
+  color: var(--primary-color);
+}
+
+.dots.secondary span {
+  background-color: var(--dark-blue); /* Light blue dot color */
+}
+
+.three-dot-button.secondary {
+  background-color: var(--default-bg); /* Dark blue background */
+}
+
+.folder.dark {
+  background-color: var(--dark-blue);
+  color: var(--primary-color);
+}
+
+.dots.dark span {
+  background-color: var(--primary-color); /* Light blue dot color */
+}
+
+.three-dot-button.dark {
+  background-color: var(--secondary-bg); /* Dark blue background */
+}
+
+.folder.grey {
+  background-color: #D9D9D9;
+  color: var(--dark-blue);
+}
+
+.dots.grey span {
+  background-color: var(--primary-color); /* Light blue dot color */
+}
+
+.three-dot-button.grey {
+  background-color: var(--dark-blue); /* Dark blue background */
+}
+
+.folder.purple {
+  background-color: var(--secondary-bg);
+  color: var(--primary-color);
+}
+
+.dots.purple span {
+  background-color: var(--primary-color); /* Light blue dot color */
+}
+
+.three-dot-button.purple {
+  background-color: var(--primary-bg); /* Dark blue background */
 }
