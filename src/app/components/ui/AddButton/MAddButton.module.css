@@ -1,0 +1,21 @@
+/* components/AddButton.module.css */
+.addButton {
+    position: fixed; /* Fixed positioning */
+    bottom: 20px; /* Space from the bottom */
+    right: 20px; /* Space from the right */
+    width: 50px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    border: none; /* No border */
+    border-radius: 50%; /* Circular button */
+    background-color: var(--primary-bg); /* Background color */
+    color: white; /* Text color */
+    font-size: 24px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transition: background-color 0.3s; /* Transition for hover effect */
+  }
+  
+  .addButton:hover {
+    background-color: #005bb5; /* Darker shade on hover */
+  }
+  
