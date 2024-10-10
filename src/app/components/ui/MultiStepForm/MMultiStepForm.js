@@ -47,7 +47,7 @@
       if (currentStep === steps.length - 1) {
         // Final form submission
         console.log("Form Submitted", data);
-        axios.post('/data/upload-employee', data)
+        axios.post('/staff/upload-employee', data)
           .then(response => {
             console.log('Employee data uploaded:', response.data);
           })

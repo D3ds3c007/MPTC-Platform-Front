@@ -2,6 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './MEmployeeDetails.module.css'; // Assuming you have CSS module for styling
 import picture1 from './picture1.png';
+import {MLoading} from "@/app/components/ui/Loading/MLoading";
+import defaultPic from './picture1.png';
 
 const employee = {
     picture: picture1, // replace with the correct image path
@@ -29,15 +31,18 @@ const employee = {
     ]
 };
 
-export  function MEmployeeDetails() {
+export  function MEmployeeDetails({employee}) {
     return (
         <div className={styles.employeeDetailsContainer}>
             {/* Header */}
             <div className={styles.header}>
-                <Image src={employee.picture} alt="Profile" className={styles.profilePicture} width={100} height={100} />
+                {employee.picture && employee.picture.length > 0 && employee.picture[0].base64Image ? 
+                    <Image src={employee.picture[0].base64Image} alt="Profile" className={styles.profilePicture} width={100} height={100} /> : 
+                    <Image src={defaultPic} alt="Profile" className={styles.profilePicture} />
+                }
                 <div className={styles.headerInfo}>
-                    <h2>{employee.name}</h2>
-                    <p>{employee.role} | Attendance-ID : {employee.attendanceID}</p>
+                    <h2>{employee.fullName}</h2>
+                    <p>{employee.privilege} | Attendance-ID : {employee.matricule}</p>
                 </div>
             </div>
 
@@ -54,26 +59,30 @@ export  function MEmployeeDetails() {
                             <td><strong>Gender</strong></td>
                             <td>{employee.gender}</td>
                             <td><strong>Date of birth</strong></td>
-                            <td>{employee.dob}</td>
+                            <td>{employee.birth}</td>
                         </tr>
                         <tr>
                             <td><strong>Nationality</strong></td>
                             <td>{employee.nationality}</td>
                             <td><strong>National ID</strong></td>
-                            <td>{employee.nationalID}</td>
+                            <td>{employee.nationalId}</td>
                         </tr>
                         <tr>
                             <td><strong>Email Address</strong></td>
                             <td>{employee.email}</td>
                             <td><strong>Phone Number</strong></td>
-                            <td>{employee.phone}</td>
+                            <td>{employee.phoneNumber}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div className={styles.imagesContainer}>
-                    {employee.images.map((img, index) => (
-                        <Image key={index} src={picture1} alt={`Employee Image ${index + 1}`} className={styles.employeeImage} width={200} height={200} />
-                    ))}
+                    {employee.picture && employee.picture.length > 0 && employee.picture[0].base64Image ?
+                    
+                    employee.picture.map((img, index) => (
+                        <Image key={index} src={img.base64Image} alt={`Employee Image ${index + 1}`} className={styles.employeeImage} width={200} height={200} />
+                    )) : null
+                }
+                   
                 </div>
             </div>
 
