@@ -3,6 +3,7 @@ import { MButton } from "@/app/components/ui/Button/MButton";
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MAddButton } from "@/app/components/ui/AddButton/MAddButton";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
+import { MChart } from "@/app/components/ui/Chart/MChart";
 
 export default function ExamPage(){
     return(
@@ -56,6 +57,11 @@ export default function ExamPage(){
                             <MIconicCard data="2024" label="This is a card of this year" bootstrapClass="col-md-3" variant="pink"/>
                             {/* <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapClass="col-md-3" /> */}
                         
+                    </div>
+
+                    <br></br>
+                    <div className="col-md-6">
+                        <MChart></MChart>
                     </div>
                     
                 </MCard>
