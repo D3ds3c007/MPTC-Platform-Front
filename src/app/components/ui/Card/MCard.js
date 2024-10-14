@@ -1,13 +1,15 @@
 'use client';
 import { useState, useEffect } from 'react';
 import styles from './MCard.module.css';
+import { set } from 'react-hook-form';
 
-export function MCard({ children, width = '100%', height = 'auto', bgColor = 'white', padding = '20px', title = '', toggle = false, isIn = false, description = '', alignment = '' }) {
+export function MCard({ setOn, children, width = '100%', height = 'auto', bgColor = 'white', padding = '20px', title = '', toggle = false, isIn = false, description = '', alignment = '' }) {
     const [isToggled, setIsToggled] = useState(false);
     const [isClockIn, setIsClockIn] = useState({isIn});
 
     const handleToggle = () => {
         setIsToggled(!isToggled);
+        setOn(!isToggled);
         console.log(isIn);
         
         
