@@ -16,7 +16,7 @@ export function MVideoFeed({ title, description, isIn = false, isOut = false }) 
     //close the websocket connection based on the state isOn
     useEffect(() => {
         if (isOn) {
-            socketRef.current = new WebSocket('ws://localhost:5036/ws'); // Use appropriate WebSocket URL
+            socketRef.current = new WebSocket('ws://localhost:5193/ws'); // Use appropriate WebSocket URL
 
             socketRef.current.onopen = () => {
                 console.log('WebSocket connection established');
