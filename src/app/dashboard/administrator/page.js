@@ -82,11 +82,11 @@ export default function AdminPage() {
                 <div className="col-md-6" style={{
                     justifyContent:"center"
                 }}>
-                    <MVideoFeed title="Clock In Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-in tracking." isIn="true"/>
+                    <MVideoFeed title="Clock In Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-in tracking." isIn="wsIn"/>
                 </div>
 
                 <div className="col-md-6">
-                    <MVideoFeed title="Clock Out Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-out tracking." isIn="false"/>
+                    <MVideoFeed title="Clock Out Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-out tracking." isIn="wsOut"/>
                 </div>
             </div>
 

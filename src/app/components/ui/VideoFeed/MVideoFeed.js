@@ -6,17 +6,20 @@ import { Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 
 import nosignal from './NoSignal.png';
-import { set } from 'react-hook-form';
+import { set } from 'zod';
 
-export function MVideoFeed({ title, description, isIn = false, isOut = false }) {
+export function MVideoFeed({ title, description, isIn = "isInss"}) {
     const [imageData, setImageData] = useState(null);  // State to store the base64 image data
     const [isOn, setIsOn] = useState(false);  // State to store the WebSocket connection status
     const socketRef = useRef(null); // WebSocket reference
+    const [endPoint, setEndPoint] = useState('ws://localhost:5193/'+isIn);
 
     //close the websocket connection based on the state isOn
     useEffect(() => {
         if (isOn) {
-            socketRef.current = new WebSocket('ws://localhost:5193/ws'); // Use appropriate WebSocket URL
+            
+            console.log(endPoint);
+            socketRef.current = new WebSocket(endPoint); // Use appropriate WebSocket URL
 
             socketRef.current.onopen = () => {
                 console.log('WebSocket connection established');
@@ -46,7 +49,7 @@ export function MVideoFeed({ title, description, isIn = false, isOut = false }) 
                 }
             };
         }
-    }, [isOn]);
+    }, [isOn, isIn]);
 
     return (
         <>
