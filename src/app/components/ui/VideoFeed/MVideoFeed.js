@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 import nosignal from './NoSignal.png';
 
-export function MVideoFeed({ title, description, isIn = "isInss"}) {
+export function MVideoFeed({ title, description, isIn = "isIns"}) {
     const [imageData, setImageData] = useState(null);  // State to store the image URL
     const [isOn, setIsOn] = useState(false);  // State to store the WebSocket connection status
     const socketRef = useRef(null); // WebSocket reference
