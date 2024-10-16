@@ -6,18 +6,16 @@ import { Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 
 import nosignal from './NoSignal.png';
-import { set } from 'zod';
 
 export function MVideoFeed({ title, description, isIn = "isInss"}) {
-    const [imageData, setImageData] = useState(null);  // State to store the base64 image data
+    const [imageData, setImageData] = useState(null);  // State to store the image URL
     const [isOn, setIsOn] = useState(false);  // State to store the WebSocket connection status
     const socketRef = useRef(null); // WebSocket reference
     const [endPoint, setEndPoint] = useState('ws://localhost:5193/'+isIn);
 
-    //close the websocket connection based on the state isOn
+    // Close the WebSocket connection based on the state isOn
     useEffect(() => {
         if (isOn) {
-            
             console.log(endPoint);
             socketRef.current = new WebSocket(endPoint); // Use appropriate WebSocket URL
 
@@ -27,10 +25,15 @@ export function MVideoFeed({ title, description, isIn = "isInss"}) {
 
             // Handle incoming WebSocket messages
             socketRef.current.onmessage = (event) => {
-                const message = JSON.parse(event.data);
-                if (message.type === 'frame') {
-                    setImageData(message.data); // Set the base64 image data
-                }
+                // event.data will be binary (not JSON)
+                const binaryData = event.data;
+  
+                // Create a Blob from the binary data and create a URL for it
+                const imageBlob = new Blob([binaryData], { type: 'image/jpeg' });
+                const imageUrl = URL.createObjectURL(imageBlob);
+
+                // Update the state with the image URL
+                setImageData(imageUrl);
             };
 
             socketRef.current.onerror = (error) => {
@@ -62,7 +65,7 @@ export function MVideoFeed({ title, description, isIn = "isInss"}) {
                     {/* Conditionally display the stream or "No Signal" image */}
                     {imageData ? (
                         <img 
-                            src={`data:image/jpeg;base64,${imageData}`} 
+                            src={imageData}  // Use the Blob URL here
                             alt="Live Video Stream" 
                             className={styles.image}
                             style={{ width: '100%', height: 'auto' }} 
