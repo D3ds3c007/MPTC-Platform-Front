@@ -4,10 +4,13 @@ import { MActivity } from "@/app/components/ui/Activity/MActivity";
 import { MVideoFeed } from "@/app/components/ui/VideoFeed/MVideoFeed";
 import { useState, useEffect } from "react";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
+import * as signalR from '@microsoft/signalr';
+
 
 export default function AdminPage() {
     const [activities, setActivities] = useState([]);
     const [currentDate, setCurrentDate] = useState('');
+
 
     useEffect(() => {
         setCurrentDate(getCurrentDate());
@@ -19,42 +22,90 @@ export default function AdminPage() {
         return new Intl.DateTimeFormat('en-GB', options).format(now);
     };  
 
+    const mapToActivityFormat = (data) => {
+        return data.map(item => {
+            const staffName = item.staff.firstName;
+            const role = item.staff.privilegeName;
+            const variant = item.eventType.toLowerCase() === "clockin" ? "clock-in" : "clock-out"; // Map eventType to variant
+    
+            return {
+                attendance: staffName,
+                time: new Date(item.eventTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                role: role.charAt(0).toUpperCase() + role.slice(1), // Capitalize the role
+                type: variant,
+                variant:variant,
+                show: true
+            };
+        });
+    };
+
+    useEffect(() => {
+        if(typeof window !== 'undefined')
+        {
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("http://localhost:5193/attendancehub")
+                .withAutomaticReconnect()
+                .configureLogging(signalR.LogLevel.Information)
+                .build();
+            
+            connection.start().then(() => {
+                console.log('Connected!');
+
+                connection.on("ReceiveRecentActivities", (recentLogs) => {
+                    console.log('Received recent logs : ', recentLogs);
+                    const activities = mapToActivityFormat(recentLogs);
+
+                    console.log('Mapped activities : ', activities);
+
+                    setActivities(activities);
+                });
+            }).catch(err => console.error(err.toString()));
+
+            return () => {
+                if(connection)
+                {
+                    connection.stop();
+                }
+            }
+        }
+        }, []);
+
 
     // Simulate adding new activity
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const newActivity = {
-                attendance: "New Activity",
-                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // Current time
-                role: "Role",
-                variant: "clock-in",
-                show: true, // Set show to true for new activity
-            };
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         const newActivity = {
+    //             attendance: "New Activity",
+    //             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // Current time
+    //             role: "Role",
+    //             variant: "clock-in",
+    //             show: true, // Set show to true for new activity
+    //         };
 
-            // Add new activity to the top of the list
-            setActivities((prev) => {
-                const updatedActivities = [newActivity, ...prev]; // Prepend the new activity
+    //         // Add new activity to the top of the list
+    //         setActivities((prev) => {
+    //             const updatedActivities = [newActivity, ...prev]; // Prepend the new activity
 
-                // Limit the number of activities to 2
-                if (updatedActivities.length > 2) {
-                    return updatedActivities.slice(0, 2); // Keep only the first two
-                }
-                return updatedActivities;
-            });
+    //             // Limit the number of activities to 2
+    //             if (updatedActivities.length > 2) {
+    //                 return updatedActivities.slice(0, 2); // Keep only the first two
+    //             }
+    //             return updatedActivities;
+    //         });
 
-            // Set a timeout to remove the animation state after the animation duration
-            setTimeout(() => {
-                setActivities((prev) => {
-                    // Set show to false for the newly added activity after animation
-                    return prev.map((activity, index) =>
-                        index === 0 ? { ...activity, show: true, variant: "clock-out" } : activity // Set the first activity's show to false
-                    );
-                });
-            }, 500); // Match this with the duration of the CSS transition
-        }, 5000); // Change this interval to your preference
+    //         // Set a timeout to remove the animation state after the animation duration
+    //         setTimeout(() => {
+    //             setActivities((prev) => {
+    //                 // Set show to false for the newly added activity after animation
+    //                 return prev.map((activity, index) =>
+    //                     index === 0 ? { ...activity, show: true, variant: "clock-out" } : activity // Set the first activity's show to false
+    //                 );
+    //             });
+    //         }, 500); // Match this with the duration of the CSS transition
+    //     }, 5000); // Change this interval to your preference
 
-        return () => clearInterval(interval); // Cleanup interval on unmount
-    }, []);
+    //     return () => clearInterval(interval); // Cleanup interval on unmount
+    // }, []);
 
     return (
         <>   
