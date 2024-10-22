@@ -58,7 +58,7 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                   </li>
 
                   <li className={styles["nav-link"]}>
-                    <a href="/dashboard/administrator/revenue">
+                    <a href="/dashboard/administrator/activity">
                       <i className={`bx bx-list-ul ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
                       <span className={`${styles.text} ${styles["nav-text"]}`}>Activity Logs</span>
                     </a>

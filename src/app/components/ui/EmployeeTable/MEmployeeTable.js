@@ -73,6 +73,7 @@ export  function MEmployeeTable({loading, employees, onEmployeeSelect }) {
                     data={filteredEmployees}
                     noHeader
                     highlightOnHover
+                    pointerOnHover
                     customStyles={customStyles} // Apply custom styles for header and table
                     onRowClicked={handleRowClick}
                 />
