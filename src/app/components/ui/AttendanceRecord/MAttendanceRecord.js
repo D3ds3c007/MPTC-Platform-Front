@@ -16,25 +16,27 @@ const formatTime = (timeString) => {
   return time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 };
 
-// Updated sample data with descriptive remark text
-const productsData = [
-  { id: 1, staffName: '58', recordDate: '2024-10-18 15:34:27.914672+03', timeIn: '16:05:57.843039', timeOut: '16:08:42.990473', remark: 'Regular check-in/out procedure' },
-  { id: 2, staffName: '59', recordDate: '2024-10-08 15:34:30.960518+03', timeIn: '08:05:59.529781', timeOut: '16:08:26.489489', remark: '' },
-  { id: 6, staffName: '59', recordDate: '2024-10-22 08:16:53.44807+03', timeIn: '08:16:53.448127', timeOut: '', remark: '' },
-  { id: 7, staffName: '59', recordDate: '2024-10-22 08:16:53.556031+03', timeIn: '09:45:54.497772', timeOut: '08:22:05.215314', remark: '' },
-  { id: 8, staffName: '58', recordDate: '2024-10-22 08:32:50.844841+03', timeIn: '08:32:50.844949', timeOut: '', remark: '' },
-];
 
 const columns = [
   {
     name: 'ID',
-    selector: row => row.id,
+    selector: row => row.attendanceId,
     sortable: true,
+    width: '50px'
+    //change the width of this column
+
+  },
+  {
+    name: 'Staff ID',
+    selector: row => row.matricule,
+    sortable: true,
+    width: '150px'
   },
   {
     name: 'Staff Name',
     selector: row => row.staffName,
     sortable: true,
+    width: '200px'
   },
   {
     name: 'Record Date',
@@ -46,18 +48,38 @@ const columns = [
     selector: row => formatTime(row.timeIn), // Format the time
     cell: (row) => <span style={{ color: 'green' }}>{formatTime(row.timeIn)}</span>, // Color ClockIn green
     sortable: true,
+    width: '100px'
   },
   {
     name: 'Clock Out',
     selector: row => formatTime(row.timeOut), // Format the time
     cell: (row) => <span style={{ color: 'red' }}>{formatTime(row.timeOut)}</span>, // Color ClockOut red
     sortable: true,
+    width: '100px'
+
   },
   {
     name: 'Remark',
     selector: row => row.remark,
     cell: (row) => <RemarkCell remark={row.remark} />,
     sortable: true,
+  },
+  {
+    name: 'Status',
+    cell: (row) => <span
+                style={{
+                    color: row.isLate ? 'red' : 'green',
+                    backgroundColor: row.isLate ? "rgba(255, 0, 0, 0.1)" : "rgba(0, 255, 0, 0.1)",
+                    padding: "5px",
+                    borderRadius: "0 4px 4px 0",
+                    fontSize: "12px",
+                    textAlign: "center",
+                }}
+            >
+                {row.isLate ? 'Late' : 'On Time'}
+            </span>,
+    sortable: false, // Optionally make this column unsortable
+    center : true
   },
   {
     name: 'Actions',
@@ -124,7 +146,7 @@ const ActionMenu = ({ row }) => {
   }, [dropdownVisible]);
 
   const handleEditProduct = () => {
-    alert(`Edit Entry for ID: ${row.id}`);
+    alert(`Edit Entry for ID: ${row.attendanceId}`);
     setDropdownVisible(false); // Close the dropdown after clicking edit
   };
 
@@ -200,7 +222,8 @@ const customStyles = {
   },
 };
 
-export function MDataTable() {
+export function MAttendanceRecord({productsData}) {
+
   const [filterText, setFilterText] = useState('');
   const [dateFilter, setDateFilter] = useState(''); // State for date filter
   const [data, setData] = useState(productsData);
@@ -307,4 +330,4 @@ export function MDataTable() {
   );
 }
 
-export default MDataTable;
+export default MAttendanceRecord;
