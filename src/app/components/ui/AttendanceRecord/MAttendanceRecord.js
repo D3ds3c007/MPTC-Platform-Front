@@ -222,7 +222,7 @@ const customStyles = {
   },
 };
 
-export function MAttendanceRecord({productsData}) {
+export function MAttendanceRecord({productsData, onClick}) {
 
   const [filterText, setFilterText] = useState('');
   const [dateFilter, setDateFilter] = useState(''); // State for date filter
@@ -246,9 +246,7 @@ export function MAttendanceRecord({productsData}) {
   }));
 
   // Handle adding new entry (you can replace this with a form/modal)
-  const handleAddEntry = () => {
-    alert('Add New Entry Feature');
-  };
+  
 
   return (
     <div style={{ padding: '20px' }}>
@@ -307,7 +305,7 @@ export function MAttendanceRecord({productsData}) {
             Download CSV
           </CSVLink>
           {/* Add New Entry Button */}
-          <button onClick={handleAddEntry} style={{ backgroundColor: '#00119D', color: '#fff', border: 'none', padding: '10px 15px', borderRadius: '5px' }}>
+          <button onClick={onClick} style={{ backgroundColor: '#00119D', color: '#fff', border: 'none', padding: '10px 15px', borderRadius: '5px' }}>
             <i className="bi bi-plus-circle" style={{ marginRight: '8px' }}></i>
             Add New Entry
           </button>

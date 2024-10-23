@@ -4,6 +4,7 @@ import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
 import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepForm"
+import { MAttendanceForm } from "./components/ui/pages/AttendanceForm/MAttendanceForm";
 export default function Page() {
   return (
     <>
@@ -65,7 +66,9 @@ export default function Page() {
                 </div>
               </MCard> */}
 
-              <MMultiStepForm />
+              {/* <MMultiStepForm /> */}
+              <MAttendanceForm />
+
 
             </div>
           </div>

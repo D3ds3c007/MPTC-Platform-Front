@@ -20,8 +20,9 @@ export default function AdminPage() {
         const now = new Date();
         const options = { day: '2-digit', month: 'long', year: 'numeric' };
         return new Intl.DateTimeFormat('en-GB', options).format(now);
-    };  
-
+    };
+    
+   
     const mapToActivityFormat = (data) => {
         return data.map(item => {
             const staffName = item.staff.firstName;
