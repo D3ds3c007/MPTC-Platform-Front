@@ -61,7 +61,7 @@ useEffect(() => {
     return(
         <>
         {isPopupVisible && 
-            <MPopup title="Add Employee" onClose={handleClosePopup}>
+            <MPopup title="Add Employee" onClose={handleClosePopup} popupWidth="100%">
                 <MMultiStepForm />
             </MPopup>}
         {loading ? <div style={{

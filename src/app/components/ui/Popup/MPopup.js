@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { IoMdClose } from 'react-icons/io'; // Import a close icon from react-icons
 import styles from './MPopup.module.css';
 
-export function MPopup({ children, title, onClose }) {
+export function MPopup({ children, title, onClose, popupWidth }) {
     const [fadeState, setFadeState] = useState('fadeIn');
 
     useEffect(() => {
@@ -23,11 +24,21 @@ export function MPopup({ children, title, onClose }) {
         };
     }, [onClose]);
 
+    const popupStyle = {
+        width: popupWidth || 'auto',
+    };
+
     return (
         <div className={`${styles.overlay} ${styles.popupContainer}`}>
-            <div className={`${styles.popup} ${styles[fadeState]}`}>
+            <div 
+                className={`${styles.popup} ${styles[fadeState]}`}
+                style={popupStyle}
+                onClick={(event) => event.stopPropagation()} // Prevents closing when clicking inside the popup
+            >
                 <div className={styles.popupHeader}>
-                    <button className={styles.closeButton} onClick={onClose}>X</button>
+                    <button className={styles.closeButton} onClick={onClose}>
+                        <IoMdClose className={styles.icon} />
+                    </button>
                 </div>
                 <div className={styles.popupBody}>
                     {children}

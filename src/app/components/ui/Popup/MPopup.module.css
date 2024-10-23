@@ -1,51 +1,68 @@
 .overlay {
-  position: fixed; /* Fixed position to cover the whole screen */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex; /* Flex to allow centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  z-index: 1000; /* Ensure it appears on top */
+  background: rgba(0, 0, 0, 0.6); /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup {
-  border-radius: 8px;
   padding: 20px;
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transform: scale(1); /* Default scale */
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
-}
-
-.popup.fadeIn {
-  transform: scale(1); /* Scale up */
-}
-
-.popup.fadeOut {
-  transform: scale(0.8); /* Scale down when closing */
-  opacity: 0; /* Hide when closing */
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
 }
 
 .popupHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.title {
-  margin: 0;
-  font-size: 1.5rem;
+  justify-content: flex-end;
 }
 
 .closeButton {
-  background: none;
+  background-color: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 24px;
   cursor: pointer;
-  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+.closeButton:hover {
+  background-color: #ff4757; /* A red background on hover */
+  transform: scale(1.1); /* Scale effect */
+}
+
+.icon {
+  color: #fff; /* White icon color */
+  font-size: 24px;
+}
+
+.popupBody {
+  margin-top: 20px;
+}
+
+/* Fade in and fade out animations */
+.fadeIn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.9);
+}

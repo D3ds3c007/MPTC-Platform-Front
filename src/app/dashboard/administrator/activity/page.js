@@ -32,13 +32,17 @@ export default function ActivityPage(){
     const handleAddButtonClick = () => {
         setIsPopupVisible(true);
     }
+
+    const onClose = () => {
+        setIsPopupVisible(false);
+    }
     
 
     return(
 
         <>
             {isPopupVisible && 
-            <MPopup title="Add Employee" >
+            <MPopup title="Add Employee" onClose={onClose}>
                 <MAttendanceForm />
             </MPopup>}
             {loading ? <MLoading /> : <MAttendanceRecord productsData={data}  onClick={handleAddButtonClick} />}
