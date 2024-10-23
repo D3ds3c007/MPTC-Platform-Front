@@ -226,7 +226,11 @@ export function MAttendanceRecord({productsData, onClick}) {
 
   const [filterText, setFilterText] = useState('');
   const [dateFilter, setDateFilter] = useState(''); // State for date filter
-  const [data, setData] = useState(productsData);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+     setData(productsData);
+  }, [productsData]);
 
   // Handle filtering by staff name and record date
   const filteredItems = data.filter(item => {

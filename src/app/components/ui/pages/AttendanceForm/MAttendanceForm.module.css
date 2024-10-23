@@ -109,4 +109,31 @@
   .submitButton:hover {
     background-color: #4b0f88;
   }
+
+  .inputGroup {
+    position: relative;  /* For absolute positioning of suggestions */
+  }
+  
+  .suggestionsList {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .suggestionItem {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .suggestionItem:hover {
+    background-color: #f0f0f0;  /* Change background on hover */
+  }
+  
   
