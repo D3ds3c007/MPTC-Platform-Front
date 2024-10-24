@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import DataTable from 'react-data-table-component';
 import { CSVLink } from 'react-csv';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons CSS
+import { position } from '@chakra-ui/react';
 
 // Helper function to format date as yyyy-MM-dd
 const formatDate = (dateString) => {
@@ -17,75 +18,7 @@ const formatTime = (timeString) => {
 };
 
 
-const columns = [
-  {
-    name: 'ID',
-    selector: row => row.attendanceId,
-    sortable: true,
-    width: '50px'
-    //change the width of this column
 
-  },
-  {
-    name: 'Staff ID',
-    selector: row => row.matricule,
-    sortable: true,
-    width: '150px'
-  },
-  {
-    name: 'Staff Name',
-    selector: row => row.staffName,
-    sortable: true,
-    width: '200px'
-  },
-  {
-    name: 'Record Date',
-    selector: row => formatDate(row.recordDate), // Format the date
-    sortable: true,
-  },
-  {
-    name: 'Clock In',
-    selector: row => formatTime(row.timeIn), // Format the time
-    cell: (row) => <span style={{ color: 'green' }}>{formatTime(row.timeIn)}</span>, // Color ClockIn green
-    sortable: true,
-    width: '100px'
-  },
-  {
-    name: 'Clock Out',
-    selector: row => formatTime(row.timeOut), // Format the time
-    cell: (row) => <span style={{ color: 'red' }}>{formatTime(row.timeOut)}</span>, // Color ClockOut red
-    sortable: true,
-    width: '100px'
-
-  },
-  {
-    name: 'Remark',
-    selector: row => row.remark,
-    cell: (row) => <RemarkCell remark={row.remark} />,
-    sortable: true,
-  },
-  {
-    name: 'Status',
-    cell: (row) => <span
-                style={{
-                    color: row.isLate ? 'red' : 'green',
-                    backgroundColor: row.isLate ? "rgba(255, 0, 0, 0.1)" : "rgba(0, 255, 0, 0.1)",
-                    padding: "5px",
-                    borderRadius: "0 4px 4px 0",
-                    fontSize: "12px",
-                    textAlign: "center",
-                }}
-            >
-                {row.isLate ? 'Late' : 'On Time'}
-            </span>,
-    sortable: false, // Optionally make this column unsortable
-    center : true
-  },
-  {
-    name: 'Actions',
-    cell: (row) => <ActionMenu row={row} />,
-  },
-];
 
 // Component for displaying remark with "See More" option
 const RemarkCell = ({ remark }) => {
@@ -119,7 +52,7 @@ const RemarkCell = ({ remark }) => {
 };
 
 // Component for the action menu (three dots and dropdown)
-const ActionMenu = ({ row }) => {
+const ActionMenu = ({ row, onEditClick}) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -146,7 +79,7 @@ const ActionMenu = ({ row }) => {
   }, [dropdownVisible]);
 
   const handleEditProduct = () => {
-    alert(`Edit Entry for ID: ${row.attendanceId}`);
+    onEditClick(row);
     setDropdownVisible(false); // Close the dropdown after clicking edit
   };
 
@@ -206,23 +139,90 @@ const customStyles = {
   table: {
     style: {
       borderRadius: '12px',
-      overflow: 'hidden',
-      marginTop:'20px'
-    },
+    }
+    
   },
+
   headRow: {
     style: {
       borderRadius: '12px 12px 0 0',
+      width: 'fit-content',
     },
   },
-  rows: {
-    style: {
-      marginBottom: '5px',
-    },
-  },
+
 };
 
-export function MAttendanceRecord({productsData, onClick}) {
+export function MAttendanceRecord({productsData, onClick, onEditClick}) {
+
+  const columns = [
+    {
+      name: 'ID',
+      selector: row => row.attendanceId,
+      sortable: true,
+      width: '50px'
+      //change the width of this column
+  
+    },
+    {
+      name: 'Staff ID',
+      selector: row => row.matricule,
+      sortable: true,
+      width: '150px'
+    },
+    {
+      name: 'Staff Name',
+      selector: row => row.staffName,
+      sortable: true,
+      width: '200px'
+    },
+    {
+      name: 'Record Date',
+      selector: row => formatDate(row.recordDate), // Format the date
+      sortable: true,
+    },
+    {
+      name: 'Clock In',
+      selector: row => formatTime(row.timeIn), // Format the time
+      cell: (row) => <span style={{ color: 'green' }}>{formatTime(row.timeIn)}</span>, // Color ClockIn green
+      sortable: true,
+      width: '100px'
+    },
+    {
+      name: 'Clock Out',
+      selector: row => formatTime(row.timeOut), // Format the time
+      cell: (row) => <span style={{ color: 'red' }}>{formatTime(row.timeOut)}</span>, // Color ClockOut red
+      sortable: true,
+      width: '100px'
+  
+    },
+    {
+      name: 'Remark',
+      selector: row => row.remark,
+      cell: (row) => <RemarkCell remark={row.remark} />,
+      sortable: true,
+    },
+    {
+      name: 'Status',
+      cell: (row) => <span
+                  style={{
+                      color: row.isLate ? 'red' : 'green',
+                      backgroundColor: row.isLate ? "rgba(255, 0, 0, 0.1)" : "rgba(0, 255, 0, 0.1)",
+                      padding: "5px",
+                      borderRadius: "0 4px 4px 0",
+                      fontSize: "12px",
+                      textAlign: "center",
+                  }}
+              >
+                  {row.isLate ? 'Late' : 'On Time'}
+              </span>,
+      sortable: false, // Optionally make this column unsortable
+      center : true
+    },
+    {
+      name: 'Actions',
+      cell: (row) => <ActionMenu row={row} onEditClick={onEditClick} />,
+    },
+  ];
 
   const [filterText, setFilterText] = useState('');
   const [dateFilter, setDateFilter] = useState(''); // State for date filter
@@ -253,11 +253,11 @@ export function MAttendanceRecord({productsData, onClick}) {
   
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px'}}>
       {/* Filter and Actions */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom:'20px' }}>
         {/* Filters */}
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '10px'}}>
           {/* Staff Name Filter */}
           <input
             type="text"
@@ -320,10 +320,11 @@ export function MAttendanceRecord({productsData, onClick}) {
       <DataTable
         columns={columns}
         data={filteredItems}
-        pagination
-        highlightOnHover
         customStyles={customStyles}
+        highlightOnHover
         defaultSortFieldId={1}
+        fixedHeader={true}
+        fixedHeaderScrollHeight='400px'
       />
 
       {/* Hidden input field for demo purposes */}

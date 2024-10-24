@@ -11,6 +11,8 @@ export default function ActivityPage() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [currentRecord, setCurrentRecord] = useState(null); // Track current record for editing
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         // Fetch data using axios
@@ -30,6 +32,13 @@ export default function ActivityPage() {
     }, []);
 
     const handleAddButtonClick = () => {
+        setIsEditing(false)
+        setIsPopupVisible(true);
+    };
+
+    const handleEditButtonClick = (record) => {
+        setIsEditing(true); // We are editing a record
+        setCurrentRecord(record); // Set the record to be edited
         setIsPopupVisible(true);
     };
 
@@ -38,17 +47,36 @@ export default function ActivityPage() {
         setIsPopupVisible(false); // Close the popup
     };
 
+    const handleEditRecord = (updatedRecord) => {
+        console.log(data + "Before updated ");
+        
+        setData((prevData) =>
+            prevData.map((item => item.attendanceId === updatedRecord.attendanceId ? updatedRecord : item))
+        );
+        console.log(data + "updated ");
+        setIsPopupVisible(false); // Close the popup after editing
+    };
+
     const onClose = () => {
         setIsPopupVisible(false);
     };
 
     return (
         <>
+
+            <h1 style={{
+                color : "var(--dark-blue)",
+                fontWeight: "600"
+            }}>Attendance Records</h1>  
             {isPopupVisible && 
                 <MPopup title="Add Employee" onClose={onClose}>
-                    <MAttendanceForm onAddRecord={handleAddRecord} />
+                    <MAttendanceForm onAddRecord={handleAddRecord} onEditRecord={handleEditRecord} initialData={currentRecord} isEditing={isEditing} setIsEditing={setIsEditing} />
                 </MPopup>}
-            {loading ? <MLoading /> : <MAttendanceRecord productsData={data} onClick={handleAddButtonClick} />}
+                
+            {loading ? <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+        }}><MLoading /></div> : <MAttendanceRecord productsData={data} onClick={handleAddButtonClick} onEditClick={handleEditButtonClick}/>}
         </>
     );
 }

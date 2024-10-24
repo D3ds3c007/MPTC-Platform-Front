@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from '@/app/lib/axiosInstance';
 import styles from './MAttendanceForm.module.css';
 
-export function MAttendanceForm({onAddRecord}) {
+export function MAttendanceForm({onAddRecord, onEditRecord, initialData = null, isEditing = false, setIsEditing}) {
   const [formData, setFormData] = useState({
     matricule: '',  // New field for Staff Matricule
     date: '',
@@ -12,6 +12,32 @@ export function MAttendanceForm({onAddRecord}) {
   });
 
   const [suggestions, setSuggestions] = useState([]);  // To store auto-suggest results
+
+  useEffect(() => {
+    if (isEditing && initialData) {
+      console.log(initialData);
+      setFormData({
+        attendanceId: initialData.attendanceId,
+        matricule: initialData.matricule,
+        date: formatDate(initialData.recordDate),
+        clockIn: formatTime(initialData.timeIn),
+        clockOut: formatTime(initialData.timeOut),
+        remarks: initialData.remark
+      });
+    }
+  }, [isEditing, initialData]);
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return new Date(dateString).toLocaleDateString('en-CA', options); // Format as yyyy-MM-dd
+  };
+  
+  // Format time function (hh:mm)
+  const formatTime = (timeString) => {
+    if (!timeString) return 'N/A';
+    const time = new Date(`1970-01-01T${timeString}`);
+    return time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
 
   // Handle input change
   const handleChange = (e) => {
@@ -52,30 +78,50 @@ export function MAttendanceForm({onAddRecord}) {
 
     // Format clockIn and clockOut to "hh:mm:ss"
     const formattedData = {
+      AttendanceId : formData.attendanceId,
       Matricule: formData.matricule,
       Date: formData.date,
       ClockIn: formData.clockIn ? `${formData.clockIn}:00` : null, // Add seconds for TimeSpan compatibility
       ClockOut: formData.clockOut ? `${formData.clockOut}:00` : null,
       Remarks: formData.remarks
     };
-
-    axios.post("Attendance/record", formattedData)
-      .then(response => {
-        // Clear the form after submission if necessary
-        setFormData({
-          matricule: '',
-          date: '',
-          clockIn: '',
-          clockOut: '',
-          remarks: ''
-        });
-
-        //update the data state with the new record
-        onAddRecord(response.data);
+    if(isEditing){
+      console.log("editing");
+      axios.put("Attendance/record", formattedData)
+      .then(response =>{
+        onEditRecord(response.data);
+        setIsEditing(false);
       })
       .catch(error => {
         console.log(error.response?.data || error.message);
-      });
+      }
+      )
+      
+    }else{
+
+        axios.post("Attendance/record", formattedData)
+        .then(response => {
+          // Clear the form after submission if necessary
+          setFormData({
+            matricule: '',
+            date: '',
+            clockIn: '',
+            clockOut: '',
+            remarks: ''
+          });
+
+          //update the data state with the new record
+          onAddRecord(response.data);
+        })
+        .catch(error => {
+          console.log(error.response?.data || error.message);
+        });
+
+    }
+
+
+
+    
   };
 
   return (
@@ -83,14 +129,15 @@ export function MAttendanceForm({onAddRecord}) {
       <div className={styles.iconContainer}>
         <span className={styles.clockIcon}>🕒</span>
       </div>
-      <h2 className={styles.title}>Record Employee Attendance</h2>
+      <h3 className={styles.title}>Record Employee Attendance</h3>
       <p className={styles.description}>
-        Enter the employee's Clock In and Clock Out times, along with any relevant remarks. Double-check for accuracy before submitting.
+        Enter the employee s Clock In and Clock Out times, along with any relevant remarks. Double-check for accuracy before submitting.
       </p>
 
       <form className={styles.formGroup} onSubmit={handleSubmit}>
         {/* Staff Matricule Input */}
         <div className={styles.inputGroup}>
+          <input type="number" name="attendanceId" hidden value={formData.attendanceId} />
           <label>Staff Matricule</label>
           <input
             type="text"
