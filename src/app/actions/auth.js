@@ -12,13 +12,13 @@ export async function signup(state, formData) {
         password: formData.get('password')
     });
 
-    //if the form data is invalid, return early
-    // if(!validatedFields.success){
-    //     console.log('Form data is invalid');
-    //     return {
-    //         errors: validatedFields.error.flatten().fieldErrors,
-    //     }
-    // }
+    // if the form data is invalid, return early
+    if(!validatedFields.success){
+        console.log('Form data is invalid');
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+        }
+    }
 
     try {
         // Send the request and wait for the response
