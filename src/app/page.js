@@ -179,7 +179,7 @@ export default function Page() {
 
                 <div className="row">
 
-                  <div className="col-md-6" style={{
+                  <div className="col-md-5" style={{
                     display: 'flex',
                     flexDirection: 'row',
                     flexWrap: 'wrap',
