@@ -1,4 +1,5 @@
-import { MButton } from "@/app/components/ui/Button/MButton";
+"use client";
+
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
@@ -6,8 +7,12 @@ import { MExamForm } from "@/app/components/ui/ExamForm/MExamForm";
 import { MChart } from "@/app/components/ui/Chart/MChart";
 import { MTable } from "@/app/components/ui/Table/MTable";
 import { MFolderCard } from "@/app/components/ui/FolderCard/MFolderCard";
+import { MDragAndDropUpload } from "@/app/components/ui/DragAndDropUpload/MDragAndDropUpload";
+import { useForm, FormProvider } from 'react-hook-form'; // Import necessary hooks
 
 export default function Page() {
+  const methods = useForm(); // Initialize the form methods
+
   return (
     <>
       <MSideBar>
@@ -115,7 +120,7 @@ export default function Page() {
                           flexDirection: 'row',
                           flexWrap: 'wrap',
                         }}>
-                          
+                          <MDragAndDropUpload/> {/* This now has form context */}
                         </div>
 
 
