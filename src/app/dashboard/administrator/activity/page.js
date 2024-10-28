@@ -37,23 +37,27 @@ export default function ActivityPage() {
     };
 
     const handleEditButtonClick = (record) => {
+
+
+        //loop record and display newrecord
+        
         setIsEditing(true); // We are editing a record
         setCurrentRecord(record); // Set the record to be edited
         setIsPopupVisible(true);
     };
 
     const handleAddRecord = (newRecord) => {
+        
         setData((prevData) => [...prevData, newRecord]); // Add new record to the state
         setIsPopupVisible(false); // Close the popup
     };
 
     const handleEditRecord = (updatedRecord) => {
-        console.log(data + "Before updated ");
-        
+
         setData((prevData) =>
             prevData.map((item => item.attendanceId === updatedRecord.attendanceId ? updatedRecord : item))
         );
-        console.log(data + "updated ");
+
         setIsPopupVisible(false); // Close the popup after editing
     };
 

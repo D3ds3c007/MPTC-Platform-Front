@@ -179,6 +179,8 @@ export function MAttendanceRecord({productsData, onClick, onEditClick}) {
       name: 'Record Date',
       selector: row => formatDate(row.recordDate), // Format the date
       sortable: true,
+      width: '150px'
+      
     },
     {
       name: 'Clock In',
@@ -203,20 +205,24 @@ export function MAttendanceRecord({productsData, onClick, onEditClick}) {
     },
     {
       name: 'Status',
-      cell: (row) => <span
-                  style={{
-                      color: row.isLate ? 'red' : 'green',
-                      backgroundColor: row.isLate ? "rgba(255, 0, 0, 0.1)" : "rgba(0, 255, 0, 0.1)",
-                      padding: "5px",
-                      borderRadius: "0 4px 4px 0",
-                      fontSize: "12px",
-                      textAlign: "center",
-                  }}
-              >
-                  {row.isLate ? 'Late' : 'On Time'}
-              </span>,
-      sortable: false, // Optionally make this column unsortable
-      center : true
+  cell: (row) => (
+    <span
+      style={{
+        color: row.remark === "Absent" ? 'gray' : (row.isLate ? 'red' : 'green'),
+        backgroundColor: row.remark === "absent" ? "rgba(128, 128, 128, 0.1)" : (row.isLate ? "rgba(255, 0, 0, 0.1)" : "rgba(0, 255, 0, 0.1)"),
+        padding: "5px",
+        borderRadius: "0 4px 4px 0",
+        fontSize: "12px",
+        textAlign: "center",
+      }}
+    >
+      {row.remark === "Absent" 
+        ? "Absent" 
+        : (row.isLate ? "Late" : "On Time")}
+    </span>
+  ),
+  sortable: true, // Optionally make this column unsortable
+  center: true
     },
     {
       name: 'Actions',
