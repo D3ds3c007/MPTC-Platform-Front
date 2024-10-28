@@ -15,6 +15,16 @@ export default function Info(){
                         }}>
                             
                             <MFolderCard />
+
+                            <div className="col-md-6" style={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              flexWrap: 'wrap',
+                              border: '1px solid #CFD4FA',
+                              borderRadius: '10px',
+                            }}>
+                              
+                            </div>
                         </div>
                     
                     </MCard>
@@ -28,49 +38,8 @@ export default function Info(){
 
 
             <div className="col-md-11">
-              <MCard title="Exam Informations">   
+              <MCard title="Stats Overview">   
                   <div className="row">
-
-                        <div className="col-md-4" style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'wrap',
-                        }}>
-                          <MFolderCard></MFolderCard>
-                        </div>
-
-                        <div className="col-md-4" style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'wrap',
-                          border: '1px solid #CFD4FA',
-                          borderRadius: '10px',
-                        }}>
-                          
-                        </div>
-
-                        <div className="col-md-1" style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'wrap',
-                        }}>
-                          {/* <MDragAndDropUpload/> This now has form context */}
-                        </div>
-
-
-                        <div className="col-md-3" style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'wrap',
-                          backgroundColor: '#CFD4FA',
-                          borderRadius: '10px',
-                          padding: '20px',
-                        }}>
-                          <h4>Action</h4>
-                          <p><i></i> Update Informations</p>
-                          <p><i></i> Delete Folder</p>
-
-                        </div>
 
 
                   </div>

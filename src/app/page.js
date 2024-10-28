@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
@@ -7,7 +7,7 @@ import { MExamForm } from "@/app/components/ui/ExamForm/MExamForm";
 import { MChart } from "@/app/components/ui/Chart/MChart";
 import { MTable } from "@/app/components/ui/Table/MTable";
 import { MFolderCard } from "@/app/components/ui/FolderCard/MFolderCard";
-import { MDragAndDropUpload } from "@/app/components/ui/DragAndDropUpload/MDragAndDropUpload";
+import { MUploadZipFile } from "@/app/components/ui/UploadZipFile/MUploadZipFile";
 import { useForm, FormProvider } from 'react-hook-form'; // Import necessary hooks
 
 export default function Page() {
@@ -100,8 +100,11 @@ export default function Page() {
                           flexWrap: 'wrap',
                           border: '1px solid #CFD4FA',
                           borderRadius: '10px',
+                          padding: '20px'
                         }}>
-                          
+                           <FormProvider>
+                            <MUploadZipFile/> This  now has form context
+                          </FormProvider>
                         </div>
 
                         <div className="col-md-1" style={{
@@ -109,7 +112,7 @@ export default function Page() {
                           flexDirection: 'row',
                           flexWrap: 'wrap',
                         }}>
-                          {/* <MDragAndDropUpload/> This now has form context */}
+                         
                         </div>
 
 
@@ -124,7 +127,6 @@ export default function Page() {
                           <h4>Action</h4>
                           <p><i></i> Update Informations</p>
                           <p><i></i> Delete Folder</p>
-
                         </div>
 
 
@@ -152,7 +154,7 @@ export default function Page() {
 
 
 
-            <div className="col-md-12">
+            <div className="col-md-11">
               <MCard title="System Performance">   
                 <div style={{
                   display: 'flex',
