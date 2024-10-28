@@ -74,8 +74,7 @@ export function MExamForm() {
                 </div>
             </div>
 
-            <MButton children="Create" />
-
+            <MButton>Create</MButton>
 
             {/* <div className={styles["form-group"]}>
                 <button type="submit" className={styles["submit-button"]}>Create</button>

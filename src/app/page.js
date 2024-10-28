@@ -80,24 +80,13 @@ export default function Page() {
 
 
 
-            <div className="col-md-11">
-              <MCard title="Add Exam Form">   
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                }}>
-                    <MExamForm></MExamForm>
-                </div>
-              </MCard>
-              
-            </div>
+            
 
             <div className="col-md-11">
               <MCard title="Exam Informations">   
                   <div className="row">
 
-                        <div className="col-md-3" style={{
+                        <div className="col-md-4" style={{
                           display: 'flex',
                           flexDirection: 'row',
                           flexWrap: 'wrap',
@@ -120,7 +109,7 @@ export default function Page() {
                           flexDirection: 'row',
                           flexWrap: 'wrap',
                         }}>
-                          <MDragAndDropUpload/> {/* This now has form context */}
+                          {/* <MDragAndDropUpload/> This now has form context */}
                         </div>
 
 
@@ -163,7 +152,7 @@ export default function Page() {
 
 
 
-            <div className="col-md-11">
+            <div className="col-md-12">
               <MCard title="System Performance">   
                 <div style={{
                   display: 'flex',

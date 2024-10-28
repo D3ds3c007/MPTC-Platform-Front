@@ -3,7 +3,7 @@ import styles from './MDragAndDropUpload.module.css';
 import { useFormContext } from 'react-hook-form';
 
 export function MDragAndDropUpload() {
-  const { register, setValue } = useFormContext(); // Import setValue from React Hook Form
+  // const { register, setValue } = useFormContext(); // Import setValue from React Hook Form
   const [files, setFiles] = useState([]);
 
   const handleDrop = (e) => {

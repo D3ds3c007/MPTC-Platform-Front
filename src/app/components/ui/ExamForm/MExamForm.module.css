@@ -47,6 +47,10 @@
   background-color: white;
 }
 
+.exam-form select:focus {
+  color: var(--primary-bg);
+}
+
 .exam-form .input-with-icon {
   position: relative;
 }
@@ -69,7 +73,7 @@
 }
 
 .exam-form .level {
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--default-bg);
   border-radius: 10px;
   padding: 10px 20px;
   background-color: white;
@@ -80,7 +84,8 @@
 }
 
 .exam-form .level.active {
-  background-color: var(--dark-blue);
+  background-color: var(--primary-bg);
+  border: 2px solid var(--primary-bg);
   color: white;
 }
 
@@ -108,7 +113,7 @@
   cursor: pointer;
 }
 
-.exam-form .submit-button {
+/* .exam-form .submit-button {
   grid-column: span 2;
   padding: 15px 0;
   border-radius: 10px;
@@ -121,5 +126,5 @@
 
 .exam-form .submit-button:hover {
   background-color: #4c4caf;
-}
+} */
 

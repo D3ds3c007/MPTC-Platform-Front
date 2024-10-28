@@ -19,19 +19,19 @@ export function MChart() {
           <div className={styles["value-label"]}>15</div>
           <div className={styles["tooltip"]}>AVG: 15,00</div>
           <div className={styles["fill"]}></div>
-          <div className={styles["label"]}>SPELLING</div>
-      </div>
-      <div className={styles["bart"]} data-value="15">
-          <div className={styles["value-label"]}>15</div>
-          <div className={styles["tooltip"]}>AVG: 15,00</div>
-          <div className={styles["fill"]}></div>
-          <div className={styles["label"]}>wRITING</div>
+          <div className={styles["label"]}>WRITING</div>
       </div>
       <div className={styles["bart"]} data-value="15">
           <div className={styles["value-label"]}>15</div>
           <div className={styles["tooltip"]}>AVG: 15,00</div>
           <div className={styles["fill"]}></div>
           <div className={styles["label"]}>LISTENING</div>
+      </div>
+      <div className={styles["bart"]} data-value="15">
+          <div className={styles["value-label"]}>15</div>
+          <div className={styles["tooltip"]}>AVG: 15,00</div>
+          <div className={styles["fill"]}></div>
+          <div className={styles["label"]}>VOCABULAR</div>
       </div>
     </div>
   );

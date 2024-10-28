@@ -21,9 +21,9 @@
   display: flex;
 }
 
-.styled-select:focus {
+/* .styled-select:focus {
   border-color: var(--dark-blue);
-}
+} */
 
 .styled-select option {
   color: var(--dark-blue);
