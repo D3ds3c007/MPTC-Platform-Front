@@ -1,6 +1,6 @@
-import styles from'./MChart.module.css'; // Import the CSS for styling
+import styles from'./MChartBar.module.css'; // Import the CSS for styling
 
-export function MChart() {
+export function MChartBar() {
   return (
     <div className={styles["chart-container"]}>
       <div className={styles["bart"]} data-value="15">

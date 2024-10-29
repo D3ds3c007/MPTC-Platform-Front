@@ -1,7 +1,8 @@
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
-import { MChart } from "@/app/components/ui/Chart/MChart";
+import { MChartBar } from "@/app/components/ui/ChartBar/MChartBar";
 import { MTable } from "@/app/components/ui/Table/MTable";
+import { MPieChart } from "@/app/components/ui/PieChart/MPieChart";
 
 export default function Result(){
     return(
@@ -40,7 +41,7 @@ export default function Result(){
                             flexDirection: 'row',
                             flexWrap: 'wrap',
                         }}>
-                            <MChart></MChart>
+                            <MChartBar></MChartBar>
 
                         </div>
 
@@ -51,7 +52,7 @@ export default function Result(){
                             backgroundColor: '#15004F',
                             borderRadius: '10px',
                         }}>
-
+                            <MPieChart></MPieChart>
                     </div>
                 </div>
 

@@ -4,7 +4,7 @@ import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
 import { MExamForm } from "@/app/components/ui/ExamForm/MExamForm";
-import { MChart } from "@/app/components/ui/Chart/MChart";
+import { MChart } from "@/app/components/ui/ChartBar/MChartBar";
 import { MTable } from "@/app/components/ui/Table/MTable";
 import { MFolderCard } from "@/app/components/ui/FolderCard/MFolderCard";
 import { MUploadZipFile } from "@/app/components/ui/UploadZipFile/MUploadZipFile";
