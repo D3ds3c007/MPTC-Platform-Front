@@ -7,7 +7,7 @@ import { position } from '@chakra-ui/react';
 // Helper function to format date as yyyy-MM-dd
 const formatDate = (dateString) => {
   const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-  return new Date(dateString).toLocaleDateString('en-CA', options);
+  return new Date(dateString).toLocaleDateString('mg-MG', options);
 };
 
 // Helper function to remove seconds and milliseconds from time
@@ -146,7 +146,6 @@ const customStyles = {
   headRow: {
     style: {
       borderRadius: '12px 12px 0 0',
-      width: 'fit-content',
     },
   },
 

@@ -34,7 +34,7 @@ export function MAttendanceForm({onAddRecord, onEditRecord, initialData = null, 
   
   // Format time function (hh:mm)
   const formatTime = (timeString) => {
-    if (!timeString) return 'N/A';
+    if (!timeString) return null;
     const time = new Date(`1970-01-01T${timeString}`);
     return time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
