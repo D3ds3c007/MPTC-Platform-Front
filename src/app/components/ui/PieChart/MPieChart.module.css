@@ -13,10 +13,10 @@
     height: 120px;
     border-radius: 50%;
     background: conic-gradient(
-      #f28b82 0% 25%,   /* Red slice */
-      #aecbfa 25% 50%,  /* Blue slice */
-      #fff475 50% 75%,  /* Yellow slice */
-      #ccff90 75% 100%  /* Green slice */
+      var(--pink-bg) 0% 25%,   /* Red slice */
+      var(--default-bg) 25% 50%,  /* Blue slice */
+      var(--warning-bg) 50% 75%,  /* Yellow slice */
+      var(--success-bg) 75% 100%  /* Green slice */
     );
     margin: 0 auto 20px;
   }

@@ -4,7 +4,7 @@ import styles from'./MPieChart.module.css'; // Import the CSS for styling
 export function MPieChart() {
   return (
     <div className={styles["chart-container"]}>
-    <h2>Assets by Status</h2>
+    <h2>Question Types</h2>
 
     <div className={styles["pie-chart"]}></div>
 
