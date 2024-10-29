@@ -240,7 +240,8 @@ export function MAttendanceRecord({productsData, onClick, onEditClick}) {
   // Handle filtering by staff name and record date
   const filteredItems = data.filter(item => {
     const matchesStaffName = item.staffName && item.staffName.toLowerCase().includes(filterText.toLowerCase());
-    const matchesDate = item.recordDate && item.recordDate.startsWith(dateFilter); // Check if recordDate starts with the input date
+    //check if the record date is equal to dateFilter
+    const matchesDate = formatDate(item.recordDate) === formatDate(dateFilter);
     return matchesStaffName && (dateFilter === '' || matchesDate);
   });
 
