@@ -1,18 +1,11 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { EmojiEvents } from '@mui/icons-material';
 import { amber, grey, brown } from '@mui/material/colors';
 import { Card, CardContent, TextField, Button } from '@mui/material';
 import { MCard } from '../Card/MCard';
-
-const leaderboardData = [
-    { rank: 1, name: 'John Doe', punctuality: '98%', absences: 0, performance: 'Excellent', date: '2024-09-25' },
-    { rank: 2, name: 'Jane Smith', punctuality: '95%', absences: 1, performance: 'Very Good', date: '2024-09-20' },
-    { rank: 3, name: 'Mark Johnson', punctuality: '92%', absences: 2, performance: 'Good', date: '2024-09-19' },
-    { rank: 4, name: 'Anna White', punctuality: '90%', absences: 3, performance: 'Fair', date: '2024-09-15' },
-    { rank: 5, name: 'Chris Lee', punctuality: '88%', absences: 4, performance: 'Average', date: '2024-09-10' },
-];
+import axios from '@/app/lib/axiosInstance';
 
 const columns = [
     {
@@ -35,29 +28,28 @@ const columns = [
     },
     {
         name: 'Employee Name',
-        selector: row => row.name,
+        selector: row => row.staffName,
         sortable: true,
     },
     {
         name: 'Punctuality Score',
-        selector: row => row.punctuality,
+        selector: row => row.latenessCount,
         sortable: true,
     },
     {
         name: 'Total Absences',
-        selector: row => row.absences,
-        cell: row => <span className="absence">{row.absences}</span>,
+        selector: row => row.absenceCount,
+        cell: row => <span className="absence">{row.absenceCount}</span>,
         sortable: true,
     },
     {
         name: 'Overall Performance',
-        selector: row => row.performance,
+        selector: row => row.punctualityRating,
         sortable: true,
         cell: row => (
-            <span className={row.performance.toLowerCase().replace(' ', '-')}>{row.performance}</span>
+            <span className={row.punctualityRating.toLowerCase().replace(' ', '-')}>{row.punctualityRating}</span>
         ),
     }
-    
 ];
 
 const customStyles = {
@@ -94,14 +86,35 @@ const customStyles = {
 export default function MAttendanceLeaderboard() {
     const [search, setSearch] = useState('');
     const [selectedMonth, setSelectedMonth] = useState('');
+    const [leaderboardData, setLeaderboardData] = useState([]);
+
+    // Fetch data from the API
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                //get leaderboard list using axios
+                const response = await axios.get('/attendance/leaderboard');
+
+                console.log(response.data);
+                
+                setLeaderboardData(response.data);
+
+              
+            } catch (error) {
+                console.error('Error fetching leaderboard data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     // Filter function to handle the search and month filtering logic
     const filteredData = leaderboardData.filter(item => {
-        const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase());
-        const itemMonth = new Date(item.date).getMonth() + 1; // Month is zero-indexed
-        const matchesMonth = !selectedMonth || itemMonth === parseInt(selectedMonth);
+        const matchesSearch = item.staffName.toLowerCase().includes(search.toLowerCase());
+        // const itemMonth = new Date(item.date).getMonth() + 1; // Month is zero-indexed
+        // const matchesMonth = !selectedMonth || itemMonth === parseInt(selectedMonth);
 
-        return matchesSearch && matchesMonth;
+        return matchesSearch;
     });
 
     return (
