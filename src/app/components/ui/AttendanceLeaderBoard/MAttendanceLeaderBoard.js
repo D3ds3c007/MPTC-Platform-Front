@@ -6,6 +6,8 @@ import { amber, grey, brown } from '@mui/material/colors';
 import { Card, CardContent, TextField, Button } from '@mui/material';
 import { MCard } from '../Card/MCard';
 import axios from '@/app/lib/axiosInstance';
+import { MLoading } from '../Loading/MLoading';
+import { set } from 'react-hook-form';
 
 const columns = [
     {
@@ -87,20 +89,26 @@ export default function MAttendanceLeaderboard() {
     const [search, setSearch] = useState('');
     const [selectedMonth, setSelectedMonth] = useState('');
     const [leaderboardData, setLeaderboardData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     // Fetch data from the API
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setIsLoading(true);
+
                 //get leaderboard list using axios
                 const response = await axios.get('/attendance/leaderboard');
 
                 console.log(response.data);
                 
                 setLeaderboardData(response.data);
+                setIsLoading(false);
 
               
             } catch (error) {
+                setIsLoading(false);
+
                 console.error('Error fetching leaderboard data:', error);
             }
         };
@@ -118,73 +126,81 @@ export default function MAttendanceLeaderboard() {
     });
 
     return (
+        <>
+        {isLoading ? <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+        }}><MLoading /></div> : 
+        
         <MCard style={{ margin: '20px auto', maxWidth: '1000px' }} title='Top Employee Attendance Leaderboard'>
-            {/* Filters: Month Selection and Search */}
-            <div style={{ marginBottom: '20px', display: 'flex' }}>
-                <TextField
-                    style={{ flex: 1, marginRight: '10px' }}
-                    select
-                    label="Select Month"
-                    value={selectedMonth}
-                    onChange={e => setSelectedMonth(e.target.value)}
-                    SelectProps={{ native: true }}
-                >
-                    <option value="">All Months</option>
-                    {Array.from({ length: 12 }, (_, i) => (
-                        <option key={i + 1} value={i + 1}>
-                            {new Date(0, i).toLocaleString('default', { month: 'long' })}
-                        </option>
-                    ))}
-                    
-                </TextField>
-                <TextField
-                    style={{ flex: 1 }}
-                    label="Search by Employee Name"
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
-                />
-            </div>
-
-            {/* Data Table */}
-            <DataTable
-                columns={columns}
-                data={filteredData}
-                customStyles={customStyles}
-                highlightOnHover
-                pagination
+        {/* Filters: Month Selection and Search */}
+        <div style={{ marginBottom: '20px', display: 'flex' }}>
+            <TextField
+                style={{ flex: 1, marginRight: '10px' }}
+                select
+                label="Select Month"
+                value={selectedMonth}
+                onChange={e => setSelectedMonth(e.target.value)}
+                SelectProps={{ native: true }}
+            >
+                <option value="">All Months</option>
+                {Array.from({ length: 12 }, (_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                        {new Date(0, i).toLocaleString('default', { month: 'long' })}
+                    </option>
+                ))}
+                
+            </TextField>
+            <TextField
+                style={{ flex: 1 }}
+                label="Search by Employee Name"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
             />
+        </div>
 
-            <style jsx>{`
-                .absence {
-                    color: #ff4d4d;
-                    font-weight: bold;
-                }
+        {/* Data Table */}
+        <DataTable
+            columns={columns}
+            data={filteredData}
+            customStyles={customStyles}
+            highlightOnHover
+            pagination
+        />
 
-                .excellent {
-                    color: #4CAF50;
-                    font-weight: bold;
-                }
+        <style jsx>{`
+            .absence {
+                color: #ff4d4d;
+                font-weight: bold;
+            }
 
-                .very-good {
-                    color: #66bb6a;
-                    font-weight: bold;
-                }
+            .excellent {
+                color: #4CAF50;
+                font-weight: bold;
+            }
 
-                .good {
-                    color: #ffca28;
-                    font-weight: bold;
-                }
+            .very-good {
+                color: #66bb6a;
+                font-weight: bold;
+            }
 
-                .fair {
-                    color: #ffa726;
-                    font-weight: bold;
-                }
+            .good {
+                color: #ffca28;
+                font-weight: bold;
+            }
 
-                .average {
-                    color: #f44336;
-                    font-weight: bold;
-                }
-            `}</style>
-        </MCard>
+            .fair {
+                color: #ffa726;
+                font-weight: bold;
+            }
+
+            .average {
+                color: #f44336;
+                font-weight: bold;
+            }
+        `}</style>
+    </MCard>}
+        
+        </>
     );
 }
