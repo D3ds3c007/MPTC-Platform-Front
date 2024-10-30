@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import styles from './MCard.module.css';
 import { set } from 'react-hook-form';
 
-export function MCard({ setOn, children, width = '100%', height = 'auto', bgColor = 'white', padding = '20px', title = '', toggle = false, isIn = false, description = '', alignment = '' }) {
+export function MCard({ setOn, children, width = '100%', height = 'auto', bgColor = 'white', padding = '20px', title = '', toggle = false, isIn = false, description = '', alignment = 'center' }) {
     const [isToggled, setIsToggled] = useState(false);
     const [isClockIn, setIsClockIn] = useState({isIn});
 
@@ -43,7 +43,7 @@ export function MCard({ setOn, children, width = '100%', height = 'auto', bgColo
                 flexWrap: 'wrap',
                 gap: '1.2em',
                 padding: '5px',
-                justifyContent : 'center',
+                justifyContent : `${alignment}`,
                 
             }}>
                 {children}

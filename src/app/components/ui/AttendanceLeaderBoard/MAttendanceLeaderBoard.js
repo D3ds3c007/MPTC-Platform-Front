@@ -8,6 +8,7 @@ import { MCard } from '../Card/MCard';
 import axios from '@/app/lib/axiosInstance';
 import { MLoading } from '../Loading/MLoading';
 import { set } from 'react-hook-form';
+import styles from './MAttendanceLeaderBoard.module.css';
 
 const columns = [
     {
@@ -34,15 +35,21 @@ const columns = [
         sortable: true,
     },
     {
-        name: 'Punctuality Score',
+        name: 'Total Lateness',
         selector: row => row.latenessCount,
         sortable: true,
+        style: {
+            color: 'red',
+        },
+        center: true,
     },
     {
         name: 'Total Absences',
         selector: row => row.absenceCount,
         cell: row => <span className="absence">{row.absenceCount}</span>,
         sortable: true,
+        center: true,
+
     },
     {
         name: 'Overall Performance',
@@ -91,6 +98,23 @@ export default function MAttendanceLeaderboard() {
     const [leaderboardData, setLeaderboardData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    //useEffect and call the API to get the leaderboard data if selectedMonth changes
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setIsLoading(true);
+                const response = await axios.get(`/attendance/leaderboard?month=${selectedMonth}`);
+                setLeaderboardData(response.data);
+                setIsLoading(false);
+            }
+            catch (error) {
+                setIsLoading(false);
+                console.error('Error fetching leaderboard data:', error);
+            }
+        };
+        fetchData();
+    }, [selectedMonth]);
+
     // Fetch data from the API
     useEffect(() => {
         const fetchData = async () => {
@@ -132,10 +156,10 @@ export default function MAttendanceLeaderboard() {
             justifyContent: 'center',
         }}><MLoading /></div> : 
         
-        <MCard style={{ margin: '20px auto', maxWidth: '1000px' }} title='Top Employee Attendance Leaderboard'>
+        <MCard style={{ margin: '20px auto', maxWidth: '1000px' }} title='Top Employee Attendance Leaderboard' alignment=''>
         {/* Filters: Month Selection and Search */}
-        <div style={{ marginBottom: '20px', display: 'flex' }}>
-            <TextField
+        <div  className={styles['form-group']} name="test">
+            <select
                 style={{ flex: 1, marginRight: '10px' }}
                 select
                 label="Select Month"
@@ -150,10 +174,11 @@ export default function MAttendanceLeaderboard() {
                     </option>
                 ))}
                 
-            </TextField>
-            <TextField
+            </select>
+            <input
+                type="text"
                 style={{ flex: 1 }}
-                label="Search by Employee Name"
+                placeholder="Search by Employee Name ... "
                 value={search}
                 onChange={e => setSearch(e.target.value)}
             />
