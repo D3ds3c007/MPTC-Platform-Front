@@ -81,6 +81,7 @@
   cursor: pointer;
   flex: 1;
   margin-right: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .exam-form .level.active {
