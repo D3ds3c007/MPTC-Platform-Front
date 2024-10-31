@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import DataTable from 'react-data-table-component';
 import { EmojiEvents } from '@mui/icons-material';
 import { amber, grey, brown } from '@mui/material/colors';
@@ -92,56 +92,35 @@ const customStyles = {
     },
 };
 
-export default function MAttendanceLeaderboard() {
+export default function MAttendanceLeaderboard({ data, setLeaderboardData, isLoading, setIsLoading }) {
     const [search, setSearch] = useState('');
     const [selectedMonth, setSelectedMonth] = useState('');
-    const [leaderboardData, setLeaderboardData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const hasFetched = useRef(false);
+
 
     //useEffect and call the API to get the leaderboard data if selectedMonth changes
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
-                const response = await axios.get(`/attendance/leaderboard?month=${selectedMonth}`);
-                setLeaderboardData(response.data);
-                setIsLoading(false);
-            }
-            catch (error) {
-                setIsLoading(false);
-                console.error('Error fetching leaderboard data:', error);
-            }
-        };
-        fetchData();
+        if (hasFetched.current) {
+            // Skip fetch if it's the initial render
+            const fetchData = async () => {
+                try {
+                    setIsLoading(true);
+                    const response = await axios.get(`/attendance/leaderboard?month=${selectedMonth}`);
+                    setLeaderboardData(response.data);
+                } catch (error) {
+                    console.error('Error fetching leaderboard data:', error);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+            fetchData();
+        } else {
+            hasFetched.current = true; // Set to true after the initial render
+        }
     }, [selectedMonth]);
 
-    // Fetch data from the API
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
-
-                //get leaderboard list using axios
-                const response = await axios.get('/attendance/leaderboard');
-
-                console.log(response.data);
-                
-                setLeaderboardData(response.data);
-                setIsLoading(false);
-
-              
-            } catch (error) {
-                setIsLoading(false);
-
-                console.error('Error fetching leaderboard data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
     // Filter function to handle the search and month filtering logic
-    const filteredData = leaderboardData.filter(item => {
+    const filteredData = data.filter(item => {
         const matchesSearch = item.staffName.toLowerCase().includes(search.toLowerCase());
         // const itemMonth = new Date(item.date).getMonth() + 1; // Month is zero-indexed
         // const matchesMonth = !selectedMonth || itemMonth === parseInt(selectedMonth);
@@ -151,10 +130,7 @@ export default function MAttendanceLeaderboard() {
 
     return (
         <>
-        {isLoading ? <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-        }}><MLoading /></div> : 
+        
         
         <MCard style={{ margin: '20px auto', maxWidth: '1000px' }} title='Top Employee Attendance Leaderboard' alignment=''>
         {/* Filters: Month Selection and Search */}
@@ -224,7 +200,7 @@ export default function MAttendanceLeaderboard() {
                 font-weight: bold;
             }
         `}</style>
-    </MCard>}
+    </MCard>
         
         </>
     );

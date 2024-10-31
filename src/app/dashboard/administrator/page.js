@@ -71,43 +71,6 @@ export default function AdminPage() {
         }
         }, []);
 
-
-    // Simulate adding new activity
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         const newActivity = {
-    //             attendance: "New Activity",
-    //             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // Current time
-    //             role: "Role",
-    //             variant: "clock-in",
-    //             show: true, // Set show to true for new activity
-    //         };
-
-    //         // Add new activity to the top of the list
-    //         setActivities((prev) => {
-    //             const updatedActivities = [newActivity, ...prev]; // Prepend the new activity
-
-    //             // Limit the number of activities to 2
-    //             if (updatedActivities.length > 2) {
-    //                 return updatedActivities.slice(0, 2); // Keep only the first two
-    //             }
-    //             return updatedActivities;
-    //         });
-
-    //         // Set a timeout to remove the animation state after the animation duration
-    //         setTimeout(() => {
-    //             setActivities((prev) => {
-    //                 // Set show to false for the newly added activity after animation
-    //                 return prev.map((activity, index) =>
-    //                     index === 0 ? { ...activity, show: true, variant: "clock-out" } : activity // Set the first activity's show to false
-    //                 );
-    //             });
-    //         }, 500); // Match this with the duration of the CSS transition
-    //     }, 5000); // Change this interval to your preference
-
-    //     return () => clearInterval(interval); // Cleanup interval on unmount
-    // }, []);
-
     return (
         <>   
         <h1 style={{
