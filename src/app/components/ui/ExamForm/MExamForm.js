@@ -2,7 +2,8 @@ import { useState } from 'react';
 import styles from'./MExamForm.module.css'; // Import the CSS for styling
 import { MButton } from '../Button/MButton';
 import {useFormState, useFormStatus} from 'react-dom';
-import {sendExamForm} from '@/app/actions/exam'
+import {sendExamForm} from '@/app/actions/exam';
+import axios from '@/app/lib/axiosInstance';
 
 export function MExamForm({ levels, subjects, periods }) {
     const [state, action] = useFormState(sendExamForm, undefined);
@@ -44,12 +45,28 @@ export function MExamForm({ levels, subjects, periods }) {
         formData.append('PeriodId', e.target['exam-period'].value);
         formData.append('LevelId', selectedLevel.idLevel); // Include selected level ID
 
-        // for (const [key, value] of formData.entries()) {
-        //     console.log(`${key}: ${value}`);
-        // }
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
 
         // Step 2: Send the form data to the server
-        action(formData);
+        // action(formData);
+
+        try {
+            const response = await axios.post(
+                'Exam/create-exam',
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+            console.log("Exam created successfully:", response.data);
+            // Optionally, reset form or handle success state here
+        } catch (error) {
+            console.error("Error creating exam:", error);
+        }
         
     };
     
@@ -170,12 +187,12 @@ export function MExamForm({ levels, subjects, periods }) {
 };
 
 
-function SubmitButton(){
-    const { pending } = useFormStatus()
+// function SubmitButton(){
+//     const { pending } = useFormStatus()
 
-    return(
-        <MButton disabled={pending} type="submit">
-            {pending ? 'Loading...' : 'Create'}
-        </MButton>
-    )
-}
+//     return(
+//         <MButton disabled={pending} type="submit">
+//             {pending ? 'Loading...' : 'Create'}
+//         </MButton>
+//     )
+// }
