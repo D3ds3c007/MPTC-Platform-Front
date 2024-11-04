@@ -129,3 +129,8 @@
   background-color: #4c4caf;
 } */
 
+.exam-form .learning-levels .level.active {
+  background-color: var(--primary-bg);
+  border-color: var(--primary-bg);
+  color: white;
+}

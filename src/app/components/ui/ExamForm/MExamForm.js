@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import styles from'./MExamForm.module.css'; // Import the CSS for styling
 import { MButton } from '../Button/MButton';
-import axios from '@/app/lib/axiosInstance';
+import {useFormState, useFormStatus} from 'react-dom';
+import {sendExamForm} from '@/app/actions/exam'
 
 export function MExamForm({ levels, subjects, periods }) {
+    const [state, action] = useFormState(sendExamForm, undefined);
     const [selectedLevel, setSelectedLevel] = useState(null);
     const [subjectFile, setSubjectFile] = useState(null);
     const [assetnoteFile, setAssetnoteFile] = useState(null);
@@ -12,8 +14,8 @@ export function MExamForm({ levels, subjects, periods }) {
     const [assetnoteFileName, setAssetnoteFileName] = useState('No file selected'); // State to store modal answer file name
 
     const handleLevelSelect = (level) => {
-        setSelectedLevel(level);
-      };
+        setSelectedLevel(level.idLevel); // Set selected level
+    };
 
     const handleFileChange = (event, setFile, setFileName) => {
         const file = event.target.files[0];
@@ -24,6 +26,7 @@ export function MExamForm({ levels, subjects, periods }) {
     };
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         if (!selectedLevel) {
             alert("Please select a learning level.");
@@ -44,27 +47,10 @@ export function MExamForm({ levels, subjects, periods }) {
         // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         // }
+
+        // Step 2: Send the form data to the server
+        action(formData);
         
-        try {
-            // Send the form data directly to your backend
-            const response = axios.post('Exam/create-exam', formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
-                },
-              });
-    
-            if (!response.ok) {
-                throw new Error('File upload failed');
-            }
-    
-            const result = await response.json();
-            console.log('Data sent successfully:', result);
-            alert('Exam created successfully!');
-    
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
-        }
     };
     
   return (
@@ -109,18 +95,25 @@ export function MExamForm({ levels, subjects, periods }) {
             <div className={styles["form-group"]}>
                 <label>Learning level</label>
                 <div className={styles["learning-levels"]}>
-                        {levels.map(level => (
-                            <button
-                                key={level.idLevel}
-                                type="button"
-                                className={`${styles["level"]} ${selectedLevel === level ? styles["active"] : ""}`} // Use 'active' class
-                                onClick={() => handleLevelSelect(level)}
-                            >
-                                {level.name}
-                            </button>
-                        ))}
+                    {levels.map(level => (
+                        <label
+                            key={level.idLevel}
+                            className={`${styles["level"]} ${selectedLevel === level.idLevel ? styles["active"] : ""}`}
+                        >
+                            <input
+                                type="radio"
+                                name="LevelId"
+                                value={level.idLevel}
+                                checked={selectedLevel === level.idLevel}
+                                onChange={() => handleLevelSelect(level)}
+                                style={{ display: 'none' }} // Hide the radio input itself
+                            />
+                            {level.name}
+                        </label>
+                    ))}
                 </div>
             </div>
+
 
             <br/>
 
@@ -136,7 +129,7 @@ export function MExamForm({ levels, subjects, periods }) {
                         onChange={(e) => handleFileChange(e, setSubjectFile, setSubjectFileName)} 
                     />
                     
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#15004F" class="bi bi-upload" viewBox="0 0 16 16" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#15004F" className="bi bi-upload" viewBox="0 0 16 16" >
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                         <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
                     </svg>
@@ -158,7 +151,7 @@ export function MExamForm({ levels, subjects, periods }) {
                         onChange={(e) => handleFileChange(e, setAssetnoteFile, setAssetnoteFileName)} 
                     />
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#15004F" class="bi bi-upload" viewBox="0 0 16 16" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#15004F" className="bi bi-upload" viewBox="0 0 16 16" >
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                         <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
                     </svg>
@@ -168,10 +161,8 @@ export function MExamForm({ levels, subjects, periods }) {
             </div>
 
             <MButton>Create</MButton>
+            {/* <SubmitButton /> */}
 
-            {/* <div className={styles["form-group"]}>
-                <button type="submit" className={styles["submit-button"]}>Create</button>
-            </div> */}
         </form>
     </div>
     </>
@@ -179,3 +170,12 @@ export function MExamForm({ levels, subjects, periods }) {
 };
 
 
+function SubmitButton(){
+    const { pending } = useFormStatus()
+
+    return(
+        <MButton disabled={pending} type="submit">
+            {pending ? 'Loading...' : 'Create'}
+        </MButton>
+    )
+}
