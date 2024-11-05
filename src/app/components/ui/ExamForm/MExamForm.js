@@ -16,6 +16,7 @@ export function MExamForm({ levels, subjects, periods }) {
 
     const handleLevelSelect = (level) => {
         setSelectedLevel(level.idLevel); // Set selected level
+        console.log(level); // Log the selected level
     };
 
     const handleFileChange = (event, setFile, setFileName) => {
@@ -43,30 +44,31 @@ export function MExamForm({ levels, subjects, periods }) {
         formData.append('SubjectId', e.target['subject'].value);
         formData.append('DateExam', e.target['exam-date'].value);
         formData.append('PeriodId', e.target['exam-period'].value);
-        formData.append('LevelId', selectedLevel.idLevel); // Include selected level ID
+        formData.append('LevelId', selectedLevel); // Include selected level ID
 
         for (const [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
         }
 
         // Step 2: Send the form data to the server
-        // action(formData);
+        action(formData);
 
-        try {
-            const response = await axios.post(
-                'Exam/create-exam',
-                formData,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                }
-            );
-            console.log("Exam created successfully:", response.data);
-            // Optionally, reset form or handle success state here
-        } catch (error) {
-            console.error("Error creating exam:", error);
-        }
+        // try {
+        //     const response = await axios.post(
+        //         'Exam/create-exam',
+        //         formData,
+        //         {
+        //             headers: {
+        //                 'Content-Type': 'multipart/form-data',
+        //                 'Authorization': `Bearer`,
+        //             },
+        //         }
+        //     );
+        //     console.log("Exam created successfully:", response.data);
+        //     // Optionally, reset form or handle success state here
+        // } catch (error) {
+        //     console.error("Error creating exam:", error);
+        // }
         
     };
     

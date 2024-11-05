@@ -15,7 +15,8 @@ export async function sendExamForm(state, formData) {
         // Await the response from the axios post request
         const response = await axios.post('Exam/create-exam', formData, {
             headers: {
-                'Authorization': `Bearer ${session?.value}`
+                'Authorization': `Bearer ${session?.value}`,
+                'Content-Type': 'multipart/form-data',
             },
         });
 
