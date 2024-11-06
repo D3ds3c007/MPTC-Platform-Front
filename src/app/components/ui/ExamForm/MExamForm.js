@@ -53,23 +53,6 @@ export function MExamForm({ levels, subjects, periods }) {
         // Step 2: Send the form data to the server
         action(formData);
 
-        // try {
-        //     const response = await axios.post(
-        //         'Exam/create-exam',
-        //         formData,
-        //         {
-        //             headers: {
-        //                 'Content-Type': 'multipart/form-data',
-        //                 'Authorization': `Bearer`,
-        //             },
-        //         }
-        //     );
-        //     console.log("Exam created successfully:", response.data);
-        //     // Optionally, reset form or handle success state here
-        // } catch (error) {
-        //     console.error("Error creating exam:", error);
-        // }
-        
     };
     
   return (

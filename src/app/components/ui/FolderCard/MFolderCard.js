@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from'./MFolderCard.module.css'; // Import the CSS for styling
-import Image from 'next/image';
-import logo from './logo.png';
 
-export function MFolderCard({level="A1", variant = 'primary', title="Exam Term 1", session="OCT 2024"}) {
+export function MFolderCard({level, title, session, variant = 'primary'}) {
   return (
     <div className={styles["box"]}>
         <div className={`${styles["folder"]} ${styles[variant]}`}>
@@ -13,7 +11,7 @@ export function MFolderCard({level="A1", variant = 'primary', title="Exam Term 1
                 </div>
                 <br></br>
                 <h5>{title}</h5>
-                <p>Session : {session}</p>
+                <p>{session}</p>
                 <div className={`${styles["three-dot-button"]} ${styles[variant]}`}>
                     <div className={`${styles["dots"]} ${styles[variant]}`}>
                         <span></span>
