@@ -1,0 +1,57 @@
+.mainContent {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Pas de fond gris ici, tout est blanc */
+.whiteBox {
+  background-color: #fff; /* Déjà géré par la classe bg-white de Bootstrap */
+  padding: 20px; /* Déjà géré par la classe p-4 de Bootstrap */
+  border-radius: 8px; /* Déjà géré par la classe rounded de Bootstrap */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère pour donner du relief */
+}
+
+.searchSection {
+  margin-bottom: 40px; /* Réduit l'espace entre la barre de recherche et les filtres */
+  margin-right: 30px;
+}
+
+.filtersSection {
+  margin-bottom: 30px; /* Espace entre les filtres et les ressources */
+  
+ 
+  gap: 40px; /* Uniforme l'espace entre tous les éléments */
+  margin-left: 30px; /* Alignement avec "All Resources" */
+}
+
+.allResources {
+  font-weight: bold;
+  color: #8A3FFC; /* Couleur de All resources */
+  margin-left: 30px;
+}
+
+
+
+.resourcesSection {
+  margin-top: 30px; /* Augmente l'espace au-dessus de la section des ressources */
+}
+
+.topResources {
+  font-size: 20px;
+  font-weight: bold; /* Mise en gras */
+  color: #8A3FFC; /* Même couleur que All resources */
+  margin-left: 30px; /* Alignement avec All Resources */
+  margin-top: 20px; /* Augmente l'espace au-dessus du titre */
+}
+
+.row {
+  margin-left: 30px; /* Alignement à gauche des ressources */
+  margin-right: 30px; /* Alignement à droite des ressources */
+}
+
+.validateButton {
+  height: 50px; /* Augmente la hauteur du bouton */
+  padding: 0 20px; /* Ajuste le remplissage horizontal */
+  font-size: 16px; /* Augmente la taille de la police */
+  align-self: center; /* Aligne le bouton au centre verticalement */
+}
