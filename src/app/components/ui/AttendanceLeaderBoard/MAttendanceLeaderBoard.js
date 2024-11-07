@@ -35,7 +35,7 @@ const columns = [
         sortable: true,
     },
     {
-        name: 'Total Lateness',
+        name: 'Lateness',
         selector: row => row.latenessCount,
         sortable: true,
         style: {
@@ -44,7 +44,16 @@ const columns = [
         center: true,
     },
     {
-        name: 'Total Absences',
+        name: 'Punctuality',
+        selector: row => row.onTimeCount,
+        sortable: true,
+        style: {
+            color: 'green',
+        },
+        center: true,
+    },
+    {
+        name: 'Absences',
         selector: row => row.absenceCount,
         cell: row => <span className="absence">{row.absenceCount}</span>,
         sortable: true,

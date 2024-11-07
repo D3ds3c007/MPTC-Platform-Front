@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 export function MIconicCard({
     data = '2024',
-    icon = 'bi bi-arrow-up-right-circle-fill',
+    icon = 'bi bi-people-fill',
     bootstrapClass = 'col-md-6',
     label = 'This is a card',
     variant = 'default'

@@ -4,16 +4,27 @@ import { MActivity } from "@/app/components/ui/Activity/MActivity";
 import { MVideoFeed } from "@/app/components/ui/VideoFeed/MVideoFeed";
 import { useState, useEffect } from "react";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
+import axios from "@/app/lib/axiosInstance";
 import * as signalR from '@microsoft/signalr';
 
 
 export default function AdminPage() {
     const [activities, setActivities] = useState([]);
     const [currentDate, setCurrentDate] = useState('');
+    const [cardStats, setCardStats] = useState('');
 
 
     useEffect(() => {
         setCurrentDate(getCurrentDate());
+        const response = axios.get('/attendance/stats');
+        response.then((res) => {
+            console.log(res);
+            setCardStats(res.data);
+        }).catch((err) => {
+            console.error(err);
+        }
+        );
+        
     }, []);
 
     const getCurrentDate = () => {
@@ -82,13 +93,13 @@ export default function AdminPage() {
             margin:0,
         }}>
                 <div className="col-md-4" >
-                        <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-4" variant="primary" bootstrapClass="col-md-12"/>
+                        <MIconicCard data={cardStats.totalStaff} label="This number indicates the total staff number at MPTC" bootstrapclassName="col-md-4" variant="primary" bootstrapClass="col-md-12"/>
                 </div>
                 <div className="col-md-4">
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-4" variant="warning"  bootstrapClass="col-md-12"/>
+                    <MIconicCard data={cardStats.punctualityRate + " %"} label="This number describe the punctuality rate" bootstrapclassName="col-md-4" variant="warning"  bootstrapClass="col-md-12" icon="bi bi-hourglass-split"/>
                 </div>
                 <div className="col-md-4">
-                    <MIconicCard data="2024" label="This is a card of lorem Ipsum sum" bootstrapclassName="col-md-4" variant="danger"  bootstrapClass="col-md-12"/>
+                    <MIconicCard data={cardStats.latenessDurationAVG + " min"} label="Lateness duration average in minutes" bootstrapclassName="col-md-4" variant="danger"  bootstrapClass="col-md-12" icon="bi bi-clock-history"/>
                 </div>
 
 
