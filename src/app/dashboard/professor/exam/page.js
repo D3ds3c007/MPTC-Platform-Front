@@ -77,13 +77,16 @@ export default function ExamPage() {
                 }}
               >
                 {exams.map((exam) => (
-                  <MFolderCard key={exam.idExam} exam={exam} />
+                  <MFolderCard key={exam.idExam} level={exam.level} session={exam.session} subject={exam.subject} period={exam.period} />
                 ))}
               </div>
             </>
           )}
 
-        <MAddButton />
+          <a href="exam/create">
+            <MAddButton />
+          </a>
+
       </MCard>
     </div>
   );
