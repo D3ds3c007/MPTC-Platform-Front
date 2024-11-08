@@ -312,3 +312,50 @@ body.dark .home .text{
     padding: 15px;
     gap: 15px;
 }
+
+.dropdown-container {
+    position: relative;
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px; /* Adjust width as needed */
+    background-color: var(--sidebar-primary-color-light);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+/* Show dropdown on hover */
+.dropdown-container:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+    padding: 10px 15px;
+    color: var(--text-color);
+}
+
+.dropdown-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: var(--sidebar-primary-color);
+    color: var(--sidebar-color);
+}

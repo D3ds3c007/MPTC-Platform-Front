@@ -4,6 +4,7 @@ import Image from 'next/image';
 import logo from './logo.png';
 import { Container } from "react-bootstrap";
 import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
 
 
 export function MSideBar({children, currentTitle, onMenuChange}) {
@@ -12,6 +13,12 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
     
     const isAdministrator = path.startsWith('/dashboard/administrator');
     const isProfessor = path.startsWith('/dashboard/professor');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      console.log("trigerred");
+      setIsDropdownOpen(!isDropdownOpen);
+    };
     
 
   return (
@@ -57,18 +64,29 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                     </a>
                   </li>
 
-                  <li className={styles["nav-link"]}>
-                    <a href="/dashboard/administrator/activity">
+                  <li className={`${styles["nav-link"]} ${styles["dropdown-container"]}`}>
+                    <a href="#">
                       <i className={`bx bx-list-ul ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
                       <span className={`${styles.text} ${styles["nav-text"]}`}>Activity Logs</span>
                     </a>
+                    
+                    {/* Inline Dropdown */}
+                    <ul className={styles["dropdown-menu"]}>
+                      <li className={styles["dropdown-item"]}><a href="/dashboard/administrator/activity">Attendance Record</a></li>
+                      <li className={styles["dropdown-item"]}><a href="#subitem2">Logs</a></li>
+                    </ul>
+
+                    
                   </li>
 
-                  <li className={styles["nav-link"]}>
+                  <li className={styles["nav-link"]} 
+                  >
                     <a href="/dashboard/administrator/leaderboard">
                       <i className={`bx bx-trophy ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
                       <span className={`${styles.text} ${styles["nav-text"]}`}>Ranking</span>
                     </a>
+
+                    
                   </li>
                 </>
               )}
