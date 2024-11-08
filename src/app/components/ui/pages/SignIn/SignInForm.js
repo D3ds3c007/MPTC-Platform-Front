@@ -5,6 +5,7 @@ import {useFormState, useFormStatus} from 'react-dom'
 import styles from './SignIn.module.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import { MLoading } from '@/app/components/ui/Loading/MLoading'
 //import bootstrap css
 
 
@@ -66,10 +67,18 @@ export function SignInForm(){
 
 function SubmitButton(){
     const { pending } = useFormStatus()
+    console.log(pending);
 
     return(
-        <MButton disabled={pending} type="submit">
-            {pending ? 'Loading...' : 'Sign In'}
-        </MButton>
+        <>
+      
+             <MButton disabled={pending} type="submit">
+                {pending ? "Loading ..." : "Sign In  "}
+            </MButton>
+         
+         
+        </>
     )
+
+      
 }

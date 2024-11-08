@@ -2,9 +2,10 @@ import styles from './MIconicCard.module.css';
 import { Container } from "react-bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons
 import clsx from 'clsx';
+import {MLoading} from '@/app/components/ui/Loading/MLoading'
 
 export function MIconicCard({
-    data = '2024',
+    data = <MLoading />,
     icon = 'bi bi-people-fill',
     bootstrapClass = 'col-md-6',
     label = 'This is a card',

@@ -152,7 +152,7 @@
                       <input type="text" placeholder="Enter Home Address" {...methods.register("homeAddress", { required: "Home Address is required" })} />
                       {errors.homeAddress && <span className={styles['error']}>{errors.homeAddress.message}</span>}
                     </div>
-                  </div>{styles['error']}
+                  </div>
                 </div>
 
                 {/* Job Information */}

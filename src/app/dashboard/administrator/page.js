@@ -6,25 +6,26 @@ import { useState, useEffect } from "react";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import axios from "@/app/lib/axiosInstance";
 import * as signalR from '@microsoft/signalr';
-
+import { MLoading } from "@/app/components/ui/Loading/MLoading";
 
 export default function AdminPage() {
     const [activities, setActivities] = useState([]);
     const [currentDate, setCurrentDate] = useState('');
     const [cardStats, setCardStats] = useState('');
-
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setCurrentDate(getCurrentDate());
-        const response = axios.get('/attendance/stats');
-        response.then((res) => {
-            console.log(res);
-            setCardStats(res.data);
-        }).catch((err) => {
-            console.error(err);
-        }
-        );
-        
+        setIsLoading(true);
+        axios.get('/attendance/stats')
+            .then((res) => {
+                console.log(res);
+                setCardStats(res.data);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }, []);
 
     const getCurrentDate = () => {
@@ -32,8 +33,7 @@ export default function AdminPage() {
         const options = { day: '2-digit', month: 'long', year: 'numeric' };
         return new Intl.DateTimeFormat('en-GB', options).format(now);
     };
-    
-   
+
     const mapToActivityFormat = (data) => {
         return data.map(item => {
             const staffName = item.staff.firstName;
@@ -52,35 +52,32 @@ export default function AdminPage() {
     };
 
     useEffect(() => {
-        if(typeof window !== 'undefined')
-        {
+        if (typeof window !== 'undefined') {
             const connection = new signalR.HubConnectionBuilder()
                 .withUrl("http://localhost:5193/attendancehub")
                 .withAutomaticReconnect()
                 .configureLogging(signalR.LogLevel.Information)
                 .build();
             
-            connection.start().then(() => {
-                console.log('Connected!');
-
-                connection.on("ReceiveRecentActivities", (recentLogs) => {
-                    console.log('Received recent logs : ', recentLogs);
-                    const activities = mapToActivityFormat(recentLogs);
-
-                    console.log('Mapped activities : ', activities);
-
-                    setActivities(activities);
-                });
-            }).catch(err => console.error(err.toString()));
+            connection.start()
+                .then(() => {
+                    console.log('Connected!');
+                    connection.on("ReceiveRecentActivities", (recentLogs) => {
+                        console.log('Received recent logs : ', recentLogs);
+                        const activities = mapToActivityFormat(recentLogs);
+                        console.log('Mapped activities : ', activities);
+                        setActivities(activities);
+                    });
+                })
+                .catch(err => console.error(err.toString()));
 
             return () => {
-                if(connection)
-                {
+                if (connection) {
                     connection.stop();
                 }
-            }
+            };
         }
-        }, []);
+    }, []);
 
     return (
         <>   
@@ -89,69 +86,52 @@ export default function AdminPage() {
             fontWeight: "600"
         }}>Administrator Dashboard</h1>    
          
-        <div className="row" style={{gap:0,
-            margin:0,
-        }}>
-                <div className="col-md-4" >
-                        <MIconicCard data={cardStats.totalStaff} label="This number indicates the total staff number at MPTC" bootstrapclassName="col-md-4" variant="primary" bootstrapClass="col-md-12"/>
-                </div>
-                <div className="col-md-4">
-                    <MIconicCard data={cardStats.punctualityRate + " %"} label="This number describe the punctuality rate" bootstrapclassName="col-md-4" variant="warning"  bootstrapClass="col-md-12" icon="bi bi-hourglass-split"/>
-                </div>
-                <div className="col-md-4">
-                    <MIconicCard data={cardStats.latenessDurationAVG + " min"} label="Lateness duration average in minutes" bootstrapclassName="col-md-4" variant="danger"  bootstrapClass="col-md-12" icon="bi bi-clock-history"/>
-                </div>
-
-
+        <div className="row" style={{gap:0, margin:0}}>
+            <div className="col-md-4">
+                <MIconicCard data={isLoading ? <MLoading /> : cardStats.totalStaff} label="This number indicates the total staff number at MPTC" bootstrapclassName="col-md-4" variant="primary" bootstrapClass="col-md-12"/>
+            </div>
+            <div className="col-md-4">
+                <MIconicCard data={isLoading ?  <MLoading /> : cardStats.punctualityRate + " %"} label="This number describe the punctuality rate" bootstrapclassName="col-md-4" variant="warning" bootstrapClass="col-md-12" icon="bi bi-hourglass-split"/>
+            </div>
+            <div className="col-md-4">
+                <MIconicCard data={isLoading ?  <MLoading /> : cardStats.latenessDurationAVG + " min"} label="Lateness duration average in minutes" bootstrapclassName="col-md-4" variant="danger" bootstrapClass="col-md-12" icon="bi bi-clock-history"/>
+            </div>
         </div>  
-            <div className="row">
-                <div className="col-md-6" style={{
-                    justifyContent:"center"
-                }}>
-                    <MVideoFeed title="Clock In Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-in tracking." isIn="wsIn"/>
-                </div>
-
-                <div className="col-md-6">
-                    <MVideoFeed title="Clock Out Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-out tracking." isIn="wsOut"/>
-                </div>
+        <div className="row">
+            <div className="col-md-6" style={{ justifyContent:"center" }}>
+                <MVideoFeed title="Clock In Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-in tracking." isIn="wsIn"/>
             </div>
-
-            <div className="row">
-                <div className="col-md-6">
-                    <MCard title="Live Activities" >
-                        {activities.slice().reverse().map((activity, index) => (
-                            <MActivity 
-                                key={index} 
-                                {...activity} 
-                                show={activity.show} // Pass the individual show prop
-                            />
-                        ))}
-                    </MCard>
-                </div>
-                <div className="col-md-6" >
-                    <MCard title="" >
-                            <div style={{
-                                display:'flex',
-                                flexDirection:'column',
-                                justifyContent:'center',
-                                alignItems:'center',
-                                gap:'40px'
-
-                            }}>
-                                <i className={`bx bx-calendar `} style={{
-                                    fontSize: '160px',
-                                }}></i>
-                                <h4>
-                                    Today is {currentDate}
-                                </h4>
-                            </div>
-                            
-                    </MCard>
-                 </div>
-                
-
+            <div className="col-md-6">
+                <MVideoFeed title="Clock Out Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-out tracking." isIn="wsOut"/>
             </div>
-                
+        </div>
+        <div className="row">
+            <div className="col-md-6">
+                <MCard title="Live Activities">
+                    {activities.slice().reverse().map((activity, index) => (
+                        <MActivity 
+                            key={index} 
+                            {...activity} 
+                            show={activity.show} // Pass the individual show prop
+                        />
+                    ))}
+                </MCard>
+            </div>
+            <div className="col-md-6">
+                <MCard title="">
+                    <div style={{
+                        display:'flex',
+                        flexDirection:'column',
+                        justifyContent:'center',
+                        alignItems:'center',
+                        gap:'40px'
+                    }}>
+                        <i className={`bx bx-calendar`} style={{ fontSize: '160px' }}></i>
+                        <h4>Today is {currentDate}</h4>
+                    </div>
+                </MCard>
+            </div>
+        </div>
         </>
     );
 }
