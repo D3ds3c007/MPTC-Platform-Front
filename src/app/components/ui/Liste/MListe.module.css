@@ -7,7 +7,7 @@
     border-radius: 18px;
     border: 1px solid #e5e5e5;
     padding: 20px 40px;
-    width: 900px;
+    width: 1040px;
     height: 70px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -23,20 +23,23 @@
 
 .file-details {
     flex-grow: 1;
-    margin-left: 15px;
+    margin-left: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .file-details h3 {
-    font-size: 18px;
+    font-weight: bold;
+    font-size: 20px;
     color: #3f297e;
+    margin-bottom:0px ;
 }
 
 .file-details p {
     font-size: 14px;
     color: #888;
+    margin-bottom:0px ;
 }
 
 .file-size {
@@ -46,7 +49,7 @@
     text-align: center;
     display: flex;
     align-items: center;
-    margin-right: 250px;
+    margin-right: 350px;
 }
 
 .file-action .btn-view {
@@ -63,7 +66,7 @@
 }
 
 .file-action .btn-view:hover {
-    background-color: #0000ff;
+    background-color: #01F073;
 }
 
 .file-action .btn-view::before {

@@ -18,31 +18,29 @@ export default function ExamFoldersPage() {
     { level: "A1", title: "Exam A1", session: "OCT 2024", variant: "purple" },
     { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "secondary" },
     { level: "A1", title: "Exercise A1", session: "OCT 2024", variant: "primary" },
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "yellow" },
+    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark" },
   ];
-
-  // Données pour les fichiers récents dans MListe
+  
   const recentFiles = [
-    { fileName: "Lesson A1", session: "OCT 2024", size: "5.265 kB", fileType: "lesson" },
-    { fileName: "Exercise A1", session: "OCT 2024", size: "5.265 kB", fileType: "exercise" },
-    { fileName: "Exam A1", session: "OCT 2024", size: "5.265 kB", fileType: "exam" },
-    { fileName: "Lesson A1", session: "OCT 2024", size: "5.265 kB", fileType: "lesson" },
-  ];
-
+    { fileName: 'Exam A1', session: 'OCT 2024', size: '5.265 KB', fileType: 'pdf' },
+    { fileName: 'Exam B2', session: 'JUL 2023', size: '3.512 KB', fileType: 'word' },
+    { fileName: 'Exam C1', session: 'SEP 2022', size: '4.789 KB', fileType: 'image' },
+    { fileName: 'Exam D1', session: 'DEC 2021', size: '6.100 KB', fileType: 'video' },
+    { fileName: 'Link to Resource', session: 'N/A', size: 'N/A', fileType: 'lien' }
+];
   return (
     <div className={`container mt-4`}>
       {/* Titre principal */}
       <div className="d-flex justify-content-between align-items-center">
-        <h1>Exam Folders</h1>
-        <span>Welcome back, Professor</span>
+        <h1 className={styles.grandTitre}>Exam Folders</h1>
       </div>
 
       {/* Fond blanc pour le contenu principal */}
-      <div className={`bg-white p-4 rounded shadow`}>
+      <div className={`bg-white p-4 rounded `}>
 
         {/* Section de la barre de recherche */}
         <section className={styles.searchSection}>
-          <div className="d-flex justify-content-between align-items-center mb-4">
+          <div className="d-flex justify-content-between align-items-center mb-2">
             <h2 className={styles.allResources}>All resource</h2>
             <MSearchBar placeholder="Search" />
           </div>
@@ -50,7 +48,7 @@ export default function ExamFoldersPage() {
 
         {/* Section des filtres */}
         <section className={styles.filtersSection}>
-          <div className="d-flex flex-wrap gap-3 mb-4">
+          <div className="d-flex flex-wrap gap-4 mb-4">
             <MDropdownsFilter selector="Level" data={levels} />
             <MDropdownsFilter selector="Type of resource" data={types} />
             <MDropdownsFilter selector="Category" data={categories} />
@@ -75,13 +73,14 @@ export default function ExamFoldersPage() {
             ))}
           </div>
         </section>
+        </div>
 
         {/* Section des fichiers récents */}
         <section className={styles.fileListSection}>
           <h3 className={styles.topResources}>Add recently</h3>
-          <div className={`row mt-2`} style={{ marginLeft: '30px', marginRight: '30px' }}>
+          <div className={`row mt-2`} style={{marginRight: '30px' }}>
             {recentFiles.map((file, index) => (
-              <div key={index} className={`col-md-12 mb-4`}>
+              <div key={index} className={`col-md-12 mb-1`}>
                 <MListe
                   fileName={file.fileName}
                   session={file.session}
@@ -92,7 +91,7 @@ export default function ExamFoldersPage() {
             ))}
           </div>
         </section>
-      </div>
+      
     </div>
   );
 }
