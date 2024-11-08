@@ -60,11 +60,14 @@
 }
 
 .active {
-  font-weight: bold;
+  background-color: var(--warning-bg);
+  padding: 5px;
+  margin: 0;
+  border-radius: 5px;
 }
 
 .complete {
-  color: #0070f3;
+  color: gray;
 }
 
 .step-body {

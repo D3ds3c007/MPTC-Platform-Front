@@ -4,7 +4,7 @@ import styles from './MEmployeeDetails.module.css'; // Assuming you have CSS mod
 import defaultPic from './picture1.png';
 
 export function MEmployeeDetails({ employee }) {
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const fullSchedule = daysOfWeek.map((day, index) => {
         const schedule = employee.schedule.find(s => s.dayOfWeek === index + 1);
         return schedule
