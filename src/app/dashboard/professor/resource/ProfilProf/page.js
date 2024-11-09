@@ -60,7 +60,7 @@ export default function ExamFoldersPage() {
 
         {/* Section des ressources principales */}
         <section className={styles.resourcesSection}>
-          <h3 className={styles.topResources}>Top 5 of resource</h3>
+          <h3 className={styles.topResources}>My recently added resources</h3>
           <div className={`row mt-2`} style={{ marginLeft: '30px', marginRight: '30px' }}>
             {resources.map((resource, index) => (
               <div key={index} className={`col-md-4 mb-4`}>
@@ -84,7 +84,7 @@ export default function ExamFoldersPage() {
 
         {/* Section des fichiers récents */}
         <section className={styles.fileListSection}>
-          <h3 className={styles.topResources}>Add recently</h3>
+          <h3 className={styles.topResources}>List of my resource</h3>
           <div className={`row mt-2`} style={{marginRight: '30px' }}>
             {recentFiles.map((file, index) => (
               <div key={index} className={`col-md-12 mb-1`}>

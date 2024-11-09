@@ -80,3 +80,18 @@
   margin-right: -15px;
 }
 
+
+
+.resourcesSection {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+  justify-content: space-between; /* Espace entre les éléments */
+  align-items: flex-start; /* Aligner les éléments en haut */
+}
+
+.boutonAjout {
+
+  margin-top: auto; /* Pousse le bouton vers le bas pour être aligné avec la dernière ressource */
+  margin-right: 30px; /* Aligner avec la marge des ressources */
+  margin-left: 900px;
+}
