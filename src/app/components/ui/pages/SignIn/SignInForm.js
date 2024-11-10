@@ -6,20 +6,48 @@ import styles from './SignIn.module.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import { MLoading } from '@/app/components/ui/Loading/MLoading'
+import MPopupMessage from '@/app/components/ui/PopupMessage/MpopupMessage'
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useState } from "react";
+import { set } from 'react-hook-form'
+
 //import bootstrap css
 
 
 export function SignInForm(){
     const [state, action] = useFormState(signup, undefined)
     const router = useRouter();
+    const [isVisible, setIsVisible] = useState(false);
+
+    const [popupType, setPopupType] = useState("success");
+    const [message, setMessage] = useState("")
+
+
 
     useEffect(() => {
         if(state?.redirect){
             console.log('Redirecting to:', state.redirect)
+            setPopupType("success")
+            setMessage("Login successful. Redirecting ...");
+            showPopup("success");
+
             router.push(state.redirect)
         }
-    })
+
+        if(state?.errors)
+        {
+            setMessage(state.errors)
+            showPopup("error");
+        }
+
+    }, [state, router])
     
+  
+
+    const showPopup = (type) => {
+        setPopupType(type);
+        setIsVisible(true);
+      };
     
     return(
 
@@ -30,12 +58,6 @@ export function SignInForm(){
                     <div className={styles.fadeInDown}>
                         <div id={styles.formContent}>
                             <h2 className={`${styles.active} ${styles.title}`} >Sign In</h2>
-
-                            {state?.errors && <p style={{
-                                color:"red",
-                                margin: "10px",
-                                }}>{state.errors}</p>}
-
                                 {/* Icon */}
                             {/* <div className={styles.fadeInFirst}>
                                 <img src="http://danielzawadzki.com/codepen/01/icon.svg" id={styles.icon} alt="User Icon" />
@@ -60,6 +82,17 @@ export function SignInForm(){
                 </div>
                 </div>
             {/* </html> */}
+
+            {/* Error Popup Message */}
+            
+                <MPopupMessage
+                    type={popupType}
+                    title={popupType === "success" ? "Well done!" : "Oh snap!"}
+                    message={message}
+                    isVisible={isVisible}
+                    onClose={() => setIsVisible(false)}
+                />
+            
 
         </>
     )

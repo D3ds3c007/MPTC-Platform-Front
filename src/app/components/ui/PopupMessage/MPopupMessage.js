@@ -5,6 +5,7 @@ import styles from "./MPopupMessage.module.css";
 const MPopupMessage = ({ type = "success", title, message, isVisible, onClose }) => {
     useEffect(() => {
       if (isVisible) {
+        console.log("Hello visible");
         const timer = setTimeout(() => {
           onClose();
         }, 3000); // Auto-close after 3 seconds
