@@ -5,7 +5,19 @@ import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
 import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepForm"
 import { MAttendanceForm } from "./components/ui/pages/AttendanceForm/MAttendanceForm";
+import MPopupMessage from "./components/ui/PopupMessage/MpopupMessage";
+import { useState } from "react";
+
 export default function Page() {
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [popupType, setPopupType] = useState("success");
+
+  const showPopup = (type) => {
+    setPopupType(type);
+    setIsVisible(true);
+  };
+  
   return (
     <>
       <MSideBar>
@@ -68,6 +80,20 @@ export default function Page() {
 
               {/* <MMultiStepForm /> */}
               <MAttendanceForm />
+              <button onClick={() => showPopup("success")}>Show Success</button>
+              <button onClick={() => showPopup("error")}>Show Error</button>
+
+              <MPopupMessage
+                type={popupType}
+                title={popupType === "success" ? "Well done!" : "Oh snap!"}
+                message={
+                  popupType === "success"
+                    ? "You successfully read this important alert message."
+                    : "Change a few things up and try submitting again."
+                }
+                isVisible={isVisible}
+                onClose={() => setIsVisible(false)}
+              />
 
 
             </div>

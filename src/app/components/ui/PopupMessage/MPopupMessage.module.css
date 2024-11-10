@@ -1,0 +1,65 @@
+/* components/PopupMessage.module.css */
+.popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Hidden initially */
+    padding: 15px 20px;
+    background-color: #333;
+    border-radius: 8px;
+    color: #fff;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 1000;
+  }
+  
+  .success {
+    background-color: #4caf50; /* Green background for success */
+  }
+  
+  .error {
+    background-color: #f44336; /* Red background for error */
+  }
+  
+  .show {
+    transform: translateX(-20px); /* Slide-in effect */
+    opacity: 1;
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  
+  .text h4 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  
+  .text p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  
+  .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
