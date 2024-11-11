@@ -50,7 +50,7 @@ export function MListe({ fileName, session, size, fileType }) {
                 <h3>{fileName}</h3>
                 <p>Session : {session}</p>
             </div>
-            <div className={styles["file-size"]}>
+            <div className={styles["file-size"]}>                                                                                                           
                 {size}
             </div>
             <div className={styles["file-action"]}>

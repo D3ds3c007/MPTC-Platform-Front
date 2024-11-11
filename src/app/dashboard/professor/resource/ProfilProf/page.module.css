@@ -93,6 +93,14 @@
   
     margin-top: auto; /* Pousse le bouton vers le bas pour être aligné avec la dernière ressource */
     margin-right: 30px; /* Aligner avec la marge des ressources */
-    margin-left: 900px;
+    margin-left: 800px;
   }
   
+.BoutonProfil{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px; 
+  justify-content: center; 
+ 
+}
