@@ -1,9 +1,9 @@
 
 import styles from './MButtonAjout.module.css';
 
-export function MButtonAjout() {
+export function MButtonAjout({ onClick }) {
   return (
-    <button className={styles["circle-btn"]}>
+    <button className={styles["circle-btn"]} onClick={onClick}>
     </button>
   );
 }
