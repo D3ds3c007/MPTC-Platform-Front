@@ -7,7 +7,7 @@ import { MLoading } from "@/app/components/ui/Loading/MLoading";
 import { MPopup } from "@/app/components/ui/Popup/MPopup";
 import { MAttendanceForm } from "@/app/components/ui/pages/AttendanceForm/MAttendanceForm";
 
-export default function ActivityPage() {
+export default function AttendancePage() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isPopupVisible, setIsPopupVisible] = useState(false);

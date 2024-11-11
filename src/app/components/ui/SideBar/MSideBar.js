@@ -72,8 +72,8 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                     
                     {/* Inline Dropdown */}
                     <ul className={styles["dropdown-menu"]}>
-                      <li className={styles["dropdown-item"]}><a href="/dashboard/administrator/activity">Attendance Record</a></li>
-                      <li className={styles["dropdown-item"]}><a href="#subitem2">Logs</a></li>
+                      <li className={styles["dropdown-item"]}><a href="/dashboard/administrator/attendance">Attendance Record</a></li>
+                      <li className={styles["dropdown-item"]}><a href="/dashboard/administrator/logs">Logs</a></li>
                     </ul>
 
                     
