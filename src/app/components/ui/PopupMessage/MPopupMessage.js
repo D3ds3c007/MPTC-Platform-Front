@@ -1,6 +1,8 @@
 // components/PopupMessage.js
 import { useState, useEffect } from "react";
 import styles from "./MPopupMessage.module.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 const MPopupMessage = ({ type = "success", title, message, isVisible, onClose }) => {
     useEffect(() => {

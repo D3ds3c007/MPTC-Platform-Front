@@ -5,7 +5,7 @@ import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
 import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepForm"
 import { MAttendanceForm } from "./components/ui/pages/AttendanceForm/MAttendanceForm";
-import MPopupMessage from "./components/ui/PopupMessage/MpopupMessage";
+import MPopupMessage from "./components/ui/PopupMessage/MPopupMessage";
 import { useState } from "react";
 
 export default function Page() {

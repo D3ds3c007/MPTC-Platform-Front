@@ -6,8 +6,7 @@ import styles from './SignIn.module.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import { MLoading } from '@/app/components/ui/Loading/MLoading'
-import MPopupMessage from '@/app/components/ui/PopupMessage/MpopupMessage'
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage'
 import { useState } from "react";
 import { set } from 'react-hook-form'
 
