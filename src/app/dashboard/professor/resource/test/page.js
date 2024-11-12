@@ -1,11 +1,10 @@
 import React from 'react';
-import { MButtonProfilProf } from "@/app/components/ui/ButtonProfilProf/MButtonProfilProf";
+import { MExamForm } from "@/app/components/ui/ExamForm/MExamForm";
 
 const App = () => {
   return (
     <div className="button-container">
-      <MButtonProfilProf variant="secondary">Add resource</MButtonProfilProf>
-      <MButtonProfilProf variant="primary">See entire list</MButtonProfilProf>
+      <MExamForm></MExamForm>
       
     </div>
   );

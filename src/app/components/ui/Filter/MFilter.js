@@ -1,24 +1,57 @@
-import styles from'./MFilter.module.css'; // Import the CSS for styling
+import { useState } from 'react';
+import styles from '../styles/MUpload.module.css'; // Assure-toi de créer ce fichier
 
-export function MFilter({selector="Select an option", data = ""}) {
+export function MUpload({ placeholder = "Drag file(s) here to upload", buttonText = "Upload File" }) {
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const handleFileChange = (e) => {
+    setSelectedFiles(e.target.files);
+  };
+
+  const handleReset = () => {
+    setSelectedFiles([]);
+    document.getElementById('file-upload').value = null; // Réinitialiser l'input file
+  };
+
+  const handleFileUpload = () => {
+    if (selectedFiles.length > 0) {
+      console.log('Files uploaded:', selectedFiles);
+    } else {
+      alert('No files selected');
+    }
+  };
+
   return (
     <>
-      <div className={styles["select-wrapper"]}>
-        <select className={styles["styled-select"]}>
-            <option value="" disabled selected>{selector}</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-        </select>
-        <div className={styles["triangle-icon"]}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                <path d="M12 2c.37 0 .713.202.895.527l9 16c.184.328.182.728-.005 1.055-.188.328-.538.528-.89.528h-18c-.353 0-.703-.2-.891-.527-.187-.327-.188-.727-.003-1.055l9-16c.184-.325.527-.528.894-.528zm-7.65 17h15.3l-7.65-13.6-7.65 13.6z" 
-                fill="#00119D" stroke="#00119D" stroke-width="1"/>
-            </svg>
+      <div className={styles['upload-wrapper']}>
+        <div className={styles['file-upload']} id="drop-area" onClick={() => document.getElementById('file-upload').click()}>
+          <img src="/images/upload-icon.png" alt="Upload Icon" className={styles['upload-icon']} />
+          <p>{placeholder}</p>
+          <small>
+            Alternatively, you can select a file by <strong>clicking here</strong>
+          </small>
+          <input
+            type="file"
+            id="file-upload"
+            multiple
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+          />
         </div>
-    </div>
+
+        <div className={styles['button-group']}>
+          <button className={styles['reset-button']} onClick={handleReset}>Reset</button>
+          <button className={styles['upload-button']} onClick={handleFileUpload}>{buttonText}</button>
+        </div>
+
+        <div className={styles['form-fields']}>
+          <label htmlFor="resource-title">Title of the resource</label>
+          <input type="text" id="resource-title" placeholder="Enter title" className={styles['input-field']} />
+
+          <label htmlFor="resource-description">Description</label>
+          <textarea id="resource-description" placeholder="Enter description" className={styles['textarea-field']}></textarea>
+        </div>
+      </div>
     </>
   );
-};
-
-
+}

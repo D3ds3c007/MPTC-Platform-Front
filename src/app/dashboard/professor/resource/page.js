@@ -4,6 +4,7 @@ import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MDropdownsFilter } from "@/app/components/ui/DropdownsFilter/MDropdownsFilter";
 import { MListe } from "@/app/components/ui/Liste/MListe";
 import { MButtonAjout } from "@/app/components/ui/ButtonAjout/MButtonAjout";
+import { MButtonProfilProf } from "@/app/components/ui/ButtonProfilProf/MButtonProfilProf";
 import styles from './page.module.css';
 
 export default function ExamFoldersPage() {
@@ -84,7 +85,10 @@ export default function ExamFoldersPage() {
 
         {/* Section des fichiers récents */}
         <section className={styles.fileListSection}>
+        <div  className="d-flex justify-content-between align-items-center mb-2">
           <h3 className={styles.topResources}>Add recently</h3>
+          <MButtonProfilProf variant="primary">See entire list</MButtonProfilProf>
+          </div>
           <div className={`row mt-2`} style={{marginRight: '30px' }}>
             {recentFiles.map((file, index) => (
               <div key={index} className={`col-md-12 mb-1`}>
