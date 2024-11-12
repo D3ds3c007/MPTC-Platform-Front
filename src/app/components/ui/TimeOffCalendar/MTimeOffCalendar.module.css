@@ -1,0 +1,223 @@
+/* MTimeOffCalendar.module.css */
+
+.calendarWrapper {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .fc-toolbar {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .fc-toolbar button {
+    color: white;
+  }
+  
+  .fc-header-title {
+    text-align: center;
+
+  }
+
+.fc-col-header-cell-cushion {
+   
+    text-decoration: none !important;
+
+  }
+  
+  .fc-daygrid-day {
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+  }
+  
+  .fc-day-today {
+    background-color: #f1f8ff;
+  }
+  
+  .fc-daygrid-day-number {
+    font-size: 1.2em;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .fc-daygrid-day-top {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  
+  .fc-daygrid-day-events {
+    margin-top: 8px;
+  }
+  
+  .fc-event {
+    border-radius: 6px;
+    font-size: 0.9em;
+    padding: 4px;
+  }
+  
+  .fc-event:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  
+  .fc-event-title {
+    font-weight: bold;
+  }
+  
+  .eventContent {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9em;
+    text-align: center;
+  }
+  
+  /* Specific colors for event states */
+  .fc-event[style*="background-color: green"] {
+    background-color: #28a745 !important;
+  }
+  
+  .fc-event[style*="background-color: gray"] {
+    background-color: #6c757d !important;
+  }
+  
+  /* Custom Modal and Form */
+  .formModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .formContainer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .iconContainer {
+    margin-bottom: 15px;
+  }
+  
+  .icon {
+    font-size: 3rem;
+    color: #007bff;
+  }
+  
+  .formTitle {
+    
+        font-size: 24px;
+        font-weight: 600;
+        color: #6b21a8;
+  }
+  
+  .formField {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .formField label {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .formField input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+
+  .formField input:focus {
+    border-color: #0070f3;
+    outline: none;
+  }
+  
+  .formActions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+ 
+ 
+  
+  .cancelButton {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cancelButton:hover {
+    background-color: #5a6268;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+  }
+  
+  .closeButton:hover {
+    color: #333;
+  }
+
+  .inputRow {
+    display: flex;
+    justify-content: space-between;
+    gap : 10px;
+  }
+  
+  .description {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 20px;
+  }
+  .submitButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #6b21a8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .submitButton:hover {
+    background-color: #4b0f88;
+  }

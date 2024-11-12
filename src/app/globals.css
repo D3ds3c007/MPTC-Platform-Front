@@ -10,7 +10,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
+a{
+  text-decoration: none;
+}
 
 :root{
   --button-radius : 10px;

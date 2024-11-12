@@ -6,6 +6,7 @@ import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
 import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepForm"
 import { MAttendanceForm } from "./components/ui/pages/AttendanceForm/MAttendanceForm";
 import MPopupMessage from "./components/ui/PopupMessage/MPopupMessage";
+import { MTimeOffCalendar } from "./components/ui/TimeOffCalendar/MTimeOffCalendar";
 import { useState } from "react";
 
 export default function Page() {
@@ -79,7 +80,9 @@ export default function Page() {
               </MCard> */}
 
               {/* <MMultiStepForm /> */}
-              <MAttendanceForm />
+              {/* <MAttendanceForm /> */}
+
+              <MTimeOffCalendar />
               <button onClick={() => showPopup("success")}>Show Success</button>
               <button onClick={() => showPopup("error")}>Show Error</button>
 
