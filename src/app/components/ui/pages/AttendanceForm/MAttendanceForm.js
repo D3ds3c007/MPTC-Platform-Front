@@ -148,6 +148,7 @@ export function MAttendanceForm({onAddRecord, onEditRecord, initialData = null, 
             required
             placeholder="Enter Staff Matricule"
             autoComplete="off"
+            disabled={isEditing}  // Disable if editing
           />
           
           {/* Dropdown for suggestions */}
@@ -176,6 +177,7 @@ export function MAttendanceForm({onAddRecord, onEditRecord, initialData = null, 
             value={formData.date}
             onChange={handleChange}
             required
+            disabled={isEditing}  // Disable if editing
           />
         </div>
 
@@ -190,16 +192,20 @@ export function MAttendanceForm({onAddRecord, onEditRecord, initialData = null, 
               value={formData.clockIn}
               onChange={handleChange}
               required
+              disabled={isEditing}  // Disable if editing
             />
           </div>
           <div className={styles.inputGroup}>
             <label>Clock Out</label>
+
+          
             <input
               type="time"
               name="clockOut"
               className={styles.input}
               value={formData.clockOut}
               onChange={handleChange}
+              disabled={isEditing}  // Disable if editing
             />
           </div>
         </div>
