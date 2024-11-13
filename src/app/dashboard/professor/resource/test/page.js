@@ -1,10 +1,10 @@
 import React from 'react';
-import { MExamForm } from "@/app/components/ui/ExamForm/MExamForm";
+import { MExamForm1 } from "@/app/components/ui/ExamForm1/MExamForm1";
 
 const App = () => {
   return (
     <div className="button-container">
-      <MExamForm></MExamForm>
+      <MExamForm1></MExamForm1>
       
     </div>
   );
