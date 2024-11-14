@@ -1,79 +1,127 @@
-/* Structure principale pour aligner la zone d'upload et les champs de texte */
-.form-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 900px;
-  margin: 20px auto;
+/* styles/Form.module.css */
+
+/* .container {
+  font-family: Arial, sans-serif;
   background-color: #f4f4f9;
+  margin: 0;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
+
+.formContainer {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
 }
 
-.upload-wrapper {
+/* h2 {
+  text-align: center;
+  color: #5e2eff;
+} */
+
+.description {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.formSection {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 20px;
-  /* Ajout de l'alignement pour les boutons */
 }
 
-.file-upload {
-  width: 45%;
+.fileUploadSection,
+.resourceSection {
+  flex: 1;
+}
+
+.fileUpload {
   border: 2px dashed #a085ff;
-  padding: 30px;
+  border-radius: 8px;
+  padding: 40px;
   text-align: center;
-  border-radius: 10px;
+  position: relative;
+  color: #666;
+}
+
+.fileUpload.dragover {
+  background-color: #e0e7ff;
+  border-color: #5e2eff;
+}
+
+.icon {
+  font-size: 50px;
+  color: #5e2eff;
+}
+
+.fileUpload small {
   cursor: pointer;
+  color: #5e2eff;
+  text-decoration: underline;
 }
 
-.upload-icon {
-  width: 60px;
-  height: 60px;
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
   display: block;
-  margin: 0 auto 10px;
+  margin-bottom: 5px;
+  color: #333;
 }
 
-.form-fields {
-  width: 45%;
-}
-
-.input-field, .textarea-field {
+.formGroup input,
+.formGroup textarea {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.textarea-field {
+.formGroup textarea {
+  resize: vertical;
   height: 100px;
 }
 
-/* Ajout d'un conteneur pour les boutons sur le côté droit */
-.button-group {
+.buttonGroup {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  margin-left: 20px; /* Décalage pour placer les boutons à droite de la zone d'upload */
+  margin-top: 20px;
 }
 
-.reset-button, .upload-button {
+.button {
+  background-color: #5e2eff;
+  color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 10px;
+  font-size: 16px;
 }
 
-.reset-button {
-  background-color: #f44336;
-  color: #fff;
+.reset {
+  background-color: #999;
 }
 
-.upload-button {
-  background-color: #4caf50;
-  color: #fff;
+.upload {
+  background-color: #0a1b8c;
+}
+
+.submit {
+  background-color: #0a1b8c;
+  border-radius: 50%;
+  padding: 12px;
+}
+
+.button:hover {
+  opacity: 0.8;
 }

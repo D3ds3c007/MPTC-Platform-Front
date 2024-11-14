@@ -1,13 +1,13 @@
 import React from 'react';
 import { MExamForm1 } from "@/app/components/ui/ExamForm1/MExamForm1";
 
-const App = () => {
+
+export default function Home() {
   return (
-    <div className="button-container">
-      <MExamForm1></MExamForm1>
-      
+    <div>
+      {/* Bouton primaire sans icône */}
+      <MExamForm1 ></MExamForm1>
     </div>
   );
-};
+}
 
-export default App;

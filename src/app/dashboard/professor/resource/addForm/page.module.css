@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-white {
+  display: flex;
+  justify-content: space-between; /* Sépare la zone d'upload et la zone des champs */
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.buttonSection {
+  display: flex;
+  flex-direction: column; /* Organiser verticalement */
+  justify-content: space-between;
+  flex: 1; /* Permet de prendre toute la hauteur disponible */
+}
+
+.uploadSection {
+  margin-bottom: 20px; /* Ajouter de l'espace sous la section d'upload */
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resourceSection {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; /* Ajoute un espace entre les deux sections */
+  flex: 1;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.textInput,
+.textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.textarea {
+  height: 100px;
+}

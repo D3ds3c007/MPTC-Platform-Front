@@ -1,0 +1,27 @@
+.file-action .btn-view {
+    background-color: #0b006e;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+  
+  .file-action .btn-view:hover {
+    background-color: #01F073;
+  }
+  
+  .file-action .btn-view::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-top: 5px solid white;
+    border-right: 5px solid white;
+    transform: rotate(45deg);
+  }
+  

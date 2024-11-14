@@ -1,66 +1,98 @@
 "use client"; // Ajout pour indiquer que c'est un composant client
 
-import { useState } from 'react';
+// pages/index.js
+
+import React, { useState } from 'react';
 import Image from 'next/image';
-import dossier from './dossier.png'; // Assurez-vous que ce chemin est correct
-import styles from './MExamForm1.module.css'; // Lien avec le fichier CSS
+import dossier from './dossier.png';
+import styles from'./MExamForm1.module.css';
 
 export function MExamForm1() {
-  const [selectedFiles, setSelectedFiles] = useState([]);
+ 
+  const [dragging, setDragging] = useState(false);
 
-  const handleFileChange = (e) => {
-    setSelectedFiles(e.target.files);
+  const handleDrag = (e, isDragging) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(isDragging);
   };
 
-  const handleReset = () => {
-    setSelectedFiles([]);
-    document.getElementById('file-upload').value = null;
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(false);
+    const files = e.dataTransfer.files;
+    console.log('Files dropped:', files);
   };
 
-  const handleFileUpload = () => {
-    if (selectedFiles.length > 0) {
-      console.log('Files uploaded:', selectedFiles);
+  const handleFileSelect = (e) => {
+    const files = e.target.files;
+    console.log('Files selected:', files);
+  };
+
+  const resetFileInput = () => {
+    document.getElementById('file-upload').value = '';
+    console.log('File input reset');
+  };
+
+  const handleUpload = () => {
+    const fileInput = document.getElementById('file-upload');
+    if (fileInput.files.length > 0) {
+      console.log('Uploading files:', fileInput.files);
     } else {
-      alert('No files selected');
+      console.log('No files selected');
     }
   };
 
   return (
-    <div className={styles['form-container']}>
-      <div className={styles['upload-wrapper']}>
-        <div
-          className={styles['file-upload']}
-          id="drop-area"
-          onClick={() => document.getElementById('file-upload').click()}
-        >
-          <Image src={dossier} alt="Upload Icon" className={styles['upload-icon']} />
-          <p>Drag file(s) here to upload</p>
-          <small>
-            Alternatively, you can select a file by <strong>clicking here</strong>
-          </small>
-          <input
-            type="file"
-            id="file-upload"
-            multiple
-            onChange={handleFileChange}
-            style={{ display: 'none' }}
-          />
-        </div>
+   
+     
 
-        {/* Ajout d'une section pour les boutons sur le côté */}
-        <div className={styles['button-group']}>
-          <button className={styles['reset-button']} onClick={handleReset}>Reset</button>
-          <button className={styles['upload-button']} onClick={handleFileUpload}>Upload File</button>
-        </div>
+        <div className={styles.formSection}>
+          {/* File upload section */}
+          <div className={styles.fileUploadSection}>
+            <div
+              className={`${styles.fileUpload} ${dragging ? styles.dragover : ''}`}
+              onDragEnter={(e) => handleDrag(e, true)}
+              onDragOver={(e) => handleDrag(e, true)}
+              onDragLeave={(e) => handleDrag(e, false)}
+              onDrop={handleDrop}
+              id="drop-area"
+            >
+              <div className={styles["icon"]} >
+                <Image src={dossier} alt={dossier} width={60} height={60} />
+            </div>
+              <p>Drag file(s) here to upload</p>
+              <p>
+                <small onClick={() => document.getElementById('file-upload').click()}>
+                  Alternatively, you can select a file by <strong>clicking here</strong>
+                </small>
+              </p>
+              <input
+                type="file"
+                id="file-upload"
+                multiple
+                style={{ display: 'none' }}
+                onChange={handleFileSelect}
+              />
+            </div>
+          </div>
 
-        <div className={styles['form-fields']}>
-          <label htmlFor="resource-title">Title of the resource</label>
-          <input type="text" id="resource-title" placeholder="Enter title" className={styles['input-field']} />
-
-          <label htmlFor="resource-description">Description</label>
-          <textarea id="resource-description" placeholder="Enter description" className={styles['textarea-field']}></textarea>
+          {/* Resource details section */}
+          {/* <div className={styles.resourceSection}>
+            <div className={styles.formGroup}>
+              <label htmlFor="title">Title of the resource</label>
+              <input type="text" id="title" name="title" required />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="description">Description</label>
+              <textarea id="description" name="description" required></textarea>
+            </div>
+    
+          </div> */}
         </div>
-      </div>
-    </div>
+     
+  
   );
-}
+};
+
