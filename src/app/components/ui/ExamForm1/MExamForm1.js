@@ -1,15 +1,15 @@
-"use client"; // Ajout pour indiquer que c'est un composant client
+"use client";
 
-// pages/index.js
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import dossier from './dossier.png';
-import styles from'./MExamForm1.module.css';
+import styles from './MExamForm1.module.css';
 
 export function MExamForm1() {
- 
   const [dragging, setDragging] = useState(false);
+
+  // Utiliser useRef pour référencer le fichier input
+  const fileInputRef = useRef(null);
 
   const handleDrag = (e, isDragging) => {
     e.preventDefault();
@@ -30,56 +30,55 @@ export function MExamForm1() {
     console.log('Files selected:', files);
   };
 
+  // Utiliser le ref pour réinitialiser l'input
   const resetFileInput = () => {
-    document.getElementById('file-upload').value = '';
-    console.log('File input reset');
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''; // Réinitialiser l'input
+      console.log('File input reset');
+    } else {
+      console.log('File input not found');
+    }
   };
 
   const handleUpload = () => {
-    const fileInput = document.getElementById('file-upload');
-    if (fileInput.files.length > 0) {
-      console.log('Uploading files:', fileInput.files);
+    if (fileInputRef.current && fileInputRef.current.files.length > 0) {
+      console.log('Uploading files:', fileInputRef.current.files);
     } else {
       console.log('No files selected');
     }
   };
 
   return (
-   
-     
-
-        <div className={styles.formSection}>
-          {/* File upload section */}
-          <div className={styles.fileUploadSection}>
-            <div
-              className={`${styles.fileUpload} ${dragging ? styles.dragover : ''}`}
-              onDragEnter={(e) => handleDrag(e, true)}
-              onDragOver={(e) => handleDrag(e, true)}
-              onDragLeave={(e) => handleDrag(e, false)}
-              onDrop={handleDrop}
-              id="drop-area"
-            >
-              <div className={styles["icon"]} >
-                <Image src={dossier} alt={dossier} width={60} height={60} />
-            </div>
-              <p>Drag file(s) here to upload</p>
-              <p>
-                <small onClick={() => document.getElementById('file-upload').click()}>
-                  Alternatively, you can select a file by <strong>clicking here</strong>
-                </small>
-              </p>
-              <input
-                type="file"
-                id="file-upload"
-                multiple
-                style={{ display: 'none' }}
-                onChange={handleFileSelect}
-              />
-            </div>
+    <div className={styles.formSection}>
+      {/* File upload section */}
+      <div className={styles.fileUploadSection}>
+        <div
+          className={`${styles.fileUpload} ${dragging ? styles.dragover : ''}`}
+          onDragEnter={(e) => handleDrag(e, true)}
+          onDragOver={(e) => handleDrag(e, true)}
+          onDragLeave={(e) => handleDrag(e, false)}
+          onDrop={handleDrop}
+          id="drop-area"
+        >
+          <div className={styles["icon"]}>
+            <Image src={dossier} alt="Dossier" width={60} height={60} />
           </div>
+          <p>Drag file(s) here to upload</p>
+          <p>
+            <small onClick={() => fileInputRef.current.click()}>
+              Alternatively, you can select a file by <strong>clicking here</strong>
+            </small>
+          </p>
+          <input
+            type="file"
+            ref={fileInputRef}
+            id="file-upload"
+            multiple
+            style={{ display: 'none' }}
+            onChange={handleFileSelect}
+          />
         </div>
-     
-  
+      </div>
+    </div>
   );
 };
-

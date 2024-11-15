@@ -15,27 +15,30 @@ export default function AddForm() {
       
       <div className={`bg-white p-4 rounded`}>
         
-      <div className="d-flex justify-content-between align-items-center mb-2">
-        <h2 className={styles.allResources}>Resource adding form</h2>
-      </div>
+        <div className="d-flex justify-content-between align-items-center mb-2">
+          <h2 className={styles.allResources}>Resource adding form</h2>
+        </div>
 
-      {/* Fond blanc pour le contenu principal */}
-      
+        {/* Fond blanc pour le contenu principal */}
         <div className={styles.formContainer}>
           {/* Section gauche: Formulaire d'upload */}
-          <section className={styles.resourcesSection}>
-            <div >
+          <section className={styles.resourcesSection} aria-label="Upload Section">
+            <div>
               <MExamForm1 />
             </div>
 
             <div className={styles.buttonGroup}>
-              <MBouttonUpload variant="primary">Reset</MBouttonUpload>
-              <MBouttonUpload variant="secondary">Upload File</MBouttonUpload>
+              <MBouttonUpload variant="primary" aria-label="Reset Button">
+                Reset
+              </MBouttonUpload>
+              <MBouttonUpload variant="secondary" aria-label="Upload File Button">
+                Upload File
+              </MBouttonUpload>
             </div>
           </section>
 
           {/* Section droite: Formulaire pour titre et description */}
-          <section className={styles.coterDroit}>
+          <section className={styles.coterDroit} aria-label="Form Section for Title and Description">
             <div className={styles.formGroup}>
               <label htmlFor="title">Title of the resource</label>
               <input
@@ -43,7 +46,8 @@ export default function AddForm() {
                 id="title"
                 name="title"
                 required
-                className={styles.textInput}
+                className={styles.textInput}  
+                aria-label="Resource Title"
               />
             </div>
 
@@ -53,14 +57,18 @@ export default function AddForm() {
                 id="description"
                 name="description"
                 required
-                className={styles.textarea}
+                className={styles.textInput}  
+                aria-label="Resource Description"
               ></textarea>
             </div>
-
-            <div className={styles.voirPlu}>
-              <MButtonVoirPlus />
-            </div>
           </section>
+
+          {/* Section du bouton Voir Plus aligné en bas */}
+          <section className={styles.buttonGroupe} aria-label="See More Button Section">
+            <div className={styles.voirPlu}>
+              <MButtonVoirPlus aria-label="See More Button" />
+            </div>
+          </section>  
         </div>
       </div>
     </div>

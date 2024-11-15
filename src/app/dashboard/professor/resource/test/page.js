@@ -1,12 +1,12 @@
 import React from 'react';
-import { MExamForm1 } from "@/app/components/ui/ExamForm1/MExamForm1";
+import { MZonetexte } from "@/app/components/ui/Zonetexte/MZonetexte";
 
 
 export default function Home() {
   return (
     <div>
       {/* Bouton primaire sans icône */}
-      <MExamForm1 ></MExamForm1>
+      <MZonetexte ></MZonetexte>
     </div>
   );
 }

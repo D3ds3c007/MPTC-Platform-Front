@@ -1,37 +1,70 @@
-/* Conteneur principal pour mettre les sections côte à côte */
-.formContainer {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px; /* Espace entre les deux sections */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Section gauche (formulaire d'upload) */
+.grandTitre{
+  font-size: 44px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color:#15004F;
+}
+/* Titre principal de la section de ressources */
+.allResources {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 30px;
+  margin-bottom: 0;
+  color: blueviolet;
+}
+
+/* Conteneur principal de la forme */
+.formContainer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start; /* Alignement des sections en haut */
+}
+
+/* Section gauche : upload */
 .resourcesSection {
   flex: 1;
   display: flex;
   flex-direction: column;
- 
+  justify-content: space-between;
+  width: 300px;
+
 }
 
-.uploadSection {
-  
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
+/* Ajouter une ombre au hover pour l'effet visuel */
 
+
+/* Boutons d'upload */
 .buttonGroup {
   display: flex;
-  justify-content: flex-start; /* Les boutons resteront alignés à gauche */
-  gap: 10px; /* Espace entre les deux boutons */
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-/* Section droite (titre et description) */
+/* Alignement du bouton "Voir Plus" */
+.buttonGroupe {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.voirPlu {
+  padding: 10px;
+}
+
+/* Section droite : formulaire pour titre et description */
 .coterDroit {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+  min-width: 250px;
 }
 
 .formGroup {
@@ -39,15 +72,58 @@
   flex-direction: column;
 }
 
-.textInput,
-.textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+/* Responsive design */
+@media (max-width: 768px) {
+  .formContainer {
+    flex-direction: column;
+  }
+
+  .resourcesSection,
+  .coterDroit {
+    min-width: 100%;
+  }
 }
 
-.voirPlu {
+/* Section droite : formulaire pour titre et description */
+.coterDroit {
+  flex: 1;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 250px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.textInput {
+  width: 100%; /* Prendre toute la largeur disponible */
+  padding: 15px;
+  font-size: 1.1rem; /* Augmenter la taille de la police pour plus de lisibilité */
+  border: 2px solid #8f8f8f; /* Bordure de 2px */
+  border-radius: 10px; /* Bordure arrondie */
+  box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+  min-height: 160px; 
+  transition: border-color 0.3s ease; /* Animation de la bordure lors du focus */
+}
+
+/* Effet focus : couleur de la bordure change au focus */
+.textInput:focus {
+  border-color: #a085ff; /* Bordure violette au focus */
+  outline: none; /* Supprimer le contour par défaut */
+}
+
+/* Taille et espacement des champs de texte */
+.textInput[type="text"], .textInput[type="textarea"] {
+  min-height: 80px; /* Augmenter la hauteur pour textarea */
+}
+
+.textInput[type="textarea"] {
+  resize: vertical; /* Permet de redimensionner le textarea uniquement verticalement */
+}
+
+.element.style {
+  height: 134px;
 }

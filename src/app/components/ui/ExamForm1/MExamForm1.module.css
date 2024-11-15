@@ -1,72 +1,64 @@
-/* styles/Form.module.css */
+/* styles/MExamForm1.module.css */
 
-/* .container {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-} */
-
-/* .formContainer {
-  background-color: #d90707;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  width: 100%;
-} */
-
-/* h2 {
-  text-align: center;
-  color: #5e2eff;
-} */
-
-
+/* Section principale pour organiser les composants */
 .formSection {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  flex-wrap: wrap; /* Permet aux sections de se réorganiser si l'espace est insuffisant */
+  gap: 20px; /* Espacement entre les sections */
 }
 
-.fileUploadSection,
-.resourceSection {
-  flex: 1;
-  width: 100px;
+/* Section pour le téléchargement des fichiers */
+.fileUploadSection {
+  flex: 1 1 45%; /* Occupe 45% de la largeur, flexible */
+  min-width: 200px; /* Largeur minimale pour garantir lisibilité */
+  box-sizing: border-box; /* Inclut padding et bordures dans la largeur totale */
 }
 
+/* Style de la zone de téléchargement */
 .fileUpload {
   border: 2px dashed #a085ff;
   border-radius: 8px;
   padding: 40px;
   text-align: center;
   color: #666;
-  width: 500px;
+  width: 100%; /* S'étend pour remplir l'espace disponible */
+  box-sizing: border-box; /* Inclut padding et bordure dans la largeur */
 }
 
+/* Style lorsque le fichier est en survol (dragover) */
 .fileUpload.dragover {
   background-color: #e0e7ff;
   border-color: #5e2eff;
 }
 
+/* Style pour l'icône dans la zone de téléchargement */
 .icon {
   font-size: 50px;
   color: #5e2eff;
+  margin-bottom: 10px;
 }
 
+/* Style pour le texte cliquable */
 .fileUpload small {
   cursor: pointer;
   color: #5e2eff;
   text-decoration: underline;
+  font-weight: bold;
 }
 
+/* Espacement pour les éléments textes dans la zone de téléchargement */
+.fileUpload p {
+  margin-top: 10px;
+}
 
+/* Styles responsives pour les petits écrans */
+@media (max-width: 768px) {
+  .formSection {
+    flex-direction: column; /* Empile les sections verticalement sur petits écrans */
+    gap: 10px; /* Réduit l'espacement entre les sections */
+  }
 
-
-
-
-
-
+  .fileUploadSection {
+    width: 100%; /* Prend toute la largeur sur mobile */
+  }
+}
