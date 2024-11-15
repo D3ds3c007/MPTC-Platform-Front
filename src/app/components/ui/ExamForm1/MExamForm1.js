@@ -77,19 +77,6 @@ export function MExamForm1() {
               />
             </div>
           </div>
-
-          {/* Resource details section */}
-          {/* <div className={styles.resourceSection}>
-            <div className={styles.formGroup}>
-              <label htmlFor="title">Title of the resource</label>
-              <input type="text" id="title" name="title" required />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="description">Description</label>
-              <textarea id="description" name="description" required></textarea>
-            </div>
-    
-          </div> */}
         </div>
      
   

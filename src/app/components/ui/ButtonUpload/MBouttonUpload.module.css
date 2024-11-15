@@ -12,7 +12,7 @@
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 200px; /* Ajuste la largeur du bouton */
+    width: 250px; /* Ajuste la largeur du bouton */
     height: 50px; /* Ajuste la hauteur du bouton */
     text-align: center;
   }
