@@ -16,7 +16,7 @@
 
 /* Style de la zone de téléchargement */
 .fileUpload {
-  border: 2px dashed #a085ff;
+  border: 2px dashed #cac9fd;
   border-radius: 8px;
   padding: 40px;
   text-align: center;
@@ -34,12 +34,17 @@
 /* Style pour l'icône dans la zone de téléchargement */
 .icon {
   font-size: 50px;
-  color: #5e2eff;
+  color: #ff2e7e;
   margin-bottom: 10px;
 }
 
 /* Style pour le texte cliquable */
 .fileUpload small {
+  cursor: pointer;
+  color: #c8b7ff;
+}
+
+.fileUpload strong {
   cursor: pointer;
   color: #5e2eff;
   text-decoration: underline;

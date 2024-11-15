@@ -23,6 +23,7 @@ export default function AddForm() {
         <div className={styles.formContainer}>
           {/* Section gauche: Formulaire d'upload */}
           <section className={styles.resourcesSection} aria-label="Upload Section">
+          <label htmlFor="description" className={styles.label}>Field to upload a file</label>
             <div>
               <MExamForm1 />
             </div>
@@ -40,7 +41,8 @@ export default function AddForm() {
           {/* Section droite: Formulaire pour titre et description */}
           <section className={styles.coterDroit} aria-label="Form Section for Title and Description">
             <div className={styles.formGroup}>
-              <label htmlFor="title">Title of the resource</label>
+            <label htmlFor="title" className={styles.label}> Title of the resource</label>
+              
               <input
                 type="text"
                 id="title"
@@ -52,7 +54,7 @@ export default function AddForm() {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="description">Description</label>
+            <label htmlFor="description" className={styles.label}>Description</label>
               <textarea
                 id="description"
                 name="description"
