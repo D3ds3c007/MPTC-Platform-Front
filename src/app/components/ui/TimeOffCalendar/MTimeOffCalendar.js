@@ -4,7 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import styles from "./MTimeOffCalendar.module.css"; // Import the CSS Module
-import { FaRegCalendarAlt } from "react-icons/fa"; // Import calendar icon
+import axios from "@/app/lib/axiosInstance";
 import { MButton } from "../Button/MButton";
 
 export function MTimeOffCalendar() {
@@ -16,12 +16,56 @@ export function MTimeOffCalendar() {
   const [startTimeOff, setStartTimeOff] = useState("");
   const [endTimeOff, setEndTimeOff] = useState("");
 
+  const [suggestions, setSuggestions] = useState([]);  // To store auto-suggest results
+
+
   const handleDateSelect = (selectInfo) => {
-    setSelectedRange({
-      start: selectInfo.startStr,
-      end: selectInfo.endStr,
-    });
+    const start = selectInfo.startStr;
+    const end = selectInfo.endStr;
+
+    setSelectedRange({ start, end });
+    setStartTimeOff(start); // Auto-update startTimeOff
+    setEndTimeOff(end); // Auto-update endTimeOff
     setShowForm(true);
+  };
+
+  const handleDeleteEvent = (eventId) => {
+    if (window.confirm("Are you sure you want to delete this event?")) {
+      setTimeOffEvents((prevEvents) =>
+        prevEvents.filter((event) => event.id !== eventId)
+      );
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setMatricule(value);  // Update matricule state
+
+    if (name === 'matricule') {
+      fetchMatriculeSuggestions(value);
+    }
+  };
+
+  const fetchMatriculeSuggestions = (query) => {
+    if (query.length >= 3) {
+      axios.get(`/Staff/matricule-suggestions?query=${query}`)
+        .then(response => {
+          console.log(response.data);
+          setSuggestions(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+          setSuggestions([]);
+        });
+    } else {
+      setSuggestions([]);  // Clear suggestions if query is too short
+    }
+  };
+
+   // Handle selection of a suggestion
+   const handleSuggestionClick = (suggestion) => {
+    setMatricule(suggestion);  // Update matricule state
+    setSuggestions([]);  // Clear suggestions after selection
   };
 
   const handleSubmitForm = (event) => {
@@ -55,14 +99,25 @@ export function MTimeOffCalendar() {
         select={handleDateSelect}
         events={timeOffEvents}
         eventContent={(eventInfo) => (
-          <span
-            className={styles.eventContent}
-            style={{
-              backgroundColor: eventInfo.event.extendedProps.color,
-            }}
-          >
-            {eventInfo.event.title}
-          </span>
+          <div className={styles.eventContainer}>
+            <span
+              className={styles.eventTitle}
+              style={{
+                backgroundColor: eventInfo.event.extendedProps.color,
+              }}
+            >
+              {eventInfo.event.title}
+            </span>
+            <button
+              className={styles.deleteButton}
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent triggering the event click
+                handleDeleteEvent(eventInfo.event.id);
+              }}
+            >
+              &times;
+            </button>
+          </div>
         )}
         headerToolbar={{
           left: "prev,next today",
@@ -82,22 +137,34 @@ export function MTimeOffCalendar() {
             >
               &times;
             </button>
-            {/* <div className={styles.iconContainer}>
-              <FaRegCalendarAlt className={styles.icon} />
-            </div> */}
             <h3 className={styles.formTitle}>Request Time Off</h3>
-
             <p className={styles.description}>
-                Fill in the form to request your time off. Provide your name, and select the dates for your leave            </p>
+              Fill in the form to request your time off. Provide your name, and
+              select the dates for your leave.
+            </p>
             <form onSubmit={handleSubmitForm}>
               <div className={styles.formField}>
                 <label>Staff Matricule:</label>
                 <input
                   type="text"
+                  name="matricule"
                   value={matricule}
-                  onChange={(e) => setMatricule(e.target.value)}
+                  onChange={handleChange}
                   required
                 />
+                {suggestions.length > 0 && (
+                <div className={styles.suggestionsList}>
+                  {suggestions.map((suggestion, index) => (
+                    <div 
+                      key={index}
+                      className={styles.suggestionItem}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion}
+                    </div>
+                  ))}
+                </div>
+              )}
               </div>
               <div className={styles.formField}>
                 <label>Employee Name:</label>
@@ -110,29 +177,28 @@ export function MTimeOffCalendar() {
               </div>
               <div className={styles.inputRow}>
                 <div className={styles.formField}>
-                    <label>Start Date:</label>
-                    <input
+                  <label>Start Date:</label>
+                  <input
                     type="date"
                     value={startTimeOff}
                     onChange={(e) => setStartTimeOff(e.target.value)}
                     required
-                    />
+                  />
                 </div>
                 <div className={styles.formField}>
-                    <label>End Date:</label>
-                    <input
+                  <label>End Date:</label>
+                  <input
                     type="date"
                     value={endTimeOff}
                     onChange={(e) => setEndTimeOff(e.target.value)}
                     required
-                    />
+                  />
                 </div>
               </div>
-              
-                <button type="submit" className={styles.submitButton}>Submit</button>
-                
+              <button type="submit" className={styles.submitButton}>
+                Submit
+              </button>
             </form>
-            
           </div>
         </div>
       )}

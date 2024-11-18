@@ -42,10 +42,7 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
 
         <div className={styles["menu-bar"]}>
           <div className={styles.menu}>
-            <li className={styles["search-box"]}>
-              <i className={`bx bx-search ${styles.icon}`}></i>
-              <input type="text" placeholder="Search..." />
-            </li>
+           
 
             <ul className={styles["menu-links"]}>
               {isAdministrator && (
@@ -69,14 +66,11 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                       <i className={`bx bx-list-ul ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
                       <span className={`${styles.text} ${styles["nav-text"]}`}>Activity Logs</span>
                     </a>
-                    
                     {/* Inline Dropdown */}
                     <ul className={styles["dropdown-menu"]}>
                       <li className={styles["dropdown-item"]}><a href="/dashboard/administrator/attendance">Attendance Record</a></li>
                       <li className={styles["dropdown-item"]}><a href="/dashboard/administrator/logs">Logs</a></li>
                     </ul>
-
-                    
                   </li>
 
                   <li className={styles["nav-link"]} 
@@ -87,6 +81,13 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                     </a>
 
                     
+                  </li>
+
+                  <li className={styles["nav-link"]}>
+                    <a href="/dashboard/administrator/timeoff">
+                      <i className={`bx bx-user ${styles.icon}`} onClick={() => onMenuChange('Revenue')}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Time off</span>
+                    </a>
                   </li>
                 </>
               )}
