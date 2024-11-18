@@ -1,0 +1,125 @@
+/* Conteneur principal */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  
+  border-radius: 15px;
+  padding: 30px 40px;
+ 
+}
+
+/* Titre */
+.title {
+  font-size: 26px;
+  color: #5e17eb;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Groupe de formulaire */
+.formGroup {
+  margin-bottom: 20px;
+}
+
+/* Label */
+.formGroup label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Champ de saisie (texte et sélection) */
+.formGroup input[type="text"],
+.formGroup select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--primary-bg);
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.formGroup input[type="text"]:focus,
+.formGroup select:focus {
+  border-color: #eb176f;
+  outline: none;
+}
+
+/* Niveau d'apprentissage */
+.learningLevel {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.learningLevel label {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.learningLevel input[type="radio"] {
+  display: none;
+}
+
+.learningLevel input[type="radio"]:checked + label {
+  background-color: #0b006e;
+  color: #fff;
+  border-color:#0b006e;
+}
+
+/* Compétence linguistique */
+.competenceOptions {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.competenceOptions label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.competenceOptions input[type="checkbox"] {
+  display: none;
+}
+
+.competenceOptions label span {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #0b006e;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.competenceOptions label span::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s;
+}
+
+.competenceOptions input[type="checkbox"]:checked + span {
+  border-color: #0b006e;
+}
+
+.competenceOptions input[type="checkbox"]:checked + span::after {
+  background-color: #0b006e;
+}
+
