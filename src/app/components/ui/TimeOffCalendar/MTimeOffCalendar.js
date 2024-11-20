@@ -9,8 +9,8 @@ import axios from "@/app/lib/axiosInstance";
 import MPopupMessage from "../PopupMessage/MPopupMessage";
 import { MButton } from "../Button/MButton";
 
-export function MTimeOffCalendar() {
-  const [timeOffEvents, setTimeOffEvents] = useState([]);
+export function MTimeOffCalendar({ data, setData }) {
+  const [timeOffEvents, setTimeOffEvents] = useState(data);
   const [showForm, setShowForm] = useState(false);
   const [selectedRange, setSelectedRange] = useState(null);
   const [employeeName, setEmployeeName] = useState("");
@@ -30,7 +30,12 @@ export function MTimeOffCalendar() {
 
   const handleDateSelect = (selectInfo) => {
     const start = selectInfo.startStr;
-    const end = selectInfo.endStr;
+    // const end = selectInfo.endStr;
+
+    //minus the end date by 1 day
+    const end = new Date(new Date(selectInfo.endStr).getTime() - 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+    console.log(end + "end date");
 
     setSelectedRange({ start, end });
     setStartTimeOff(start); // Auto-update startTimeOff
@@ -39,8 +44,9 @@ export function MTimeOffCalendar() {
   };
 
   const handleDeleteEvent = (eventId) => {
+    console.log(eventId);
     if (window.confirm("Are you sure you want to delete this event?")) {
-      setTimeOffEvents((prevEvents) =>
+      setData((prevEvents) =>
         prevEvents.filter((event) => event.id !== eventId)
       );
     }
@@ -91,6 +97,8 @@ export function MTimeOffCalendar() {
 
       //send data to the server via axios
       axios.post('Timeoff/timeoff', {
+        idTimeoff: 0,
+        employeeName: employeeName,
         staffMatricule: matricule,
         beginTimeOff: startTimeOff,
         endTimeOff: endTimeOff
@@ -105,6 +113,7 @@ export function MTimeOffCalendar() {
       });
 
       setTimeOffEvents((prevEvents) => [...prevEvents, newEvent]);
+      setData((prevEvents) => [...prevEvents, newEvent]);
       setShowForm(false);
       setEmployeeName("");
       setMatricule("");
@@ -122,13 +131,15 @@ export function MTimeOffCalendar() {
 
   return (
     <>
+    {/* show the data received from prop here */}
+    {console.log(timeOffEvents)}
     <div className={styles.calendarWrapper}>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
         selectable={true}
         select={handleDateSelect}
-        events={timeOffEvents}
+        events={data}
         eventContent={(eventInfo) => (
           <div className={styles.eventContainer}>
             <span
