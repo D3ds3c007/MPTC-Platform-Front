@@ -5,6 +5,8 @@ import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import styles from "./MTimeOffCalendar.module.css"; // Import the CSS Module
 import axios from "@/app/lib/axiosInstance";
+
+import MPopupMessage from "../PopupMessage/MPopupMessage";
 import { MButton } from "../Button/MButton";
 
 export function MTimeOffCalendar() {
@@ -17,6 +19,13 @@ export function MTimeOffCalendar() {
   const [endTimeOff, setEndTimeOff] = useState("");
 
   const [suggestions, setSuggestions] = useState([]);  // To store auto-suggest results
+
+  //popup const
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const [popupType, setPopupType] = useState("success");
+  const [message, setMessage] = useState("")
 
 
   const handleDateSelect = (selectInfo) => {
@@ -79,6 +88,22 @@ export function MTimeOffCalendar() {
         end: endTimeOff,
         color: isFutureEvent ? "green" : "gray",
       };
+
+      //send data to the server via axios
+      axios.post('Timeoff/timeoff', {
+        staffMatricule: matricule,
+        beginTimeOff: startTimeOff,
+        endTimeOff: endTimeOff
+      }).then(response => {
+        console.log(response.data);
+        setMessage(response.data);
+        showPopup("success");
+      }).catch(error => {
+        console.error(error);
+        setMessage(response.data);
+        showPopup("error");
+      });
+
       setTimeOffEvents((prevEvents) => [...prevEvents, newEvent]);
       setShowForm(false);
       setEmployeeName("");
@@ -90,7 +115,13 @@ export function MTimeOffCalendar() {
     }
   };
 
+  const showPopup = (type) => {
+    setPopupType(type);
+    setIsVisible(true);
+  };
+
   return (
+    <>
     <div className={styles.calendarWrapper}>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -203,5 +234,16 @@ export function MTimeOffCalendar() {
         </div>
       )}
     </div>
+
+      <MPopupMessage
+        type={popupType}
+        title={popupType === "success" ? "Well done!" : "Oh snap!"}
+        message={message}
+        isVisible={isVisible}
+        onClose={() => setIsVisible(false)}
+      />
+    </>
+
+    
   );
 }
