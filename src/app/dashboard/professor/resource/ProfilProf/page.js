@@ -1,4 +1,5 @@
-import { MFolderCard } from "@/app/components/ui/FolderCard/MFolderCard";
+
+import { MFolderCardNa } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
 import { MButton } from "@/app/components/ui/Button/MButton";
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MDropdownsFilter } from "@/app/components/ui/DropdownsFilter/MDropdownsFilter";
@@ -16,11 +17,11 @@ export default function ExamFoldersPage() {
 
   // Données pour les MFolderCard (ces données pourraient aussi venir d'une API ou d'une base de données)
   const resources = [
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark" },
-    { level: "A1", title: "Exam A1", session: "OCT 2024", variant: "purple" },
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "secondary" },
-    { level: "A1", title: "Exercise A1", session: "OCT 2024", variant: "primary" },
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark" },
+    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark", subtitle: "Top 10 grammar lessons" },
+    { level: "A1", title: "Exam A1", session: "OCT 2024", variant: "purple", subtitle: "Mock test for beginners" },
+    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "secondary", subtitle: "Key vocabulary tips" },
+    { level: "A1", title: "Exercise A1", session: "OCT 2024", variant: "primary", subtitle: "Listening practice 101" },
+    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark", subtitle: "Speaking activities" },
   ];
   
   const recentFiles = [
@@ -30,6 +31,7 @@ export default function ExamFoldersPage() {
     { fileName: 'Exam D1', session: 'DEC 2021', size: '6.100 KB', fileType: 'video' },
     { fileName: 'Link to Resource', session: 'N/A', size: 'N/A', fileType: 'lien' }
 ];
+
   return (
     <div className={`container mt-4`}>
       {/* Titre principal */}
@@ -43,7 +45,7 @@ export default function ExamFoldersPage() {
         {/* Section de la barre de recherche */}
         <section className={styles.searchSection}>
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <h2 className={styles.allResources}>All resource</h2>
+            <h2 className={styles.allResources}>All resources</h2>
             <MSearchBar placeholder="Search" />
           </div>
         </section>
@@ -65,27 +67,26 @@ export default function ExamFoldersPage() {
           <div className={`row mt-2`} style={{ marginLeft: '30px', marginRight: '30px' }}>
             {resources.map((resource, index) => (
               <div key={index} className={`col-md-4 mb-4`}>
-                <MFolderCard 
+                <MFolderCardNa 
                   level={resource.level} 
                   title={resource.title} 
                   session={resource.session} 
                   variant={resource.variant} 
+                  subtitle={resource.subtitle} // Pass the subtitle here
                 />
               </div>
-              
             ))}
             <section className={styles.boutonAjout}>
                 <MButtonAjout />
             </section>
           </div>
-         
         </section>
         
         </div>
 
         {/* Section des fichiers récents */}
         <section className={styles.fileListSection}>
-          <h3 className={styles.topResources}>List of my resource</h3>
+          <h3 className={styles.topResources}>List of my resources</h3>
           <div className={`row mt-2`} style={{marginRight: '30px' }}>
             {recentFiles.map((file, index) => (
               <div key={index} className={`col-md-12 mb-1`}>

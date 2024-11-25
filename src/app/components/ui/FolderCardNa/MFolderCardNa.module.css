@@ -1,0 +1,172 @@
+
+.box {
+    position: relative;
+    width: 320px;
+    height: 250px;
+  }
+  
+  .folder {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    border-radius: 30px;
+    clip-path: path(
+  "M296.31,119.36v163.48a30.7,30.7,0,0,1-30.69,30.7h-238.5A27.14,27.14,0,0,1,0,215.7V27.14A27.14,27.14,0,0,1,27.14,0H206.41a27.14,27.14,0,0,1,25.75,18.58v10.23a27.5,27.5,0,0,0,.26,3.87,29.18,29.18,0,0,0,1.13,5.25,30.69,30.69,0,0,0,22.86,20.88,29.08,29.08,0,0,0,5.16.66h9.21A30.7,30.7,0,0,1,296.31,119.36Z"
+);
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+    padding: 15px;
+  }
+  
+  .folder-content p {
+    /* text-align: center; */
+    margin-top: -10px;
+    font-size: 14px;
+  }
+  
+  /* Icon in the top-right missing corner */
+  .corner-icon {
+    position: absolute;
+    top: 0px;
+    right: 56px;
+    background-color: var(--primary-color);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .level{
+    background-color: #F5F5F5;
+    color: var(--dark-blue);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .three-dot-button {
+    width: 35px;
+    height: 20px;
+    border-radius: 20px; /* Rounded rectangle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dots {
+    display: flex;
+    justify-content: space-between;
+    width: 20px;
+  }
+  
+  .dots span {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+
+  .popup {
+    position: absolute;
+    top: 80px;
+    right: 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .popup-item {
+    padding: 10px 20px;
+    margin: 5px 0;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popup-item:hover {
+    background-color: #01F073;
+    color: white;
+  }
+
+
+  
+  /* variant folder style */
+  
+  .folder.primary {
+    background-color: var(--default-bg);
+    color: var(--dark-blue);
+  }
+  
+  .dots.primary span {
+    background-color: var(--primary-color); /* Light blue dot color */
+  }
+  
+  .three-dot-button.primary {
+    background-color: var(--primary-bg); /* Dark blue background */
+  }
+  
+  .folder.secondary {
+    background-color: var(--primary-bg);
+    color: var(--primary-color);
+  }
+  
+  .dots.secondary span {
+    background-color: var(--dark-blue); /* Light blue dot color */
+  }
+  
+  .three-dot-button.secondary {
+    background-color: var(--default-bg); /* Dark blue background */
+  }
+  
+  .folder.dark {
+    background-color: var(--dark-blue);
+    color: var(--primary-color);
+  }
+  
+  .dots.dark span {
+    background-color: var(--primary-color); /* Light blue dot color */
+  }
+  
+  .three-dot-button.dark {
+    background-color: var(--secondary-bg); /* Dark blue background */
+  }
+  
+  .folder.grey {
+    background-color: #D9D9D9;
+    color: var(--dark-blue);
+  }
+  
+  .dots.grey span {
+    background-color: var(--primary-color); /* Light blue dot color */
+  }
+  
+  .three-dot-button.grey {
+    background-color: var(--dark-blue); /* Dark blue background */
+  }
+  
+  .folder.purple {
+    background-color: var(--secondary-bg);
+    color: var(--primary-color);
+  }
+  
+  .dots.purple span {
+    background-color: var(--primary-color); /* Light blue dot color */
+  }
+  
+  .three-dot-button.purple {
+    background-color: var(--primary-bg); /* Dark blue background */
+  }
