@@ -1,49 +1,70 @@
 
 .box {
     position: relative;
-    width: 320px;
+    width: 300px;
     height: 250px;
   }
   
   .folder {
     width: 300px;
-    height: 200px;
+    height: 240px;
     position: relative;
     border-radius: 30px;
    clip-path: path(
   "M296.31,89.52v122.61a30.7,30.7,0,0,1-30.69,30.7h-238.5A27.14,27.14,0,0,1,0,107.85V27.14A27.14,27.14,0,0,1,27.14,0H206.41a27.14,27.14,0,0,1,25.75,18.58v10.23a27.5,27.5,0,0,0,.26,3.87,29.18,29.18,0,0,0,1.13,5.25,30.69,30.69,0,0,0,22.86,20.88,29.08,29.08,0,0,0,5.16.66h9.21A30.7,30.7,0,0,1,296.31,89.52Z"
-);
-    /* display: flex;
+    );
+    display: flex;
     flex-direction: column;
-    justify-content: space-between; */
+    justify-content: space-between; 
     padding: 15px;
   }
   
   .folder-content p {
-    /* text-align: center; */
-    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 8px;
     font-size: 14px;
   }
+
+  .folder-content h5 {
+    padding-top: 30px;
+    margin-left: 8px;
+   }
+  
+   .folder-content h6 {
+   
+    margin-left: 8px;
+   }
   
   /* Icon in the top-right missing corner */
   .corner-icon {
-    position: absolute;
-    top: 0px;
-    right: 56px;
-    background-color: var(--primary-color);
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute; /* Position fixe dans le conteneur */
+    top: 5px; /* Ajuste pour être proche du coin supérieur gauche */
+    right: 5px; /* Ajuste pour être proche du coin gauche */
+    z-index: 10; /* Toujours visible au-dessus des autres éléments */
+    width: 50px; /* Augmenté pour une meilleure visibilité */
+    height: 50px;
+    
   }
   
+  .corner-icon svg {
+    width: 45px; /* Augmentation de la taille du SVG */
+    height: 45px;
+    fill: #01F073; /* Garde la couleur verte */
+    transition: transform 0.3s ease-in-out; /* Animation au survol */
+  }
+  
+  .corner-icon:hover svg {
+    transform: scale(1.2); /* Agrandissement au survol */
+  }
+  
+  
   .level{
-    background-color: #F5F5F5;
+    background-color: #ffffff;
     color: var(--dark-blue);
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
+    margin-left: 8px;
     border-radius: 50%;
     display: flex;
     display: flex;
@@ -52,9 +73,10 @@
   }
   
   .three-dot-button {
-    width: 35px;
-    height: 20px;
-    border-radius: 20px; /* Rounded rectangle */
+    width: 40px;
+    height: 30px;
+    border-radius: 20px; 
+    margin-left: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,41 +88,68 @@
     width: 20px;
   }
   
+
+
   .dots span {
     display: block;
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
+    background-color: var(--primary-color); /* Couleur dynamique */
     border-radius: 50%;
+  }
+
+  .Bouton{
+    margin-right: 100px;
   }
 
   .popup {
     position: absolute;
-    top: 80px;
-    right: 15px;
+    top: 45%;
+    right: -180px; /* Décale le popup à droite */
+    transform: translateY(-50%); /* Centrage vertical */
+    width: 200px; /* Ajuste la largeur */
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 12px; /* Coins arrondis */
     padding: 10px;
     z-index: 10;
     display: flex;
     flex-direction: column;
+    gap: 12px; /* Espacement entre les boutons */
   }
   
   .popup-item {
-    padding: 10px 20px;
-    margin: 5px 0;
-    background-color: #f5f5f5;
+    display: flex;
+    align-items: center; /* Aligne l'icône et le texte verticalement */
+    font-size: 15px; /* Ajuste la taille du texte */
+    font-weight: 600; /* Texte en gras */
+    padding: 12px 16px; /* Espacement interne */
+    background-color: #f5f5f5; /* Couleur de fond */
+    color: #0b006e;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Coins arrondis */
     cursor: pointer;
-    text-align: left;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .popup-item:hover {
-    background-color: #01F073;
+    background-color: #01F073; /* Bleu au survol */
     color: white;
   }
+  
+  .popup-item .icon {
+    margin-right: 10px; /* Espace entre l'image et le texte */
+    flex-shrink: 0; /* Empêche l'image de rétrécir */
+    width: 25px; /* Taille de l'icône */
+    height: 25px; /* Taille de l'icône */
+  }
+  
+  .popup-item span {
+    margin-left: 8px; /* Ajoute un espace supplémentaire pour le texte si nécessaire */
+  }
+  
+  
+  
 
 
   
