@@ -21,7 +21,7 @@ export default function ExamFoldersPage() {
     { level: "A1", title: "Exam A1", session: "OCT 2024", variant: "purple", subtitle: "Mock test for beginners" },
     { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "secondary", subtitle: "Key vocabulary tips" },
     { level: "A1", title: "Exercise A1", session: "OCT 2024", variant: "primary", subtitle: "Listening practice 101" },
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark", subtitle: "Speaking activities" },
+    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "rouge", subtitle: "Speaking activities" },
   ];
   
   const recentFiles = [
