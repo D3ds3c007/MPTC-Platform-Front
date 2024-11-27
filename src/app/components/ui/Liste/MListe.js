@@ -47,7 +47,7 @@ export function MListe({ fileName, session, size, fileType }) {
                 <Image src={fileIcon} alt={fileType} width={40} height={40} />
             </div>
             <div className={styles["file-details"]}>
-                <h3>{fileName}</h3>
+                <h5>{fileName}</h5>
                 <p>Session : {session}</p>
             </div>
             <div className={styles["file-size"]}>                                                                                                           

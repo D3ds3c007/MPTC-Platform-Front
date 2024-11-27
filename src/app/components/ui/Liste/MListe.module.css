@@ -7,9 +7,12 @@
     border-radius: 18px;
     border: 1px solid #e5e5e5;
     padding: 20px 40px;
-    width: 1040px;
-    height: 70px;
+    width: 100%;
+    max-width: 1040px;
+    height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px 0; /* Ajouter de l'espace entre les éléments */
+    flex-wrap: wrap; /* Permet aux éléments de s'ajuster en fonction de l'espace */
 }
 
 .file-icon {
@@ -19,33 +22,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 20px;
 }
 
 .file-details {
     flex-grow: 1;
-    margin-left: 50px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.file-details h3 {
+.file-details h5 {
     font-weight: bold;
-    font-size: 20px;
     color: #3f297e;
-    margin-bottom:0px ;
+    margin-bottom: 0;
 }
 
 .file-details p {
-    font-size: 14px;
+    
     color: #888;
-    margin-bottom:0px ;
+    margin-bottom: 0;
 }
 
 .file-size {
     color: #3f297e;
     font-weight: bold;
-    font-size: 16px;
+   
     text-align: center;
     display: flex;
     align-items: center;
@@ -77,4 +80,72 @@
     border-top: 4px solid white;
     border-right: 4px solid white;
     transform: rotate(45deg);
+}
+
+/* Media Queries pour la réactivité */
+@media (max-width: 768px) {
+    .file-item {
+        padding: 10px 20px;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .file-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .file-details {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .file-size {
+        margin-right: 0;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .file-action {
+        align-self: flex-start;
+    }
+
+    .file-details h3 {
+        font-size: 1rem; /* Réduire la taille du titre sur petits écrans */
+    }
+
+    .file-details p {
+        font-size: 0.75rem; /* Réduire la taille du texte sur petits écrans */
+    }
+}
+
+@media (max-width: 480px) {
+    .file-item {
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+    .file-details h3 {
+        font-size: 0.9rem;
+    }
+
+    .file-details p {
+        font-size: 0.75rem;
+    }
+
+    .file-size {
+        font-size: 0.875rem;
+    }
+
+    .file-action .btn-view {
+        width: 40px;
+        height: 40px;
+    }
+
+    .file-action .btn-view::before {
+        width: 12px;
+        height: 12px;
+    }
 }

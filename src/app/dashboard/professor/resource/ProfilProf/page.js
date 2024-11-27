@@ -17,12 +17,13 @@ export default function ExamFoldersPage() {
 
   // Données pour les MFolderCard (ces données pourraient aussi venir d'une API ou d'une base de données)
   const resources = [
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark", subtitle: "Top 10 grammar lessons Top 10 grammar lessons Top 10 grammar lessons" },
-    { level: "A1", title: "Exam A1", session: "OCT 2024", variant: "purple", subtitle: "Mock test for beginners" },
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "secondary", subtitle: "Key vocabulary tips" },
-    { level: "A1", title: "Exercise A1", session: "OCT 2024", variant: "primary", subtitle: "Listening practice 101" },
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "rouge", subtitle: "Speaking activities" },
+    { fileType: "pdf", title: "Lesson A1", session: "OCT 2024", subtitle: "Top 10 grammar lessons" },
+    { fileType: "image", title: "Exam A1", session: "OCT 2024", subtitle: "Mock test for beginners" },
+    { fileType: "video", title: "Lesson A1", session: "OCT 2024", subtitle: "Key vocabulary tips" },
+    { fileType: "word", title: "Exercise A1", session: "OCT 2024", subtitle: "Listening practice 101" },
+    { fileType: "lien", title: "Lesson A1", session: "OCT 2024", subtitle: "Speaking activities" },
   ];
+  
   
   const recentFiles = [
     { fileName: 'Exam A1', session: 'OCT 2024', size: '5.265 KB', fileType: 'pdf' },
@@ -61,26 +62,25 @@ export default function ExamFoldersPage() {
           </div>
         </section>
 
-        {/* Section des ressources principales */}
         <section className={styles.resourcesSection}>
           <h3 className={styles.topResources}>My recently added resources</h3>
-          <div className={`row mt-2`} style={{ marginLeft: '30px', marginRight: '30px' }}>
+          <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
             {resources.map((resource, index) => (
               <div key={index} className={`col-md-4 mb-4`}>
                 <MFolderCardNa 
-                  level={resource.level} 
-                  title={resource.title} 
-                  session={resource.session} 
-                  variant={resource.variant} 
-                  subtitle={resource.subtitle} // Pass the subtitle here
+                  fileType={resource.fileType} // Passer fileType comme argument
+                  title={resource.title}
+                  session={resource.session}
+                  subtitle={resource.subtitle} 
                 />
               </div>
             ))}
             <section className={styles.boutonAjout}>
-                <MButtonAjout />
+              <MButtonAjout />
             </section>
           </div>
         </section>
+
         
         </div>
 

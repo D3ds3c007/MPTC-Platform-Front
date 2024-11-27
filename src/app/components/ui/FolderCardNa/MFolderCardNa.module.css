@@ -64,18 +64,19 @@
   }
   
   
-  .level{
-    background-color: #ffffff;
-    color: var(--dark-blue);
-    width: 60px;
-    height: 60px;
-    margin-left: 8px;
-    border-radius: 50%;
-    display: flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .level-icon {
+    
+      background-color: #ffffff;
+      color: var(--dark-blue);
+      width: 60px;
+      height: 60px;
+      margin-left: 8px;
+      border-radius: 50%;
+      display: flex;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   
   .three-dot-button {
     width: 40px;
@@ -116,7 +117,7 @@
     height: 220px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px; /* Coins arrondis */
+    border-radius: 30px; /* Coins arrondis */
     padding: 10px;
     z-index: 10;
     display: flex;
@@ -135,7 +136,7 @@
     background-color: #e6e4e4; /* Couleur de fond */
     color: #0b006e;
     border: none;
-    border-radius: 8px; /* Coins arrondis */
+    border-radius: 20px; /* Coins arrondis */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
