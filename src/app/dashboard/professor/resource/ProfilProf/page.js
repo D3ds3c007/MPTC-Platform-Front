@@ -17,11 +17,11 @@ export default function ExamFoldersPage() {
 
   // Données pour les MFolderCard (ces données pourraient aussi venir d'une API ou d'une base de données)
   const resources = [
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark", subtitle: "Top 10 grammar lessons" },
+    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark", subtitle: "Top 10 grammar lessons Top 10 grammar lessons Top 10 grammar lessons" },
     { level: "A1", title: "Exam A1", session: "OCT 2024", variant: "purple", subtitle: "Mock test for beginners" },
     { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "secondary", subtitle: "Key vocabulary tips" },
     { level: "A1", title: "Exercise A1", session: "OCT 2024", variant: "primary", subtitle: "Listening practice 101" },
-    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "dark", subtitle: "Speaking activities" },
+    { level: "A1", title: "Lesson A1", session: "OCT 2024", variant: "rouge", subtitle: "Speaking activities" },
   ];
   
   const recentFiles = [
