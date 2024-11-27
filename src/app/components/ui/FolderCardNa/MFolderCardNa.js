@@ -3,6 +3,11 @@ import Image from 'next/image';
 import telechargements from './telechargements.png';
 import favori from './favori.png';
 import arretez from './arretez.png';
+import deposer from './deposer.png';
+import fichier from './fichier.png';
+import fond from './fond.png';
+import video from './video.png';
+import www from './www.png';
 import React, { useState } from 'react';
 import styles from './MFolderCardNa.module.css';
 
