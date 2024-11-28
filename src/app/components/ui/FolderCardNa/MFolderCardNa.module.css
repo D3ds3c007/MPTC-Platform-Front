@@ -131,8 +131,8 @@
     font-size: 16px; /* Ajuste la taille du texte */
     font-weight: 600; /* Texte en gras */
     padding: 12px 16px; /* Espacement interne */
-    width: 180px; /* Ajuste la largeur */
-    height: 220px;
+    width: 80px; /* Ajuste la largeur */
+    height: 100px;
     background-color: #e6e4e4; /* Couleur de fond */
     color: #0b006e;
     border: none;

@@ -18,11 +18,11 @@
   }
   /* Titre principal de la section de ressources */
   .allResources {
-    font-size: 1.5rem;
+    font-size: 36px;
     font-weight: bold;
     margin-left: 30px;
     margin-bottom: 0;
-    color: blueviolet;
+    color: #00119D;
   }
   
   /* Section des filtres */

@@ -5,6 +5,7 @@ import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MDropdownsFilter } from "@/app/components/ui/DropdownsFilter/MDropdownsFilter";
 import { MListe } from "@/app/components/ui/Liste/MListe";
 import { MButtonAjout } from "@/app/components/ui/ButtonAjout/MButtonAjout";
+// import { MfiltreNa } from "@/app/components/ui/filtreNa/MfiltreNa";
 import { MButtonAjoutResource } from "@/app/components/ui/ButtonAjoutResource/MButtonAjoutResource";
 import styles from './page.module.css';
 
@@ -47,6 +48,10 @@ export default function ExamFoldersPage() {
         <section className={styles.searchSection}>
           <div className="d-flex justify-content-between align-items-center mb-2">
             <h2 className={styles.allResources}>All resources</h2>
+            
+          <MButtonAjoutResource></MButtonAjoutResource>
+        
+
             <MSearchBar placeholder="Search" />
           </div>
         </section>
@@ -101,11 +106,9 @@ export default function ExamFoldersPage() {
           </div>
         </section>
 
-        <section className={styles.BoutonProfil}>
-          <MButtonAjoutResource></MButtonAjoutResource>
-         
-    
-        </section>
+        {/* <section>
+        <MfiltreNa />
+        </section> */}
       
     </div>
   );
