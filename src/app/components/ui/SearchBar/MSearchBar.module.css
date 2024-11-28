@@ -16,10 +16,12 @@
   font-size: 16px;
   color: white;
   background-color: transparent;
+  margin-left: 10px;
 }
 
 .search-input::placeholder {
   color: white;
+ 
 }
 
 .search-button {
@@ -27,9 +29,18 @@
   width: 10%;
   border: none;
   cursor: pointer;
+  display: flex; /* Centrer l'image */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  padding: 5px; /* Ajoute de l'espace autour de l'image */
+  margin-right: 20px;
 }
 
 .search-button .bi-search {
   color: white;
   font-size: 20px;
+}
+.icon {
+  width: 30px; /* Ajustez la taille si nécessaire */
+  height: 30px; /* Ajustez la taille si nécessaire */
 }

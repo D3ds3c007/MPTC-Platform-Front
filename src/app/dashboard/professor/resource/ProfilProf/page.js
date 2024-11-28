@@ -5,7 +5,7 @@ import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MDropdownsFilter } from "@/app/components/ui/DropdownsFilter/MDropdownsFilter";
 import { MListe } from "@/app/components/ui/Liste/MListe";
 import { MButtonAjout } from "@/app/components/ui/ButtonAjout/MButtonAjout";
-import { MButtonProfilProf } from "@/app/components/ui/ButtonProfilProf/MButtonProfilProf";
+import { MButtonAjoutResource } from "@/app/components/ui/ButtonAjoutResource/MButtonAjoutResource";
 import styles from './page.module.css';
 
 export default function ExamFoldersPage() {
@@ -102,8 +102,8 @@ export default function ExamFoldersPage() {
         </section>
 
         <section className={styles.BoutonProfil}>
-          <MButtonProfilProf variant="secondary">Add resource</MButtonProfilProf>
-          <MButtonProfilProf variant="primary">See entire list</MButtonProfilProf>
+          <MButtonAjoutResource></MButtonAjoutResource>
+         
     
         </section>
       

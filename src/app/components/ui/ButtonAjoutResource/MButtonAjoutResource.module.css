@@ -1,0 +1,52 @@
+.custom-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00ff80; /* Vert vif */
+    color: #0000ff; /* Texte bleu */
+    border: none;
+    border-radius: 50px; /* Bords arrondis */
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff; /* Cercle blanc */
+    border-radius: 50%; /* Cercle parfait */
+    width: 40px; /* Largeur du cercle */
+    height: 40px; /* Hauteur du cercle */
+    margin-right: 12px; /* Espacement entre le rond et le texte */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Pour rendre le cercle visible */
+  }
+  
+  .icon {
+    width: 20px; /* Taille de l'image dans le cercle */
+    height: 20px;
+  }
+  
+  .text {
+    font-weight: bold;
+  }
+  
+  .custom-button:hover {
+    background-color: #0000ff; /* Fond bleu */
+    color: #00ff80; /* Texte devient vert */
+  }
+  
+  .custom-button:hover .icon-container {
+    background-color: #fff; /* Fond blanc conservé */
+    transform: scale(1.1); /* Agrandit le cercle légèrement au hover */
+  }
+  
+  .custom-button:hover .icon {
+    filter: brightness(0) saturate(100%) invert(47%) sepia(70%) saturate(285%) hue-rotate(80deg) brightness(96%) contrast(92%);
+    /* Change la couleur de l'icône en vert */
+  }
+  
