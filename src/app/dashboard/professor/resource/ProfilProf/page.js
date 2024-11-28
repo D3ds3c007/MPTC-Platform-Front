@@ -87,7 +87,7 @@ export default function ExamFoldersPage() {
         {/* Section des fichiers récents */}
         <section className={styles.fileListSection}>
           <h3 className={styles.topResources}>List of my resources</h3>
-          <div className={`row mt-2`} style={{marginRight: '30px' }}>
+          <div className={`row mt-1`} >
             {recentFiles.map((file, index) => (
               <div key={index} className={`col-md-12 mb-1`}>
                 <MListe

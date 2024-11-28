@@ -6,53 +6,56 @@
     background-color: #fff;
     border-radius: 18px;
     border: 1px solid #e5e5e5;
-    padding: 20px 40px;
+    padding: 20px;
     width: 100%;
-    max-width: 1040px;
-    height: auto;
+    max-width: 1300px; /* Limiter la largeur */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px 0; /* Ajouter de l'espace entre les éléments */
-    flex-wrap: wrap; /* Permet aux éléments de s'ajuster en fonction de l'espace */
+    margin: 10px auto; /* Centrer et espacer */
+    flex-wrap: wrap; /* Permet d'ajuster selon l'espace */
+    gap: 15px; /* Espace entre les éléments flexibles */
 }
 
 .file-icon {
-    background-color: #FCE1E1;
+    background-color: #fce1e1;
     border-radius: 50%;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 20px;
+    min-width: 50px; /* Taille minimale */
 }
 
 .file-details {
     flex-grow: 1;
-    margin-left: 20px;
+    margin-left: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 70%; /* Empêcher de déborder */
 }
 
 .file-details h5 {
     font-weight: bold;
     color: #3f297e;
-    margin-bottom: 0;
+    margin-bottom: 5px;
+    font-size: 1.1rem; /* Taille ajustable */
 }
 
 .file-details p {
-    
     color: #888;
-    margin-bottom: 0;
+    margin: 0;
+    font-size: 0.9rem;
 }
 
 .file-size {
     color: #3f297e;
     font-weight: bold;
-   
-    text-align: center;
     display: flex;
     align-items: center;
-    margin-right: 350px;
+    text-align: center;
+    margin-right: 300px;
+    
 }
 
 .file-action .btn-view {
@@ -61,6 +64,7 @@
     height: 50px;
     border-radius: 50%;
     display: flex;
+    margin-right: 40px;
     justify-content: center;
     align-items: center;
     text-decoration: none;
@@ -69,7 +73,7 @@
 }
 
 .file-action .btn-view:hover {
-    background-color: #01F073;
+    background-color: #01f073;
 }
 
 .file-action .btn-view::before {
@@ -82,14 +86,13 @@
     transform: rotate(45deg);
 }
 
-/* Media Queries pour la réactivité */
+/* Media Queries pour les appareils moyens */
 @media (max-width: 768px) {
     .file-item {
-        padding: 10px 20px;
-        height: auto;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
+        padding: 15px;
+        gap: 10px;
     }
 
     .file-icon {
@@ -99,36 +102,35 @@
 
     .file-details {
         margin-left: 0;
-        margin-bottom: 10px;
+        max-width: 100%;
     }
 
     .file-size {
-        margin-right: 0;
         text-align: left;
         margin-bottom: 10px;
+    }
+
+    .file-details h5 {
+        font-size: 0.9rem;
+    }
+
+    .file-details p {
+        font-size: 0.8rem;
     }
 
     .file-action {
         align-self: flex-start;
     }
-
-    .file-details h3 {
-        font-size: 1rem; /* Réduire la taille du titre sur petits écrans */
-    }
-
-    .file-details p {
-        font-size: 0.75rem; /* Réduire la taille du texte sur petits écrans */
-    }
 }
 
+/* Media Queries pour les très petits appareils */
 @media (max-width: 480px) {
     .file-item {
-        width: 100%;
-        padding: 10px 15px;
+        padding: 10px;
     }
 
-    .file-details h3 {
-        font-size: 0.9rem;
+    .file-details h5 {
+        font-size: 0.85rem;
     }
 
     .file-details p {
@@ -136,7 +138,7 @@
     }
 
     .file-size {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
     }
 
     .file-action .btn-view {
