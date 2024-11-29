@@ -7,16 +7,24 @@
     padding: 15px;
   }
 
+  
+.chart-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(white);
+}
+
   /* Pie chart */
   .pie-chart {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     background: conic-gradient(
-      var(--pink-bg) 0% 25%,   /* Red slice */
-      var(--default-bg) 25% 50%,  /* Blue slice */
-      var(--warning-bg) 50% 75%,  /* Yellow slice */
-      var(--success-bg) 75% 100%  /* Green slice */
+      var(--success-bg) 0% 25%,   /* Red slice */
+      var(--success-bg) 25% 50%,  /* Blue slice */
+      var(--warning-bg) 50% 85%,  /* Yellow slice */
+      var(--default-bg) 85% 100%  /* Green slice */
     );
     margin: 0 auto 20px;
   }
@@ -55,18 +63,18 @@
   }
 
   .progress-ready {
-    width: 40%;
-    background-color: #f28b82;
+    width: 100%;
+    background-color: var(--success-bg);
   }
 
   .progress-pending {
-    width: 25%;
-    background-color: #aecbfa;
+    width: 100%;
+    background-color: var(--warning-bg);
   }
 
   .progress-in-use {
-    width: 50%;
-    background-color: #fff475;
+    width: 100%;
+    background-color: var(--default-bg);
   }
 
   .progress-stock {

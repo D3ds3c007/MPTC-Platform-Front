@@ -1,20 +1,19 @@
   
   .table-header, .table-row {
     display: grid;
-    /* grid-template-columns: 50px 1fr 100px 100px 100px 100px 80px 100px 120px 100px; */
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-columns: 100px 1fr 100px 100px 100px 100px 100px 100px 100px 100px;
     align-items: center;
     gap: 15px;
     padding: 10px;
   }
   
   .table-header {
-    background-color: #0000A0;
+    background-color: var(--primary-bg);
     color: white;
     font-weight: semi-bold;
     font-size: 14px;
     padding: 15px 10px;
-    border-radius: 8px;
+    border-radius: 10px;
   }
   
   .table-body {
@@ -25,7 +24,7 @@
 
   .table-row {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 15px 10px;
     border: 1px solid var(--default-bg);
   }
@@ -35,26 +34,11 @@
   }
   
   .arrow-down {
-    color: red;
+    color: var(--danger-bg);
   }
   
   .arrow-up {
-    color: green;
-  }
-  
-  .status {
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .status.invalid {
-    background-color: red;
-  }
-  
-  .status.valid {
-    background-color: green;
+    color: var(--success-bg);
   }
   
   .actions {
@@ -70,13 +54,33 @@
     color: red;
     cursor: pointer;
   }
-/*   
-  input[type="checkbox"] {
-    cursor: pointer;
-  }
-   */
+
   .card {
     display: grid;
     grid-template-columns: 50px 1fr 100px 100px 100px 100px 80px 100px 120px 100px;
     align-items: center;
   }
+
+
+  
+.three-dot-button {
+  width: 35px;
+  height: 20px;
+  border-radius: 20px; /* Rounded rectangle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots {
+  display: flex;
+  justify-content: space-between;
+  width: 20px;
+}
+
+.dots span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}

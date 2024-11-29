@@ -1,0 +1,111 @@
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-circle {
+    background-color: #001aa0; /* Dark blue */
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .step-inactive {
+    background-color: #d8e8ff; /* Light blue */
+    color: var(--primary-bg);
+  }
+
+  .step-bar {
+    flex-grow: 1;
+    height: 10px;
+    /* background-color: var(--primary-bg); */
+    margin: 0 10px;
+    border-radius: 20px; /* More rounded corners */
+  }
+
+  .step-bar-inactive {
+    /* background-color: #d8e8ff; */
+    border-radius: 20px; /* More rounded corners */
+  }
+
+  .step-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #9b00d8;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .folder-container {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .folder-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .folder {
+    background-color: #4a48e0;
+    width: 60px;
+    height: 40px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .document {
+    background-color: #e6e6e6;
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .progress-bar {
+    margin: 40px auto 10px;
+    background-color: #00d16c;
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 120px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .timer {
+    font-size: 14px;
+    color: black;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .timer span {
+    font-weight: bold;
+  }

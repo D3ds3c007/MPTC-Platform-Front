@@ -1,0 +1,54 @@
+.folder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  /* Folder shape */
+  .folder {
+    width: 100px;
+    height: 120px;
+    background-color: var(--primary-bg); /* Light gray */
+    border-radius: 0px 10px 0 0; /* Rounded top edges */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Paper inside the folder */
+  .paper {
+    width: 70px;
+    height: 80px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Lines on the paper */
+  .line {
+    width: 70%;
+    height: 4px;
+    background-color: black;
+    margin: 2px 0;
+  }
+
+  /* Last line is shorter */
+  .line:last-child {
+    width: 50%;
+  }
+
+  /* Label below the folder */
+  .label {
+    margin-top: 10px;
+    font-size: 12px;
+    color: black;
+  }

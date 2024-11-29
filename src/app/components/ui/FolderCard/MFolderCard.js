@@ -27,6 +27,9 @@ export function MFolderCard({key, level, subject, session, period, variant = 'pr
             </svg>
           </a>
         </div>
+        <div>
+          {/* <p>Created 29/11/2024</p> */}
+        </div>
     </div>
   );
 };

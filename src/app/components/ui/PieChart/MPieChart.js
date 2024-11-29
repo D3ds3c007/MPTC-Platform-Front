@@ -4,32 +4,32 @@ import styles from'./MPieChart.module.css'; // Import the CSS for styling
 export function MPieChart() {
   return (
     <div className={styles["chart-container"]}>
-    <h2>Question Types</h2>
+          <div className={styles["chart-title"]}>Fail & Pass rate</div>
 
     <div className={styles["pie-chart"]}></div>
 
     <div className={styles["status"]}>
-      <span className={styles["label"]}>Ready to Deploy</span>
-      <span className={styles["percentage"]}>40%</span>
-    </div>
-    <div className={styles["progress-bar"]}>
-      <div className={styles["progress-fill progress-ready"]}></div>
-    </div>
-
-    <div className={styles["status"]}>
-      <span className={styles["label"]}>Pending</span>
-      <span className={styles["percentage"]}>25%</span>
-    </div>
-    <div className={styles["progress-bar"]}>
-      <div className={styles["progress-fill progress-pending"]}></div>
-    </div>
-
-    <div className={styles["status"]}>
-      <span className={styles["label"]}>In use</span>
+      <span className={styles["label"]}>Pass successfully</span>
       <span className={styles["percentage"]}>50%</span>
     </div>
     <div className={styles["progress-bar"]}>
-      <div className={styles["progress-fill progress-in-use"]}></div>
+      <div className={`${styles["progress-fill"]} ${styles["progress-ready"]}`}></div>
+    </div>
+
+    <div className={styles["status"]}>
+      <span className={styles["label"]}>Fail and must return class</span>
+      <span className={styles["percentage"]}>30%</span>
+    </div>
+    <div className={styles["progress-bar"]}>
+      <div className={`${styles["progress-fill"]} ${styles["progress-pending"]}`}></div>
+    </div>
+
+    <div className={styles["status"]}>
+      <span className={styles["label"]}>Others</span>
+      <span className={styles["percentage"]}>20%</span>
+    </div>
+    <div className={styles["progress-bar"]}>
+      <div className={`${styles["progress-fill"]} ${styles["progress-in-use"]}`}></div>
     </div>
 
     {/* <div className={styles["status"]}>

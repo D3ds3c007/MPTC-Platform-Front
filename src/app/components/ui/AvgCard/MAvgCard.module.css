@@ -1,0 +1,11 @@
+.average-card {
+    background-color: var(--warning-bg); /* Yellow color */
+    width: 250px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px 40px;
+    border-radius: 20px;
+    text-align: center;
+    display: inline-block;
+  }

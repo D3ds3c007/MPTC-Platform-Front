@@ -1,0 +1,85 @@
+.chart-container {
+    width: 1125px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--default-bg);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--primary-bg);
+}
+
+.bar-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.bar-label {
+    width: 150px;
+    font-size: 14px;
+    color: #333;
+}
+
+.bar {
+    flex: 1;
+    height: 10px;
+    position: relative;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    position: absolute;
+}
+
+.bar-fill.complete {
+    background-color: var(--primary-bg);
+    width: 70%;
+}
+
+.bar-fill.true-false {
+    background-color: var(--warning-bg);
+    width: 70%;
+}
+
+.bar-fill.original {
+    background-color: var(--success-bg);
+    width: 70%;
+}
+
+.bar-fill.essay {
+    background-color: var(--secondary-bg);
+    width: 70%;
+}
+
+.bar-fill.reading {
+    background-color: var(--primary-bg);
+    width: 70%;
+}
+
+.bar-fill.describe {
+    background-color: var(--success-bg);
+    width: 70%;
+}
+
+.bar-fill.listening {
+    background-color: var(--pink-bg);
+    width: 70%;
+}
+
+.bar-percentage {
+    font-size: 14px;
+    color: #333;
+    min-width: 40px;
+    text-align: right;
+}
