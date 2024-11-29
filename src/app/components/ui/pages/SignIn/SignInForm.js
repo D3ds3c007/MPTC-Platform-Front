@@ -6,7 +6,7 @@ import styles from './SignIn.module.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import { MLoading } from '@/app/components/ui/Loading/MLoading'
-import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage'
+import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage';
 import { useState } from "react";
 import { set } from 'react-hook-form'
 
@@ -19,7 +19,7 @@ export function SignInForm(){
     const [isVisible, setIsVisible] = useState(false);
 
     const [popupType, setPopupType] = useState("success");
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("");
 
 
 

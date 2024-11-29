@@ -60,8 +60,7 @@
 }
 
 .active {
-  background-color: var(--warning-bg);
-  padding: 5px;
+  font-weight: bold;
   margin: 0;
   border-radius: 5px;
 }

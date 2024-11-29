@@ -1,11 +1,13 @@
-  import { useState, useEffect } from 'react';
-  import { useForm, FormProvider } from 'react-hook-form';
-  import { FiUpload } from 'react-icons/fi';
-  import { MSchedule } from '@/app/components/ui/Schedule/MSchedule';
-  import styles from './MMultiStepForm.module.css';
-  import { MButton } from '../Button/MButton';
-  import axios  from '@/app/lib/axiosInstance';
-  import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAndDropUpload';
+import { useState, useEffect } from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
+import { FiUpload } from 'react-icons/fi';
+import { MSchedule } from '@/app/components/ui/Schedule/MSchedule';
+import styles from './MMultiStepForm.module.css';
+import { MButton } from '../Button/MButton';
+import axios  from '@/app/lib/axiosInstance';
+import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage';
+
+import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAndDropUpload';
 
   const steps = ["Staff Information", "Upload Picture", "Set Schedule"];
   const CACHE_EXPIRY_TIME = 1000 * 60 * 5; // 5 minutes
@@ -15,6 +17,10 @@
     const [data, setData] = useState(null);
     const methods = useForm();  // Initialize the form methods
     const { handleSubmit, formState: { errors } } = methods;
+
+    const [isVisible, setIsVisible] = useState(false);
+    const [popupType, setPopupType] = useState("success");
+    const [message, setMessage] = useState("");
 
     
     useEffect(() => {
@@ -50,9 +56,15 @@
         axios.post('/staff/upload-employee', data)
           .then(response => {
             console.log('Employee data uploaded:', response.data);
+            setPopupType("success")
+            setMessage(response.data);
+            showPopup("success");
           })
           .catch(error => {
             console.error('Error uploading employee data:', error);
+            setPopupType("error")
+            setMessage(error.response.data);
+            showPopup("error");
           });
       } else {
         setCurrentStep((prev) => prev + 1);
@@ -61,6 +73,11 @@
 
     const prevStep = () => {
       setCurrentStep((prev) => Math.max(prev - 1, 0));
+    };
+
+    const showPopup = (type) => {
+      setPopupType(type);
+      setIsVisible(true);
     };
 
     return (
@@ -250,6 +267,14 @@
 
       
       </div>
+
+      <MPopupMessage
+          type={popupType}
+          title={popupType === "success" ? "Well done!" : "Oh snap!"}
+          message={message}
+          isVisible={isVisible}
+          onClose={() => setIsVisible(false)}
+      />
       </FormProvider>
     );
   }
