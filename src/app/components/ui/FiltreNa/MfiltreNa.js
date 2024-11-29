@@ -50,10 +50,16 @@ export function MfiltreNa({ files, onFilter }) {
     return files.filter((file) => {
       const matchesType = activeFilter === "All" || file.type === activeFilter;
 
-      // if(selectedType === "Recent")
-      // {
-      //     file.publishedDate
-      // }
+      if(selectedType === "Recent")
+      {
+          //filter file by publisehdDate, show only the files that are published in the last 7 days
+          const publishedDate = new Date(file.publishedDate);
+          const currentDate = new Date();
+          const diffTime = Math.abs(currentDate - publishedDate);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          return diffDays <= 7;
+          
+      }
     
       const matchesLevel = !selectedLevel || file.level === selectedLevel;
       const matchesYear = !selectedYear || file.year === selectedYear;
