@@ -33,11 +33,27 @@ export default function CheckUp(){
                     </div>
                 </div>
 
+                <br></br>
+
                 <div className="row"style={{
                         display: 'flex',
                         flexDirection: 'row',
                         flexWrap: 'wrap',
+                        gap: '60px',
                 }}>
+                        <br></br>
+
+                    <p style={{
+                        fontSize: '1.125rem', /* Relative font size (18px equivalent) */
+                        fontWeight: '600',
+                        marginBottom: '0.625rem', /* 10px equivalent in rem */
+                        color: '#7D06EA',
+                        }}>List of Student Papers</p>
+
+                        <br></br>
+                        <br></br>
+                    <MPaperStudent></MPaperStudent>
+                    <MPaperStudent></MPaperStudent>
                     <MPaperStudent></MPaperStudent>
                 </div>
 
