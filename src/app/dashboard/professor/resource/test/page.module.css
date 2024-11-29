@@ -1,0 +1,70 @@
+/* Conteneur principal */
+.filter-container {
+    display: flex;
+    justify-content: flex-start; /* Aligne le filtre sur le bord gauche */
+    position: relative; /* Positionner le bouton de défilement à l'intérieur du conteneur */
+    gap: 15px;
+    align-items: center;
+    background: white;
+    margin-top: 50px;
+    width: 80%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Cache le débordement horizontal */
+    padding-right: 40px; /* Espace pour le bouton de défilement */
+  }
+  
+  /* Bouton de défilement à droite */
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #00119D;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  /* Style pour la flèche du bouton de défilement */
+  .scroll-button::before {
+    content: '→'; /* Utilise une flèche pour le bouton de défilement */
+    font-size: 20px;
+  }
+  
+  /* Contenu défilant de MfiltreNa */
+  .filter-content {
+    display: flex;
+    gap: 15px;
+    flex-shrink: 0;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    padding-right: 40px; /* Laisse de la place pour le bouton de défilement */
+  }
+  
+  /* Boutons de filtre */
+  .filter-btn {
+    padding: 12px 25px;
+    border: 2px solid #00119D;
+    border-radius: 25px;
+    background-color: white;
+    color: #00119D;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Boutons de filtre actifs */
+  .filter-btn.active {
+    background-color: #00119D;
+    color: white;
+  }
+  

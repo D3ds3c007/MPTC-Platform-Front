@@ -10,22 +10,24 @@ import video from './video.png';
 import www from './www.png';
 import React, { useState } from "react";
 import styles from "./MFolderCardNa.module.css";
+import Link from "next/link";
 
 export function MFolderCardNa({
   fileType = "pdf", // Type du fichier, par exemple : 'pdf', 'image', 'video'
   title = "Exam Term 1",
   session = "OCT 2024",
   subtitle = "Top 10 of resources",
+  level = "A1"
 }) {
   const [showPopup, setShowPopup] = useState(false);
 
   // Définir les icônes et les variantes par type de fichier
   const fileConfig = {
-    pdf: { icon: fichier, variant: "rouge" },
-    image: { icon: fond, variant: "dark" },
-    video: { icon: video, variant: "primary" },
-    word: { icon: deposer, variant: "purple" },
-    lien: { icon: www, variant: "secondary" },
+    PDF: { icon: fichier, variant: "rouge" },
+    Image: { icon: fond, variant: "dark" },
+    Video: { icon: video, variant: "primary" },
+    Word: { icon: deposer, variant: "purple" },
+    Link: { icon: www, variant: "secondary" },
     default: { icon: fichier, variant: "rouge" },
   };
 
