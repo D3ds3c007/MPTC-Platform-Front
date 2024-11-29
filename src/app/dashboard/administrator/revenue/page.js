@@ -39,7 +39,7 @@ useEffect(() => {
         // });
 
         // use fetch api to do the same thing as above
-        fetch("http://localhost:5193/api/v1/Staff/employees", { cache: 'force-cache', revalidate : 3600 } )
+        fetch("http://localhost:5193/api/v1/Staff/employees", {revalidate : 3600 } )
         .then(response => response.json())
         .then(data => {
             console.log(data);

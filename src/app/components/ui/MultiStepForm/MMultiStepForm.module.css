@@ -78,6 +78,11 @@
   margin-bottom: 20px;
 }
 
+.form-section h3{
+  color: var(--dark-blue);
+  font-weight: bold;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
