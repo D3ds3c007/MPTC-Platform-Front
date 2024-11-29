@@ -41,7 +41,6 @@ export default function CheckUp(){
                         flexWrap: 'wrap',
                         gap: '60px',
                 }}>
-                        <br></br>
 
                     <p style={{
                         fontSize: '1.125rem', /* Relative font size (18px equivalent) */
@@ -50,8 +49,6 @@ export default function CheckUp(){
                         color: '#7D06EA',
                         }}>List of Student Papers</p>
 
-                        <br></br>
-                        <br></br>
                     <MPaperStudent></MPaperStudent>
                     <MPaperStudent></MPaperStudent>
                     <MPaperStudent></MPaperStudent>
