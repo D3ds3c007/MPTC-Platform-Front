@@ -39,7 +39,7 @@ export default function CheckUp(){
                         display: 'flex',
                         flexDirection: 'row',
                         flexWrap: 'wrap',
-                        gap: '60px',
+                        gap: '100px',
                 }}>
 
                     <p style={{

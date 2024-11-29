@@ -10,10 +10,10 @@
 
   /* Folder shape */
   .folder {
-    width: 100px;
-    height: 120px;
+    width: 150px;
+    height: 190px;
     background-color: var(--primary-bg); /* Light gray */
-    border-radius: 0px 10px 0 0; /* Rounded top edges */
+    border-radius: 0px 30px 0 0; /* Rounded top edges */
     position: relative;
     display: flex;
     align-items: center;
@@ -22,8 +22,8 @@
 
   /* Paper inside the folder */
   .paper {
-    width: 70px;
-    height: 80px;
+    width: 80px;
+    height: 100px;
     background-color: white;
     border-radius: 5px;
     margin-top: 20px;
@@ -49,7 +49,7 @@
   /* Label below the folder */
   .label {
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     color: black;
   }
