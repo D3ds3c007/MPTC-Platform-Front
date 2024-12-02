@@ -1,74 +1,79 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { MfiltreNa } from "@/app/components/ui/filtreNa/MfiltreNa";
+import React, { useState } from "react";
+import {  MFolderCardNa  } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
+import {  MFiltreNaProfilAutre  } from "@/app/components/ui/FiltreNaProfilAutre/MFiltreNaProfilAutre";
 
-export default function Page() {
-  // Liste des fichiers avec "resourceType"
-  const files = [
-    { id: 1, type: "Image", level: "A1", year: "2023", name: "Image 1", resourceType: "Examen" },
-    { id: 2, type: "PDF", level: "A2", year: "2023", name: "PDF 1", resourceType: "Leçon" },
-    { id: 3, type: "Video", level: "B1", year: "2022", name: "Video 1", resourceType: "Exercice" },
-    { id: 4, type: "Image", level: "A1", year: "2022", name: "Image 2", resourceType: "Examen" },
-    { id: 5, type: "Listening", level: "B2", year: "2021", name: "Audio 1", resourceType: "Leçon" },
-  ];
+import styles from "./Page.module.css";
 
-  // États pour les filtres
-  const [filteredFiles, setFilteredFiles] = useState(files);
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [selectedLevel, setSelectedLevel] = useState("A1");
-  const [selectedYear, setSelectedYear] = useState("2023");
-  const [selectedResourceType, setSelectedResourceType] = useState(""); // Déclaration de selectedResourceType
+const mockData = [
+  {
+    id: 1,
+    fileType: "PDF",
+    title: "Document PDF 1",
+    session: "OCT 2024",
+    subtitle: "Important Exam",
+    views: 150,
+    date: "2024-10-01",
+  },
+  {
+    id: 2,
+    fileType: "Video",
+    title: "Video Tutorial 1",
+    session: "SEP 2024",
+    subtitle: "Learning React",
+    views: 300,
+    date: "2024-09-20",
+  },
+  {
+    id: 3,
+    fileType: "Link",
+    title: "External Link 1",
+    session: "OCT 2024",
+    subtitle: "Useful Resource",
+    views: 500,
+    date: "2024-10-05",
+  },
+  {
+    id: 4,
+    fileType: "PDF",
+    title: "Document PDF 2",
+    session: "OCT 2024",
+    subtitle: "Top 10 Resources",
+    views: 100,
+    date: "2024-10-15",
+  },
+];
 
-  // Callback pour récupérer les résultats filtrés
-  const handleFilterResults = (results) => {
-    if (JSON.stringify(results) !== JSON.stringify(filteredFiles)) {
-      setFilteredFiles(results);
-    }
+export default function PageTest() {
+  const [filteredResults, setFilteredResults] = useState(mockData); // État pour les résultats filtrés
+
+  // Fonction pour gérer le filtrage des résultats depuis MFiltreNaProfilAutre
+  const handleFilter = (filteredData) => {
+    setFilteredResults(filteredData);
   };
 
-  useEffect(() => {
-    const filtered = files.filter((file) => {
-      const matchesType = activeFilter === "All" || file.type === activeFilter;
-      const matchesLevel = !selectedLevel || file.level === selectedLevel;
-      const matchesYear = !selectedYear || file.year === selectedYear;
-      const matchesResourceType = !selectedResourceType || file.resourceType === selectedResourceType;
-      return matchesType && matchesLevel && matchesYear && matchesResourceType;
-    });
-    handleFilterResults(filtered);
-  }, [activeFilter, selectedLevel, selectedYear, selectedResourceType]); // Ajout de selectedResourceType aux dépendances
-
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Filtre les fichiers</h1>
+    <div className={styles["page-test"]}>
+      {/* Le composant de filtre qui met à jour les résultats filtrés */}
+      <MFiltreNaProfilAutre data={mockData} onFilter={handleFilter} />
 
-      {/* Composant MfiltreNa */}
-      <MfiltreNa
-        files={files}
-        onFilter={handleFilterResults}
-        activeFilter={activeFilter}
-        selectedLevel={selectedLevel}
-        selectedYear={selectedYear}
-        selectedResourceType={selectedResourceType} // Passage de selectedResourceType
-        setActiveFilter={setActiveFilter}
-        setSelectedLevel={setSelectedLevel}
-        setSelectedYear={setSelectedYear}
-        setSelectedResourceType={setSelectedResourceType} // Ajout de setSelectedResourceType
-      />
-
-      {/* Afficher les résultats filtrés */}
-      <div style={{ marginTop: "20px" }}>
-        <h2>Résultats filtrés :</h2>
-        {filteredFiles.length > 0 ? (
-          <ul>
-            {filteredFiles.map((file) => (
-              <li key={file.id}>
-                {file.name} - {file.type} - {file.level} - {file.year} - {file.resourceType}
-              </li>
-            ))}
-          </ul>
+      {/* Affichage des cartes filtrées */}
+      <div className={styles["results-container"]}>
+        {filteredResults.length > 0 ? (
+          filteredResults.map((item) => (
+            <MFolderCardNa
+              key={item.id}
+              fileType={item.fileType}
+              title={item.title}
+              session={item.session}
+              subtitle={item.subtitle}
+              views={item.views}
+              date={item.date}
+            />
+          ))
         ) : (
-          <p>Aucun fichier correspondant aux filtres.</p>
+          <div className={styles["no-results"]}>Aucun résultat trouvé</div>
         )}
       </div>
     </div>

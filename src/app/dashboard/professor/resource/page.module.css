@@ -18,11 +18,11 @@
 }
 /* Titre principal de la section de ressources */
 .allResources {
-  font-size: 1.5rem;
+  font-size: 36px;
   font-weight: bold;
   margin-left: 30px;
   margin-bottom: 0;
-  color: blueviolet;
+  color: #00119D;
 }
 
 /* Section des filtres */
@@ -90,12 +90,17 @@
 }
 
 .boutonAjout {
+
   margin-top: auto; /* Pousse le bouton vers le bas pour être aligné avec la dernière ressource */
   margin-right: 30px; /* Aligner avec la marge des ressources */
   margin-left: 800px;
 }
 
-.boutonsee{
-  width: 100px;
-  height: 50px;
+.BoutonProfil{
+margin-top: 20px;
+margin-bottom: 20px;
+display: flex;
+gap: 15px; 
+/* justify-content: center;  */
+
 }

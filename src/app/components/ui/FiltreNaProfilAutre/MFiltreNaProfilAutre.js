@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "./MFolderCardNa.module.css";
+import React, { useState, useEffect } from "react";
+import styles from "./MFiltreNaProfilAutre.module.css";
 
 export function MFiltreNaProfilAutre({ data, onFilter }) {
   // Liste des filtres principaux
@@ -51,9 +51,11 @@ export function MFiltreNaProfilAutre({ data, onFilter }) {
     return sortResults(filteredData);
   };
 
-  // Passer les résultats filtrés au parent via la fonction onFilter
-  const filteredResults = getFilteredResults();
-  onFilter(filteredResults); // Appel de la fonction pour mettre à jour les résultats filtrés dans le parent
+  // Utilisation de useEffect pour appeler onFilter seulement lorsque les filtres changent
+  useEffect(() => {
+    const filteredResults = getFilteredResults();
+    onFilter(filteredResults); // Appel de la fonction pour mettre à jour les résultats filtrés dans le parent
+  }, [activeMainFilter, activeSubFilter, data, onFilter]); // Les filtres et les données changent, donc on met à jour les résultats
 
   return (
     <div className={styles["filter-container"]}>
