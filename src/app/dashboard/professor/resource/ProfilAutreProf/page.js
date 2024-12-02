@@ -4,10 +4,6 @@ import React, { useState } from "react";
 import { MFolderCardNa } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
 import { MFiltreNaProfilAutre } from "@/app/components/ui/FiltreNaProfilAutre/MFiltreNaProfilAutre";
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
-import { MButtonAjoutResource } from "@/app/components/ui/ButtonAjoutResource/MButtonAjoutResource";
-import { MButtonAjout } from "@/app/components/ui/ButtonAjout/MButtonAjout";
-import { MListe } from "@/app/components/ui/Liste/MListe";
-
 import photo from './photo.png';
 import styles from "./Page.module.css";
 
@@ -57,19 +53,98 @@ const mockData = [
     subtitle: "Data Insights",
     views: 250,
     date: "2024-08-12",
-  }
+  },
+  {
+    id: 6,
+    fileType: "Word",
+    title: "Word Document 1",
+    session: "JUL 2024",
+    subtitle: "Project Proposal",
+    views: 75,
+    date: "2024-07-20",
+  },
+  {
+    id: 7,
+    fileType: "PDF",
+    title: "Document PDF 3",
+    session: "NOV 2024",
+    subtitle: "Technical Guide",
+    views: 325,
+    date: "2024-11-01",
+  },
+  {
+    id: 8,
+    fileType: "Video",
+    title: "Video Tutorial 2",
+    session: "MAR 2024",
+    subtitle: "CSS Advanced",
+    views: 400,
+    date: "2024-03-15",
+  },
+  {
+    id: 9,
+    fileType: "Link",
+    title: "External Link 2",
+    session: "DEC 2024",
+    subtitle: "Upcoming Events",
+    views: 600,
+    date: "2024-12-10",
+  },
+  {
+    id: 10,
+    fileType: "Image",
+    title: "Infographic 2",
+    session: "JAN 2025",
+    subtitle: "Yearly Overview",
+    views: 150,
+    date: "2025-01-05",
+  },
+  {
+    id: 11,
+    fileType: "Word",
+    title: "Word Document 2",
+    session: "FEB 2025",
+    subtitle: "Meeting Notes",
+    views: 50,
+    date: "2025-02-14",
+  },
+  {
+    id: 12,
+    fileType: "PDF",
+    title: "Document PDF 4",
+    session: "APR 2024",
+    subtitle: "Market Analysis",
+    views: 450,
+    date: "2024-04-18",
+  },
+  {
+    id: 13,
+    fileType: "Video",
+    title: "Video Tutorial 3",
+    session: "MAY 2024",
+    subtitle: "JavaScript Basics",
+    views: 275,
+    date: "2024-05-22",
+  },
+  {
+    id: 14,
+    fileType: "Image",
+    title: "Infographic 3",
+    session: "JUN 2024",
+    subtitle: "Team Achievements",
+    views: 125,
+    date: "2024-06-10",
+  },
+  {
+    id: 15,
+    fileType: "Link",
+    title: "External Link 3",
+    session: "SEP 2024",
+    subtitle: "Developer Tools",
+    views: 700,
+    date: "2024-09-25",
+  },
 ];
-
-
-const recentFiles = [
-    { fileName: "Exam A1", session: "OCT 2024", size: "5.265 KB", fileType: "pdf" },
-    { fileName: "Exam B2", session: "JUL 2023", size: "3.512 KB", fileType: "word" },
-    { fileName: "Exam C1", session: "SEP 2022", size: "4.789 KB", fileType: "image" },
-    { fileName: "Exam D1", session: "DEC 2021", size: "6.100 KB", fileType: "video" },
-    { fileName: "Link to Resource", session: "N/A", size: "N/A", fileType: "lien" },
-  ];
-
-
 
 
 // Données fictives de profil
@@ -108,10 +183,8 @@ export default function PageTest() {
         </div>
       </div>
 
-      <div className={styles.AjoutResource}>
-        <MButtonAjoutResource />
-      </div>
-
+      {/* Le composant de filtre */}
+      
         <section className={styles.searchSection}>
           <div className="d-flex justify-content-between align-items-center mb-2">
             <MFiltreNaProfilAutre data={mockData} onFilter={handleFilter} />
@@ -120,7 +193,7 @@ export default function PageTest() {
         </section>
         
       {/* Affichage des résultats filtrés */}
-        <section className={styles.resourcesSection}>
+            <section className={styles.resourcesSection}>
         <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
           {filteredResults.length > 0 ? (
             filteredResults.map((item) => (
@@ -138,53 +211,9 @@ export default function PageTest() {
           ) : (
             <div className={styles["no-results"]}>Aucun résultat trouvé</div>
           )}
-
-        <section className={styles.boutonAjout}>
-              <MButtonAjout />
-        </section>
         </div>
       </section>
-     </div>
-     <section className={styles.fileListSection}>
-        <h3 className={styles.topResources}>Favorites</h3>
-        <div className={`row mt-1`}>
-          {recentFiles.map((file, index) => (
-            <div key={index} className={`col-md-12 mb-1`}>
-              <MListe fileName={file.fileName} session={file.session} size={file.size} fileType={file.fileType} />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className={`bg-white p-4 rounded `}>
-       
-        {/* Section des ressources filtrées */}
-        <section className={styles.resourcesSection}>
-        <h3 className={styles.topResources}>Downloaded file</h3>
-        <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
-          {filteredResults.length > 0 ? (
-            filteredResults.map((item) => (
-              <div className="col-md-4" key={item.id}>
-                <MFolderCardNa
-                  fileType={item.fileType}
-                  title={item.title}
-                  session={item.session}
-                  subtitle={item.subtitle}
-                  views={item.views}
-                  date={item.date}
-                />
-              </div>
-            ))
-          ) : (
-            <div className={styles["no-results"]}>Aucun résultat trouvé</div>
-          )}
-
-        </div>
-      </section>
-      </div>
-
     </div>
-
-    
+    </div>
   );
 }

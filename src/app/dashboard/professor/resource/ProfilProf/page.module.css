@@ -1,0 +1,172 @@
+/* page.module.css */
+.searchSection{
+    background-color: rgb(255, 255, 255);
+    border-radius: 1;
+  
+  }
+  /* Section de la barre de recherche */
+  .searchSection {
+    margin-bottom: 20px;
+    margin-right: 30px;
+  }
+  
+  .grandTitre{
+    font-size: 44px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color:#15004F;
+  }
+  /* Titre principal de la section de ressources */
+  .allResources {
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-bottom: 0;
+    color: #00119D;
+  }
+  
+  /* Section des filtres */
+  .filtersSection {
+  
+    padding-bottom: 20px;
+    margin-left: 30px;
+  
+  }
+  
+  .filtersSection .validateButton {
+    align-self: flex-end;
+  }
+  
+  /* Section des ressources principales */
+  /* .resourcesSection {
+    padding-top: 20px;
+  } */
+  
+  .topResources {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: blueviolet;
+    margin-left: 30px;
+  }
+  
+  .resourcesSection .col-md-4 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* Style pour la section des fichiers récents */
+  .fileListSection {
+    padding-left: 0;
+    margin-top: 50px;
+  }
+  
+  /* Titre de la section "Add recently" */
+  
+  
+  /* Espacement entre les éléments de la liste */
+  .fileListSection .col-md-12 {
+    padding: 0;  
+  }
+  
+  /* Style global pour ajouter un espace entre les lignes (remplace la marge inline si besoin) */
+  .mt-2 {
+    margin-top: 10px;
+  }
+  
+  /* Assurez-vous que .fileListSection soit bien appliquée */
+  .fileListSection .row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  
+  .resourcesSection {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: flex-start; /* Aligner les éléments en haut */
+  }
+  
+  .boutonAjout {
+  
+    margin-top: auto; /* Pousse le bouton vers le bas pour être aligné avec la dernière ressource */
+    margin-right: 30px; /* Aligner avec la marge des ressources */
+    margin-left: 800px;
+  }
+  
+  .BoutonProfil{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px; 
+  /* justify-content: center;  */
+  
+  }
+
+  .profile-section {
+    display: flex;
+    align-items: center;
+    
+    padding: 20px;
+    padding-left: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1200px;
+  }
+  
+  .profile-picture {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Pour rendre l'image circulaire */
+    overflow: hidden; /* Assurez-vous que l'image s'adapte au cercle */
+    margin-right: 10px;
+  }
+  
+  .profile-picture img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .grandTitre{
+    font-size: 44px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color:#15004F;
+  }
+  /* Titre principal de la section de ressources */
+  .allResources {
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-bottom: 0;
+    color: #00119D;
+  }
+  
+  .profile-picture img {
+    border-radius: 50%;
+    border: 4px solid #f0f0f0; /* Ajouter une bordure blanche autour */
+  }
+  
+  .user-name {
+    margin-left: 50px;
+    color: #00119D; /* Bleu clair pour le texte */
+  }
+  
+  .user-name h2 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .AjoutResource {
+    display: flex; /* Permet de gérer l'alignement avec flexbox */
+    justify-content: flex-start; /* Aligne le contenu à gauche */
+    align-items: center; /* Centre verticalement l'élément */
+    margin-bottom: 20px; /* Espacement en bas pour une meilleure lisibilité */
+    padding: 10px 30px; /* Espacement interne à gauche et à droite */
+    
+    border-radius: 8px; /* Arrondir les bords */
+ 
+  }
+  

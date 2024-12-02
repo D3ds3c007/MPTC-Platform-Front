@@ -1,0 +1,87 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1200px;
+  }
+  
+  .profile-picture {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Pour rendre l'image circulaire */
+    overflow: hidden; /* Assurez-vous que l'image s'adapte au cercle */
+    margin-right: 10px;
+  }
+  
+  .profile-picture img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .grandTitre{
+    font-size: 44px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color:#15004F;
+  }
+  /* Titre principal de la section de ressources */
+  .allResources {
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-bottom: 0;
+    color: #00119D;
+  }
+  
+  .profile-picture img {
+    border-radius: 50%;
+    border: 4px solid #f0f0f0; /* Ajouter une bordure blanche autour */
+  }
+  
+  .user-name {
+    margin-left: 50px;
+    color: #00119D; /* Bleu clair pour le texte */
+  }
+  
+  .user-name h2 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .searchSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .resourcesSection {
+    margin-top: 20px;
+  }
+  
+  .resourcesSection .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacement entre les cartes */
+    justify-content: center; /* Centrer les éléments */
+  }
+  
+  .no-results {
+    text-align: center;
+    color: #888;
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  

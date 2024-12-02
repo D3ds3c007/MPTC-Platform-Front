@@ -24,31 +24,39 @@ export function MFiltreNaProfilAutre({ data, onFilter }) {
     setActiveSubFilter(filter);
   };
 
-  // Fonction pour trier les résultats par date ou popularité
-  const sortResults = (filteredData) => {
-    switch (activeSubFilter) {
-      case "Lasted":
-        return filteredData.sort((a, b) => new Date(b.date) - new Date(a.date)); // Trier par date, les plus récents d'abord
-      case "Popular":
-        return filteredData.sort((a, b) => b.views - a.views); // Trier par popularité (nombre de vues)
-      case "Older":
-        return filteredData.sort((a, b) => new Date(a.date) - new Date(b.date)); // Trier par date, les plus anciens d'abord
-      default:
-        return filteredData;
-    }
-  };
-
-  // Filtrer les résultats
+  // Fonction pour filtrer les résultats
   const getFilteredResults = () => {
-    let filteredData = data.filter((item) => {
-      const matchesMainFilter =
-        activeMainFilter === "All" || item.fileType === activeMainFilter;
+    // Si "All" est sélectionné, afficher tous les fichiers
+    if (activeMainFilter === "All") {
+      return data;
+    }
 
+    // Appliquer les filtres principaux
+    let filteredData = data.filter((item) => {
+      const matchesMainFilter = item.fileType === activeMainFilter;
       return matchesMainFilter;
     });
 
-    // Trier les résultats en fonction du filtre secondaire
-    return sortResults(filteredData);
+    // Appliquer les filtres secondaires
+    switch (activeSubFilter) {
+      case "Lasted":
+        // Filtrer pour ne garder que les fichiers les plus récents
+        const maxDate = Math.max(...filteredData.map((item) => new Date(item.date)));
+        return filteredData.filter((item) => new Date(item.date).getTime() === maxDate);
+
+      case "Older":
+        // Filtrer pour ne garder que les fichiers les plus anciens
+        const minDate = Math.min(...filteredData.map((item) => new Date(item.date)));
+        return filteredData.filter((item) => new Date(item.date).getTime() === minDate);
+
+      case "Popular":
+        // Filtrer pour ne garder que les fichiers les plus populaires
+        const maxViews = Math.max(...filteredData.map((item) => item.views));
+        return filteredData.filter((item) => item.views === maxViews);
+
+      default:
+        return filteredData;
+    }
   };
 
   // Utilisation de useEffect pour appeler onFilter seulement lorsque les filtres changent
@@ -64,7 +72,9 @@ export function MFiltreNaProfilAutre({ data, onFilter }) {
         {mainFilters.map((filter) => (
           <button
             key={filter}
-            className={`${styles["filter-btn"]} ${activeMainFilter === filter ? styles["active-main-filter"] : ""}`}
+            className={`${styles["filter-btn"]} ${
+              activeMainFilter === filter ? styles["active-main-filter"] : ""
+            }`}
             onClick={() => handleMainFilterClick(filter)}
           >
             {filter}
@@ -78,7 +88,9 @@ export function MFiltreNaProfilAutre({ data, onFilter }) {
           {subFilters.map((filter) => (
             <button
               key={filter}
-              className={`${styles["sub-filter"]} ${activeSubFilter === filter ? styles["active-sub-filter"] : ""}`}
+              className={`${styles["sub-filter"]} ${
+                activeSubFilter === filter ? styles["active-sub-filter"] : ""
+              }`}
               onClick={() => handleSubFilterClick(filter)}
             >
               {filter}

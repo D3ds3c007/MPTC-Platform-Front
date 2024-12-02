@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import {  MFolderCardNa  } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
-import {  MFiltreNaProfilAutre  } from "@/app/components/ui/FiltreNaProfilAutre/MFiltreNaProfilAutre";
-
+import { MFolderCardNa } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
+import { MFiltreNaProfilAutre } from "@/app/components/ui/FiltreNaProfilAutre/MFiltreNaProfilAutre";
 import styles from "./Page.module.css";
 
+// Données fictives pour tester
 const mockData = [
   {
     id: 1,
@@ -14,7 +14,7 @@ const mockData = [
     session: "OCT 2024",
     subtitle: "Important Exam",
     views: 150,
-    date: "2024-10-01",
+    date: "2015-10-01",
   },
   {
     id: 2,
@@ -55,10 +55,12 @@ export default function PageTest() {
 
   return (
     <div className={styles["page-test"]}>
-      {/* Le composant de filtre qui met à jour les résultats filtrés */}
+      <h1 className={styles["page-title"]}>Test du filtre</h1>
+
+      {/* Le composant de filtre */}
       <MFiltreNaProfilAutre data={mockData} onFilter={handleFilter} />
 
-      {/* Affichage des cartes filtrées */}
+      {/* Affichage des résultats filtrés */}
       <div className={styles["results-container"]}>
         {filteredResults.length > 0 ? (
           filteredResults.map((item) => (
