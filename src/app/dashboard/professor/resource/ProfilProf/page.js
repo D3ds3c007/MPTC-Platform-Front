@@ -18,6 +18,11 @@ export default function ExamFoldersPage() {
     { fileType: "Video", title: "Lesson A1", session: "OCT 2024", subtitle: "Key vocabulary tips", level: "A1", year: "2024", type: "Lesson", category: "Listening", publishedDate: "2024-11-26"},
     { fileType: "Word", title: "Exercise A1", session: "OCT 2024", subtitle: "Listening practice 101", level: "A1", year: "2024", type: "Exercise", category: "Grammar", publishedDate: "2024-11-27"},
     { fileType: "Link", title: "Lesson A1", session: "OCT 2024", subtitle: "Speaking activities", level: "A1", year: "2024", type: "Lesson", category: "Speaking", publishedDate: "2024-11-20"},
+    { fileType: "PDF", title: "Lesson A1", session: "OCT 2024", subtitle: "Top 10 grammar lessons", level: "A1", year: "2024", type: "Lesson", category: "Grammar", publishedDate: "2024-11-20"},
+    { fileType: "Image", title: "Exam A2", session: "OCT 2024", subtitle: "Mock test for beginners", level: "A2", year: "2024", type: "Exam", category: "Vocabulary", publishedDate: "2024-10-18"},
+    { fileType: "Video", title: "Lesson A1", session: "OCT 2024", subtitle: "Key vocabulary tips", level: "A1", year: "2024", type: "Lesson", category: "Listening", publishedDate: "2024-11-26"},
+    { fileType: "Word", title: "Exercise A1", session: "OCT 2024", subtitle: "Listening practice 101", level: "A1", year: "2024", type: "Exercise", category: "Grammar", publishedDate: "2024-11-27"},
+    { fileType: "Link", title: "Lesson A1", session: "OCT 2024", subtitle: "Speaking activities", level: "A1", year: "2024", type: "Lesson", category: "Speaking", publishedDate: "2024-11-20"},
   ];
 
   const recentFiles = [
@@ -117,6 +122,31 @@ export default function ExamFoldersPage() {
           ))}
         </div>
       </section>
+
+      <div className={`bg-white p-4 rounded `}>
+       
+        {/* Section des ressources filtrées */}
+        <section className={styles.resourcesSection}>
+          <h3 className={styles.topResources}>My recently added resources</h3>
+          <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
+            {filteredResources.length > 0 ? (
+              filteredResources.map((resource, index) => (
+                <div key={index} className={`col-md-4 mb-4`}>
+                  <MFolderCardNa
+                    fileType={resource.fileType}
+                    title={resource.title}
+                    session={resource.session}
+                    subtitle={resource.subtitle}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>No resources match the selected filters.</p>
+            )}
+          </div>
+        </section>
+      </div>
+
     </div>
   );
 }
