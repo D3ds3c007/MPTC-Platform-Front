@@ -76,9 +76,25 @@ export default function ExamPage() {
                   padding: '5px',
                 }}
               >
-                {exams.map((exam) => (
+                {/* {exams.map((exam) => (
                   <MFolderCard key={exam.idExam} level={exam.level} session={exam.session} subject={exam.subject} period={exam.period} />
-                ))}
+                ))} */}
+                {exams.map((exam, index) => {
+                  // Determine the variant based on the index
+                  const variant = ['primary', 'secondary', 'purple', 'dark', 'success'][index % 5];
+
+                  return (
+                    <MFolderCard 
+                      key={exam.idExam} 
+                      level={exam.level} 
+                      session={exam.session} 
+                      subject={exam.subject} 
+                      period={exam.period} 
+                      variant={variant}  // Passing the variant prop
+                    />
+                  );
+                })}
+
               </div>
             </>
           )}

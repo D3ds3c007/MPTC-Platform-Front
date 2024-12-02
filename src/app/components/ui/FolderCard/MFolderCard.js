@@ -1,7 +1,10 @@
 import React from 'react';
-import styles from'./MFolderCard.module.css'; // Import the CSS for styling
+import styles from './MFolderCard.module.css'; // Import the CSS for styling
 
-export function MFolderCard({key, level, subject, session, period, variant = 'primary'}) {
+export function MFolderCard({ key, level, subject, session, period, variant = 'primary' }) {
+  // Conditionally set the fill color based on the variant
+  const svgColor = variant === 'success' ? '#00119D' : '#01F073'; // Set to blue if success, else keep default color
+
   return (
     <div className={styles["box"]}>
         <div className={`${styles["folder"]} ${styles[variant]}`}>
@@ -9,7 +12,7 @@ export function MFolderCard({key, level, subject, session, period, variant = 'pr
                 <div className={styles["level"]}>
                     <h6>{level}</h6>
                 </div>
-                <h5>{subject} Exam <br></br> {session} </h5>
+                <h5>{subject} Exam <br /> {session} </h5>
                 <p>{period}</p>
                 <div className={`${styles["three-dot-button"]} ${styles[variant]}`}>
                     <div className={`${styles["dots"]} ${styles[variant]}`}>
@@ -22,15 +25,18 @@ export function MFolderCard({key, level, subject, session, period, variant = 'pr
         </div>
         <div className={styles["corner-icon"]}>
           <a href="exam/info">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#01F073" class="bi bi-arrow-up-right-circle-fill" viewBox="0 0 16 16">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="35" 
+              height="35" 
+              fill={svgColor}  // Dynamically set the color based on the variant
+              className="bi bi-arrow-up-right-circle-fill" 
+              viewBox="0 0 16 16"
+            >
               <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z"/>
             </svg>
           </a>
         </div>
-        <div>
-          {/* <p>Created 29/11/2024</p> */}
-        </div>
     </div>
   );
 };
-

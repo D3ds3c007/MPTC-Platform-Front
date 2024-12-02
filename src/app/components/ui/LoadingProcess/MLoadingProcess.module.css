@@ -109,3 +109,12 @@
   .timer span {
     font-weight: bold;
   }
+
+  .see-result-link {
+    color: #007bff; /* Blue color for the link */
+    text-decoration: underline;
+  }
+  
+  .see-result-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }

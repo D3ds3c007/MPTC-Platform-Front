@@ -112,17 +112,17 @@
   background-color: var(--secondary-bg); /* Dark blue background */
 }
 
-.folder.grey {
-  background-color: #D9D9D9;
-  color: var(--dark-blue);
+.folder.success {
+  background-color: var(--success-bg);
+  color: var(--primary-bg);
 }
 
-.dots.grey span {
+.dots.success span {
   background-color: var(--primary-color); /* Light blue dot color */
 }
 
-.three-dot-button.grey {
-  background-color: var(--dark-blue); /* Dark blue background */
+.three-dot-button.success {
+  background-color: var(--primary-bg); /* Dark blue background */
 }
 
 .folder.purple {

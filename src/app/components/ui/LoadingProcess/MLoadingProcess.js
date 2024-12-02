@@ -6,11 +6,17 @@ import { MProgressBar } from "@/app/components/ui/ProgressBar/MProgressBar";
 
 export function MLoadingProcess() {
   const [stepsCompleted, setStepsCompleted] = useState(false); // Tracks if all steps are completed
+  const [progressText, setProgressText] = useState("60%"); // Default progress text
+  const [stepName, setStepName] = useState("Step Name"); // Default step name
+  const [isLinkVisible, setIsLinkVisible] = useState(false); // Tracks visibility of the link
 
   useEffect(() => {
     // Wait 2000ms and then mark all steps as completed
     const timer = setTimeout(() => {
       setStepsCompleted(true);
+      setProgressText("Terminated"); // Change progress text to "Terminated"
+      setStepName("See Result"); // Change step name to "See Result"
+      setIsLinkVisible(true); // Make the link visible after 2000ms
     }, 2000);
 
     return () => clearTimeout(timer); // Cleanup timeout on component unmount
@@ -120,8 +126,16 @@ export function MLoadingProcess() {
       <div className={styles["folder-container"]}>
         <Image src={logo} alt="Logo" width={400} height={300} />
       </div>
-      <div className={styles["step-name"]}>Step Name</div>
-      <div className={styles["progress-bar"]}>60%</div>
+      <div className={styles["step-name"]}>
+        {isLinkVisible ? (
+          <a href="../exam/result" className={styles["see-result-link"]}>
+            See Result
+          </a>
+        ) : (
+          stepName
+        )}
+      </div>
+      <div className={styles["progress-bar"]}>{progressText}</div>
       <div className={styles["timer"]}>
         Time left : <span>1min30s</span>
       </div>

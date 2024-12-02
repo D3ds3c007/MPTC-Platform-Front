@@ -12,7 +12,9 @@ export default function Result(){
                     <MAvgCard></MAvgCard>
                     <br></br>
                     <MTable></MTable>
-                    
+                    <a href="../exam/stats">
+                        See Stats
+                    </a>
                     <br></br>
                     <br></br>
 

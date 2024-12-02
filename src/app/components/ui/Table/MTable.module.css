@@ -67,6 +67,7 @@
   width: 35px;
   height: 20px;
   border-radius: 20px; /* Rounded rectangle */
+  background-color: var(--primary-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,4 +84,5 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
+  background-color: white;
 }

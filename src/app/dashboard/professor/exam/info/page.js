@@ -50,7 +50,9 @@ export default function Info(){
                         
                 </div>
             </div>
-
+            <a href="../exam/delete">
+                        Delete Exam
+                </a>
         </>
     )
 }
