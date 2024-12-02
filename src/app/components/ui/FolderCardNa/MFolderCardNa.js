@@ -1,87 +1,118 @@
-"use client";
 
+"use client";
+import Image from "next/image";
+import telechargements from "./telechargements.png";
+import favori from "./favori.png";
+import arretez from "./arretez.png";
+import deposer from './deposer.png';
+import fichier from './fichier.png';
+import fond from './fond.png';
+import video from './video.png';
+import www from './www.png';
 import React, { useState } from "react";
 import styles from "./MFolderCardNa.module.css";
 
-export function MFiltreNaProfilAutre({ data, onFilter }) {
-  // Liste des filtres principaux
-  const mainFilters = ["All", "Video", "PDF", "Image", "Word", "Link"];
+export function MFolderCardNa({
+  fileType = "pdf", // Type du fichier, par exemple : 'pdf', 'image', 'video'
+  title = "Exam Term 1",
+  session = "OCT 2024",
+  subtitle = "Top 10 of resources",
+}) {
+  const [showPopup, setShowPopup] = useState(false);
 
-  // Liste des filtres secondaires
-  const subFilters = ["Lasted", "Popular", "Older"];
-
-  const [activeMainFilter, setActiveMainFilter] = useState(mainFilters[0]);
-  const [activeSubFilter, setActiveSubFilter] = useState(subFilters[0]);
-
-  // Fonction pour gérer le clic sur un filtre principal
-  const handleMainFilterClick = (filter) => {
-    setActiveMainFilter(filter);
-    setActiveSubFilter(subFilters[0]); // Réinitialise le filtre secondaire au premier lorsque le filtre principal change
+  // Définir les icônes et les variantes par type de fichier
+  const fileConfig = {
+    PDF: { icon: fichier, variant: "rouge" },
+    Image: { icon: fond, variant: "dark" },
+    Video: { icon: video, variant: "primary" },
+    Word: { icon: deposer, variant: "purple" },
+    Link: { icon: www, variant: "secondary" },
+    default: { icon: fichier, variant: "rouge" },
   };
 
-  // Fonction pour gérer le clic sur un filtre secondaire
-  const handleSubFilterClick = (filter) => {
-    setActiveSubFilter(filter);
+  // Récupérer la configuration pour le type de fichier
+  const { icon, variant } = fileConfig[fileType] || fileConfig.default;
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
   };
-
-  // Fonction pour trier les résultats par date ou popularité
-  const sortResults = (filteredData) => {
-    switch (activeSubFilter) {
-      case "Lasted":
-        return filteredData.sort((a, b) => new Date(b.date) - new Date(a.date)); // Trier par date, les plus récents d'abord
-      case "Popular":
-        return filteredData.sort((a, b) => b.views - a.views); // Trier par popularité (nombre de vues)
-      case "Older":
-        return filteredData.sort((a, b) => new Date(a.date) - new Date(b.date)); // Trier par date, les plus anciens d'abord
-      default:
-        return filteredData;
-    }
-  };
-
-  // Filtrer les résultats
-  const getFilteredResults = () => {
-    let filteredData = data.filter((item) => {
-      const matchesMainFilter =
-        activeMainFilter === "All" || item.fileType === activeMainFilter;
-
-      return matchesMainFilter;
-    });
-
-    // Trier les résultats en fonction du filtre secondaire
-    return sortResults(filteredData);
-  };
-
-  // Passer les résultats filtrés au parent via la fonction onFilter
-  const filteredResults = getFilteredResults();
-  onFilter(filteredResults); // Appel de la fonction pour mettre à jour les résultats filtrés dans le parent
 
   return (
-    <div className={styles["filter-container"]}>
-      {/* Filtres principaux */}
-      <div className={styles["main-filters"]}>
-        {mainFilters.map((filter) => (
-          <button
-            key={filter}
-            className={`${styles["filter-btn"]} ${activeMainFilter === filter ? styles["active-main-filter"] : ""}`}
-            onClick={() => handleMainFilterClick(filter)}
+    <div className={styles["box"]}>
+      <div className={`${styles["folder"]} ${styles[variant]}`}>
+        <div className={styles["folder-content"]}>
+          {/* Icône dynamique */}
+          <div className={styles["level-icon"]}>
+            <Image
+              src={icon} // L'icône dynamique
+              alt={`${fileType} icon`}
+              width={40}
+              height={40}
+            />
+          </div>
+          <h5>{title}</h5>
+          <p>Session: {session}</p>
+          <h6>{subtitle}</h6>
+        </div>
+        <div className={styles["Bouton"]}>
+          <div
+            className={`${styles["three-dot-button"]} ${styles[variant]}`}
+            onClick={togglePopup}
           >
-            {filter}
-          </button>
-        ))}
+            <div className={`${styles["dots"]} ${styles[variant]}`}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles["corner-icon"]}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="50"
+          height="50"
+          fill="#01F073"
+          className="bi bi-arrow-up-right-circle-fill"
+          viewBox="0 0 16 16"
+        >
+          <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z" />
+        </svg>
       </div>
 
-      {/* Filtres secondaires */}
-      {activeMainFilter !== "All" && (
-        <div className={styles["sub-filters"]}>
-          {subFilters.map((filter) => (
-            <button
-              key={filter}
-              className={`${styles["sub-filter"]} ${activeSubFilter === filter ? styles["active-sub-filter"] : ""}`}
-              onClick={() => handleSubFilterClick(filter)}
-            >
-              {filter}
-            </button>
-          ))}
+      {/* Popup */}
+      {showPopup && (
+        <div className={styles["popup"]}>
+          <button className={styles["popup-item"]}>
+            <Image
+              src={telechargements}
+              alt="telechargements"
+              width={25}
+              height={25}
+              className={styles["icon"]}
+            />{" "}
+            Télécharger
+          </button>
+          <button className={styles["popup-item"]}>
+            <Image
+              src={favori}
+              alt="favori"
+              width={25}
+              height={25}
+              className={styles["icon"]}
+            />
+            Favoris
+          </button>
+          <button className={styles["popup-item"]}>
+            <Image
+              src={arretez}
+              alt="arretez"
+              width={25}
+              height={25}
+              className={styles["icon"]}
+            />
+            Signaler
+          </button>
         </div>
       )}
     </div>
