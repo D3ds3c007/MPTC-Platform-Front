@@ -1,0 +1,41 @@
+
+
+.circle-btn {
+    background-color: #0b006e;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    position: fixed;
+    bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.circle-btn::before,
+.circle-btn::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+}
+
+.circle-btn::before {
+    width: 5px;
+    height: 35px; /* Ligne verticale du "+" */
+}
+
+.circle-btn::after {
+    width: 35px;
+    height: 5px; /* Ligne horizontale du "+" */
+}
+
+.circle-btn:hover {
+    background-color: #01F073; /* Couleur de survol */
+    
+}
+
+
+

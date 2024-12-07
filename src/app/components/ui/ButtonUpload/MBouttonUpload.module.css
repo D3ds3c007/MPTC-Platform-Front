@@ -1,0 +1,51 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espace entre l'image et le texte */
+    border: 2px solid #0000A0;
+    background-color: white;
+    color: #0000A0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 220px; /* Ajuste la largeur du bouton */
+    height: 50px; /* Ajuste la hauteur du bouton */
+    text-align: center;
+  }
+  
+  .icon {
+    width: 20px; /* Largeur de l'icône */
+    height: 20px; /* Hauteur de l'icône */
+  }
+  
+  /* Style pour le bouton avec fond bleu et texte blanc */
+  .button.primary {
+    border: 2px solid #0000A0; /* Bordure bleue */
+    background-color: white;
+    color: #0000A0; /* Texte bleu */
+  }
+  
+  .button.primary:hover {
+    background-color: #0000A0; /* Changement de fond au survol */
+    color: white;
+    
+  }
+  
+  /* Style pour le bouton avec bordure bleue et texte bleu */
+  .button.secondary {
+    background-color: #0000A0; /* Fond bleu */
+    color: white; /* Texte blanc */
+    border: none;
+  }
+  
+  .button.secondary:hover {
+    
+    color: #0000A0;
+    background-color: var(--default-bg );
+    border: 2px solid #0000A0;
+  }
+  

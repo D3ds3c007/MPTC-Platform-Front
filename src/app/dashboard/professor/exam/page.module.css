@@ -1,0 +1,95 @@
+.mainContent {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #4A49E9;
+}
+
+.header p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile span {
+  margin-right: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.filtersSection {
+  margin-bottom: 40px;
+}
+
+.filtersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filtersSection h2 {
+  color: #8A3FFC;
+  font-size: 22px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+}
+
+.searchBox input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+}
+
+.searchBox button {
+  padding: 10px;
+  background-color: #4A49E9;
+  color: #fff;
+  border: none;
+  border-radius: 0 8px 8px 0;
+}
+
+.resourcesSection {
+  margin-top: 20px;
+}
+
+.resourcesSection h3 {
+  font-size: 20px;
+  color: #4A49E9;
+}
+
+.resourcesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}

@@ -1,0 +1,69 @@
+/* styles/MExamForm1.module.css */
+
+/* Section principale pour organiser les composants */
+.formSection {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux sections de se réorganiser si l'espace est insuffisant */
+  gap: 20px; /* Espacement entre les sections */
+}
+
+/* Section pour le téléchargement des fichiers */
+.fileUploadSection {
+  flex: 1 1 45%; /* Occupe 45% de la largeur, flexible */
+  min-width: 200px; /* Largeur minimale pour garantir lisibilité */
+  box-sizing: border-box; /* Inclut padding et bordures dans la largeur totale */
+}
+
+/* Style de la zone de téléchargement */
+.fileUpload {
+  border: 2px dashed #cac9fd;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  color: #666;
+  width: 100%; /* S'étend pour remplir l'espace disponible */
+  box-sizing: border-box; /* Inclut padding et bordure dans la largeur */
+}
+
+/* Style lorsque le fichier est en survol (dragover) */
+.fileUpload.dragover {
+  background-color: #e0e7ff;
+  border-color: #5e2eff;
+}
+
+/* Style pour l'icône dans la zone de téléchargement */
+.icon {
+  font-size: 50px;
+  color: #ff2e7e;
+  margin-bottom: 10px;
+}
+
+/* Style pour le texte cliquable */
+.fileUpload small {
+  cursor: pointer;
+  color: #c8b7ff;
+}
+
+.fileUpload strong {
+  cursor: pointer;
+  color: #5e2eff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Espacement pour les éléments textes dans la zone de téléchargement */
+.fileUpload p {
+  margin-top: 10px;
+}
+
+/* Styles responsives pour les petits écrans */
+@media (max-width: 768px) {
+  .formSection {
+    flex-direction: column; /* Empile les sections verticalement sur petits écrans */
+    gap: 10px; /* Réduit l'espacement entre les sections */
+  }
+
+  .fileUploadSection {
+    width: 100%; /* Prend toute la largeur sur mobile */
+  }
+}

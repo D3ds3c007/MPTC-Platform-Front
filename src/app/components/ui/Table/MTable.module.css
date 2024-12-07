@@ -1,0 +1,82 @@
+  
+  .table-header, .table-row {
+    display: grid;
+    /* grid-template-columns: 50px 1fr 100px 100px 100px 100px 80px 100px 120px 100px; */
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .table-header {
+    background-color: #0000A0;
+    color: white;
+    font-weight: semi-bold;
+    font-size: 14px;
+    padding: 15px 10px;
+    border-radius: 8px;
+  }
+  
+  .table-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds spacing between each card */
+  }
+
+  .table-row {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px 10px;
+    border: 1px solid var(--default-bg);
+  }
+  
+  .editable {
+    color: #000;
+  }
+  
+  .arrow-down {
+    color: red;
+  }
+  
+  .arrow-up {
+    color: green;
+  }
+  
+  .status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .status.invalid {
+    background-color: red;
+  }
+  
+  .status.valid {
+    background-color: green;
+  }
+  
+  .actions {
+    text-align: center;
+  }
+  
+  .actions .confirm {
+    color: green;
+    cursor: pointer;
+  }
+  
+  .actions .cancel {
+    color: red;
+    cursor: pointer;
+  }
+/*   
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
+   */
+  .card {
+    display: grid;
+    grid-template-columns: 50px 1fr 100px 100px 100px 100px 80px 100px 120px 100px;
+    align-items: center;
+  }

@@ -1,0 +1,140 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.grandTitre{
+  font-size: 44px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color:#15004F;
+}
+/* Titre principal de la section de ressources */
+.allResources {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  color: blueviolet;
+}
+
+/* Conteneur principal de la forme */
+.formContainer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  
+}
+
+/* Section gauche : upload */
+.resourcesSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+
+}
+
+/* Ajouter une ombre au hover pour l'effet visuel */
+
+
+/* Boutons d'upload */
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Alignement du bouton "Voir Plus" */
+.buttonGroupe {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.voirPlu {
+  align-self: flex-end; /* Assure que le bouton Voir Plus est en bas */
+  padding: 10px;
+  margin-top: auto; /* Utilise margin-top auto pour pousser le bouton vers le bas */
+}
+
+/* Section droite : formulaire pour titre et description */
+.coterDroit {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 250px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .formContainer {
+    flex-direction: column;
+  }
+
+  .resourcesSection,
+  .coterDroit {
+    min-width: 100%;
+  }
+}
+
+/* Section droite : formulaire pour titre et description */
+.coterDroit {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 250px;
+  justify-content: space-between; /* Ajoute ceci pour distribuer l'espace */
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ajoute ceci pour que les formGroups prennent l'espace restant */
+}
+
+.textInput {
+  width: 100%; /* Prendre toute la largeur disponible */
+  padding: 15px;
+  font-size: 1.1rem; /* Augmenter la taille de la police pour plus de lisibilité */
+  border: 2px solid #cac9fd; /* Bordure de 2px */
+  border-radius: 10px; /* Bordure arrondie */
+  box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+  min-height: 210px; 
+  transition: border-color 0.3s ease; /* Animation de la bordure lors du focus */
+}
+
+/* Effet focus : couleur de la bordure change au focus */
+.textInput:focus {
+  border-color:  #0000A0; /* Bordure violette au focus */
+  outline: none; /* Supprimer le contour par défaut */
+}
+
+/* Taille et espacement des champs de texte */
+.textInput[type="text"], .textInput[type="textarea"] {
+  min-height: 60px; /* Augmenter la hauteur pour textarea */
+}
+
+.textInput[type="textarea"] {
+  resize: vertical; /* Permet de redimensionner le textarea uniquement verticalement */
+}
+
+.label {
+  margin-bottom: 8px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
+
