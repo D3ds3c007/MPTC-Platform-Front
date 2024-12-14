@@ -1,0 +1,165 @@
+/* MTopLeaderBoard.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 40px 0;
+  }
+  
+  .leaderboard {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .cardWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative; /* Needed for z-index to work */
+  }
+  
+  .card {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Required for z-index */
+  }
+  
+  .card:hover {
+    transform: scale(1.5);
+    z-index: 5;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* First Position */
+  .first {
+    background: linear-gradient(to top, #FEB500, #F94C10); /* Warm gold to orange gradient */
+    transform: scale(1.3); /* Increased scale for first place */
+    z-index: 3; /* Ensures it's above other cards */
+  }
+  
+  .first .rank {
+    color: #ffffff; /* White rank number for contrast */
+  }
+  
+  .first .name {
+    color: #ffffff; /* White name for readability */
+  }
+  
+  .first .points {
+    color: #ffffff; /* White points for contrast */
+  }
+  
+  .first .username {
+    color: #ffffff; /* White username */
+  }
+  
+  /* Second Position */
+  .second {
+    background: linear-gradient(to top, #FF005E, #E91112); /* Vibrant pink to red gradient */
+    transform: scale(1.1); /* Slightly scaled up for second place */
+    z-index: 2; /* Second card has less z-index than the first */
+  }
+  
+  .second .rank {
+    color: #ffffff; /* White rank number for contrast */
+  }
+  
+  .second .name {
+    color: #ffffff; /* White name for readability */
+  }
+  
+  .second .points {
+    color: #ffffff; /* White points for contrast */
+  }
+  
+  .second .username {
+    color: #ffffff; /* White username */
+  }
+  
+  /* Third Position */
+  .third {
+    background: linear-gradient(to top, #7D06EA, #00119D); /* Fresh green to dark green gradient */
+    transform: scale(1.05); /* Slight scale for third place */
+    z-index: 1; /* Lowest z-index for third place */
+  }
+  
+  .third .rank {
+    color: #ffffff; /* White rank number for contrast */
+  }
+  
+  .third .name {
+    color: #ffffff; /* White name for readability */
+  }
+  
+  .third .points {
+    color: #ffffff; /* White points for contrast */
+  }
+  
+  .third .username {
+    color: #ffffff; /* White username */
+  }
+  
+  .crown {
+    font-size: 80px; /* Increased crown size */
+    position: absolute;
+    top: -80px; /* Positioned at the top of the image */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff; /* White crown for contrast */
+    z-index: 4; /* Ensures the crown stays on top */
+  }
+  
+  .image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+  }
+  
+  .first .image {
+    border-color: #f1bf3f; /* Gold border for first position */
+  }
+  
+  .second .image {
+    border-color: #ff4081; /* Pink border for second position */
+  }
+  
+  .third .image {
+    border-color: #7D06EA; /* Green border for third position */
+  }
+  
+  .rank {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff; /* White rank number for contrast */
+    margin: 10px 0;
+  }
+  
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff; /* White name for readability */
+    margin-bottom: 5px;
+  }
+  
+  .points {
+    font-size: 16px;
+    color: #ffffff; /* White points for contrast */
+  }
+  
+  .username {
+    font-size: 14px;
+    color: #ffffff; /* White username */
+    margin-top: 5px;
+  }
+  

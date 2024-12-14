@@ -1,0 +1,103 @@
+/* MLeaderBoardList.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .cardWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100px; /* Fixed height for consistent alignment */
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+/* Medal is always visible */
+.medal {
+    font-size: 30px;
+    top: 5px;
+    left: 5pxx;
+    z-index: 2;
+    color: #f1bf3f; /* Gold color for the medal */
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+  }
+  
+  .image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+  }
+  
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the text */
+  }
+
+  .textContainer p {
+    margin: 0; /* Remove default margin */
+  }
+  
+  .name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Center the name horizontally */
+  }
+  
+  .performance {
+    display: flex;
+    justify-content: space-between; /* Inline performance items */
+    align-items: center;
+    width: 40%; /* Adjust the width to ensure space is well used */
+  }
+  
+  .performanceItem {
+    font-size: 14px;
+    color: #555;
+    text-align: center; /* Center performance text */
+  }
+  .rank {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    top: 10px;
+    right: 10px;
+  }
+  .role {
+    font-size: 14px;
+    color: #777;
+  }

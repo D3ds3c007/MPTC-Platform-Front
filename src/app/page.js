@@ -8,6 +8,10 @@ import { MAttendanceForm } from "./components/ui/pages/AttendanceForm/MAttendanc
 import MPopupMessage from "./components/ui/PopupMessage/MPopupMessage";
 import { MTimeOffCalendar } from "./components/ui/TimeOffCalendar/MTimeOffCalendar";
 import { useState } from "react";
+import defaultPic from './picture1.png';
+
+import MTopLeaderBoard from "./components/ui/AttendanceLeaderBoard/MTopLeaderBoard";
+import MLeaderBoardList from "./components/ui/AttendanceLeaderBoard/MLeaderBoardList";
 
 export default function Page() {
 
@@ -19,6 +23,63 @@ export default function Page() {
     setIsVisible(true);
   };
   
+  const leaderboardData = [
+    {
+      name: "Ulama Rehan",
+      points: "0 lateness, 0 absence",
+      username: "username",
+      image: defaultPic,
+    },
+    {
+      name: "Ulama R.",
+      points: "3 lateness, 0 absence",
+      username: "username2",
+      image: defaultPic,
+    },
+    {
+      name: "Ulama R.",
+      points: "4   lateness, 0 absence",
+      username: "username3",
+      image: defaultPic,
+    },
+  ];
+
+
+const data = [
+  {
+    username: 'john_doe',
+    name: 'John Doe',
+    image: defaultPic,
+    lateness: 2,
+    punctuality: 10,
+    absences: 1,
+  },
+  {
+    username: 'jane_smith',
+    name: 'Jane Smith',
+    image: defaultPic,
+    lateness: 0,
+    punctuality: 12,
+    absences: 0,
+  },
+  {
+    username: 'jane_smith',
+    name: 'Hello Kitty',
+    image: defaultPic,
+    lateness: 0,
+    punctuality: 12,
+    absences: 0,
+  },
+  {
+    username: 'jane_smith',
+    name: 'Bugs Bunny',
+    image: defaultPic,
+    lateness: 0,
+    punctuality: 12,
+    absences: 0,
+  },
+  // More data...
+];
   return (
     <>
       <MSideBar>
@@ -82,7 +143,7 @@ export default function Page() {
               {/* <MMultiStepForm /> */}
               {/* <MAttendanceForm /> */}
 
-              <MTimeOffCalendar />
+              {/* <MTimeOffCalendar />
               <button onClick={() => showPopup("success")}>Show Success</button>
               <button onClick={() => showPopup("error")}>Show Error</button>
 
@@ -96,7 +157,10 @@ export default function Page() {
                 }
                 isVisible={isVisible}
                 onClose={() => setIsVisible(false)}
-              />
+              /> */}
+
+              <MTopLeaderBoard data={leaderboardData}/>
+              <MLeaderBoardList data={data}/>
 
 
             </div>

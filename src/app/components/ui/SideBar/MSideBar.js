@@ -135,7 +135,7 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
             <div className={styles["navbar"]}>
 
                 <div className={styles["navbar-left-content"]}>
-                    <p>Welcome back, Dedsec</p>
+                    <p>Welcome back, Raitra Fiorenana</p>
                     {/* <h2>{currentTitle}</h2> */}
                 </div>
 
