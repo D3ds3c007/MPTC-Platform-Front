@@ -1,33 +1,34 @@
 import React from 'react';
 import styles from './MLeaderBoardList.module.css';
 import Image from 'next/image';
+import defaultPic from './picture1.png';
 
 const MLeaderBoardList = ({ data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.list}>
         {data.map((user, index) => {
-          const isTop3 = index < 3;
+          const isTop3 = user.rank < 3;
           return (
-            <div className={styles.cardWrapper} key={user.id}>
+            <div className={styles.cardWrapper} key={user.staffId}>
               <div className={styles.card}>
                 {/* Medal for top 3 */}
                 
                 
                 <div className={styles.userInfo}>
-                  <div className={styles.image}>
-                    <Image src={user.image} alt={user.name} width={50} />
-                  </div>
+                    <Image src={user.image64 || defaultPic} alt={user.staffName} width={50} height={50} className={styles.image} />
                   
                   <div className={styles.textContainer}>
-                    <div className={styles.name}>{user.name}</div>
+                    <div className={styles.name}>{user.staffName}</div>
                     {
                         isTop3 ? (
                             <div className={styles.medal}>
-                            {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
+                            {user.rank === 1 && '🥇'}
+                            {user.rank === 2 && '🥈'}
+                            {user.rank === 3 && '🥉'}
                             </div>
                         ) : (
-                            <div className={styles.rank}>{index + 1}</div>                            // Or whatever you want for else condition
+                            <div className={styles.rank}>{user.rank}</div>                            // Or whatever you want for else condition
                         )
                         }
 
@@ -36,13 +37,13 @@ const MLeaderBoardList = ({ data }) => {
 
                 <div className={styles.performance}>
                   <div className={styles.performanceItem}>
-                    <strong>{user.lateness}</strong> Lateness
+                    <strong>{user.latenessCount}</strong> Lateness
                   </div>
                   <div className={styles.performanceItem}>
-                    <strong>{user.punctuality}</strong> Punctuality
+                    <strong>{user.onTimeCount}</strong> Punctuality
                   </div>
                   <div className={styles.performanceItem}>
-                    <strong>{user.absences}</strong> Absences
+                    <strong>{user.absenceCount}</strong> Absences
                   </div>
                 </div>
               </div>

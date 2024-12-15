@@ -1,0 +1,23 @@
+.form-group {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center!important;
+    
+  }
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #0070f3;
+  outline: none;
+}

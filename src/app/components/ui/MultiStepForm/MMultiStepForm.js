@@ -69,6 +69,7 @@ import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAnd
       } else {
         setCurrentStep((prev) => prev + 1);
       }
+      console.log("upload done");
     };
 
     const prevStep = () => {
