@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import styles from'./MExamForm.module.css'; // Import the CSS for styling
 import { MButton } from '../Button/MButton';
 import {useFormState, useFormStatus} from 'react-dom';
 import {sendExamForm} from '@/app/actions/exam';
 import axios from '@/app/lib/axiosInstance';
 
-export function MExamForm({ levels, subjects, periods }) {
+export function MExamForm({ levels, subjects, periods, defaultId }) {
+    const isUpdateMode = !!defaultId; // Check if we are updating (idExam exists)
     const [state, action] = useFormState(sendExamForm, undefined);
+
     const [selectedLevel, setSelectedLevel] = useState(null);
     const [subjectFile, setSubjectFile] = useState(null);
     const [assetnoteFile, setAssetnoteFile] = useState(null);
@@ -37,9 +39,7 @@ export function MExamForm({ levels, subjects, periods }) {
     
         // Step 1: Upload the files to the server
         const formData = new FormData();
-        formData.append('Subject', subjectFile); // Match with DTO property name
-        formData.append('Assetnote', assetnoteFile); // Match with DTO property name
-    
+
         formData.append('Session', e.target['exam-session'].value);
         formData.append('SubjectId', e.target['subject'].value);
         formData.append('DateExam', e.target['exam-date'].value);
@@ -50,49 +50,126 @@ export function MExamForm({ levels, subjects, periods }) {
             console.log(`${key}: ${value}`);
         }
 
+        console.log('Sending form data...');
         // Step 2: Send the form data to the server
-        action(formData);
 
+        if(isUpdateMode){
+            formData.append('IdExam', defaultId); // Match with DTO property name
+            try {
+                // Await the response from the fetch request
+                const response = await fetch('http://localhost:5193/api/v1/Exam/update-exam', {
+                    method: 'PUT',
+                    body: formData,
+                });
+        
+                // Check if the response status indicates success
+                if (!response.ok) {
+                    throw new Error('File upload failed');
+                }
+        
+                // Log the result if the request is successful
+                // const data = await response.json();
+                // console.log('Data sent successfully:', data);
+        
+                // You can add an alert or redirect here if needed
+                // alert('Exam updated successfully');
+        
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle error (you can alert the user or log the error)
+                alert('Failed to update exam. Please try again.');
+            }
+
+        }else{
+            formData.append('Subject', subjectFile); // Match with DTO property name
+            formData.append('Assetnote', assetnoteFile); // Match with DTO property name
+
+            action(formData);
+        }
     };
+    
+    const [exam, setExam] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const response = await fetch(`http://localhost:5193/api/v1/Exam/get-exam/${defaultId}`); // Update the URL if needed
+            const data = await response.json();
+    
+            // console.log("Id : " ,defaultId);
+
+            console.log("Data fetched:", data);
+            setExam(data); // Assuming `data` is an array of exams
+            setSelectedLevel(data.levelId);
+            setSubjectFileName(data.uripath);
+            setAssetnoteFileName(data.uripathAssetNote);
+    
+          } catch (error) {
+            console.error("Failed to fetch data:", error);
+          }
+        }
+        fetchData();
+    }, [defaultId]);
     
   return (
     <>
     <div className={styles["chart-container"]}>
         <form className={styles["exam-form"]} onSubmit={handleSubmit}>
 
-            <div className={styles["form-group"]}>
-                <label for="subject">Subject of the exam</label>
-                <select id="subject" name="Subject" required>
-                {subjects.map(subject => (
-                    <option key={subject.idSubject} value={subject.idSubject}>{subject.name}</option>
-                ))}
-                </select>
-            </div>
+        <div className={styles["form-group"]}>
+        <label htmlFor="subject">Subject of the exam</label>
+        <select id="subject" name="Subject" defaultValue={exam?.subjectId || ""} required>
+            {subjects.map(subject => (
+            <option
+                key={subject.idSubject}
+                value={subject.idSubject}
+                selected={subject.idSubject === exam?.subjectId} // Dynamically set selected
+            >
+                {subject.name}
+            </option>
+            ))}
+        </select>
+        </div>
+
+
+        <div className={styles["form-group"]}>
+        <label htmlFor="exam-date">Date of the exam</label>
+        <div className={styles["input-with-icon"]}>
+            <input
+            type="date"
+            id="exam-date"
+            name="DateExam"
+            defaultValue={exam?.dateCreated ? new Date(exam.dateCreated).toISOString().split('T')[0] : ""}
+            required
+            />
+        </div>
+        </div>
+
 
             <div className={styles["form-group"]}>
-                <label for="exam-date">Date of the exam</label>
-                <div className={styles["input-with-icon"]}>
-                    <input type="date" id="exam-date" name="DateExam" required/>
-                </div>
-            </div>
-
-            <div className={styles["form-group"]}>
-                <label for="exam-period">Period of the exam</label>
-                <select id="exam-period" name="Period" required>
+            <label htmlFor="exam-period">Period of the exam</label>
+            <select id="exam-period" name="Period" defaultValue={exam?.periodId || ""} required>
                 {periods.map(period => (
-                    <option key={period.idPeriod} value={period.idPeriod}>{period.name}</option>
+                <option
+                    key={period.idPeriod}
+                    value={period.idPeriod}
+                    selected={period.idPeriod === exam?.periodId} // Dynamically set selected
+                >
+                    {period.name}
+                </option>
                 ))}
-                </select>
+            </select>
             </div>
 
             <div className={styles["form-group"]}>
-                <label for="exam-session">Session of the exam</label>
-                <select id="exam-session" name="Session" required>
-                    <option value="1">TERM 1</option>
-                    <option value="2">TERM 2</option>
-                    <option value="3">FINAL</option>
-                </select>
+            <label htmlFor="exam-session">Session of the exam</label>
+            <select id="exam-session" name="Session" defaultValue={exam?.session || ""} required>
+                <option value="1" selected={exam?.session === "1"}>TERM 1</option>
+                <option value="2" selected={exam?.session === "2"}>TERM 2</option>
+                <option value="3" selected={exam?.session === "3"}>FINAL</option>
+            </select>
             </div>
+
 
             <div className={styles["form-group"]}>
                 <label>Learning level</label>
@@ -109,13 +186,13 @@ export function MExamForm({ levels, subjects, periods }) {
                                 checked={selectedLevel === level.idLevel}
                                 onChange={() => handleLevelSelect(level)}
                                 style={{ display: 'none' }} // Hide the radio input itself
+                                defaultValue={exam?.levelId || ""}
                             />
                             {level.name}
                         </label>
                     ))}
                 </div>
             </div>
-
 
             <br/>
 
@@ -129,6 +206,7 @@ export function MExamForm({ levels, subjects, periods }) {
                         accept=".pdf" 
                         required 
                         onChange={(e) => handleFileChange(e, setSubjectFile, setSubjectFileName)} 
+                        disabled={isUpdateMode} // Disable the input when in update mode
                     />
                     
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#15004F" className="bi bi-upload" viewBox="0 0 16 16" >
@@ -151,6 +229,7 @@ export function MExamForm({ levels, subjects, periods }) {
                         accept=".pdf" 
                         required 
                         onChange={(e) => handleFileChange(e, setAssetnoteFile, setAssetnoteFileName)} 
+                        disabled={isUpdateMode} // Disable the input when in update mode
                     />
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#15004F" className="bi bi-upload" viewBox="0 0 16 16" >
@@ -162,7 +241,7 @@ export function MExamForm({ levels, subjects, periods }) {
                 </div>
             </div>
 
-            <MButton>Create</MButton>
+            <MButton>{isUpdateMode ? "Update" : "Create"}</MButton>
             {/* <SubmitButton /> */}
 
         </form>
@@ -170,14 +249,3 @@ export function MExamForm({ levels, subjects, periods }) {
     </>
   );
 };
-
-
-// function SubmitButton(){
-//     const { pending } = useFormStatus()
-
-//     return(
-//         <MButton disabled={pending} type="submit">
-//             {pending ? 'Loading...' : 'Create'}
-//         </MButton>
-//     )
-// }

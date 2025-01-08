@@ -7,6 +7,7 @@ import { MAddButton } from "@/app/components/ui/AddButton/MAddButton";
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MFilter } from "@/app/components/ui/Filter/MFilter";
 import { MLoading } from '@/app/components/ui/Loading/MLoading';
+import { MFolderCardNa } from '@/app/components/ui/FolderCardNa/MFolderCardNa';
 
 export default function ExamPage() {
   const [exams, setExams] = useState([]);
@@ -20,6 +21,8 @@ export default function ExamPage() {
 
         console.log("Data fetched:", data);
         setExams(data); // Assuming `data` is an array of exams
+        localStorage.setItem('examsData', JSON.stringify(data));
+
       } catch (error) {
         console.error("Failed to fetch data:", error);
       } finally {
@@ -66,6 +69,7 @@ export default function ExamPage() {
               </div>
 
               <br />
+              
 
               <div
                 style={{
@@ -86,14 +90,13 @@ export default function ExamPage() {
                   return (
                     <MFolderCard 
                       key={exam.idExam} 
-                      level={exam.level} 
-                      session={exam.session} 
-                      subject={exam.subject} 
-                      period={exam.period} 
+                      exam={exam} 
                       variant={variant}  // Passing the variant prop
                     />
                   );
                 })}
+
+              {/* <MFolderCardNa></MFolderCardNa> */}
 
               </div>
             </>
@@ -102,6 +105,8 @@ export default function ExamPage() {
           <a href="exam/create">
             <MAddButton />
           </a>
+
+
 
       </MCard>
     </div>
