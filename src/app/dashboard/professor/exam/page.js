@@ -6,7 +6,7 @@ import { MCard } from "@/app/components/ui/Card/MCard";
 import { MAddButton } from "@/app/components/ui/AddButton/MAddButton";
 import { MFilter } from "@/app/components/ui/Filter/MFilter";
 import { MLoading } from '@/app/components/ui/Loading/MLoading';
-import { MFolderCardNa } from '@/app/components/ui/FolderCardNa/MFolderCardNa';
+import { MFolderCardBig } from '@/app/components/ui/FolderCardBig/MFolderCardBig';
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MViewFolder } from "@/app/components/ui/ViewFolder/MViewFolder";
 import { set } from "react-hook-form";
@@ -98,85 +98,67 @@ export default function ExamPage() {
               
               <br></br>
 
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  gap: '1.2em',
-                  padding: '5px',
-                }}
-              >
-                {/* {exams.map((exam) => (
-                  <MFolderCard key={exam.idExam} level={exam.level} session={exam.session} subject={exam.subject} period={exam.period} />
-                ))} */}
-                {filteredExams.map((exam, index) => {  // ✅ Corrected to filteredExams
-                  const variant = ['primary', 'secondary', 'purple', 'dark', 'success'][index % 5];
-                  return (
-                    <MFolderCard 
-                      key={exam.idExam} 
-                      exam={exam} 
-                      variant={variant}
-                    />
-                  );
-                })}
-              {/* <MFolderCardNa></MFolderCardNa> */}
-
-              </div>
             </>
           )}
 
           
 
-<div style={{ display: 'flex', flexDirection: 'column', gap: '1.2em' }}>
-  {viewMode === "folder" && (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
-      {filteredExams.map((exam, index) => {
-        const variant = ['primary', 'secondary', 'purple', 'dark', 'success'][index % 5];
-        return (
-          <MFolderCard 
-            key={exam.idExam} 
-            exam={exam} 
-            variant={variant}
-          />
-        );
-      })}
-    </div>
-  )}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2em' }}>
+        {viewMode === "folder" && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
+            {filteredExams.map((exam, index) => {
+              const variant = ['primary', 'secondary', 'purple', 'dark', 'success'][index % 5];
+              return (
+                <MFolderCard 
+                  key={exam.idExam} 
+                  exam={exam} 
+                  variant={variant}
+                />
+              );
+            })}
+          </div>
+        )}
 
-  {viewMode === "table" && (
-    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-      <thead>
-        <tr>
-          <th>Subject</th>
-          <th>Level</th>
-          <th>Period</th>
-          <th>Session</th>
-        </tr>
-      </thead>
-      <tbody>
-        {filteredExams.map((exam) => (
-          <tr key={exam.idExam}>
-            <td>{exam.subject}</td>
-            <td>{exam.level}</td>
-            <td>{exam.period}</td>
-            <td>{exam.session}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )}
+        {viewMode === "list" && (
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Level</th>
+                <th>Period</th>
+                <th>Session</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredExams.map((exam) => (
+                <tr key={exam.idExam}>
+                  <td>{exam.subject}</td>
+                  <td>{exam.level}</td>
+                  <td>{exam.period}</td>
+                  <td>{exam.session}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
 
-  {viewMode === "list" && (
-    <ul style={{ listStyleType: 'none', padding: 0 }}>
-      {filteredExams.map((exam) => (
-        <li key={exam.idExam} style={{ padding: '10px 0', borderBottom: '1px solid #ccc' }}>
-          {exam.subject} - {exam.level} - {exam.period} - {exam.session}
-        </li>
-      ))}
-    </ul>
-  )}
-</div>
+        {viewMode === "bigfolder" && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
+            {filteredExams.map((exam, index) => {
+              const variant = ['primary', 'secondary', 'purple', 'dark', 'rouge'][index % 5];
+              return (
+                <MFolderCardBig 
+                  key={exam.idExam} 
+                  exam={exam} 
+                  variant={variant}
+                />
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+
 
           <a href="exam/create">
             <MAddButton />

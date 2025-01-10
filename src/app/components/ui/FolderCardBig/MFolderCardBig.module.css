@@ -139,6 +139,7 @@
     border-radius: 20px; /* Coins arrondis */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    gap: 0.5em;
   }
   
   .popup-item:hover {

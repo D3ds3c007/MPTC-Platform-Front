@@ -14,13 +14,13 @@ export function MFolderCard({ exam, variant = 'primary' }) {
                 </div>
                 <h5>{exam.subject} Exam <br /> {exam.session} </h5>
                 <p>{exam.period}</p>
-                <div className={`${styles["three-dot-button"]} ${styles[variant]}`}>
+                {/* <div className={`${styles["three-dot-button"]} ${styles[variant]}`}>
                     <div className={`${styles["dots"]} ${styles[variant]}`}>
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
         <div className={styles["corner-icon"]}>
