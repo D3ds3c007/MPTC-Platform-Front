@@ -1,16 +1,16 @@
 .search-container {
   display: flex;
   align-items: center;
-  border: 2px solid var(--primary-bg);
-  border-radius: 10px;
+  border-radius: 50px;
   width: 425px;
+  height: 60px;
   background-color: var(--primary-bg);
 }
 
 .search-input {
   border: none;
   outline: none;
-  padding: 10px 20px;
+  padding: 15px 40px;
   border-radius: 10px;
   flex: 1;
   font-size: 16px;
@@ -27,6 +27,7 @@
   width: 10%;
   border: none;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .search-button .bi-search {

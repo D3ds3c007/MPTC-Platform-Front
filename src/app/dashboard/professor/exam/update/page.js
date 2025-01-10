@@ -12,6 +12,8 @@ export default function UpdatePage()
   const [periods, setPeriods] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [examId, setExamId] = useState(null);
+
   //fetcing exam data
   useEffect(() => {
     async function fetchData() {
@@ -25,6 +27,14 @@ export default function UpdatePage()
         setLevels(data[0]);
         setSubjects(data[1]);
         setPeriods(data[2]);
+
+        const searchParams = new URLSearchParams(window.location.search);
+        const id = searchParams.get('parameter_id');
+      
+        if (id) {
+        //   console.log('Parameter ID:', id);
+          setExamId(id);
+        }
       } catch (error) {
         console.error("Failed to fetch data:", error);
       } finally {
@@ -34,19 +44,6 @@ export default function UpdatePage()
     fetchData();
   }, []);
 
-  const [examId, setExamId] = useState(null);
-
-  useEffect(() => {
-    console.log('Hehe');
-
-    const searchParams = new URLSearchParams(window.location.search);
-    const id = searchParams.get('parameter_id');
-  
-    if (id) {
-    //   console.log('Parameter ID:', id);
-      setExamId(id);
-    }
-  }, []);
   
     return(
       <div className="col-md-12">

@@ -16,6 +16,6 @@
   }
   
   .addButton:hover {
-    background-color: #005bb5; /* Darker shade on hover */
+    background-color: var(--success-bg); /* Darker shade on hover */
   }
   
