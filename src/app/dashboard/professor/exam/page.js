@@ -10,6 +10,7 @@ import { MFolderCardBig } from '@/app/components/ui/FolderCardBig/MFolderCardBig
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MViewFolder } from "@/app/components/ui/ViewFolder/MViewFolder";
 import { set } from "react-hook-form";
+import { MViewList } from "@/app/components/ui/ViewList/MViewList";
 
 export default function ExamPage() {
   const [exams, setExams] = useState([]);
@@ -120,26 +121,16 @@ export default function ExamPage() {
         )}
 
         {viewMode === "list" && (
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                <th>Subject</th>
-                <th>Level</th>
-                <th>Period</th>
-                <th>Session</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredExams.map((exam) => (
-                <tr key={exam.idExam}>
-                  <td>{exam.subject}</td>
-                  <td>{exam.level}</td>
-                  <td>{exam.period}</td>
-                  <td>{exam.session}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
+          {filteredExams.map((exam, index) => {
+            return (
+              <MViewList 
+                key={exam.idExam} 
+                exam={exam} 
+              />
+            );
+          })}
+        </div>
         )}
 
         {viewMode === "bigfolder" && (
