@@ -80,7 +80,7 @@
   
   .performance {
     display: flex;
-    justify-content: space-between; /* Inline performance items */
+    justify-content: space-evenly; /* Inline performance items */
     align-items: center;
     width: 40%; /* Adjust the width to ensure space is well used */
   }

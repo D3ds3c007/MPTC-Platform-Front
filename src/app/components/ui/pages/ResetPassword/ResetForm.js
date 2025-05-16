@@ -6,6 +6,7 @@ import styles from './ResetForm.module.css'
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import  axios from '@/app/lib/axiosInstance';
 import { useEffect, useState } from 'react'
+import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage';
 import { set } from 'zod'
 
 //import bootstrap css
@@ -17,6 +18,10 @@ export function ResetForm(){
     const[userIdFromQuery, setUserIdFromQuery] = useState(null);
     const[tokenFromQuery, setTokenFromQuery] = useState(null);
     const router = useRouter();
+
+    const [isVisible, setIsVisible] = useState(false);
+    const [popupType, setPopupType] = useState("success");
+    const [message, setMessage] = useState("");
 
 
 
@@ -140,6 +145,13 @@ export function ResetForm(){
                 </div>
                 </div>
             {/* </html> */}
+            <MPopupMessage
+                    type={popupType}
+                    title={popupType === "success" ? "Well done!" : "Oh snap!"}
+                    message={message}
+                    isVisible={isVisible}
+                    onClose={() => setIsVisible(false)}
+                />
 
         </>
     )

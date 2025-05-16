@@ -3,15 +3,32 @@ import {request} from '@/app/actions/request'
 import { MButton } from '../../Button/MButton'
 import {useFormState, useFormStatus} from 'react-dom'
 import styles from './Request.module.css'
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage';
+import { useEffect, useState } from 'react'
+
 //import bootstrap css
 
 
 export function RequestForm(){
     const [state, action] = useFormState(request, undefined)
 
+    const [isVisible, setIsVisible] = useState(false);
     
+    const [popupType, setPopupType] = useState("success");
+    const [message, setMessage] = useState("");
+    
+    useEffect(() => {
+        if(state?.errors)
+        {
+            setMessage(state.errors)
+            showPopup("error");
+        }
+    }, [state])
+
+    const showPopup = (type) => {
+        setPopupType(type);
+        setIsVisible(true);
+      };
     
     
     return(
@@ -23,11 +40,6 @@ export function RequestForm(){
                     <div className={styles.fadeInDown}>
                         <div id={styles.formContent}>
                             <h2 className={`${styles.active} ${styles.title}`} >Forgot Password ?</h2>
-
-                            {state?.errors && <p style={{
-                                color:"red",
-                                margin: "10px",
-                                }}>{state.errors}</p>}
 
                                 {/* Icon */}
                             {/* <div className={styles.fadeInFirst}>
@@ -59,6 +71,13 @@ export function RequestForm(){
                 </div>
                 </div>
             {/* </html> */}
+            <MPopupMessage
+                    type={popupType}
+                    title={popupType === "success" ? "Well done!" : "Oh snap!"}
+                    message={message}
+                    isVisible={isVisible}
+                    onClose={() => setIsVisible(false)}
+                />
 
         </>
     )

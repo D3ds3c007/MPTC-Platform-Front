@@ -7,6 +7,20 @@ import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import axios from "@/app/lib/axiosInstance";
 import * as signalR from '@microsoft/signalr';
 import { MLoading } from "@/app/components/ui/Loading/MLoading";
+import {
+    BarChart, Bar, XAxis, YAxis,
+    CartesianGrid, Tooltip, Legend,
+    ResponsiveContainer
+  } from 'recharts';
+
+  const data = [
+    { day: 'Monday', averageLate: 5 },
+    { day: 'Tuesday', averageLate: 1 },
+    { day: 'Wednesday', averageLate: 2 },
+    { day: 'Thursday', averageLate: 3 },
+    { day: 'Friday', averageLate: 1 },
+    { day: 'Saturday', averageLate: 0 },
+  ];
 
 export default function AdminPage() {
     const [activities, setActivities] = useState([]);
@@ -84,7 +98,9 @@ export default function AdminPage() {
         <h1 style={{
             color : "var(--dark-blue)",
             fontWeight: "600"
-        }}>Administrator Dashboard</h1>    
+        }}>Administrator Dashboard</h1> 
+
+        {/* METRICS  */}
          
         <div className="row" style={{gap:0, margin:0}}>
             <div className="col-md-4">
@@ -97,6 +113,11 @@ export default function AdminPage() {
                 <MIconicCard data={isLoading ?  <MLoading /> : cardStats.latenessDurationAVG + " min"} label="Lateness duration average in minutes" bootstrapclassName="col-md-4" variant="danger" bootstrapClass="col-md-12" icon="bi bi-clock-history"/>
             </div>
         </div>  
+
+        {/* METRICS */}
+
+        {/* Camera FEED */}
+
         <div className="row">
             <div className="col-md-6" style={{ justifyContent:"center" }}>
                 <MVideoFeed title="Clock In Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-in tracking." isIn="wsIn"/>
@@ -105,6 +126,10 @@ export default function AdminPage() {
                 <MVideoFeed title="Clock Out Camera Feed" description="Live Camera Feed: Real-time face recognition for accurate clock-out tracking." isIn="wsOut"/>
             </div>
         </div>
+
+        {/* Camera FEED */}
+
+
         <div className="row">
             <div className="col-md-6">
                 <MCard title="Live Activities">
@@ -117,9 +142,9 @@ export default function AdminPage() {
                     ))}
                 </MCard>
             </div>
+
             <div className="col-md-6">
-                <MCard title="">
-                    <div style={{
+                    {/* <div style={{
                         display:'flex',
                         flexDirection:'column',
                         justifyContent:'center',
@@ -128,8 +153,18 @@ export default function AdminPage() {
                     }}>
                         <i className={`bx bx-calendar`} style={{ fontSize: '160px' }}></i>
                         <h4>Today is {currentDate}</h4>
-                    </div>
-                </MCard>
+                    </div> */}
+                    <ResponsiveContainer width="100%"  style={{ backgroundColor: 'white', padding: '20px', borderRadius: '20px' }} height={450}>    
+                        <BarChart data={data}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="day" />
+                        <YAxis label={{ value: 'Minutes', angle: -90, position: 'insideLeft' }} />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="averageLate" fill="#feb500" name="Avg Lateness (min)" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                  
             </div>
         </div>
         </>

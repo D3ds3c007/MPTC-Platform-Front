@@ -39,9 +39,9 @@ const MLeaderBoardList = ({ data }) => {
                   <div className={styles.performanceItem}>
                     <strong>{user.latenessCount}</strong> Lateness
                   </div>
-                  <div className={styles.performanceItem}>
+                  {/* <div className={styles.performanceItem}>
                     <strong>{user.onTimeCount}</strong> Punctuality
-                  </div>
+                  </div> */}
                   <div className={styles.performanceItem}>
                     <strong>{user.absenceCount}</strong> Absences
                   </div>

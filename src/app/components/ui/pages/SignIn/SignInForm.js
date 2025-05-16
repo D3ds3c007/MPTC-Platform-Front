@@ -64,8 +64,8 @@ export function SignInForm(){
 
                             {/* Login Form */}
                             <form action={action}>
-                                <input type="text" id="login" className={`${styles.fadeInSecond} ${styles.input}`} name="email" placeholder="login" />
-                                <input type="text" id="password" className={`${styles.fadeInThird} ${styles.input} `} name="password" placeholder="password" />
+                                <input type="text" id="login" className={`${styles.fadeInSecond} ${styles.input}`} name="email" placeholder="Email" />
+                                <input type="password" id="password" className={`${styles.fadeInThird} ${styles.input} `} name="password" placeholder="Password" />
                                 <SubmitButton />
                             </form>
 

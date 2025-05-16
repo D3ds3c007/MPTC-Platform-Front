@@ -1,7 +1,7 @@
 'use client';
 import styles from './MSideBar.module.css';
 import Image from 'next/image';
-import logo from './logo.png';
+import logo from './platform-logo.jpg';
 import { Container } from "react-bootstrap";
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
@@ -29,11 +29,11 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
         <header>
           <div className={styles["image-text"]}>
             <span className={styles.image}>
-            <Image src={logo} alt="Logo" width={40} height={40} />
+            <Image src={logo} alt="Logo" width={40} height={60} />
             </span>
             <div className={styles["logo-text"]}>
-              <span className={styles.name}>Codinglab</span>
-              <span className={styles.profession}>Web developer</span>
+              <span className={styles.name}>Techoot</span>
+              <span className={styles.profession}>Platform</span>
             </div>
           </div>
 

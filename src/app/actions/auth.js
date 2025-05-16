@@ -46,7 +46,7 @@ export async function signup(state, formData) {
       } catch (error) {
         console.error('Error signing in:', error);
         return {
-          errors:  'An error occurred. Please try again later.'
+          errors:  error.response.data
         };
       }
       
