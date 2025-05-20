@@ -17,7 +17,7 @@ export function MfiltreNa({ files, onFilter }) {
   const filters = ["All",  "Recent", "Video", "PDF", "Image", "Link", "Grammar", "Writing", "Vocabulary"];
 
   // Options de types de ressources à sélectionner
-  const resourceTypes = ["Examen", "Leçon", "Exercice"];
+  const resourceTypes = ["Exam", "Lesson", "Exercise"];
 
   // Fonction pour basculer l'affichage du popup
   const togglePopup = () => {
@@ -27,11 +27,14 @@ export function MfiltreNa({ files, onFilter }) {
   // Gérer les changements de niveau, année et type de ressource
   const handleLevelChange = (e) => setSelectedLevel(e.target.value);
   const handleYearChange = (e) => setSelectedYear(e.target.value);
-  const handleResourceTypeChange = (e) => setSelectedResourceType(e.target.value);
+  const handleResourceTypeChange = (e) => {
+    const value = e.target.value;
+    setSelectedResourceType(value);
+  };
 
   // Gérer la sélection des filtres principaux
   const handleFilterClick = (filter) => {
-    console.log(filter + "barajiiiii");
+    // console.log(filter + "barajiiiii");
     if (filter === "All") {
       setActiveFilter("All");
       setSelectedLevel("");
@@ -63,20 +66,20 @@ export function MfiltreNa({ files, onFilter }) {
     
       const matchesLevel = !selectedLevel || file.level === selectedLevel;
       const matchesYear = !selectedYear || file.year === selectedYear;
-      const matchesResourceType = !selectedResourceType || file.resourceType === selectedResourceType; // Filtrage par type de ressource
+      const matchesResourceType = !selectedResourceType || file.type === selectedResourceType; // Filtrage par type de ressource
       const matchesFileType = !selectedType || file.fileType === selectedType || file.category === selectedType;
 
-      console.log(file.title + " " + matchesFileType);
+      // console.log(file.title + " " + matchesFileType);
       return matchesLevel && matchesYear && matchesResourceType && matchesFileType;
     });
   };
 
   // Use `useEffect` to trigger the `onFilter` callback when dependencies change
   useEffect(() => {
-    console.log("Selected Type : " + selectedType);
+    // console.log("Selected Type : " + selectedType);
     if (onFilter) {
       const filteredFiles = getFilteredFiles();
-      console.log(filteredFiles);
+      // console.log(filteredFiles);
       onFilter(filteredFiles);
     }
   }, [files, activeFilter, selectedLevel, selectedYear, selectedType, selectedResourceType, onFilter]); // Dependencies
@@ -140,17 +143,77 @@ export function MfiltreNa({ files, onFilter }) {
           </div>
         )}
       </div>
+      {filters.map((filter) => {
+  const isAll = filter === "All";
+
+  const handleClick = () => {
+    handleFilterClick(filter);
+    // Ne fait rien de plus si c'est "All"
+  };
+
+  return isAll ? (
+    // Si "All", pas de lien et reste sur la même page
+    <button
+      key={filter}
+      className={`${styles["filter-btn"]} ${activeFilter === filter ? styles["active"] : ""} ${filter === "All" ? styles["all-btn"] : ""}`}
+      onClick={handleClick}
+    >
+      {filter}
+    </button>
+  ) : (
+    // Pour tous les autres filtres, on redirige vers la page ResultatFiltre
+    <a
+      key={filter}
+      href={`/dashboard/professor/resource/ResultatFiltre?filter=${filter}`} // Redirection vers la page avec le filtre comme paramètre
+      style={{ textDecoration: "none" }}
+    >
+      <button
+        className={`${styles["filter-btn"]} ${activeFilter === filter ? styles["active"] : ""}`}
+        onClick={handleClick}
+      >
+        {filter}
+      </button>
+    </a>
+  );
+})}
+
 
       {/* Boutons des filtres */}
-      {filters.map((filter) => (
-        <button
-          key={filter}
-          className={`${styles["filter-btn"]} ${activeFilter === filter ? styles["active"] : ""} ${filter === "All" ? styles["all-btn"] : ""}`}
-          onClick={() => handleFilterClick(filter)}
-        >
-          {filter}
-        </button>
-      ))}
+      {/* {filters.map((filter) => {
+        const isAll = filter === "All";
+
+        const handleClick = () => {
+          handleFilterClick(filter);
+          window.location.href = "http://localhost:3000/dashboard/professor/resource/ResultatFiltre?filtre="+filter;
+          // Ne fait rien de plus si c'est "All"
+        };
+
+  return isAll ? (
+    // Si "All", pas de lien et reste sur la même page
+    <button
+      key={filter}
+      className={`${styles["filter-btn"]} ${activeFilter === filter ? styles["active"] : ""} ${filter === "All" ? styles["all-btn"] : ""}`}
+      onClick={handleClick}
+    >
+      {filter}
+    </button>
+  ) : (
+    // Pour tous les autres filtres, on redirige vers la page ResultatFiltre
+    // <a
+    //   key={filter}
+    //   href={`/resource/ResultatFiltre?filter=${filter}`} // Redirection vers la page avec le filtre comme paramètre
+    //   style={{ textDecoration: "none" }}
+    // >
+      <button
+        className={`${styles["filter-btn"]} ${activeFilter === filter ? styles["active"] : ""}`}
+        onClick={handleClick}
+      >
+        {filter}
+      </button>
+    // </a>
+  );
+})} */}
+
     </div>
   );
 }

@@ -1,0 +1,95 @@
+.page-wrapper {
+    background-color:white;
+    padding-bottom: 3rem;
+  }
+  
+  .section-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .history-title {
+    text-align: center;
+    margin-top: 3rem;
+    color: #333;
+    font-size: 1.5rem;
+  }
+  
+  .history-wrapper {
+    display: flex;
+  
+    flex-wrap: wrap;
+    
+    margin-top: 2rem;
+  }
+  
+  .topResources {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #7D06EA;
+    margin-left: 100px;
+    font-weight: bold;
+  }
+
+  .grandTitre{
+    font-size: 44px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color:#15004F;
+  }
+  
+  .topResourcesbleu {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    color: #00119D;
+    margin-left: 100px;
+    
+  }
+
+ 
+  .topResourcesExamen {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    color: #7D06EA;
+    margin-left: 100px;
+    font-weight: bold;
+  }
+
+  .textarea {
+    width: 1050px;
+    min-height: 120px;
+    padding: 12px 16px;
+    margin-left: 60px;
+    border: 2px solid #CFD4FA;
+    border-radius: 12px;        /* ✅ contour arrondi */
+    font-size: 16px;
+    resize: vertical;           /* permet de redimensionner verticalement */
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .textarea:focus {
+    border-color: #00119D;      /* couleur violette à focus */
+    /* box-shadow: 0 0 5px rgba(125, 6, 234, 0.4); */
+  }
+  
+  .badgeSection {
+    border: 2px solid #CFD4FA;      /* bordure violette ou personnalisée */
+    border-radius: 12px;            /* coins arrondis */
+    padding: 20px;
+    margin: 0 60px;
+    margin-bottom: 50px;
+    background-color: transparent;  /* pas de fond */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;                      /* espacement entre les badges */
+    justify-content: flex-start;   /* ou center si tu veux centrer les badges */
+  }
+  

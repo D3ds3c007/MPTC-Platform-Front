@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  padding: 0px 0px 20px 20px;
+ 
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  height: 180px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: darkblue;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* La carte remonte un peu */
+}
+
+.label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.value {
+  font-size: 32px;
+}
+
+/* Boutons spécifiques */
+.averagesButton {
+  background-color: #d3d7fb;
+}
+
+.mentionButton {
+  background-color: #00f779;
+}
+
+.classAverageButton {
+  background-color: #ffc836;
+}

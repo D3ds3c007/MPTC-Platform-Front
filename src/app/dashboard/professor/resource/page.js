@@ -3,7 +3,7 @@
 import { MFolderCardNa } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
 import { MButtonAjoutResource } from "@/app/components/ui/ButtonAjoutResource/MButtonAjoutResource";
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
-import { MfiltreNa } from "@/app/components/ui/filtreNa/MfiltreNa";
+import { MfiltreNa } from "@/app/components/ui/FiltreNa/MfiltreNa";
 import { MButtonAjout } from "@/app/components/ui/ButtonAjout/MButtonAjout";
 import { MListe } from "@/app/components/ui/Liste/MListe";
 
@@ -25,6 +25,20 @@ export default function ExamFoldersPage() {
     { fileType: "Link", title: "Lesson A1", session: "OCT 2024", subtitle: "Speaking activities", level: "A1", year: "2024", type: "Lesson", category: "Speaking", publishedDate: "2024-11-20"},
   ];
 
+
+  const allResources = [
+    { fileType: "PDF", title: "Lesson B1", session: "NOV 2024", subtitle: "Intermediate grammar rules", level: "B1", year: "2024", type: "Lesson", category: "Grammar", publishedDate: "2024-12-01" },
+    { fileType: "Image", title: "Test B2", session: "NOV 2024", subtitle: "Advanced vocabulary test", level: "B2", year: "2024", type: "Exam", category: "Vocabulary", publishedDate: "2024-11-15" },
+    { fileType: "Video", title: "Lesson B2", session: "NOV 2024", subtitle: "Advanced listening comprehension", level: "B2", year: "2024", type: "Lesson", category: "Listening", publishedDate: "2024-12-05" },
+    { fileType: "Word", title: "Exercise B1", session: "NOV 2024", subtitle: "Writing skills practice", level: "B1", year: "2024", type: "Exercise", category: "Writing", publishedDate: "2024-12-10" },
+    { fileType: "Link", title: "Lesson B2", session: "NOV 2024", subtitle: "Role-play exercises", level: "B2", year:"2024", type: "Lesson", category: "Speaking", publishedDate: "2024-12-02" },
+    { fileType: "PDF", title: "Lesson C1", session: "DEC 2024", subtitle: "Advanced sentence structures", level: "C1", year: "2024", type: "Lesson", categor: "Grammar", publishedDate: "2024-12-15" },
+    { fileType: "Image", title: "Test C1", session: "DEC 2024", subtitle: "Comprehensive grammar test", level: "C1", year: "2024", type: "Exam", category: "Grammar", publishedDate: "2024-12-01" },
+    { fileType: "Video", title: "Lesson C2", session: "DEC 2024", subtitle: "Fluent speech techniques", level: "C2", year: "2024", type: "Lesson", category: "Speaking", publishedDate: "2024-12-18" },
+    { fileType: "Word", title: "Exercise C1", session: "DEC 2024", subtitle: "Complex sentence formation", level: "C1", year: "2024", type: "Exercise", categor: "Writing", publishedDate: "2024-12-20" },
+    { fileType: "Link", title: "Lesson C2", session: "DEC 2024", subtitle: "Advanced conversation topics", level: "C2", year: "2024", type: "Lesson", category: "Speaking", publishedDate: "2024-12-22" },
+  ];
+
   const recentFiles = [
     { fileName: "Exam A1", session: "OCT 2024", size: "5.265 KB", fileType: "pdf" },
     { fileName: "Exam B2", session: "JUL 2023", size: "3.512 KB", fileType: "word" },
@@ -43,11 +57,11 @@ export default function ExamFoldersPage() {
   // Filtrage dynamique
   useEffect(() => {
     const filtered = resources.filter((resource) => {
-      // const matchesLevel = !selectedLevel || resource.level === selectedLevel;
+      const matchesLevel = !selectedLevel || resource.level === selectedLevel;
       const matchesType = !selectedType || resource.fileType === selectedType;
-      // const matchesCategory = !selectedCategory || resource.category === selectedCategory;
-      // const matchesYear = !selectedYear || resource.year === selectedYear;
-      // return matchesLevel && matchesType && matchesCategory && matchesYear;
+      const matchesCategory = !selectedCategory || resource.category === selectedCategory;
+      const matchesYear = !selectedYear || resource.year === selectedYear;
+      return matchesLevel && matchesType && matchesCategory && matchesYear;
     });
     setFilteredResources(filtered);
   }, [selectedLevel, selectedType, selectedCategory, selectedYear]);
@@ -65,7 +79,9 @@ export default function ExamFoldersPage() {
         <section className={styles.searchSection}>
           <div className="d-flex justify-content-between align-items-center mb-2">
             <h2 className={styles.allResources}>All resources</h2>
-            <MButtonAjoutResource />
+            <a href="resource/addForm" style={{ textDecoration: 'none' }}>
+              <MButtonAjoutResource /> 
+            </a>
             <MSearchBar placeholder="Search" />
           </div>
         </section>
@@ -88,7 +104,7 @@ export default function ExamFoldersPage() {
 
         {/* Section des ressources filtrées */}
         <section className={styles.resourcesSection}>
-          <h3 className={styles.topResources}>My recently added resources</h3>
+          <h3 className={styles.topResources}>Top 10 of resource</h3>
           <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
             {filteredResources.length > 0 ? (
               filteredResources.map((resource, index) => (
@@ -113,7 +129,7 @@ export default function ExamFoldersPage() {
 
       {/* Section des fichiers récents */}
       <section className={styles.fileListSection}>
-        <h3 className={styles.topResources}>List of my resources</h3>
+        <h3 className={styles.topResources}>Add recently</h3>
         <div className={`row mt-1`}>
           {recentFiles.map((file, index) => (
             <div key={index} className={`col-md-12 mb-1`}>
@@ -123,20 +139,20 @@ export default function ExamFoldersPage() {
         </div>
       </section>
 
-      <div className={`bg-white p-4 rounded `}>
-       
-        {/* Section des ressources filtrées */}
-        <section className={styles.resourcesSection}>
-          <h3 className={styles.topResources}>My recently added resources</h3>
+
+      <div className={`bg-white p-4 rounded `}>   
+      <div> 
+      <section className={styles.resourcesSection}>
+          <h3 className={styles.topResources}>Top 10 of resource</h3>
           <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
-            {filteredResources.length > 0 ? (
-              filteredResources.map((resource, index) => (
+            {allResources.length > 0 ? (
+              allResources.map((allResource, index) => (
                 <div key={index} className={`col-md-4 mb-4`}>
                   <MFolderCardNa
-                    fileType={resource.fileType}
-                    title={resource.title}
-                    session={resource.session}
-                    subtitle={resource.subtitle}
+                    fileType={allResource.fileType}
+                    title={allResource.title}
+                    session={allResource.session}
+                    subtitle={allResource.subtitle}
                   />
                 </div>
               ))
@@ -145,6 +161,7 @@ export default function ExamFoldersPage() {
             )}
           </div>
         </section>
+      </div>
       </div>
 
     </div>

@@ -83,7 +83,9 @@ export function MFolderCardNa({
       {/* Popup */}
       {showPopup && (
         <div className={styles["popup"]}>
-          <button className={styles["popup-item"]}>
+         <a href="D:\STAGE\BOKYSoutenance.pdf">
+          
+         <button className={styles["popup-item"]}>
             <Image
               src={telechargements}
               alt="telechargements"
@@ -92,7 +94,9 @@ export function MFolderCardNa({
               className={styles["icon"]}
             />{" "}
             Télécharger
+
           </button>
+          </a> 
           <button className={styles["popup-item"]}>
             <Image
               src={favori}

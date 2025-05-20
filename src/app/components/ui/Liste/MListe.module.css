@@ -8,7 +8,7 @@
     border: 1px solid #e5e5e5;
     padding: 20px;
     width: 100%;
-    max-width: 1300px; /* Limiter la largeur */
+    max-width: 1500px; /* Limiter la largeur */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px auto; /* Centrer et espacer */
     flex-wrap: wrap; /* Permet d'ajuster selon l'espace */

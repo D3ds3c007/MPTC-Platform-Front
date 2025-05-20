@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px;
+  
+    font-family: Arial, sans-serif;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 25px;
+    width: 300px;
+    height: 180px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #00119D;
+  }
+  
+  .icon {
+    background-color: #001fbb;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon svg {
+    width: 40px;
+    height: 40px;
+    color: #CFD4FA;
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .value {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .label {
+    font-size: 16px;
+  }
+  
+  /* Styles de fond selon les statuts */
+  .success {
+    background-color: #00ff84;
+  }
+  
+  .average {
+    background-color: #dadaff;
+  }
+  
+  .failure {
+    background-color: #ef1515;
+    color: white;
+  }
+  
+  .failure .label {
+    color: white;
+  }
+  

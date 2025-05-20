@@ -1,0 +1,18 @@
+.savebutton {
+    background-color: #00119D; /* bleu marine */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px; /* bien arrondi */
+    font-size: 20px;
+    width: 400px;
+    height: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .savebutton:hover {
+    background-color: #15004F; 
+  }
+  

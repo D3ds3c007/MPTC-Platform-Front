@@ -1,0 +1,90 @@
+.card {
+    width: 320px;
+    height: 350px;
+    border-radius: 30px;
+    position: relative;
+    padding: 20px 20px 50px 25px;
+    margin-right: 40px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end;
+    /* box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); */
+  }
+  
+  /* Variantes de couleur du fond */
+  .blue {
+    background-color: #00119D;
+    color: white;
+  }
+  
+  .green {
+    background-color: #01F073;
+    color: #00119D;
+  }
+  
+  .lightblue {
+    background-color: #CFD4FA;
+    color: #00119D;
+  }
+  
+  .yellow {
+    background-color: #FFC536;
+    color: #00119D;
+  }
+  
+  .purple {
+    background-color: #C688FF;
+    color: #00119D;
+  }
+  
+  .pink {
+    background-color: #FF498C;
+    color: #00119D;
+  }
+  
+  /* Bouton rond */
+  .circleButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Animation hover */
+  .hovered {
+    transform: scale(1.2);
+  }
+  
+  /* Couleurs du cercle par variante */
+  .circleGreen {
+    background-color: #01F073;
+  }
+  
+  .circleBlue {
+    background-color: #00119D;
+  }
+  
+  /* Texte */
+  .level {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 20px;
+  }
+  
+  .session {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-left: 20px;
+
+  }
+  

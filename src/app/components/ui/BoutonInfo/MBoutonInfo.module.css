@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    gap: 100px;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #06003b;
+  }
+  
+  .title {
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+  
+  .box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 35px;
+    border-radius: 22px;
+    font-size: 22px;
+    min-width: 240px;
+    justify-content: center;
+    color: white;
+  }
+  
+  .periode {
+    background-color: #00119D;
+    color: white;
+  }
+  
+  .matricule {
+    background-color: #01F073;
+    color: #06003b;
+  }
+  
+  .level {
+    background-color: #CFD4FA;
+    color: #06003b;
+  }
+  
+  .icon {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+  }
+  

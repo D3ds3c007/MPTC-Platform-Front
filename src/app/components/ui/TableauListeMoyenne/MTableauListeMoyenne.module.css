@@ -1,0 +1,102 @@
+.student-table-container {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+    padding: 20px;
+  }
+  
+  .student-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    background-color: transparent;
+  }
+  
+  .student-table thead th {
+    background-color:#00119D ;
+    color: white;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .student-table thead th:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+  
+  .student-table thead th:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+  
+  .student-table tbody tr {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .student-table tbody td {
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .student-table tbody td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+  
+  .student-table tbody td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: bold;
+  }
+  
+  .red {
+    background-color: #ff3b3b;
+  }
+  
+  .gray {
+    background-color: #d7d9fb;
+  }
+  
+  .green {
+    background-color: #01f073;
+  }
+  
+  .status {
+    border-radius: 8px;
+    padding: 5px 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    justify-content: center;
+  }
+  
+  .valid {
+    background-color: #00119D;
+    color: white;
+  }
+  
+  .invalid {
+    background-color: #ffc938;
+    color: #00119D;
+  }
+  
+  .status-icon {
+    margin-right: 6px;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  

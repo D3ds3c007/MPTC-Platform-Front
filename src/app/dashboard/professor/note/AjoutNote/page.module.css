@@ -1,0 +1,90 @@
+.pageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+   
+    border-radius: 12px;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #190082;
+    margin-bottom: 20px;
+  }
+  
+  .headerSection {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+  }
+  
+  .nameAndLink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .studentName {
+    font-size: 18px;
+    font-weight: 700;
+    color: #202046;
+  }
+  
+  .viewLink {
+    font-size: 14px;
+    color: #190082;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .formSection {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .formTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8000d8;
+    margin-bottom: 20px;
+    margin-left: 70px;
+  }
+  
+  .formSection :global(.examContainer) {
+    margin-bottom: 30px;
+  }
+  
+  .formSection :global(.noteSection) {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+  }
+  
+  .formSection :global(.savebutton) {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .topResources {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    color: #15004F;
+    margin-left: 80px;
+    font-weight: bold;
+  }
+  .grandTitre{
+    font-size: 44px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color:#15004F;
+  }

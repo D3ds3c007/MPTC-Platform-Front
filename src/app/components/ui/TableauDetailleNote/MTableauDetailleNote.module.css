@@ -1,0 +1,75 @@
+.table-container {
+    width: 90%;
+    margin: auto;
+  }
+  
+  .table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    background-color: #00119D;
+    color: white;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    font-size: 18px;
+  }
+
+  
+  
+  
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #D8DDFE;
+    margin-top: 12px;
+    border-radius: 20px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .table-row .comments {
+    text-align: left;
+    padding-left: 10px;
+  }
+  
+  .grade-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin: auto;
+  }
+  
+  .grade-low {
+    background-color: red;
+    color: white;
+  }
+  
+  .grade-medium {
+    background-color: #CFD4FA;
+    color: #15004F;
+  }
+  
+  .grade-high {
+    background-color: #01f073;
+    color: #15004F;
+  }
+  
+  .comments {
+    font-size: 14px;
+    color: #090909;
+  }
+  

@@ -93,24 +93,33 @@ export default function PageTest() {
       </div>
 
       <div className={`bg-white p-4 rounded `}>
-      {/* Section Profil */}
-      <div className={styles["profile-section"]}>
-        <div className={styles["profile-picture"]}>
-          <Image
-            src={userProfile.profilePicture} // Utiliser userProfile ici
-            alt={`${userProfile.name}'s profile`} // Utiliser userProfile ici
-            width={300}
-            height={300}
-          />
-        </div>
-        <div className={styles["user-name"]}>
-          <h2>{userProfile.name}</h2> {/* Utiliser userProfile ici */}
-        </div>
-      </div>
+            {/* Section Profil */}
+          <div className={styles.coverContainer}>
+          <div className={styles.coverPhoto}></div>
 
-      <div className={styles.AjoutResource}>
-        <MButtonAjoutResource />
-      </div>
+          <div className={styles.profileHeader}>
+            <div className={styles.profileImage}>
+            <Image
+                src={userProfile.profilePicture}
+                alt={`${userProfile.name}'s profile`}
+                width={200}
+                height={200}
+              />
+
+            </div>
+
+            <div className={styles.profileInfoText}>
+              <div className={styles.profileTopRow}>
+                <h2 className={styles.userName}>{userProfile.name}</h2>
+                <div className={styles.resourceButton}>
+                  <MButtonAjoutResource />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
         <section className={styles.searchSection}>
           <div className="d-flex justify-content-between align-items-center mb-2">
@@ -156,32 +165,7 @@ export default function PageTest() {
         </div>
       </section>
 
-      <div className={`bg-white p-4 rounded `}>
-       
-        {/* Section des ressources filtrées */}
-        <section className={styles.resourcesSection}>
-        <h3 className={styles.topResources}>Downloaded file</h3>
-        <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
-          {filteredResults.length > 0 ? (
-            filteredResults.map((item) => (
-              <div className="col-md-4" key={item.id}>
-                <MFolderCardNa
-                  fileType={item.fileType}
-                  title={item.title}
-                  session={item.session}
-                  subtitle={item.subtitle}
-                  views={item.views}
-                  date={item.date}
-                />
-              </div>
-            ))
-          ) : (
-            <div className={styles["no-results"]}>Aucun résultat trouvé</div>
-          )}
-
-        </div>
-      </section>
-      </div>
+   
 
     </div>
 

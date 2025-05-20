@@ -1,0 +1,192 @@
+.container {
+    
+    padding: 1rem;
+    font-family: sans-serif;
+  }
+  .grandTitre{
+    font-size: 36px;
+    font-weight: bold;
+    color: #00119D;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    
+  }
+  
+  .headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  
+  
+  .title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .headerRight {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .mediaPreview {
+    margin-top: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .mediaPreview video {
+    width: 100%;
+    display: block;
+  }
+  
+  .fileTitle {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 24px;
+    color:#15004F ;
+   
+  }
+  
+  .footer {
+    margin-top: 1rem;
+    background: white;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+   
+  }
+ 
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profileImg {
+    border-radius: 50%;
+  }
+  
+  /* Nouveau conteneur pour gérer l'espacement vertical */
+  .profileInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 620px;; /* 👉 Espacement entre le nom et les boutons */
+    margin-left: 15px; /* 👉 Espacement entre la photo et le nom+boutons */
+  }
+  
+  .profileName {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem; /* 👉 Espacement entre les boutons */
+  }
+  
+  
+  .profileName span:first-child {
+    font-size: 0.9rem;
+    color: #15004F;
+  }
+  
+  .profileName span:last-child {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #15004F;
+  }
+
+  .profilBouton {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .actions button {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    border: 2px solid #000066;
+    background: white;
+    color: #000066;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background: #01F073;   /* Fond vert */
+    color: #000066;      /* Texte bleu foncé */
+  }
+  
+
+
+  .backBtn {
+    background-color: #00119D;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .backBtn:hover {
+    background-color: #01F073;
+  }
+  
+  .backBtn::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-top: 5px solid white;
+    border-left: 5px solid white;
+    transform: rotate(-45deg); /* flèche vers la gauche */
+  }
+  
+
+  .topResources {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: blueviolet;
+    margin-left: 30px;
+  }
+
+  .resourcesSection {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: flex-start; /* Aligner les éléments en haut */
+    margin-top: 60px;
+  }
+
+  .resourcesSection .col-md-4 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }

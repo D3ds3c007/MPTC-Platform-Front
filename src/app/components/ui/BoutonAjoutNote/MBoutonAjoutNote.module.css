@@ -1,0 +1,73 @@
+.noteSection {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.noteItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.competenceLabel {
+  font-weight: bold;
+  color: #0026c0;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.noteBox {
+  border: 2px solid #0026c0;
+  border-radius: 20px;
+  padding: 12px 24px;
+  min-width: 110px;
+  text-align: center;
+}
+
+.noteWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: grey;
+}
+
+.noteInput {
+  font-size: 18px;
+  text-align: right;
+  border: none;
+  outline: none;
+  width: 60px;
+  margin-right: 5px;
+  background: transparent;
+  color: grey;
+  font-weight: normal;
+  transition: color 0.3s, font-weight 0.3s;
+}
+
+.noteInput:focus {
+  border-bottom: 2px solid #0026c0;
+}
+
+.noteInput.filled {
+  color: #0026c0;
+  font-weight: bold;
+}
+
+.noteUnit {
+  color: grey;
+  transition: color 0.3s;
+}
+
+.noteInput.filled + .noteUnit {
+  color: #0026c0;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 13px;
+  margin-top: 6px;
+}

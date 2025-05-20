@@ -1,0 +1,57 @@
+.averagesButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d7d9fb;
+    border: none;
+    border-radius: 80px;
+    padding: 25px 50px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+    gap: 30px;
+  }
+  
+  .averagesButton:hover {
+    background-color: #00119D;
+  }
+  
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    color: #0018a8;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    line-height: 1.2;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .averagesButton:hover .textContainer {
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+  
+  .iconContainer {
+    background-color: #01f073;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .averagesButton:hover .iconContainer {
+    transform: scale(1.2);
+  }
+  
+  .iconContainer svg {
+    background: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  
