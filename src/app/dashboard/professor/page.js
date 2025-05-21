@@ -1,6 +1,5 @@
 import { MCard } from "@/app/components/ui/Card/MCard";
-import Image from 'next/image';
-import canva from './capture.png';
+import styles from "./page.module.css";
 
 export default function ProfessorPage()
 {
@@ -9,7 +8,15 @@ export default function ProfessorPage()
         <div className="col-md-11">
 
         <MCard title="Professor Page" >
-            <Image src={canva} alt="screenshot" width={1000} height={561} />
+            
+            <div className={styles["head"]}>
+                
+            </div>
+
+            <div className="contenu">
+                
+            </div>
+
         </MCard>
         </div>
         </div>

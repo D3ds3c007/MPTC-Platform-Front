@@ -45,7 +45,7 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
               {isAdministrator && (
                 <>
                   <li className={styles["nav-link"]}>
-                    <a href="/dashboard/administrator/" onClick={() => onMenuChange('Administrator Dashboard')}>
+                    <a href="/dashboard/administrator/" onClick={() => onMenuChange('Administrator ')}>
                       <i className={`bx bx-home-alt ${styles.icon}`}></i>
                       <span className={`${styles.text} ${styles['nav-text']}`}>Dashboard</span>
                     </a>
@@ -63,9 +63,9 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
               {isProfessor && (
                 <>
                   <li className={styles["nav-link"]}>
-                    <a href="#">
-                      <i className={`bx bx-bell ${styles.icon}`}></i>
-                      <span className={`${styles.text} ${styles["nav-text"]}`}>Notifications</span>
+                    <a href="/dashboard/professor/exam">
+                      <i className={`bx bx-folder ${styles.icon}`}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Exam</span>
                     </a>
                   </li>
                 </>
@@ -103,13 +103,13 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
             <div className={styles["navbar"]}>
 
                 <div className={styles["navbar-left-content"]}>
-                    <p>Welcome back, Dedsec</p>
+                    <p>Welcome back, Sue</p>
                     <h2>{currentTitle}</h2>
                 </div>
 
                 <div className={styles["navbar-right-content"]}>
                     
-                        <span className={styles["user-name"]}>Dedsec</span>
+                        <span className={styles["user-name"]}>Sue</span>
                         <div className={styles["user-icon"]}>
                             <i className={`bx bx-user ${styles.icon}`}></i>
                         </div>

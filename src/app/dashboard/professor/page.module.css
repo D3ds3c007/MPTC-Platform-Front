@@ -1,0 +1,104 @@
+    .cont {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 3 columns */
+        gap: 20px;
+        max-width: 1200px;
+        width: 90%;
+        padding: 20px;
+        background: #000000;
+    }
+    
+    .card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    color: black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .head {
+    grid-column: span 3; /* Makes the header span all three columns */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    }
+    
+    .header .logo {
+    background-color: #4e44ff;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    }
+    
+    
+    
+    .green-card {
+    background-color: #32e372;
+    color: white;
+    text-align: center;
+    }
+    
+    .highlight {
+    background-color: #eaf3ff;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+    }
+    
+    .analytics-card {
+    text-align: center;
+    }
+    
+    .analytics-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100px;
+    width: 100%;
+    }
+    
+    .bar {
+    width: 20%;
+    background-color: #f5406f;
+    }
+    
+    .bar:nth-child(even) {
+    background-color: #ff3bba;
+    }
+    
+    .services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+    
+    .service-tag {
+    background-color: #1a0759;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+    }
+      
+      
+    .contenu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .boite{
+        height: 100px;
+        width: 100%;
+        background-color: pink;
+    }

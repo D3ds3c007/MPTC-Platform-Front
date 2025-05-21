@@ -40,11 +40,15 @@ export function MExamForm({ levels, subjects, periods, defaultId }) {
         // Step 1: Upload the files to the server
         const formData = new FormData();
 
+        // formData.append('SubjectId', e.target['subject'].value);
+
+        // subject default value for English
+        formData.append('SubjectId', 1);
         formData.append('Session', e.target['exam-session'].value);
-        formData.append('SubjectId', e.target['subject'].value);
         formData.append('DateExam', e.target['exam-date'].value);
         formData.append('PeriodId', e.target['exam-period'].value);
         formData.append('LevelId', selectedLevel); // Include selected level ID
+        formData.append('Name',e.target['exam-name'].value);
 
         for (const [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
@@ -96,7 +100,7 @@ export function MExamForm({ levels, subjects, periods, defaultId }) {
             const response = await fetch(`http://localhost:5193/api/v1/Exam/get-exam/${defaultId}`); // Update the URL if needed
             const data = await response.json();
     
-            // console.log("Id : " ,defaultId);
+            console.log("Id : " ,defaultId);
 
             console.log("Data fetched:", data);
             setExam(data); // Assuming `data` is an array of exams
@@ -116,7 +120,7 @@ export function MExamForm({ levels, subjects, periods, defaultId }) {
     <div className={styles["chart-container"]}>
         <form className={styles["exam-form"]} onSubmit={handleSubmit}>
 
-        <div className={styles["form-group"]}>
+        {/* <div className={styles["form-group"]} style={{ display: "none" }}>
         <label htmlFor="subject">Subject of the exam</label>
         <select id="subject" name="Subject" defaultValue={exam?.subjectId || ""} required>
             {subjects.map(subject => (
@@ -129,6 +133,19 @@ export function MExamForm({ levels, subjects, periods, defaultId }) {
             </option>
             ))}
         </select>
+        </div> */}
+
+        <div className={styles["form-group"]}>
+        <label htmlFor="exam-date">Name of the folder</label>
+        <div className={styles["input-with-icon"]}>
+            <input
+            type="text"
+            id="exam-name"
+            name="NameExam"
+            defaultValue={exam?.name}
+            required
+            />
+        </div>
         </div>
 
 
@@ -242,7 +259,6 @@ export function MExamForm({ levels, subjects, periods, defaultId }) {
             </div>
 
             <MButton>{isUpdateMode ? "Update" : "Create"}</MButton>
-            {/* <SubmitButton /> */}
 
         </form>
     </div>

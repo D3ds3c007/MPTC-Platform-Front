@@ -1,0 +1,29 @@
+    .card-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background-color: var(--primary-bg); /* Dark blue */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 999px; /* Pill shape */
+      font-family: sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      width: 425px;
+      height: 60px;
+    }
+
+    .arrow-circle {
+      background-color: white; /* Bright green */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .arrow-icon {
+      color: white;
+      font-size: 16px;
+      transform: rotate(-45deg);
+    }

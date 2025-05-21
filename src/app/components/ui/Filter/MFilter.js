@@ -27,7 +27,7 @@ export function MFilter({ files, onFilter }) {
   const resetFilters = () => {
     setSelectedLevel("All");
     setSelectedPeriod("All");
-    setSelectedSubject("All");
+    // setSelectedSubject("All");
     onFilter(files); // Show all files
   };
 
@@ -44,19 +44,19 @@ export function MFilter({ files, onFilter }) {
     applyFilter(selectedLevel, selectedSubject, selectedPeriodName);
   };
 
-  const handleSubjectChange = (e) => {
-    const selectedSubjectName = e.target.value;
-    setSelectedSubject(selectedSubjectName);
-    applyFilter(selectedLevel, selectedSubjectName, selectedPeriod);
-  };
+  // const handleSubjectChange = (e) => {
+  //   const selectedSubjectName = e.target.value;
+  //   setSelectedSubject(selectedSubjectName);
+  //   applyFilter(selectedLevel, selectedSubjectName, selectedPeriod);
+  // };
 
   // Apply the filter based on selected options
   const applyFilter = (level, subject, period) => {
     const filteredFiles = files.filter((file) => {
       const matchesLevel = level === "All" || file.level === level;
-      const matchesSubject = subject === "All" || file.subject === subject;
+      // const matchesSubject = subject === "All" || file.subject === subject;
       const matchesPeriod = period === "All" || file.period === period;
-      return matchesLevel && matchesSubject && matchesPeriod;
+      return matchesLevel && matchesPeriod;
     });
 
     onFilter(filteredFiles);
@@ -73,7 +73,7 @@ export function MFilter({ files, onFilter }) {
         const data = await response.json();
 
         setLevels(data[0]);
-        setSubjects(data[1]);
+        // setSubjects(data[1]);
         setPeriods(data[2]);
 
       } catch (error) {
@@ -119,7 +119,7 @@ export function MFilter({ files, onFilter }) {
             </select>
 
             {/* Subject select */}
-            <select
+            {/* <select
               className={styles["popup-item"]}
               value={selectedSubject}
               onChange={handleSubjectChange}
@@ -130,7 +130,7 @@ export function MFilter({ files, onFilter }) {
                   {subject.name}
                 </option>
               ))}
-            </select>
+            </select> */}
           </div>
         )}
       </div>

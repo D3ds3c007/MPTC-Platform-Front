@@ -10,9 +10,9 @@ export function MFolderCard({ exam, variant = 'primary' }) {
         <div className={`${styles["folder"]} ${styles[variant]}`}>
             <div className={styles["folder-content"]}>
                 <div className={styles["level"]}>
-                    <h6>{exam.level}</h6>
+                    {/* <h6>{exam.level}</h6> */}
                 </div>
-                <h5>{exam.subject} Exam <br /> {exam.session} </h5>
+                <h5>{exam.level} {exam.subject} Exam <br /> {exam.session} </h5>
                 <p>{exam.period}</p>
                 {/* <div className={`${styles["three-dot-button"]} ${styles[variant]}`}>
                     <div className={`${styles["dots"]} ${styles[variant]}`}>

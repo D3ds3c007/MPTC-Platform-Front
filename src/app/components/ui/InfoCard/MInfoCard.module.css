@@ -1,9 +1,5 @@
-.exam-card {
-    background: #ffffff;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    height: 440px;
+  .exam-card {
+    width: 500px;
     padding: 20px;
     text-align: left;
     position: relative;
@@ -16,36 +12,17 @@
     margin-bottom: 20px;
   }
 
-  .exam-header h2 {
-    margin: 0;
-    color: var(--primary-bg);
-    font-weight: bold;
-  }
-
-  .edit-button {
-    background: var(--success-bg);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .edit-button .edit-icon {
-    color: #2db9ac;
-    font-size: 18px;
-  }
-
   .exam-details {
     line-height: 1.8;
+    padding: 20px;
+    background-color: var(--default-bg);
+    border-radius: 20px;
   }
 
   .exam-details p {
     margin: 0;
-    font-size: 20px;
-    color: #333;
+    font-size: 18px;
+    color: var(--dark-blue);
   }
 
   .exam-details p strong {
@@ -58,23 +35,26 @@
     justify-content: center;
     background: var(--success-bg);
     border: none;
-    color: var(--dark-blue);
+    color: var(--primary-bg);
     padding: 12px 0;
-    border-radius: 15px;
+    border-radius: 25px;
     font-size: 18px;
     cursor: pointer;
     position: absolute;
-    bottom: 20px;
     left: 20px;
     right: 20px;
     text-align: center;
     font-weight: bold;
   }
 
-  .correct-exam-button .correct-icon {
-    margin-right: 8px;
+  .subtitle{
+    font-size: 1.125rem; /* Relative font size (18px equivalent) */
+    font-weight: 600;
+    margin-bottom: 0.625rem; /* 10px equivalent in rem */
+    color: var(--secondary-bg);
   }
 
-  .correct-exam-button:hover {
-    /* background: #00b859; */
+  .label-cell {
+    width: 100px;
+    font-weight: normal;
   }

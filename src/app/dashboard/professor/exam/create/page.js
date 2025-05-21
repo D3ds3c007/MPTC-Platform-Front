@@ -33,22 +33,19 @@ export default function Create()
     fetchData();
   }, []);
   
-    return(
+    return loading ? (
+      <MLoading />
+    ) : (
       <div className="col-md-12">
-        <MCard title="Add Exam Form">   
-          {loading ? (
-            <MLoading></MLoading>
-            // Display loading indicator while data is being fetched
-          ) : (
-            <div style={{
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-            }}>
-              <MExamForm levels={levels} subjects={subjects} periods={periods} />
-            </div>
-          )}
+        <MCard title="Add Exam Form">
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+          }}>
+            <MExamForm levels={levels} subjects={subjects} periods={periods} />
+          </div>
         </MCard>
       </div>
-    )
+    );
 }

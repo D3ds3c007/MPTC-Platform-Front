@@ -1,27 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MFolderCard } from "@/app/components/ui/FolderCard/MFolderCard";
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MAddButton } from "@/app/components/ui/AddButton/MAddButton";
 import { MFilter } from "@/app/components/ui/Filter/MFilter";
 import { MLoading } from '@/app/components/ui/Loading/MLoading';
 import { MFolderCardBig } from '@/app/components/ui/FolderCardBig/MFolderCardBig';
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
-import { MViewFolder } from "@/app/components/ui/ViewFolder/MViewFolder";
-import { set } from "react-hook-form";
-import { MViewList } from "@/app/components/ui/ViewList/MViewList";
+
 
 export default function ExamPage() {
   const [exams, setExams] = useState([]);
   const [filteredExams, setFilteredExams] = useState([]);
 
   const [loading, setLoading] = useState(true);
-  const [viewMode, setViewMode] = useState("folder");
-
-  const handleViewModeChange = (view) => {
-    setViewMode(view);  // Update the view mode state in the parent
-  };
 
   useEffect(() => {
     async function fetchData() {
@@ -73,68 +65,30 @@ export default function ExamPage() {
     setFilteredExams(filtered);
   };
   
-  return (
+  return loading ? (
+    <MLoading />
+  ) : (
     <div className="col-md-12">
       <MCard title="Exam Folders">
-        
-          {loading ? (
-            <MLoading />
-          ) : (
-            <>
-
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  gap: '1.2em',
-                  padding: '5px',
-                  justifyContent: 'flex-end',
-                }}
-              >
-                <MSearchBar onSearch={handleSearch} />
-                <MFilter files={exams} onFilter={handleFilter} />
-                <MViewFolder onFilter={handleViewModeChange} />
-              </div>
-              
-              <br></br>
-
-            </>
-          )}
-
-          
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2em' }}>
-        {viewMode === "folder" && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
-            {filteredExams.map((exam, index) => {
-              const variant = ['primary', 'secondary', 'purple', 'dark', 'success'][index % 5];
-              return (
-                <MFolderCard 
-                  key={exam.idExam} 
-                  exam={exam} 
-                  variant={variant}
-                />
-              );
-            })}
-          </div>
-        )}
-
-        {viewMode === "list" && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
-          {filteredExams.map((exam, index) => {
-            return (
-              <MViewList 
-                key={exam.idExam} 
-                exam={exam} 
-              />
-            );
-          })}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: '1.2em',
+            padding: '5px',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <MSearchBar onSearch={handleSearch} />
+          <MFilter files={exams} onFilter={handleFilter} />
+          {/* <MViewFolder onFilter={handleViewModeChange} /> */}
         </div>
-        )}
 
-        {viewMode === "bigfolder" && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
+        <br />
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2em' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2em' }}>
             {filteredExams.map((exam, index) => {
               const variant = ['primary', 'secondary', 'purple', 'dark', 'rouge'][index % 5];
               return (
@@ -146,18 +100,13 @@ export default function ExamPage() {
               );
             })}
           </div>
-        )}
-      </div>
+        </div>
 
-
-
-          <a href="exam/create">
-            <MAddButton />
-          </a>
-
-
-
+        <a href="exam/create">
+          <MAddButton />
+        </a>
       </MCard>
     </div>
   );
+
 }
