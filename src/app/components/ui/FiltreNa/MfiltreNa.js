@@ -5,7 +5,7 @@ import Image from "next/image";
 import filtre from "./filtre.png";
 import styles from "./MfiltreNa.module.css";
 
-export function MfiltreNa({ files, onFilter }) {
+export function MfiltreNa({ files, onFilter, setLoading, onAction }) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [showPopup, setShowPopup] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("");
@@ -34,7 +34,6 @@ export function MfiltreNa({ files, onFilter }) {
 
   // Gérer la sélection des filtres principaux
   const handleFilterClick = (filter) => {
-    // console.log(filter + "barajiiiii");
     if (filter === "All") {
       setActiveFilter("All");
       setSelectedLevel("");
@@ -147,7 +146,9 @@ export function MfiltreNa({ files, onFilter }) {
   const isAll = filter === "All";
 
   const handleClick = () => {
+    onAction();
     handleFilterClick(filter);
+    
     // Ne fait rien de plus si c'est "All"
   };
 

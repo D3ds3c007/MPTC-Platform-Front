@@ -6,11 +6,24 @@ import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import { MfiltreNa } from "@/app/components/ui/FiltreNa/MfiltreNa";
 import { MButtonAjout } from "@/app/components/ui/ButtonAjout/MButtonAjout";
 import { MListe } from "@/app/components/ui/Liste/MListe";
+import { MLoading } from "@/app/components/ui/Loading/MLoading";
 
 import styles from "./page.module.css";
 import { useState, useEffect } from "react";
 
 export default function ExamFoldersPage() {
+  const [loading, setLoading] = useState(false);
+
+  const handleTriggerLoading = () => {
+    setLoading(true);
+    const randomDelay = Math.floor(Math.random() * 2000) + 1000; // 1–3 seconds
+
+    setTimeout(() => {
+      setLoading(false);
+      console.log("Done loading after", randomDelay, "ms");
+    }, randomDelay);
+  };
+
   // Données des ressources
   const resources = [
     { fileType: "PDF", title: "Lesson A1", session: "OCT 2024", subtitle: "Top 10 grammar lessons", level: "A1", year: "2024", type: "Lesson", category: "Grammar", publishedDate: "2024-11-20"},
@@ -91,6 +104,7 @@ export default function ExamFoldersPage() {
           <MfiltreNa
               files={resources}
               onFilter={setFilteredResources} // Mettre à jour les ressources filtrées
+              onAction={handleTriggerLoading}
               selectedLevel={selectedLevel}
               selectedType={selectedType}
               selectedCategory={selectedCategory}
@@ -106,20 +120,30 @@ export default function ExamFoldersPage() {
         <section className={styles.resourcesSection}>
           {/* <h3 className={styles.topResources}>Top 10 of resource</h3> */}
           <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
-            {filteredResources.length > 0 ? (
-              filteredResources.map((resource, index) => (
-                <div key={index} className={`col-md-4 mb-4`}>
-                  <MFolderCardNa
-                    fileType={resource.fileType}
-                    title={resource.title}
-                    session={resource.session}
-                    subtitle={resource.subtitle}
-                  />
-                </div>
-              ))
-            ) : (
-              <p>No resources match the selected filters.</p>
-            )}
+          {loading ? (
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: "200px", // adjust as needed
+              width: "100%"
+            }}>
+              <MLoading />
+            </div>
+          ) : filteredResources.length > 0 ? (
+            filteredResources.map((resource, index) => (
+              <div key={index} className="col-md-4 mb-4">
+                <MFolderCardNa
+                  fileType={resource.fileType}
+                  title={resource.title}
+                  session={resource.session}
+                  subtitle={resource.subtitle}
+                />
+              </div>
+            ))
+          ) : (
+            <p>No resources match the selected filters.</p>
+          )}
             <section className={styles.boutonAjout}>
               <MButtonAjout />
             </section>
