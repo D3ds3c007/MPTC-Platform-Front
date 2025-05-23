@@ -90,30 +90,12 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
                   </li>
 
                   {/* Dropdown for Note Management */}
-                  <li className={`${styles["nav-link"]} ${styles["dropdown"]}`}>
-                    <a href="#" onClick={(e) => e.preventDefault()}>
+                  
+                  <li className={styles["nav-link"]}>
+                    <a href="/dashboard/professor/note">
                       <i className={`bx bx-bell ${styles.icon}`}></i>
-                      <span className={`${styles.text} ${styles["nav-text"]}`}>Note</span>
-                      <i className={`bx bx-chevron-down ${styles["dropdown-arrow"]}`}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Manage note</span>
                     </a>
-                    <ul className={styles["submenu"]}>
-                      <li>
-                        <a href="/dashboard/professor/note">
-                          <span className={styles.text}>Manage Notes</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/dashboard/professor/note/ListeMoyenne">
-                          <span className={styles.text}>Averages</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/dashboard/professor/note/ResultatGlobale">
-                          <span className={styles.text}>Overall</span>
-                        </a>
-                      </li>
-                     
-                    </ul>
                   </li>
                   <li className={styles["nav-link"]}>
                     <a href="/dashboard/professor/note/ListeEleve">

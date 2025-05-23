@@ -68,6 +68,38 @@ export function MFolderCardNa({
         </div>
       </div>
       <div className={styles["corner-icon"]}>
+        
+        {fileType === "Link" ? (
+        <a href="https://www.anglaiscours.fr/sport-anglais.html" target="_blank" rel="noopener noreferrer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="#01F073"
+            className="bi bi-arrow-up-right-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z" />
+          </svg>
+        </a>
+      ) : 
+
+      fileType === "PDF" ? (
+        <a href="/pdf/BOKYSoutenance.pdf" target="_blank" rel="noopener noreferrer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="#01F073"
+            className="bi bi-arrow-up-right-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z" />
+          </svg>
+        </a>
+      ) :
+      
+      (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="50"
@@ -78,6 +110,7 @@ export function MFolderCardNa({
         >
           <path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8m5.904 2.803a.5.5 0 1 1-.707-.707L9.293 6H6.525a.5.5 0 1 1 0-1H10.5a.5.5 0 0 1 .5.5v3.975a.5.5 0 0 1-1 0V6.707z" />
         </svg>
+      )}
       </div>
 
       {/* Popup */}
@@ -106,16 +139,6 @@ export function MFolderCardNa({
               className={styles["icon"]}
             />
             Favoris
-          </button>
-          <button className={styles["popup-item"]}>
-            <Image
-              src={arretez}
-              alt="arretez"
-              width={25}
-              height={25}
-              className={styles["icon"]}
-            />
-            Signaler
           </button>
         </div>
       )}

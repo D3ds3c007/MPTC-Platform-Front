@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { MFolderCardNa } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
-
 // Import de tes composants personnalisés
 import { MButtonAjoutResource } from "@/app/components/ui/ButtonAjoutResource/MButtonAjoutResource";
 import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
@@ -12,7 +11,7 @@ import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 import photo from './photo.png';
 
 // Exemple de vidéo (remplace avec props ou logique dynamique)
-const videoSrc = "/video.mp4";
+const video = "http://localhost:8080/video";
 
 export default function FileDetails() {
 
@@ -45,7 +44,9 @@ export default function FileDetails() {
 
       {/* Aperçu média */}
       <div className={styles.mediaPreview}>
-        <video controls src={videoSrc} poster="/poster.jpg" />
+      <video width="100%" height="100%" controls>
+          <source src="/videos/video.mp4" type="video/mp4" />
+      </video>
       </div>
 
       {/* Titre du fichier */}
@@ -57,13 +58,15 @@ export default function FileDetails() {
       <div className={styles.footer}>
               
           <div className={styles.profile}>
-          <Image
-            src={photo}
-            alt="Photo de profil"
-            className={styles.profileImg}
-            width={45}
-            height={45}
-          />
+          <a href="/dashboard/professor/resource/ProfilAutreProf">
+            <Image
+              src={photo}
+              alt="Photo de profil"
+              className={styles.profileImg}
+              width={45}
+              height={45}
+            />
+          </a>
 
           <div className={styles.profileInfo}>
             <div className={styles.profileName}>
@@ -72,7 +75,6 @@ export default function FileDetails() {
             </div>
 
             <div className={styles.actions}>
-              <button>Record</button>
               <button>Favorites</button>
               <button>Download</button>
             </div>
