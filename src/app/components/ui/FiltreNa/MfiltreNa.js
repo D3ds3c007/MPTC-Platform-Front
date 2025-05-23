@@ -14,7 +14,7 @@ export function MfiltreNa({ files, onFilter }) {
 
   const [selectedResourceType, setSelectedResourceType] = useState(""); // Nouvel état pour le type de ressource
 
-  const filters = ["All",  "Recent", "Video", "PDF", "Image", "Link", "Grammar", "Writing", "Vocabulary"];
+  const filters = ["All", "Word", "Video", "PDF", "Image", "Link", "Grammar", "Writing", "Vocabulary"];
 
   // Options de types de ressources à sélectionner
   const resourceTypes = ["Exam", "Lesson", "Exercise"];
@@ -164,7 +164,7 @@ export function MfiltreNa({ files, onFilter }) {
     // Pour tous les autres filtres, on redirige vers la page ResultatFiltre
     <a
       key={filter}
-      href={`/dashboard/professor/resource/ResultatFiltre?filter=${filter}`} // Redirection vers la page avec le filtre comme paramètre
+      href={`#`} // Redirection vers la page avec le filtre comme paramètre
       style={{ textDecoration: "none" }}
     >
       <button

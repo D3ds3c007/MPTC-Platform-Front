@@ -104,7 +104,7 @@ export default function ExamFoldersPage() {
 
         {/* Section des ressources filtrées */}
         <section className={styles.resourcesSection}>
-          <h3 className={styles.topResources}>Top 10 of resource</h3>
+          {/* <h3 className={styles.topResources}>Top 10 of resource</h3> */}
           <div className={`row mt-2`} style={{ marginLeft: "30px", marginRight: "30px" }}>
             {filteredResources.length > 0 ? (
               filteredResources.map((resource, index) => (
@@ -140,7 +140,7 @@ export default function ExamFoldersPage() {
       </section>
 
 
-      <div className={`bg-white p-4 rounded `}>   
+      {/* <div className={`bg-white p-4 rounded `}>   
       <div> 
       <section className={styles.resourcesSection}>
           <h3 className={styles.topResources}>Top 10 of resource</h3>
@@ -162,7 +162,7 @@ export default function ExamFoldersPage() {
           </div>
         </section>
       </div>
-      </div>
+      </div> */}
 
     </div>
   );

@@ -3,17 +3,12 @@
 import { MCard } from "@/app/components/ui/Card/MCard";
 import { MIconicCard } from "@/app/components/ui/IconicCard/MIconicCard";
 import { MSideBar} from "@/app/components/ui/SideBar/MSideBar";
-<<<<<<< Updated upstream
 import { MExamForm } from "@/app/components/ui/ExamForm/MExamForm";
 import { MChart } from "@/app/components/ui/ChartBar/MChartBar";
 import { MTable } from "@/app/components/ui/Table/MTable";
 import { MFolderCard } from "@/app/components/ui/FolderCard/MFolderCard";
 import { MUploadZipFile } from "@/app/components/ui/UploadZipFile/MUploadZipFile";
 import { useForm, FormProvider } from 'react-hook-form'; // Import necessary hooks
-=======
-import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepForm"
-import { MFolderCard} from "@/app/components/ui/FolderCard/MFolderCard"
->>>>>>> Stashed changes
 
 export default function Page() {
   const methods = useForm(); // Initialize the form methods
@@ -79,10 +74,7 @@ export default function Page() {
               </MCard>
             </div> */}
 
-<<<<<<< Updated upstream
-=======
               <MFolderCard level="A2" />
->>>>>>> Stashed changes
 
 
 

@@ -16,7 +16,7 @@ export function MFolderCardNa({
   fileType = "pdf", // Type du fichier, par exemple : 'pdf', 'image', 'video'
   title = "Exam Term 1",
   session = "OCT 2024",
-  subtitle = "Top 10 of resources",
+  subtitle = "",
 }) {
   const [showPopup, setShowPopup] = useState(false);
 
