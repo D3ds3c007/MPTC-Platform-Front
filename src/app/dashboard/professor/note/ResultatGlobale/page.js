@@ -38,17 +38,19 @@ export default function ResultatClassePage() {
             <MBoutonEleve
               line1=""
               line2="Student list"
-              onClick={() => alert("Student list")}
+              onClick={() =>  (window.location.href = "/dashboard/professor/note/ListeEleve")}
             />
             <MBoutonEleve
               line1="Averages "
               line2="consultation"
-              onClick={() => alert("Averages consultation")}
+              onClick={() =>  (window.location.href = "/dashboard/professor/note/ListeMoyenne")}
             />
             <MBoutonEleve
               line1="Overall "
               line2="class results"
-              onClick={() => alert("Overall class results")}
+              onClick={() =>  (window.location.href = "/dashboard/professor/note/ResultatGlobale")}
+              bgcolor="#00119D"
+              fgcolor="#fff"
             />
           </div>
 

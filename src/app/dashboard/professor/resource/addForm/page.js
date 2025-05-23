@@ -68,7 +68,7 @@ export default function AddForm() {
           {/* Section du bouton Voir Plus aligné en bas */}
           <section className={styles.buttonGroupe} aria-label="See More Button Section">
             <div className={styles.voirPlu}>
-              <MButtonVoirPlus aria-label="See More Button" />
+                <MButtonVoirPlus aria-label="See More Button" link="/dashboard/professor/resource/addForm2" />
             </div>
           </section>  
         </div>

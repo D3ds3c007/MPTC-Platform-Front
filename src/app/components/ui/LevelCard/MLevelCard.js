@@ -1,13 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./MLevelCard.module.css";
+import { useRouter } from 'next/router';
+
 
 export function MLevelCard({
   level = "Level A1",
   session = "Session : OCT 2024",
   variant = "blue", // Par défaut
+  link
 }) {
   const [hovered, setHovered] = useState(false);
+
 
   // Couleurs du bouton selon la variante
   const circleColorClass = {
@@ -35,7 +39,8 @@ export function MLevelCard({
         className={`${styles.circleButton} ${circleColorClass[variant]} ${hovered ? styles.hovered : ""}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onClick={() => alert("Clicked!")}
+        //redirect to 
+        onClick={() =>  (window.location.href = "/dashboard/professor/note/ListeEleve")}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -313,3 +313,40 @@ body.dark .home .text{
     padding: 15px;
     gap: 15px;
 }
+
+.dropdown {
+    position: relative;
+  }
+  
+  .dropdown-arrow {
+    margin-left: auto;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* places it just below the parent */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 0.5rem 0;
+    z-index: 10;
+    min-width: 180px;
+    
+  }
+  
+  .dropdown:hover .submenu {
+    display: block;
+  }
+  
+  .submenu li {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+  }
+  
+  .submenu li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+  

@@ -90,3 +90,12 @@
     text-align: center;
   }
   
+  .a{
+    color: black;
+    text-decoration: none;
+  }
+
+  .a:hover{
+    color: #00119D;
+    font-weight: bold;
+  }

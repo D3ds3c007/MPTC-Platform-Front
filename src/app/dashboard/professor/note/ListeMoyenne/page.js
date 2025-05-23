@@ -32,20 +32,22 @@ export default function PageEleves() {
       }}>
         
         <MBoutonEleve
-          line1=""
-          line2="Student list"
-          onClick={() => alert("Student list")}
-        />
-        <MBoutonEleve
-          line1="Averages "
-          line2="consultation"
-          onClick={() => alert("Averages consultation")}
-        />
-        <MBoutonEleve
-          line1="Overall "
-          line2="class results"
-          onClick={() => alert("Overall class results")}
-        />
+                      line1=""
+                      line2="Student list"
+                      onClick={() =>  (window.location.href = "/dashboard/professor/note/ListeEleve")}
+                    />
+                    <MBoutonEleve
+                      line1="Averages "
+                      line2="consultation"
+                      onClick={() =>  (window.location.href = "/dashboard/professor/note/ListeMoyenne")}
+                      bgcolor="#00119D"
+                      fgcolor="white"
+                    />
+                    <MBoutonEleve
+                      line1="Overall "
+                      line2="class results"
+                      onClick={() =>  (window.location.href = "/dashboard/professor/note/ResultatGlobale")}
+                    />
       </div>
 
       <div style={{ padding: '20px' }}>

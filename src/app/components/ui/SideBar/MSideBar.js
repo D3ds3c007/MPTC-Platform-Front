@@ -76,13 +76,54 @@ export function MSideBar({children, currentTitle, onMenuChange}) {
               {isProfessor && (
                 <>
                   <li className={styles["nav-link"]}>
-                    <a href="#">
+                    <a href="/dashboard/professor/">
                       <i className={`bx bx-bell ${styles.icon}`}></i>
-                      <span className={`${styles.text} ${styles["nav-text"]}`}>Notifications</span>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Home</span>
+                    </a>
+                  </li>
+
+                  <li className={styles["nav-link"]}>
+                    <a href="/dashboard/professor/resource">
+                      <i className={`bx bx-bell ${styles.icon}`}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Resource</span>
+                    </a>
+                  </li>
+
+                  {/* Dropdown for Note Management */}
+                  <li className={`${styles["nav-link"]} ${styles["dropdown"]}`}>
+                    <a href="#" onClick={(e) => e.preventDefault()}>
+                      <i className={`bx bx-bell ${styles.icon}`}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Note</span>
+                      <i className={`bx bx-chevron-down ${styles["dropdown-arrow"]}`}></i>
+                    </a>
+                    <ul className={styles["submenu"]}>
+                      <li>
+                        <a href="/dashboard/professor/note">
+                          <span className={styles.text}>Manage Notes</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/dashboard/professor/note/ListeMoyenne">
+                          <span className={styles.text}>Averages</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/dashboard/professor/note/ResultatGlobale">
+                          <span className={styles.text}>Overall</span>
+                        </a>
+                      </li>
+                     
+                    </ul>
+                  </li>
+                  <li className={styles["nav-link"]}>
+                    <a href="/dashboard/professor/note/ListeEleve">
+                      <i className={`bx bx-bell ${styles.icon}`}></i>
+                      <span className={`${styles.text} ${styles["nav-text"]}`}>Student List</span>
                     </a>
                   </li>
                 </>
               )}
+
             </ul>
           </div>
 
