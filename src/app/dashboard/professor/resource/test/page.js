@@ -1,15 +1,14 @@
 'use client';
-
-import MBoutonSave from "@/app/components/ui/BoutonSave/MBoutonSave";
-
-
+import React from 'react';
+import {MBoutonPDF} from "@/app/components/ui/BoutonPDF/MBoutonPDF";
 
 
 
 function App() {
   return (
     <div>
-      <MBoutonSave />
+      <h1>Mes boutons</h1>
+      <MBoutonPDF />
     </div>
   );
 }

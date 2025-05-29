@@ -8,6 +8,7 @@ import   MBoutonDeroulantExam   from "@/app/components/ui/BoutonDeroulantExam/MB
 import  MBadge  from "@/app/components/ui/Badge/MBadge";
 import  MTableauDetailleNote   from "@/app/components/ui/TableauDetailleNote/MTableauDetailleNote";
 import MBoutonGlobale from "@/app/components/ui/BoutonGlobale/MBoutonGlobale";
+import MBoutonSave from '@/app/components/ui/BoutonSave/MBoutonSave';
 import styles from "./Page.module.css";
 import profile from "./profile.jpg"; // à partir de /public
 import cover from "./cover.JPG";
@@ -147,6 +148,10 @@ export default function PageProfil() {
                   placeholder="Write a personalized comment here..."
                 />
 
+            </div>
+
+            <div style={{ marginLeft:'75px', marginBottom: '40px' }}>
+                    <MBoutonSave />
             </div>
             
 

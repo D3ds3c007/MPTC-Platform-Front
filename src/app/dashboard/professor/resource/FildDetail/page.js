@@ -51,7 +51,7 @@ export default function FileDetails() {
 
       {/* Titre du fichier */}
       <div className={styles.fileTitle}>
-        Lesson Grammaire for A1 Lesson Grammaire for A1 Lesson Grammaire for A1
+        American vs British vs Australian English | One Language, Three Accents.
       </div>
 
       {/* Pied de page : profil et actions */}

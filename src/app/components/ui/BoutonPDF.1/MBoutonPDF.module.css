@@ -1,0 +1,33 @@
+.buttonContainer {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #d6d9ff;
+    color: #0a004d;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Hover styles using specificity (module-safe) */
+  .csv:hover {
+    background-color: #00ff84;
+    color: #0a004d;
+  }
+  
+  .pdf:hover {
+    background-color: #ff471a;
+    color: white;
+  }
+  
+  .email:hover {
+    background-color: #0018b3;
+    color: white;
+  }
+  

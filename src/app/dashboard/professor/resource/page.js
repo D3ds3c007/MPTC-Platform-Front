@@ -26,18 +26,17 @@ export default function ExamFoldersPage() {
 
   // Données des ressources
   const resources = [
-    { fileType: "PDF", title: "Lesson A1", session: "OCT 2024", subtitle: "Top 10 grammar lessons", level: "A1", year: "2024", type: "Lesson", category: "Grammar", publishedDate: "2024-11-20"},
-    { fileType: "Image", title: "Exam A2", session: "OCT 2024", subtitle: "Mock test for beginners", level: "A2", year: "2024", type: "Exam", category: "Vocabulary", publishedDate: "2024-10-18"},
-    { fileType: "Video", title: "Lesson A1", session: "OCT 2024", subtitle: "Key vocabulary tips", level: "A1", year: "2024", type: "Lesson", category: "Listening", publishedDate: "2024-11-26"},
-    { fileType: "Word", title: "Exercise A1", session: "OCT 2024", subtitle: "Listening practice 101", level: "A1", year: "2024", type: "Exercise", category: "Grammar", publishedDate: "2024-11-27"},
-    { fileType: "Link", title: "Lesson A1", session: "OCT 2024", subtitle: "Speaking activities", level: "A1", year: "2024", type: "Lesson", category: "Speaking", publishedDate: "2024-11-20"},
-    { fileType: "PDF", title: "Lesson A1", session: "OCT 2024", subtitle: "Top 10 grammar lessons", level: "A1", year: "2024", type: "Lesson", category: "Grammar", publishedDate: "2024-11-20"},
-    { fileType: "Image", title: "Exam A2", session: "OCT 2024", subtitle: "Mock test for beginners", level: "A2", year: "2024", type: "Exam", category: "Vocabulary", publishedDate: "2024-10-18"},
-    { fileType: "Video", title: "Lesson A1", session: "OCT 2024", subtitle: "Key vocabulary tips", level: "A1", year: "2024", type: "Lesson", category: "Listening", publishedDate: "2024-11-26"},
-    { fileType: "Word", title: "Exercise A1", session: "OCT 2024", subtitle: "Listening practice 101", level: "A1", year: "2024", type: "Exercise", category: "Grammar", publishedDate: "2024-11-27"},
-    { fileType: "Link", title: "Lesson A1", session: "OCT 2024", subtitle: "Speaking activities", level: "A1", year: "2024", type: "Lesson", category: "Speaking", publishedDate: "2024-11-20"},
+    { fileType: "PDF", title: "Lesson B1", session: "JAN 2025", subtitle: "Advanced grammar structures", level: "B1", year: "2025", type: "Lesson", category: "Grammar", publishedDate: "2025-01-15" },
+    { fileType: "Video", title: "Exam B2", session: "JAN 2025", subtitle: "Final test preparation", level: "B2", year: "2025", type: "Exam", category: "Writing", publishedDate: "2025-01-10" },
+    { fileType: "Word", title: "Exercise A2", session: "JAN 2025", subtitle: "Basic conversation drills", level: "A2", year: "2025", type: "Exercise", category: "Speaking", publishedDate: "2025-01-18" },
+    { fileType: "Image", title: "Flashcards B1", session: "JAN 2025", subtitle: "Common expressions", level: "B1", year: "2025", type: "Exercise", category: "Vocabulary", publishedDate: "2025-01-12" },
+    { fileType: "Link", title: "Webinar B2", session: "JAN 2025", subtitle: "Live writing techniques", level: "B2", year: "2025", type: "Lesson", category: "Writing", publishedDate: "2025-01-08" },
+    { fileType: "PDF", title: "Guide C1", session: "JAN 2025", subtitle: "Academic writing guide", level: "C1", year: "2025", type: "Lesson", category: "Writing", publishedDate: "2025-01-22" },
+    { fileType: "Video", title: "Interview Practice", session: "JAN 2025", subtitle: "Real-life speaking test", level: "B2", year: "2025", type: "Exercise", category: "Speaking", publishedDate: "2025-01-20" },
+    { fileType: "Word", title: "Listening Drill B1", session: "JAN 2025", subtitle: "Short dialogues", level: "B1", year: "2025", type: "Exercise", category: "Listening", publishedDate: "2025-01-11" },
+    { fileType: "Image", title: "Poster A2", session: "JAN 2025", subtitle: "Verb tenses chart", level: "A2", year: "2025", type: "Lesson", category: "Grammar", publishedDate: "2025-01-14" },
+    { fileType: "Link", title: "Online Quiz B2", session: "JAN 2025", subtitle: "Vocabulary challenge", level: "B2", year: "2025", type: "Exam", category: "Vocabulary", publishedDate: "2025-01-17" }
   ];
-
 
   const allResources = [
     { fileType: "PDF", title: "Lesson B1", session: "NOV 2024", subtitle: "Intermediate grammar rules", level: "B1", year: "2024", type: "Lesson", category: "Grammar", publishedDate: "2024-12-01" },

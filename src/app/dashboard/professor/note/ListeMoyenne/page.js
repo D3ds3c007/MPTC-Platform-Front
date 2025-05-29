@@ -2,7 +2,10 @@
 
 import React from 'react';
 import MBoutonEleve from '@/app/components/ui/BoutonEleve/MBoutonEleve';
-import { MTableauListeMoyenne } from '@/app/components/ui/TableauListeMoyenne/MTableauListeMoyenne'; // adapte le chemin si besoin
+import { MTableauListeMoyenne } from '@/app/components/ui/TableauListeMoyenne/MTableauListeMoyenne';
+import { MBoutonCSV } from '@/app/components/ui/BoutonCSV/MBoutonCSV';
+import { MBoutonPDF } from '@/app/components/ui/BoutonPDF/MBoutonPDF';
+import { MBoutonEmail } from '@/app/components/ui/BoutonEmail/MBoutonEmail';
 import styles from './Page.module.css';
 
 const mockStudents = [
@@ -16,6 +19,10 @@ const mockStudents = [
   { name: "Bob", exams: [9, 8, 10] },
   { name: "Charlie", exams: [16, 17, 18] },
 ];
+
+const handleCSV = () => console.log('CSV Exporté');
+  const handlePDF = () => console.log('PDF Exporté');
+  const handleEmail = () => console.log('Email envoyé');
 
 export default function PageEleves() {
   return (
@@ -49,6 +56,18 @@ export default function PageEleves() {
                       onClick={() =>  (window.location.href = "/dashboard/professor/note/ResultatGlobale")}
                     />
       </div>
+
+
+      <div className={styles.pageContainer}>
+      <div className={styles.buttonGroup}>
+        <MBoutonCSV onClick={handleCSV} />
+        <MBoutonPDF onClick={handlePDF} />
+        <MBoutonEmail onClick={handleEmail} />
+      </div>
+    </div>
+
+
+
 
       <div style={{ padding: '20px' }}>
         <MTableauListeMoyenne students={mockStudents} />

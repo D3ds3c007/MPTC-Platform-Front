@@ -24,11 +24,11 @@
     margin-top: 10px;
 }
 
-.sidebar header .image,
+/* .sidebar header .image,
 .sidebar .icon{
     min-width: 60px;
-    border-radius: 6px;
-}
+    
+} */
 
 .sidebar .icon{
     min-width: 60px;
@@ -63,10 +63,10 @@
     position: relative;
 }
 
-.sidebar header .image-text{
+/* .sidebar header .image-text{
     display: flex;
     align-items: center;
-}
+} */
 .sidebar header .logo-text{
     display: flex;
     flex-direction: column;
@@ -84,14 +84,14 @@ header .image-text .profession{
 }
 
 .sidebar header .image{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
 
 .sidebar header .image img{
-    width: 40px;
-    border-radius: 6px;
+ 
+    margin-left: 20px;
 }
 
 .sidebar header .toggle{
