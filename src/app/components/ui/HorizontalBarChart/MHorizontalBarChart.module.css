@@ -1,5 +1,5 @@
 .chart-container {
-    width: 1125px;
+    width: 98%;
     margin: 0 auto;
     background: #fff;
     border: 1px solid var(--default-bg);
@@ -44,7 +44,7 @@
 
 .bar-fill.complete {
     background-color: var(--primary-bg);
-    width: 70%;
+    width: 84%;
 }
 
 .bar-fill.true-false {
@@ -54,17 +54,17 @@
 
 .bar-fill.original {
     background-color: var(--success-bg);
-    width: 70%;
+    width: 65%;
 }
 
 .bar-fill.essay {
     background-color: var(--secondary-bg);
-    width: 70%;
+    width: 46%;
 }
 
 .bar-fill.reading {
     background-color: var(--primary-bg);
-    width: 70%;
+    width: 75%;
 }
 
 .bar-fill.describe {
@@ -74,7 +74,7 @@
 
 .bar-fill.listening {
     background-color: var(--pink-bg);
-    width: 70%;
+    width: 68%;
 }
 
 .bar-percentage {

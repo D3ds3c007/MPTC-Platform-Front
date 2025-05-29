@@ -2,143 +2,70 @@ import React, { useEffect, useState } from "react";
 import styles from "@/app/components/ui/LoadingProcess/MLoadingProcess.module.css";
 import Image from "next/image";
 import logo from "./Folder.gif";
+import logo2 from "./Extractor.gif";
 import { MProgressBar } from "@/app/components/ui/ProgressBar/MProgressBar";
+import { MUploadZipFileP } from "@/app/components/ui/UploadZipFileP/MUploadZipFileP";
 
-export function MLoadingProcess() {
-  const [stepsCompleted, setStepsCompleted] = useState(false); // Tracks if all steps are completed
-  const [progressText, setProgressText] = useState("60%"); // Default progress text
-  const [stepName, setStepName] = useState("Step Name"); // Default step name
-  const [isLinkVisible, setIsLinkVisible] = useState(false); // Tracks visibility of the link
+export function MLoadingProcess({idExam}) {
+  const [examId, setExamId] = useState(null);
 
   useEffect(() => {
-    // Wait 2000ms and then mark all steps as completed
-    const timer = setTimeout(() => {
-      setStepsCompleted(true);
-      setProgressText("Terminated"); // Change progress text to "Terminated"
-      setStepName("See Result"); // Change step name to "See Result"
-      setIsLinkVisible(true); // Make the link visible after 2000ms
-    }, 2000);
 
-    return () => clearTimeout(timer); // Cleanup timeout on component unmount
+      const searchParams = new URLSearchParams(window.location.search);
+      const id = searchParams.get('parameter_id');
+    
+      if (id) {
+          console.log('Parameter ID Process :', id);
+          setExamId(id);
+      }
   }, []);
 
   return (
     <>
+          
       <div className={styles["progress-container"]}>
-        {/* Step 1 */}
-        <div className={`${styles["step-bar"]} ${styles["step-bar-inactive"]}`}>
-          <MProgressBar />
-        </div>
-        <div className={styles["step"]}>
-          <div
-            className={`${styles["step-circle"]} ${
-              stepsCompleted ? styles["step-active"] : styles["step-inactive"]
-            }`}
-          >
-            {stepsCompleted ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                width="20"
-                height="20"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            ) : (
-              "1"
-            )}
-          </div>
-        </div>
-
-        {/* Step 2 */}
-        <div className={`${styles["step-bar"]} ${styles["step-bar-inactive"]}`}>
-          <MProgressBar />
-        </div>
-        <div className={styles["step"]}>
-          <div
-            className={`${styles["step-circle"]} ${
-              stepsCompleted ? styles["step-active"] : styles["step-inactive"]
-            }`}
-          >
-            {stepsCompleted ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                width="20"
-                height="20"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            ) : (
-              "2"
-            )}
-          </div>
-        </div>
-
-        {/* Step 3 */}
-        <div className={`${styles["step-bar"]} ${styles["step-bar-inactive"]}`}>
-          <MProgressBar />
-        </div>
-        <div className={styles["step"]}>
-          <div
-            className={`${styles["step-circle"]} ${
-              stepsCompleted ? styles["step-active"] : styles["step-inactive"]
-            }`}
-          >
-            {stepsCompleted ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                width="20"
-                height="20"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            ) : (
-              "3"
-            )}
-          </div>
-        </div>
+        <MProgressBar time={4000} delay={1500} stepNumber={1} />
+        <MProgressBar time={4000} delay={4500} stepNumber={2} />
+        <MProgressBar time={4000} delay={7500} stepNumber={3} />
       </div>
 
       {/* Folder and Info */}
       <div className={styles["folder-container"]}>
-        <Image src={logo} alt="Logo" width={400} height={300} />
+
+        {/* Step 1 */}
+        <h4 className={styles["step-name"]}>Step 1 : Step Insert Student Papers</h4>
+        <br></br>
+        <MUploadZipFileP></MUploadZipFileP>
+
+        {/* Step 2 */}
+        {/* <h4 className={styles["step-name"]}>Step 2 : Extract Student Writing</h4>
+        <Image src={logo} alt="Logo" width={400} height={300} /> */}
+
+        {/* Step 3 */}
+        {/* <h4 className={styles["step-name"]}>Step 3 : Automatic Correction </h4>
+        <Image src={logo} alt="Logo" width={400} height={300} /> */}
+
+        
+        {/* <div className={styles["timer"]}>
+          <p>Time left : <strong> 1min30s </strong></p>
+        </div> */}
+
+        <button className={styles["button-one"]}>
+            Correct Exam
+        </button>
+
+        <div className={styles["step-name"]}>
+          {/* {isLinkVisible ? (
+            <a href="../exam/result" className={styles["see-result-link"]}>
+              See Result
+            </a>
+          ) : (
+            stepName
+          )} */}
+        </div>
+        
       </div>
-      <div className={styles["step-name"]}>
-        {isLinkVisible ? (
-          <a href="../exam/result" className={styles["see-result-link"]}>
-            See Result
-          </a>
-        ) : (
-          stepName
-        )}
-      </div>
-      <div className={styles["progress-bar"]}>{progressText}</div>
-      <div className={styles["timer"]}>
-        Time left : <span>1min30s</span>
-      </div>
+      
     </>
   );
 }

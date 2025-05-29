@@ -1,0 +1,15 @@
+.button-one{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--success-bg);
+    border: none;
+    color: var(--primary-bg);
+    padding: 12px 0;
+    border-radius: 25px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    width: 260px;
+    margin-left: 40%;
+}

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function DashboardLayout({children})
 {
-    const [currentTitle, setCurrentTitle] = useState('Exam Section');
+    const [currentTitle, setCurrentTitle] = useState('Profile Professor');
 
     const handleTitle = (title) => {
 

@@ -37,10 +37,10 @@ export default function Stats(){
                         flexWrap: 'wrap',
                         }}>
                         
-                            <MIconicCard data="50" label="Scanned Papers" bootstrapClass="col-md-3" variant="success"/>
-                            <MIconicCard data="1mn30s" label="Total Time" bootstrapClass="col-md-3" variant="warning"/>
-                            <MIconicCard data="70,00%" label="General Accuracy" bootstrapClass="col-md-3" />
-                            <MIconicCard data="20Mbps/s" label="Connection Bandwidth" bootstrapClass="col-md-3" variant="primary"/>
+                            <MIconicCard data="10" label="Scanned Papers" bootstrapClass="col-md-3" variant="success"/>
+                            <MIconicCard data="9mn46s" label="Total Time" bootstrapClass="col-md-3" variant="warning"/>
+                            <MIconicCard data="88,74%" label="General Accuracy" bootstrapClass="col-md-3" />
+                            <MIconicCard data="4Mbps" label="Connection Bandwidth" bootstrapClass="col-md-3" variant="primary"/>
                         
                     </div>
 

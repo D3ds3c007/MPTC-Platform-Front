@@ -66,4 +66,14 @@
     font-weight: bold;
     width: 260px;
     margin-left: 40%;
-}
+  }
+
+  .step-name {
+    color: var(--secondary-bg);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .text-link{
+    text-decoration: none ;
+  }

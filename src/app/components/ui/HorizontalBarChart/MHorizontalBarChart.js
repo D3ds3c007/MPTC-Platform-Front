@@ -12,7 +12,7 @@ export function MHorizontalBarChart() {
                 <div className={styles["bar"]}>
                     <div className={`${styles["bar-fill"]} ${styles["complete"]}`}></div>
                 </div>
-                <div className={styles["bar-percentage"]}>70%</div>
+                <div className={styles["bar-percentage"]}>84%</div>
             </div>
 
             <div className={styles["bar-group"]}>
@@ -28,7 +28,7 @@ export function MHorizontalBarChart() {
                 <div className={styles["bar"]}>
                     <div className={`${styles["bar-fill"]} ${styles["original"]}`}></div>
                 </div>
-                <div className={styles["bar-percentage"]}>70%</div>
+                <div className={styles["bar-percentage"]}>65%</div>
             </div>
 
             <div className={styles["bar-group"]}>
@@ -36,7 +36,7 @@ export function MHorizontalBarChart() {
                 <div className={styles["bar"]}>
                     <div className={`${styles["bar-fill"]} ${styles["essay"]}`}></div>
                 </div>
-                <div className={styles["bar-percentage"]}>70%</div>
+                <div className={styles["bar-percentage"]}>46%</div>
             </div>
 
             <div className={styles["bar-group"]}>
@@ -44,7 +44,7 @@ export function MHorizontalBarChart() {
                 <div className={styles["bar"]}>
                     <div className={`${styles["bar-fill"]} ${styles["reading"]}`}></div>
                 </div>
-                <div className={styles["bar-percentage"]}>70%</div>
+                <div className={styles["bar-percentage"]}>75%</div>
             </div>
 
             <div className={styles["bar-group"]}>
@@ -60,7 +60,7 @@ export function MHorizontalBarChart() {
                 <div className={styles["bar"]}>
                     <div className={`${styles["bar-fill"]} ${styles["listening"]}`}></div>
                 </div>
-                <div className={styles["bar-percentage"]}>70%</div>
+                <div className={styles["bar-percentage"]}>68%</div>
             </div>
         </div>
         </>

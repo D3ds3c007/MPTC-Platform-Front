@@ -2,7 +2,7 @@
     width: 500px;
     padding: 20px;
     text-align: left;
-    position: relative;
+    margin-left: -18px;
   }
 
   .exam-header {
@@ -30,21 +30,19 @@
   }
 
   .correct-exam-button {
-    display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--success-bg);
+    background: var(--primary-bg);
     border: none;
-    color: var(--primary-bg);
+    color: var(--primary-color);
     padding: 12px 0;
     border-radius: 25px;
     font-size: 18px;
     cursor: pointer;
-    position: absolute;
     left: 20px;
     right: 20px;
+    bottom: 20px;
     text-align: center;
-    font-weight: bold;
   }
 
   .subtitle{

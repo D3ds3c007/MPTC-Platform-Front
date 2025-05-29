@@ -1,7 +1,7 @@
 
 .box {
   position: relative;
-  width: 250px;
+  width: 270px;
   height: 180px;
 }
 
@@ -37,8 +37,17 @@
   justify-content: center;
 }
 
+.corner-icon svg {
+    transition: transform 0.3s ease-in-out; /* Animation au survol */
+  }
+
+.corner-icon:hover svg {
+  transform: scale(1.2); /* Agrandissement au survol */
+}
+
 .level{
-  /* color: var(--dark-blue); */
+  background-color: white;
+  color: var(--dark-blue);
   width: 40px;
   height: 40px;
   border-radius: 50%;

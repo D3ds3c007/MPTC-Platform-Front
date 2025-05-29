@@ -4,9 +4,12 @@ import styles from './MCarousel.module.css'; // Import the CSS module
 export function MCarousel() {
     return (
         <>
+            <br></br>
+            <br></br>
+
         <div className={styles["slider-container"]}>
             <div className={styles["slider-title"]}>Registration Number</div>
-            <div className={styles["slider-number"]}>ETU002231</div>
+            <div className={styles["slider-number"]}>000021</div>
             <div className={styles["slider-content"]}>
                 <div className={styles["lines"]}>
                     <div className={styles["line"]} style={{ width: "100%" }}></div>

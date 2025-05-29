@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './MFolderCard.module.css'; // Import the CSS for styling
 
-export function MFolderCard({ exam, variant = 'primary' }) {
+export function MFolderCard({matricule, avg, range, variant = 'primary' }) {
   // Conditionally set the fill color based on the variant
   const svgColor = variant === 'success' ? '#00119D' : '#01F073'; // Set to blue if success, else keep default color
 
@@ -10,10 +10,11 @@ export function MFolderCard({ exam, variant = 'primary' }) {
         <div className={`${styles["folder"]} ${styles[variant]}`}>
             <div className={styles["folder-content"]}>
                 <div className={styles["level"]}>
-                    {/* <h6>{exam.level}</h6> */}
+                    <h6>{range}</h6>
                 </div>
-                <h5>{exam.level} {exam.subject} Exam <br /> {exam.session} </h5>
-                <p>{exam.period}</p>
+                <br></br>
+                <h5>MAT - {matricule}</h5>
+                <p>{avg}</p>
                 {/* <div className={`${styles["three-dot-button"]} ${styles[variant]}`}>
                     <div className={`${styles["dots"]} ${styles[variant]}`}>
                         <span></span>
@@ -24,7 +25,7 @@ export function MFolderCard({ exam, variant = 'primary' }) {
             </div>
         </div>
         <div className={styles["corner-icon"]}>
-          <a href={`exam/info?parameter_id=${exam.idExam}`}>
+          <a href="#">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               width="35" 

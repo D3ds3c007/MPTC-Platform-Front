@@ -10,7 +10,7 @@ export function MPieChart() {
 
     <div className={styles["status"]}>
       <span className={styles["label"]}>Pass successfully</span>
-      <span className={styles["percentage"]}>50%</span>
+      <span className={styles["percentage"]}>75%</span>
     </div>
     <div className={styles["progress-bar"]}>
       <div className={`${styles["progress-fill"]} ${styles["progress-ready"]}`}></div>
@@ -18,7 +18,7 @@ export function MPieChart() {
 
     <div className={styles["status"]}>
       <span className={styles["label"]}>Fail and must return class</span>
-      <span className={styles["percentage"]}>30%</span>
+      <span className={styles["percentage"]}>25%</span>
     </div>
     <div className={styles["progress-bar"]}>
       <div className={`${styles["progress-fill"]} ${styles["progress-pending"]}`}></div>
@@ -26,7 +26,7 @@ export function MPieChart() {
 
     <div className={styles["status"]}>
       <span className={styles["label"]}>Others</span>
-      <span className={styles["percentage"]}>20%</span>
+      <span className={styles["percentage"]}>0%</span>
     </div>
     <div className={styles["progress-bar"]}>
       <div className={`${styles["progress-fill"]} ${styles["progress-in-use"]}`}></div>

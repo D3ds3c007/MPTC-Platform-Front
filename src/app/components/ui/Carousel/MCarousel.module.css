@@ -2,7 +2,7 @@
     background-color: #d7d9fb;
     border-radius: 24px;
     width: 600px;
-    height: 400px;
+    height: 360px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,15 +13,15 @@
 .slider-title {
     font-size: 20px;
     font-weight: bold;
-    color: #8e24aa;
+    color: var(--primary-bg);
     margin-bottom: 4px;
     text-align: center;
 }
 
 .slider-number {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
-    color: #8e24aa;
+    color: var(--secondary-bg);
     margin-bottom: 20px;
     text-align: center;
 }

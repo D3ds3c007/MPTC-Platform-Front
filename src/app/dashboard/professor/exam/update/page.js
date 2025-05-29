@@ -45,13 +45,11 @@ export default function UpdatePage()
   }, []);
 
   
-    return(
+    return loading ? (
+    <MLoading />
+    ) : (
       <div className="col-md-12">
         <MCard title="Modify Exam Informations">   
-          {loading ? (
-            <MLoading></MLoading>
-            // Display loading indicator while data is being fetched
-          ) : (
             <div style={{
               display: 'flex',
               flexDirection: 'row',
@@ -59,7 +57,6 @@ export default function UpdatePage()
             }}>
               <MExamForm levels={levels} subjects={subjects} periods={periods} defaultId={examId} />
             </div>
-          )}
         </MCard>
       </div>
     )
