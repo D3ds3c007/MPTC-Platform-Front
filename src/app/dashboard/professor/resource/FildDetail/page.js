@@ -8,7 +8,7 @@ import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
 
 
 // Exemple d'image de profil
-import photo from './photo.png';
+import profile from './profile.jpg';
 
 // Exemple de vidéo (remplace avec props ou logique dynamique)
 const video = "http://localhost:8080/video";
@@ -60,7 +60,7 @@ export default function FileDetails() {
           <div className={styles.profile}>
           <a href="/dashboard/professor/resource/ProfilAutreProf">
             <Image
-              src={photo}
+              src={profile}
               alt="Photo de profil"
               className={styles.profileImg}
               width={45}
@@ -70,8 +70,8 @@ export default function FileDetails() {
 
           <div className={styles.profileInfo}>
             <div className={styles.profileName}>
-              <span>Nantenaina</span>
-              <span>RAKOTONIRINA</span>
+              <span>Lova </span>
+              <span>Rakotozafy</span>
             </div>
 
             <div className={styles.actions}>

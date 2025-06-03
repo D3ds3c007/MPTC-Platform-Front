@@ -1,0 +1,312 @@
+    .service-card {
+    width: 330px;
+    background-color: var(--secondary-bg);
+    border-radius: 20px;
+    padding: 20px;
+    color: black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    }
+
+    .services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+    
+    .service-tag {
+      border: white 1px solid;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+    }
+      
+  .card-container {
+    width: auto;  /* Allows the card to grow based on its content */
+    height: auto; /* Makes the height flexible */
+    max-width: 100%; /* Ensures the card doesn't exceed the container width */
+    max-height: 100%; /* Prevents the card from exceeding the container height */
+    background-color: var(--dark-blue);
+    color: white;
+    border-radius: 18px;
+    border:0px;
+    padding: 2rem; /* Use relative units for padding */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+    margin: 2% 2% 2% 0%;
+  }
+
+.data-card {
+  width: 300px;
+  height: 290px;
+  background-color: var(--success-bg);
+  border-radius: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #000;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.card-header h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.plus-button {
+  background-color: white;
+  color: #fff;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 30px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.plus-button svg {
+  transition: transform 0.3s ease-in-out; /* Animation au survol */
+}
+
+.plus-button:hover svg {
+  transform: scale(1.2); /* Agrandissement au survol */
+}
+
+.card-body {
+  margin-top: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.resource-count {
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--dark-blue);
+}
+
+.description {
+  font-size: 11px;
+  color: #000;
+  margin-top: 10px;
+}
+
+.note-card {
+  background-color: var(--warning-bg); /* Bright yellow-orange */
+  border-radius: 20px;
+  padding: 20px 30px;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  width: 280px;
+  color: var(--dark-blue);
+}
+
+.note-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.note-content h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--dark-blue);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.note-plus {
+  background-color: white; /* Vivid blue */
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+}
+
+.note-plus svg {
+  transition: transform 0.3s ease-in-out; /* Animation au survol */
+}
+
+.note-plus:hover svg {
+  transform: scale(1.2); /* Agrandissement au survol */
+}
+
+.stats-card {
+  border: white 1px solid;
+  border-radius: 20px;
+  padding: 20px;
+  width: 280px;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.stats-card h3 {
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 150px;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.bar {
+  width: 30px;
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.bar::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -18px;
+  font-size: 10px;
+}
+
+.short {
+  height: 40px;
+}
+
+.medium {
+  height: 70px;
+}
+
+.tall {
+  height: 120px;
+}
+
+.pink {
+  background-color: var(--pink-bg);
+}
+
+.purple {
+  background-color: var(--secondary-bg);
+}
+
+.bar-group span {
+  margin-top: 5px;
+  font-size: 10px;
+}
+
+  .boite {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    margin-bottom: -10px;
+  }
+  
+  .folder {
+    width: 300px;
+    height: 240px;
+    position: relative;
+    border-radius: 30px;
+   clip-path: path(
+  "M296.31,89.52v122.61a30.7,30.7,0,0,1-30.69,30.7h-238.5A27.14,27.14,0,0,1,0,107.85V27.14A27.14,27.14,0,0,1,27.14,0H206.41a27.14,27.14,0,0,1,25.75,18.58v10.23a27.5,27.5,0,0,0,.26,3.87,29.18,29.18,0,0,0,1.13,5.25,30.69,30.69,0,0,0,22.86,20.88,29.08,29.08,0,0,0,5.16.66h9.21A30.7,30.7,0,0,1,296.31,89.52Z"
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    padding: 15px;
+  }
+  
+  .folder-content p {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 8px;
+    font-size: 14px;
+  }
+
+  .folder-content h5 {
+    padding-top: 30px;
+    margin-left: 8px;
+  }
+  
+   .folder-content h6 {
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden;    /* Cache le texte qui déborde */
+    text-overflow: ellipsis; /* Ajoute les trois points (...) */
+    max-width: 80%; /* Définit la largeur maximale du titre */
+    margin-left: 8px;
+  }
+  
+
+  
+  /* Icon in the top-right missing corner */
+  .corner-icon {
+    position: absolute; /* Position fixe dans le conteneur */
+    top: 5px; /* Ajuste pour être proche du coin supérieur gauche */
+    right: 5px; /* Ajuste pour être proche du coin gauche */
+    z-index: 10; /* Toujours visible au-dessus des autres éléments */
+    width: 50px; /* Augmenté pour une meilleure visibilité */
+    height: 50px;
+  }
+  
+  .corner-icon svg {
+    width: 45px; /* Augmentation de la taille du SVG */
+    height: 45px;
+    fill: var(--success-bg); /* Garde la couleur verte */
+    transition: transform 0.3s ease-in-out; /* Animation au survol */
+  }
+  
+  .corner-icon:hover svg {
+    transform: scale(1.2); /* Agrandissement au survol */
+  }
+  
+  .level-icon {
+    color: var(--dark-blue);
+    width: 60px;
+    height: 60px;
+    margin-left: 8px;
+    border-radius: 50%;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Bouton{
+    margin-right: 100px;
+  }
+
+  .folder.primary {
+    background-color: var(--default-bg);
+    color: var(--dark-blue);
+  }

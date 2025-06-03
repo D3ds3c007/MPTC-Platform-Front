@@ -2,13 +2,15 @@
 import Image from 'next/image';
 import React, { useState } from "react";
 import { MFolderCardNa } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
-import { MFiltreNaProfilAutre } from "@/app/components/ui/FiltreNaProfilAutre/MFiltreNaProfilAutre";
-import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
-import { MButtonAjoutResource } from "@/app/components/ui/ButtonAjoutResource/MButtonAjoutResource";
 import { MButtonAjout } from "@/app/components/ui/ButtonAjout/MButtonAjout";
-import { MListe } from "@/app/components/ui/Liste/MListe";
+import { MFiltreRecherche } from "@/app/components/ui/FiltreRecherche/MFiltreRecherche";
 
-import photo from './photo.png';
+import { MListe } from "@/app/components/ui/Liste/MListe";
+import MProfil from "@/app/components/ui/Profil/MProfil";
+
+
+import profile from "./profile.jpg"; // à partir de /public
+import couverture from "./couverture.png";
 import styles from "./Page.module.css";
 
 // Données fictives pour tester
@@ -73,10 +75,11 @@ const recentFiles = [
 
 
 // Données fictives de profil
-const userProfile = {
-  name: "Nantenaina RAKOTONIRINA",
-  profilePicture: photo, // Remplacez avec le chemin réel de l'image
-};
+ const userProfile = {
+    name: "Hanta Andrianarivo",
+    coverImage: couverture,         // attention : string, pas importé
+    profilePicture: profile,
+  };
 
 export default function PageTest() {
   const [filteredResults, setFilteredResults] = useState(mockData); // État pour les résultats filtrés
@@ -93,38 +96,16 @@ export default function PageTest() {
       </div>
 
       <div className={`bg-white p-4 rounded `}>
-            {/* Section Profil */}
-          <div className={styles.coverContainer}>
-          <div className={styles.coverPhoto}></div>
-
-          <div className={styles.profileHeader}>
-            <div className={styles.profileImage}>
-            <Image
-                src={userProfile.profilePicture}
-                alt={`${userProfile.name}'s profile`}
-                width={200}
-                height={200}
-              />
-
-            </div>
-
-            <div className={styles.profileInfoText}>
-              <div className={styles.profileTopRow}>
-                <h2 className={styles.userName}>{userProfile.name}</h2>
-                <div className={styles.resourceButton}>
-                  <MButtonAjoutResource />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+           <section>
+                                <MProfil userProfile={userProfile} />
+            </section>
 
 
 
         <section className={styles.searchSection}>
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <MFiltreNaProfilAutre data={mockData} onFilter={handleFilter} />
-            <MSearchBar placeholder="Search" />
+            
+                     <MFiltreRecherche data={mockData} onFilter={handleFilter} />
           </div>
         </section>
         
@@ -148,9 +129,9 @@ export default function PageTest() {
             <div className={styles["no-results"]}>Aucun résultat trouvé</div>
           )}
 
-        <section className={styles.boutonAjout}>
+        {/* <section className={styles.boutonAjout}>
               <MButtonAjout />
-        </section>
+        </section> */}
         </div>
       </section>
      </div>

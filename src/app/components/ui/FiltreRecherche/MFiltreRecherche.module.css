@@ -1,0 +1,13 @@
+.filtre-recherche-container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* espace entre les composants */
+    flex-wrap: wrap; /* responsive */
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+  
+  }
+  

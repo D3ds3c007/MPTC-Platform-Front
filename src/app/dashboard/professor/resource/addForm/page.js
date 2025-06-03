@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
 import { MButtonVoirPlus } from "@/app/components/ui/ButtonVoirPlus/MButtonVoirPlus";
-import { MExamForm1 } from "@/app/components/ui/ExamForm1/MExamForm1";
-import { MBouttonUpload } from "@/app/components/ui/ButtonUpload/MBouttonUpload";
+// import { MExamForm1 } from "@/app/components/ui/ExamForm1/MExamForm1";
+import { MUploadZipFileP } from "@/app/components/ui/UploadZipFileP/MUploadZipFileP";
 import styles from "./Page.module.css";
+import {React, useState, useEffect} from 'react';
 
+ 
 export default function AddForm() {
+  
+    
+  
+  
   return (
     <div className={`container mt-4`}>
       {/* Titre principal */}
@@ -25,17 +30,17 @@ export default function AddForm() {
           <section className={styles.resourcesSection} aria-label="Upload Section">
           <label htmlFor="description" className={styles.label}>Field to upload a file</label>
             <div>
-              <MExamForm1 />
+              <MUploadZipFileP />
             </div>
 
-            <div className={styles.buttonGroup}>
+            {/* <div className={styles.buttonGroup}>
               <MBouttonUpload variant="primary" aria-label="Reset Button">
                 Reset
               </MBouttonUpload>
               <MBouttonUpload variant="secondary" aria-label="Upload File Button">
                 Upload File
               </MBouttonUpload>
-            </div>
+            </div> */}
           </section>
 
           {/* Section droite: Formulaire pour titre et description */}
@@ -73,6 +78,8 @@ export default function AddForm() {
           </section>  
         </div>
       </div>
+
+      
     </div>
   );
 }

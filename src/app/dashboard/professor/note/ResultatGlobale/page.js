@@ -13,9 +13,9 @@ import styles from './Page.module.css';
 
 export default function ResultatClassePage() {
   // Simulons des données de test :
-  const successRate = 85;
-  const average = 14.2;
-  const failRate = 15;
+  const successRate = 75;
+  const average = 20;
+  const failRate = 5;
   const moyenneGlobale = 14.2;
   const labels = ['Speaking', 'Writing', 'Listening', 'Reading'];
   const scores = [15, 13.5, 16, 12.8];

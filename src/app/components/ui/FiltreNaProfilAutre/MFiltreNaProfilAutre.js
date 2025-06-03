@@ -8,7 +8,7 @@ export function MFiltreNaProfilAutre({ data, onFilter }) {
   const mainFilters = ["All", "Video", "PDF", "Image", "Word", "Link"];
 
   // Liste des filtres secondaires
-  const subFilters = ["Lasted", "Popular", "Older"];
+  const subFilters = ["Lasted", "Older"];
 
   const [activeMainFilter, setActiveMainFilter] = useState(mainFilters[0]);
   const [activeSubFilter, setActiveSubFilter] = useState(subFilters[0]);

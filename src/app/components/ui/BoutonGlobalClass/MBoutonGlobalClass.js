@@ -15,7 +15,7 @@ export default function MBoutonGlobalClass({ success, average, fail }) {
         </div>
         <div className={styles.text}>
           <div className={styles.value}>{success}%</div>
-          <div className={styles.label}>Taux de réussite</div>
+          <div className={styles.label}>excellence rate</div>
         </div>
       </div>
 
@@ -28,7 +28,7 @@ export default function MBoutonGlobalClass({ success, average, fail }) {
         </div>
         <div className={styles.text}>
           <div className={styles.value}>{average}%</div>
-          <div className={styles.label}>Moyenne de la classe</div>
+          <div className={styles.label}>average student rate</div>
         </div>
       </div>
 
@@ -41,7 +41,7 @@ export default function MBoutonGlobalClass({ success, average, fail }) {
         </div>
         <div className={styles.text}>
           <div className={styles.value}>{fail}%</div>
-          <div className={styles.label}>Élèves en échec</div>
+          <div className={styles.label}>Failing students</div>
         </div>
       </div>
 

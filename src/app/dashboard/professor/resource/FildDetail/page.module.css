@@ -83,7 +83,7 @@
   .profileInfo {
     display: flex;
     flex-direction: row;
-    gap: 620px;; /* 👉 Espacement entre le nom et les boutons */
+    gap: 720px;; /* 👉 Espacement entre le nom et les boutons */
     margin-left: 15px; /* 👉 Espacement entre la photo et le nom+boutons */
   }
   
@@ -125,9 +125,9 @@
   .actions button {
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    border: 2px solid #000066;
+    border: 2px solid #00119D;
     background: white;
-    color: #000066;
+    color: #00119D;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
@@ -135,8 +135,8 @@
   
   .actions button:hover,
   .actions button:active {
-    background: #01F073;   /* Fond vert */
-    color: #000066;      /* Texte bleu foncé */
+    background: #00119D;   /* Fond vert */
+    color: white;      /* Texte bleu foncé */
   }
   
 

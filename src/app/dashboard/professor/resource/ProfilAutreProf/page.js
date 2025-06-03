@@ -2,9 +2,11 @@
 import Image from 'next/image';
 import React, { useState } from "react";
 import { MFolderCardNa } from "@/app/components/ui/FolderCardNa/MFolderCardNa";
-import { MFiltreNaProfilAutre } from "@/app/components/ui/FiltreNaProfilAutre/MFiltreNaProfilAutre";
-import { MSearchBar } from "@/app/components/ui/SearchBar/MSearchBar";
-import photo from './photo.png';
+import { MFiltreRecherche } from "@/app/components/ui/FiltreRecherche/MFiltreRecherche";
+import MProfilEleve from "@/app/components/ui/ProfilEleve/MProfilEleve";
+
+import profile from "./profile.jpg"; // à partir de /public
+import couverture from "./couverture.png";
 import styles from "./Page.module.css";
 
 // Données fictives pour tester
@@ -148,10 +150,11 @@ const mockData = [
 
 
 // Données fictives de profil
-const userProfile = {
-  name: "Nantenaina RAKOTONIRINA",
-  profilePicture: photo, // Remplacez avec le chemin réel de l'image
-};
+  const userProfile = {
+    name: "Lova Rakotozafy",
+    coverImage: couverture,         // attention : string, pas importé
+    profilePicture: profile,
+  };
 
 export default function PageTest() {
   const [filteredResults, setFilteredResults] = useState(mockData); // État pour les résultats filtrés
@@ -169,27 +172,17 @@ export default function PageTest() {
 
       <div className={`bg-white p-4 rounded `}>
       {/* Section Profil */}
-      <div className={styles["profile-section"]}>
-        <div className={styles["profile-picture"]}>
-          <Image
-            src={userProfile.profilePicture} // Utiliser userProfile ici
-            alt={`${userProfile.name}'s profile`} // Utiliser userProfile ici
-            width={300}
-            height={300}
-          />
-        </div>
-        <div className={styles["user-name"]}>
-          <h2>{userProfile.name}</h2> {/* Utiliser userProfile ici */}
-        </div>
-      </div>
-
+      <section>
+                      <MProfilEleve userProfile={userProfile} />
+      </section>
       {/* Le composant de filtre */}
       
         <section className={styles.searchSection}>
-          <div className="d-flex justify-content-between align-items-center mb-2">
-            <MFiltreNaProfilAutre data={mockData} onFilter={handleFilter} />
-            <MSearchBar placeholder="Search" />
-          </div>
+          
+          <MFiltreRecherche data={mockData} onFilter={handleFilter} />
+            {/* <MFiltreNaProfilAutre data={mockData} onFilter={handleFilter} />
+            <MSearchBar placeholder="Search" /> */}
+        
         </section>
         
       {/* Affichage des résultats filtrés */}

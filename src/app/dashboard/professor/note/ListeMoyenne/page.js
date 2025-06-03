@@ -1,11 +1,12 @@
 "use client";
 
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import MBoutonEleve from '@/app/components/ui/BoutonEleve/MBoutonEleve';
 import { MTableauListeMoyenne } from '@/app/components/ui/TableauListeMoyenne/MTableauListeMoyenne';
 import { MBoutonCSV } from '@/app/components/ui/BoutonCSV/MBoutonCSV';
 import { MBoutonPDF } from '@/app/components/ui/BoutonPDF/MBoutonPDF';
 import { MBoutonEmail } from '@/app/components/ui/BoutonEmail/MBoutonEmail';
+import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage';
 import styles from './Page.module.css';
 
 const mockStudents = [
@@ -22,9 +23,55 @@ const mockStudents = [
 
 const handleCSV = () => console.log('CSV Exporté');
   const handlePDF = () => console.log('PDF Exporté');
-  const handleEmail = () => console.log('Email envoyé');
+ 
+  
+
 
 export default function PageEleves() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [popupType, setPopupType] = useState("success");
+  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+
+//   useEffect(() => {
+//         setPopupType("success")
+//         setMessage("Login successful. Redirecting ...");
+//         showPopup("success");
+
+
+// })
+const handleEmail = async () => {
+  setIsLoading(true); // start loading
+
+  const subject = encodeURIComponent("Exported Notes");
+  const message = encodeURIComponent("Please check your email");
+
+
+  try {
+    const response = await fetch(`http://localhost:5193/api/v1/Mailing/send-mail`);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Erreur lors de l'envoi");
+    }
+
+    setMessage("Batch mail sent!");
+    showPopup('success');
+  } catch (error) {
+    console.error(error);
+    setMessage("Échec de l'envoi de l'email.");
+    showPopup('error');
+  } finally {
+    setIsLoading(false); // end loading
+  }
+};
+
+  const showPopup = (type) => {
+    setPopupType(type);
+    setIsVisible(true);
+
+  };
   return (
     <div>
       <h1 className={styles.grandTitre}>Note management</h1>
@@ -62,7 +109,7 @@ export default function PageEleves() {
       <div className={styles.buttonGroup}>
         <MBoutonCSV onClick={handleCSV} />
         <MBoutonPDF onClick={handlePDF} />
-        <MBoutonEmail onClick={handleEmail} />
+        <MBoutonEmail onClick={handleEmail} isLoading={isLoading} />
       </div>
     </div>
 
@@ -72,6 +119,15 @@ export default function PageEleves() {
       <div style={{ padding: '20px' }}>
         <MTableauListeMoyenne students={mockStudents} />
       </div>
+      {isVisible && (
+        <MPopupMessage
+          type={popupType}
+          title={popupType === "success" ? "Well done!" : "Oh snap!"}
+          message={message}
+          isVisible={isVisible}
+          onClose={() => setIsVisible(false)}
+        />
+      )}
     </div>
   );
 }
