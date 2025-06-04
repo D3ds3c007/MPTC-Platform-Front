@@ -7,6 +7,7 @@ import { MMultiStepForm} from "@/app/components/ui/MultiStepForm/MMultiStepForm"
 import { MAttendanceForm } from "./components/ui/pages/AttendanceForm/MAttendanceForm";
 import MPopupMessage from "./components/ui/PopupMessage/MPopupMessage";
 import { MTimeOffCalendar } from "./components/ui/TimeOffCalendar/MTimeOffCalendar";
+import { MBarChart} from "@/app/components/ui/BarChart/MBarChart";
 import { useState } from "react";
 import defaultPic from './picture1.png';
 
@@ -158,9 +159,8 @@ const data = [
                 isVisible={isVisible}
                 onClose={() => setIsVisible(false)}
               /> */}
-
-              <MTopLeaderBoard data={leaderboardData}/>
-              <MLeaderBoardList data={data}/>
+            <MBarChart />
+            
 
 
             </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, set } from 'react-hook-form';
 import { FiUpload } from 'react-icons/fi';
 import { MSchedule } from '@/app/components/ui/Schedule/MSchedule';
 import styles from './MMultiStepForm.module.css';
@@ -8,6 +8,7 @@ import axios  from '@/app/lib/axiosInstance';
 import MPopupMessage from '@/app/components/ui/PopupMessage/MPopupMessage';
 
 import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAndDropUpload';
+import { MLoading } from '../Loading/MLoading';
 
   const steps = ["Staff Information", "Upload Picture", "Set Schedule"];
   const CACHE_EXPIRY_TIME = 1000 * 60 * 5; // 5 minutes
@@ -21,7 +22,7 @@ import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAnd
     const [isVisible, setIsVisible] = useState(false);
     const [popupType, setPopupType] = useState("success");
     const [message, setMessage] = useState("");
-
+    const [isLoading, setisLoading] = useState(false);
     
     useEffect(() => {
       // Check if data is available in localStorage
@@ -53,18 +54,24 @@ import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAnd
       if (currentStep === steps.length - 1) {
         // Final form submission
         console.log("Form Submitted", data);
+        setisLoading(true);
         axios.post('/staff/upload-employee', data)
           .then(response => {
             console.log('Employee data uploaded:', response.data);
             setPopupType("success")
             setMessage(response.data);
             showPopup("success");
+            setisLoading(false);
+            setTimeout(() => {
+              window.location.reload();
+            }, 500); // refresh after 3 seconds
           })
           .catch(error => {
             console.error('Error uploading employee data:', error);
             setPopupType("error")
             setMessage(error.response.data);
             showPopup("error");
+            setisLoading(false);
           });
       } else {
         setCurrentStep((prev) => prev + 1);
@@ -82,7 +89,11 @@ import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAnd
     };
 
     return (
-      <FormProvider {...methods}>
+      <FormProvider {...methods}>*
+     {/* show loading if loading and show the main container below if not */}
+    
+
+      {/* Main Container */}
       <div className={styles['container']}>
         {/* Progress Sidebar */}
         <div className={styles['sidebar-popup']}>
@@ -97,8 +108,19 @@ import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAnd
         </div>
 
         {/* Step Content */}
-        <div className={styles['step-content']}>
-          <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles['step-content']}  style={{
+            display: isLoading ? 'flex' : 'block',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+           {isLoading ? (
+          <div style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                  }}><MLoading />
+                  </div>
+        ) : (
+            <form onSubmit={handleSubmit(onSubmit)}>
             {currentStep === 0 && (
               <div className={styles['step-body']}>
 
@@ -264,6 +286,8 @@ import {MDragAndDropUpload} from '@/app/components/ui/DragAndDropUpload/MDragAnd
               <MButton>{currentStep === steps.length - 1 ? "Submit" : "Next"}</MButton>
             </div>
           </form>
+          )}
+        
         </div>
 
       

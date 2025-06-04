@@ -14,19 +14,52 @@ import {
   } from 'recharts';
 
   const data = [
-    { day: 'Monday', averageLate: 5 },
-    { day: 'Tuesday', averageLate: 1 },
+    { day: 'Monday', averageLate: 6 },
+    { day: 'Tuesday', averageLate: 3 },
     { day: 'Wednesday', averageLate: 2 },
     { day: 'Thursday', averageLate: 3 },
-    { day: 'Friday', averageLate: 1 },
+    { day: 'Friday', averageLate: 4 },
     { day: 'Saturday', averageLate: 0 },
   ];
+
+
+const CustomBar = ({ x, y, width, height, fill, onClick, onMouseEnter, onMouseLeave }) => {
+  const barHeight = height - 20; // Adding bottom padding
+  const radius = 37;
+
+  return (
+    <g onClick={onClick}
+       onMouseEnter={onMouseEnter}
+       onMouseLeave={onMouseLeave}
+     cursor="pointer">
+      <rect
+        x={x}
+        y={y + 10}
+        width={width}
+        height={barHeight}
+        fill={fill}
+        rx={radius}
+        ry={radius}
+      />
+    </g>
+  );
+};
 
 export default function AdminPage() {
     const [activities, setActivities] = useState([]);
     const [currentDate, setCurrentDate] = useState('');
     const [cardStats, setCardStats] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    
+
+     const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredIndex(null);
+    };
 
     useEffect(() => {
         setCurrentDate(getCurrentDate());
@@ -104,13 +137,19 @@ export default function AdminPage() {
          
         <div className="row" style={{gap:0, margin:0}}>
             <div className="col-md-4">
-                <MIconicCard data={isLoading ? <MLoading /> : cardStats.totalStaff} label="This number indicates the total staff number at MPTC" bootstrapclassName="col-md-4" variant="primary" bootstrapClass="col-md-12"/>
+                {/* <MIconicCard data={isLoading ? <MLoading /> : cardStats.totalStaff} label="This number indicates the total staff number at MPTC" bootstrapclassName="col-md-4" variant="primary" bootstrapClass="col-md-12"/> */}
+                <MIconicCard data={"6/20"} label="Staff present vs. expected at MPTC" bootstrapclassName="col-md-4" variant="primary" bootstrapClass="col-md-12"/>
+
             </div>
             <div className="col-md-4">
-                <MIconicCard data={isLoading ?  <MLoading /> : cardStats.punctualityRate + " %"} label="This number describe the punctuality rate" bootstrapclassName="col-md-4" variant="warning" bootstrapClass="col-md-12" icon="bi bi-hourglass-split"/>
+                {/* <MIconicCard data={isLoading ?  <MLoading /> : cardStats.punctualityRate + " %"} label="Punctuality rate indicator" bootstrapclassName="col-md-4" variant="warning" bootstrapClass="col-md-12" icon="bi bi-hourglass-split"/> */}
+                <MIconicCard data={"98.25%"} label="Punctuality rate indicator" bootstrapclassName="col-md-4" variant="warning" bootstrapClass="col-md-12" icon="bi bi-hourglass-split"/>
+
             </div>
             <div className="col-md-4">
-                <MIconicCard data={isLoading ?  <MLoading /> : cardStats.latenessDurationAVG + " min"} label="Lateness duration average in minutes" bootstrapclassName="col-md-4" variant="danger" bootstrapClass="col-md-12" icon="bi bi-clock-history"/>
+                {/* <MIconicCard data={isLoading ?  <MLoading /> : cardStats.latenessDurationAVG + " min"} label="Average lateness (mins)." bootstrapclassName="col-md-4" variant="danger" bootstrapClass="col-md-12" icon="bi bi-clock-history"/> */}
+                <MIconicCard data={"4.6 min"} label="Average lateness (mins)." bootstrapclassName="col-md-4" variant="danger" bootstrapClass="col-md-12" icon="bi bi-clock-history"/>
+
             </div>
         </div>  
 
@@ -155,13 +194,25 @@ export default function AdminPage() {
                         <h4>Today is {currentDate}</h4>
                     </div> */}
                     <ResponsiveContainer width="100%"  style={{ backgroundColor: 'white', padding: '20px', borderRadius: '20px' }} height={450}>    
-                        <BarChart data={data}>
+                        <BarChart data={data} >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="day" />
                         <YAxis label={{ value: 'Minutes', angle: -90, position: 'insideLeft' }} />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="averageLate" fill="#feb500" name="Avg Lateness (min)" />
+                        <Bar 
+                            dataKey="averageLate" 
+                            fill="#0000a0"
+                            radius={[50, 50, 0, 0]} 
+                            shape={(props) => (
+                            <CustomBar
+                                {...props}
+                                fill={hoveredIndex === props.index ? '#0000a0' : '#d3d3f8'}
+                                onMouseEnter={() => handleMouseEnter(props.index)}
+                                onMouseLeave={handleMouseLeave}
+                            />
+                            )}
+                            name="Avg Lateness (min)" />
                         </BarChart>
                     </ResponsiveContainer>
                   

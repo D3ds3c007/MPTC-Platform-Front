@@ -359,3 +359,12 @@ body.dark .home .text{
     background-color: var(--sidebar-primary-color);
     color: var(--sidebar-color);
 }
+
+.nav-link.active a {
+  background-color: var(--sidebar-primary-color);
+}
+
+.nav-link.active a .text,
+.nav-link.active a .icon {
+  color: var(--sidebar-color);
+}
